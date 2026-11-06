@@ -24,9 +24,9 @@ afterAll(closeCliResources);
 
 it("reports invalid nested semantic graph Evidence as caller input through CLI and SDK MCP", async () => {
   const root = await createTestTempDirectory("rea-semantic-trace-input-");
-  await mkdir(join(root, "core"));
+  await mkdir(join(root, "src"));
   await writeFile(
-    join(root, "core", "main.js"),
+    join(root, "src", "main.js"),
     "export function parse(value) { return JSON.parse(value); }\n",
   );
 
@@ -131,9 +131,9 @@ it("reports invalid nested semantic graph Evidence as caller input through CLI a
 
 it("excludes local exports from writes-only traces through CLI and MCP", async () => {
   const root = await createTestTempDirectory("rea-semantic-export-trace-");
-  await mkdir(join(root, "core"));
+  await mkdir(join(root, "src"));
   await writeFile(
-    join(root, "core", "main.js"),
+    join(root, "src", "main.js"),
     [
       "const answer = 42;",
       "export { answer, answer as result };",

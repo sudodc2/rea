@@ -13,7 +13,7 @@ describe("tech-debt marker scan", () => {
   it("passes a clean tree and rejects a tree containing a marker", async () => {
     const root = await createTestTempDirectory("rea-scan-todos-");
     const scripts = join(root, "tooling");
-    const source = join(root, "core");
+    const source = join(root, "src");
     await Promise.all([mkdir(scripts), mkdir(source)]);
     const scanner = join(scripts, "scan-todos.mjs");
     await copyFile(join(process.cwd(), "tooling/scan-todos.mjs"), scanner);

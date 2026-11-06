@@ -68,9 +68,9 @@ describe.skipIf(process.platform === "win32")(
         mkdir(join(root, "no-template")),
         writeFile(join(root, "gitconfig"), ""),
       ]);
-      await mkdir(join(repository, "core"), { recursive: true });
+      await mkdir(join(repository, "src"), { recursive: true });
       await writeFile(
-        join(repository, "core", "main.js"),
+        join(repository, "src", "main.js"),
         "export const value = 7;\n",
       );
       await writeFile(join(repository, ".gitignore"), "*.log\n");

@@ -244,7 +244,7 @@ describe("CLI startup imports", () => {
 
   it("does not load native provider composition for JavaScript application analysis", async () => {
     const source = await createTestTempDirectory("rea-cli-js-startup-");
-    await mkdir(join(source, "core"));
+    await mkdir(join(source, "src"));
     await writeFile(
       join(source, "package.json"),
       JSON.stringify({

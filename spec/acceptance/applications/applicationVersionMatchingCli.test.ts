@@ -356,7 +356,7 @@ cliTest(
     const versions = await Promise.all(
       ["left", "right"].map(async (name) => {
         const application = join(root, name);
-        await mkdir(join(application, "core"), { recursive: true });
+        await mkdir(join(application, "src"), { recursive: true });
         await writeFile(
           join(application, "package.json"),
           JSON.stringify({
@@ -469,7 +469,7 @@ cliTest(
       utilSource: string,
     ) => {
       const application = join(root, name);
-      await mkdir(join(application, "core"), { recursive: true });
+      await mkdir(join(application, "src"), { recursive: true });
       await writeFile(
         join(application, "package.json"),
         JSON.stringify({

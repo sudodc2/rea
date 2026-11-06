@@ -91,10 +91,10 @@ cliTest(
   "keeps an unsafe declared uint64 size unknown in desktop header facts",
   async ({ cli }) => {
     const root = await createTestTempDirectory("rea-unity-desktop-");
-    await mkdir(join(root, "media"));
+    await mkdir(join(root, "assets"));
     const bytes = buildUnityFs([{ path: "CAB", data: "bytes" }]);
     bytes.writeBigUInt64BE(2n ** 53n + 1n, 32);
-    await writeFile(join(root, "media", "content.bundle"), bytes);
+    await writeFile(join(root, "assets", "content.bundle"), bytes);
     const result = await cli.run({
       arguments: ["inspect-desktop-application", root, "--json"],
     });
@@ -102,7 +102,7 @@ cliTest(
     expect(parseEvidence(result.json).normalized_result).toMatchObject({
       files: expect.arrayContaining([
         expect.objectContaining({
-          path: "media/content.bundle",
+          path: "assets/content.bundle",
           facts: expect.arrayContaining([
             expect.objectContaining({
               kind: "unityfs-header",

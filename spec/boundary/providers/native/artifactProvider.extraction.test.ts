@@ -78,14 +78,14 @@ describe("artifact extraction", () => {
   it("extracts all regular occurrences through an exclusively owned output tree", async () => {
     const root = await createTestTempDirectory("rea-extract-");
     const source = join(root, "source.app");
-    await mkdir(join(source, "media"), { recursive: true });
-    await writeFile(join(source, "media", "selected.js"), "selected();\n");
-    await writeFile(join(source, "media", "ignored.js"), "ignored();\n");
+    await mkdir(join(source, "assets"), { recursive: true });
+    await writeFile(join(source, "assets", "selected.js"), "selected();\n");
+    await writeFile(join(source, "assets", "ignored.js"), "ignored();\n");
     const targetValue = await target(source);
     const graph = await inventory(targetValue);
     expect(
       graph.occurrences.some(
-        ({ logical_path }) => logical_path === "media/selected.js",
+        ({ logical_path }) => logical_path === "assets/selected.js",
       ),
     ).toBe(true);
     const cancelledOutput = join(root, "cancelled-output");
@@ -118,16 +118,16 @@ describe("artifact extraction", () => {
       output_root: output,
       containment_verified: true,
       artifacts: expect.arrayContaining([
-        expect.objectContaining({ relative_path: "media/selected.js" }),
+        expect.objectContaining({ relative_path: "assets/selected.js" }),
       ]),
       extraction_manifest: { output_root_alias: "$OUTPUT_ROOT" },
     });
     // artifacts names every extracted path; the Evidence does not repeat them.
     expect(result.value.locations).toEqual([]);
-    expect(await readFile(join(output, "media", "selected.js"), "utf8")).toBe(
+    expect(await readFile(join(output, "assets", "selected.js"), "utf8")).toBe(
       "selected();\n",
     );
-    expect(await readFile(join(output, "media", "ignored.js"), "utf8")).toBe(
+    expect(await readFile(join(output, "assets", "ignored.js"), "utf8")).toBe(
       "ignored();\n",
     );
 

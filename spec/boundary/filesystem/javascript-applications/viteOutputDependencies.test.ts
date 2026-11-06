@@ -14,15 +14,15 @@ const viteBuild = async (): Promise<string> => {
   const root = await createTestTempDirectory("rea-vite-output-");
   await writeFixtureFiles(root, {
     "index.html":
-      '<!doctype html><script type="module" src="/media/index.js"></script>',
-    "media/index.js": `
+      '<!doctype html><script type="module" src="/assets/index.js"></script>',
+    "assets/index.js": `
       const __vite__mapDeps = (i, m = __vite__mapDeps, d =
-        (m.f || (m.f = ["media/lazy.js", "media/missing.js"]))) => i.map((i) => d[i]);
+        (m.f || (m.f = ["assets/lazy.js", "assets/missing.js"]))) => i.map((i) => d[i]);
       const preload = (load, deps) => load();
       export const route = () =>
         preload(() => import("./lazy.js"), __vite__mapDeps([0, 1]));
     `,
-    "media/lazy.js": "export const lazy = true;",
+    "assets/lazy.js": "export const lazy = true;",
   });
   return root;
 };
@@ -48,13 +48,13 @@ describe("Vite build-output preload dependencies", () => {
     const result = await reconstructJavaScriptFixture(await viteBuild());
 
     expect(preloadEdges(result.graph)).toContainEqual({
-      specifier: "vite-output:media/lazy.js",
+      specifier: "vite-output:assets/lazy.js",
       resolution_status: "resolved",
-      resolved_path: "media/lazy.js",
+      resolved_path: "assets/lazy.js",
     });
     const missing = result.graph.edges.find(
       ({ properties }) =>
-        properties.specifier === "vite-output:media/missing.js",
+        properties.specifier === "vite-output:assets/missing.js",
     );
     expect(missing?.evidence.limitations).toEqual(
       expect.arrayContaining([
@@ -65,7 +65,7 @@ describe("Vite build-output preload dependencies", () => {
 
   it("does not report a dependency as an external package when only the assets directory is selected", async () => {
     const root = await viteBuild();
-    const result = await reconstructJavaScriptFixture(join(root, "media"));
+    const result = await reconstructJavaScriptFixture(join(root, "assets"));
     expect(
       result.graph.edges.map(({ properties }) => properties.resolution_status),
     ).not.toContain("external");
@@ -80,7 +80,7 @@ describe("Vite build-output preload dependencies", () => {
       '"resolution_status":"external"',
     );
     const edges = result.graph.edges.filter(
-      ({ properties }) => properties.specifier === "vite-output:media/lazy.js",
+      ({ properties }) => properties.specifier === "vite-output:assets/lazy.js",
     );
     expect(edges).toHaveLength(1);
     expect(typeof edges[0]?.properties.resolution_status).toBe("string");
@@ -98,22 +98,22 @@ describe("Vite build-output preload dependencies", () => {
     const root = await createTestTempDirectory("rea-vite-output-css-");
     await writeFixtureFiles(root, {
       "dist/index.html":
-        '<!doctype html><script type="module" src="/media/index.js"></script>',
-      "dist/media/index.js": `
+        '<!doctype html><script type="module" src="/assets/index.js"></script>',
+      "dist/assets/index.js": `
         const __vite__mapDeps = (i, m = __vite__mapDeps, d =
-          (m.f || (m.f = ["media/lazy.css"]))) => i.map((i) => d[i]);
+          (m.f || (m.f = ["assets/lazy.css"]))) => i.map((i) => d[i]);
         export const route = () => __vite__mapDeps([0]);
       `,
-      "dist/media/lazy.css": ".lazy { color: green; }",
+      "dist/assets/lazy.css": ".lazy { color: green; }",
     });
     const result = await reconstructJavaScriptFixture(root);
     const edge = result.graph.edges.find(
-      ({ properties }) => properties.specifier === "vite-output:media/lazy.css",
+      ({ properties }) => properties.specifier === "vite-output:assets/lazy.css",
     );
 
     expect(edge?.properties).toMatchObject({
       resolution_status: "unavailable",
-      candidate_path: "dist/media/lazy.css",
+      candidate_path: "dist/assets/lazy.css",
     });
     expect(edge?.evidence.limitations).toEqual(expect.any(Array));
     expect(edge?.evidence.limitations).not.toEqual(

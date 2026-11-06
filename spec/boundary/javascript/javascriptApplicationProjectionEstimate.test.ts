@@ -41,8 +41,8 @@ it.each([
     const text = chunk(400, keySuffix);
     const sourcePath = `${directory}chunk.js`;
     const root = await createTestTempDirectory("rea-projection-estimate-");
-    await writeFixtureFiles(root, { [`media/${sourcePath}`]: text });
-    const result = await reconstructJavaScriptFixture(join(root, "media"));
+    await writeFixtureFiles(root, { [`assets/${sourcePath}`]: text });
+    const result = await reconstructJavaScriptFixture(join(root, "assets"));
     const facts = analyzeJavaScriptStaticSource(text);
     const checkpointBytes = Buffer.byteLength(JSON.stringify(facts));
     const estimate = estimateJavaScriptStaticApplicationProjection(

@@ -16,15 +16,15 @@ describe.skipIf(process.platform === "win32")(
       "selects a committed summary without changing complete output",
       async ({ cli }) => {
         const root = await createTestTempDirectory("rea-reference-summary-");
-        await mkdir(join(root, "core", "nested"), { recursive: true });
+        await mkdir(join(root, "src", "nested"), { recursive: true });
         await Promise.all([
           writeFile(join(root, "package.json"), '{"name":"fixture"}\n'),
           writeFile(
-            join(root, "core", "main.js"),
+            join(root, "src", "main.js"),
             'import "./nested/value.js";\n',
           ),
           writeFile(
-            join(root, "core", "nested", "value.js"),
+            join(root, "src", "nested", "value.js"),
             "export const value = 1;\n",
           ),
           writeFile(join(root, "\uE000.js"), "export const first = 1;\n"),

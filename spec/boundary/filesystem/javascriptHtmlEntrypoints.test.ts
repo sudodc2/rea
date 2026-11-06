@@ -50,13 +50,13 @@ it.each(cases)(
 it("preserves source digest, opening-tag range and decoded local base resolution", async () => {
   const root = await createTestTempDirectory("rea-html-entrypoint-evidence-");
   const opening = '<script title=">" src="actual&#46;js">';
-  const prefix = '<base data-href="decoy/"><base href=media/>\n';
+  const prefix = '<base data-href="decoy/"><base href=assets/>\n';
   const html = `${prefix}${opening}</script>`;
-  await mkdir(join(root, "media"));
+  await mkdir(join(root, "assets"));
   await Promise.all([
     writeFile(join(root, "index.html"), html),
     writeFile(
-      join(root, "media", "actual.js"),
+      join(root, "assets", "actual.js"),
       "globalThis.ownedActual = true;",
     ),
   ]);
@@ -69,8 +69,8 @@ it("preserves source digest, opening-tag range and decoded local base resolution
   expect(loads[0]).toMatchObject({
     properties: {
       script_path: "actual.js",
-      base_href: "media/",
-      resolved_path: "media/actual.js",
+      base_href: "assets/",
+      resolved_path: "assets/actual.js",
     },
     evidence: {
       authority: "static-relationship-inference",

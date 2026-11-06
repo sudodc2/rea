@@ -9,8 +9,8 @@ import { createTestTempDirectory } from "../../../fixtures/temporaryDirectory.js
 it("resolves empty-path HTML script URLs against their canonical base path", async () => {
   const root = await createTestTempDirectory("rea-html-empty-reference-");
   await Promise.all([
-    mkdir(join(root, "base-file", "media"), { recursive: true }),
-    mkdir(join(root, "base-directory", "media"), { recursive: true }),
+    mkdir(join(root, "base-file", "assets"), { recursive: true }),
+    mkdir(join(root, "base-directory", "assets"), { recursive: true }),
     mkdir(join(root, "escaped"), { recursive: true }),
   ]);
   await Promise.all([
@@ -20,15 +20,15 @@ it("resolves empty-path HTML script URLs against their canonical base path", asy
     ),
     writeFile(
       join(root, "base-file", "index.html"),
-      '<base href="media/entry.html?base=1#base-fragment"><script src="?base-file=1#script-fragment"></script>',
+      '<base href="assets/entry.html?base=1#base-fragment"><script src="?base-file=1#script-fragment"></script>',
     ),
-    writeFile(join(root, "base-file", "media", "entry.html"), "<main></main>"),
+    writeFile(join(root, "base-file", "assets", "entry.html"), "<main></main>"),
     writeFile(
       join(root, "base-directory", "index.html"),
-      '<base href="media/"><script src="?base-directory=1"></script>',
+      '<base href="assets/"><script src="?base-directory=1"></script>',
     ),
     writeFile(
-      join(root, "base-directory", "media", "index.js"),
+      join(root, "base-directory", "assets", "index.js"),
       "export const value = 1;",
     ),
     writeFile(
@@ -78,13 +78,13 @@ it("resolves empty-path HTML script URLs against their canonical base path", asy
   expect(baseFileEdge).toMatchObject({
     properties: {
       script_path: "?base-file=1#script-fragment",
-      base_href: "media/entry.html?base=1#base-fragment",
-      resolved_path: "base-file/media/entry.html",
+      base_href: "assets/entry.html?base=1#base-fragment",
+      resolved_path: "base-file/assets/entry.html",
       resolution_status: "resolved",
     },
   });
   if (baseFileEdge !== undefined)
-    expect(targetPath(baseFileEdge)).toBe("base-file/media/entry.html");
+    expect(targetPath(baseFileEdge)).toBe("base-file/assets/entry.html");
 
   expect(unresolvedReference("?base-directory=1")).toMatchObject({
     resolution_status: "not-found",

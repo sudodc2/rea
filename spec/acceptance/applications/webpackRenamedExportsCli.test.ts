@@ -11,9 +11,9 @@ cliTest.for(["CLI", "stdio MCP"] as const)(
   "reports Webpack exports attached to original renamed factory parameter values through %s",
   async (surface, { cli }) => {
     const root = await createTestTempDirectory("rea-webpack-renamed-exports-");
-    await mkdir(join(root, "core"));
+    await mkdir(join(root, "src"));
     await writeFile(
-      join(root, "core", "chunk.js"),
+      join(root, "src", "chunk.js"),
       `globalThis.webpackChunkApp.push([[1], {
       17(module, __webpack_exports__, __webpack_require__) {
         __webpack_require__.d(__webpack_exports__, { alpha: () => 1, "beta.gamma": () => 2 });
@@ -88,9 +88,9 @@ cliTest.for(["CLI", "stdio MCP"] as const)(
   "reports Webpack exports through defaulted and destructured factory parameters through %s",
   async (surface, { cli }) => {
     const root = await createTestTempDirectory("rea-webpack-pattern-exports-");
-    await mkdir(join(root, "core"));
+    await mkdir(join(root, "src"));
     await writeFile(
-      join(root, "core", "exact.js"),
+      join(root, "src", "exact.js"),
       `globalThis.webpackChunkApp.push([[1], {
       111(e = {}, t) { e.exports = {defaulted: 1}; },
       112({exports: x}, t) { x.destructured = 1; },
@@ -98,7 +98,7 @@ cliTest.for(["CLI", "stdio MCP"] as const)(
       }]);`,
     );
     await writeFile(
-      join(root, "core", "rest.js"),
+      join(root, "src", "rest.js"),
       `globalThis.webpackChunkApp.push([[2], {
       113(...a) { a[0].exports.rest = 1; }
       }]);`,

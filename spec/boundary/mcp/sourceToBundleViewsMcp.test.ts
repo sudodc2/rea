@@ -152,7 +152,7 @@ const comparisonFixture = async (profile: "full" | "compact") => {
   const root = await createTestTempDirectory("rea-source-view-");
   const previous = join(root, "previous"),
     current = join(root, "current");
-  await mkdir(join(previous, "core"), { recursive: true });
+  await mkdir(join(previous, "src"), { recursive: true });
   await mkdir(join(previous, "core/other"), { recursive: true });
   await writeFile(
     join(previous, "core/other/a.js"),

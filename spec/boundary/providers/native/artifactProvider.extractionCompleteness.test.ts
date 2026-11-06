@@ -341,8 +341,8 @@ it("preserves every equal-content occurrence and copies a nested ASAR as its con
   const source = join(root, "source");
   const nested = join(root, "nested");
   await mkdir(source);
-  await mkdir(join(nested, "media"), { recursive: true });
-  await writeFile(join(nested, "media", "main.js"), "export default 1;\n");
+  await mkdir(join(nested, "assets"), { recursive: true });
+  await writeFile(join(nested, "assets", "main.js"), "export default 1;\n");
   await createPackage(nested, join(source, "app.asar"));
   await writeFile(join(source, "a.txt"), "same bytes\n");
   await writeFile(join(source, "b.txt"), "same bytes\n");
