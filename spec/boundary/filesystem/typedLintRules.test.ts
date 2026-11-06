@@ -194,7 +194,6 @@ processTest(
         )
         .sort(),
     ).toEqual([
-      "tooling/lib/http3-capture-assertions.test.mjs: error: typescript(no-floating-promises)",
       "core/misused.ts: error: typescript(no-misused-promises)",
       "core/nonexhaustive.ts: error: typescript(switch-exhaustiveness-check)",
       "core/test-misused.test.ts: warning: typescript(no-misused-promises)",
@@ -203,6 +202,7 @@ processTest(
       "core/unjoined.test.ts: error: typescript(no-floating-promises)",
       "spec/unjoined.test.ts: error: typescript(no-floating-promises)",
       "spec/unjoined.test.ts: error: typescript(no-floating-promises)",
+      "tooling/lib/http3-capture-assertions.test.mjs: error: typescript(no-floating-promises)",
     ]);
     expect(
       diagnostics.filter(({ severity }) => severity === "error"),

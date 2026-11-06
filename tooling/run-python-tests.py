@@ -65,7 +65,7 @@ def run_bridge(test_files):
     loader = unittest.defaultTestLoader
     suite = unittest.TestSuite()
     for path in test_files:
-        parts = path.relative_to(root).with_suffix("").parts
+        parts = path.relative_to(bridge_root).with_suffix("").parts
         # provider-bridges is not importable (hyphen); load each file directly.
         module_name = ".".join(["bridge_tests", *[part.replace("-", "_") for part in parts]])
         spec = importlib.util.spec_from_file_location(module_name, path)
