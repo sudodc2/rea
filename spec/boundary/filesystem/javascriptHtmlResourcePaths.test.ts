@@ -36,18 +36,18 @@ const cases: readonly {
   },
   {
     name: "base directory",
-    html: '<base href="media/"><script src="./app"></script>',
-    files: { "media/app.js": "globalThis.owned = true;" },
+    html: '<base href="assets/"><script src="./app"></script>',
+    files: { "assets/app.js": "globalThis.owned = true;" },
     expected: [],
   },
   {
     name: "exact base resource",
-    html: '<base href="media/"><script src="./app.js?cache=1#v2"></script>',
+    html: '<base href="assets/"><script src="./app.js?cache=1#v2"></script>',
     files: {
-      "media/app.js": "globalThis.owned = true;",
+      "assets/app.js": "globalThis.owned = true;",
       "app.js": "globalThis.decoy = true;",
     },
-    expected: ["media/app.js"],
+    expected: ["assets/app.js"],
   },
   {
     name: "exact script resource",
@@ -70,8 +70,8 @@ const cases: readonly {
   {
     name: "percent-encoded base directory",
     html: '<base href="%61ssets/"><script src="app.js"></script>',
-    files: { "media/app.js": "globalThis.owned = true;" },
-    expected: ["media/app.js"],
+    files: { "assets/app.js": "globalThis.owned = true;" },
+    expected: ["assets/app.js"],
   },
 ];
 

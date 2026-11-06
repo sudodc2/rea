@@ -128,11 +128,11 @@ it("matches source-map originals named relative to the map", async () => {
   const previous = join(root, "previous");
   const current = join(root, "current");
   await Promise.all([
-    mkdir(join(previous, "core"), { recursive: true }),
+    mkdir(join(previous, "src"), { recursive: true }),
     mkdir(join(current, "dist"), { recursive: true }),
   ]);
   await Promise.all([
-    writeFile(join(previous, "core", "a.js"), "export const value = 1;\n"),
+    writeFile(join(previous, "src", "a.js"), "export const value = 1;\n"),
     writeFile(
       join(current, "dist", "main.js"),
       "var value = 2;\n//# sourceMappingURL=main.js.map\n",
@@ -142,7 +142,7 @@ it("matches source-map originals named relative to the map", async () => {
       JSON.stringify({
         version: 3,
         file: "main.js",
-        sources: ["../core/a.js"],
+        sources: ["../src/a.js"],
         sourcesContent: ["export const value = 2;\n"],
         names: [],
         mappings: "AAAA",
@@ -153,14 +153,14 @@ it("matches source-map originals named relative to the map", async () => {
 
   expect(comparison.items).toContainEqual(
     expect.objectContaining({
-      source_path: "core/a.js",
+      source_path: "src/a.js",
       candidates: expect.arrayContaining([
         expect.objectContaining({
           current_node_kind: "source-module",
           signals: expect.arrayContaining([
             expect.objectContaining({
               kind: "source-map-original-path",
-              current_values: ["core/a.js"],
+              current_values: ["src/a.js"],
             }),
           ]),
         }),
@@ -170,7 +170,7 @@ it("matches source-map originals named relative to the map", async () => {
 });
 
 it.each([
-  { root: "../core/", expected: "https://example.test/src/index.js" },
+  { root: "../src/", expected: "https://example.test/src/index.js" },
   // webpack 5 and tsc emit an empty root for map-relative sources.
   { root: "", expected: "https://example.test/maps/index.js" },
   { root: null, expected: "https://example.test/maps/index.js" },
@@ -194,9 +194,9 @@ it.each([
 it.each([
   {
     mapPath: "maps/app.js.map",
-    sourceRoot: "../core/",
+    sourceRoot: "../src/",
     source: "index.js",
-    expected: "core/index.js",
+    expected: "src/index.js",
   },
   {
     mapPath: "maps/app.js.map",
@@ -208,8 +208,8 @@ it.each([
   {
     mapPath: "pkg/dist/cjs/main.js.map",
     sourceRoot: "",
-    source: "../../core/a.js",
-    expected: "pkg/core/a.js",
+    source: "../../src/a.js",
+    expected: "pkg/src/a.js",
   },
   {
     mapPath: "maps/app.js.map",
@@ -220,30 +220,30 @@ it.each([
   {
     mapPath: "pkg/dist/main.js.map",
     source: "..\\src\\a.js",
-    expected: "pkg/core/a.js",
+    expected: "pkg/src/a.js",
   },
   {
     mapPath: "pkg/dist/main.js.map",
-    source: "../core/a.js",
-    expected: "pkg/core/a.js",
+    source: "../src/a.js",
+    expected: "pkg/src/a.js",
   },
   {
     mapPath: "apps/pkg/dist/maps/main.js.map",
-    source: "../../core/a.js",
-    expected: "apps/pkg/core/a.js",
+    source: "../../src/a.js",
+    expected: "apps/pkg/src/a.js",
   },
   {
     mapPath: "pkg/dist/main.js.map",
     sourceRoot: "../src",
     source: "a.js",
-    expected: "pkg/core/a.js",
+    expected: "pkg/src/a.js",
   },
   {
     mapPath: "pkg/maps/main.map",
     sourceRoot: "../src",
     source: "/vendor/a.js",
-    expected: "pkg/core/vendor/a.js",
-    expectedUrlPath: "pkg/core//vendor/a.js",
+    expected: "pkg/src/vendor/a.js",
+    expectedUrlPath: "pkg/src//vendor/a.js",
     decoy: "vendor/a.js",
   },
   {
@@ -253,32 +253,32 @@ it.each([
   },
   {
     mapPath: "pkg/maps/main.js.map",
-    source: "generated/../core/a.js",
-    expected: "pkg/maps/core/a.js",
+    source: "generated/../src/a.js",
+    expected: "pkg/maps/src/a.js",
   },
   {
     mapPath: "pkg/maps/main.js.map",
     sourceRoot: "generated/..",
-    source: "core/a.js",
-    expected: "pkg/maps/core/a.js",
+    source: "src/a.js",
+    expected: "pkg/maps/src/a.js",
   },
   {
     mapPath: "pkg/maps/main.js.map",
-    source: "../actual/%2e%2e/core/a.js",
-    expected: "pkg/core/a.js",
-    decoy: "pkg/actual/%2e%2e/core/a.js",
+    source: "../actual/%2e%2e/src/a.js",
+    expected: "pkg/src/a.js",
+    decoy: "pkg/actual/%2e%2e/src/a.js",
   },
   {
     mapPath: "pkg/maps/main.js.map",
     sourceRoot: "../actual/.%2E",
-    source: "core/a.js",
-    expected: "pkg/core/a.js",
-    decoy: "pkg/actual/.%2E/core/a.js",
+    source: "src/a.js",
+    expected: "pkg/src/a.js",
+    decoy: "pkg/actual/.%2E/src/a.js",
   },
   {
     mapPath: "pkg#name?/maps/main.js.map",
-    source: "../core/a.js",
-    expected: "pkg#name?/core/a.js",
+    source: "../src/a.js",
+    expected: "pkg#name?/src/a.js",
   },
   {
     mapPath: "pkg/maps/main.js.map",
@@ -292,9 +292,9 @@ it.each([
   },
   {
     mapPath: "pkg/maps/main.js.map",
-    source: "../actual/%252e%252e/core/a.js",
-    expected: "pkg/actual/%2e%2e/core/a.js",
-    decoy: "pkg/core/a.js",
+    source: "../actual/%252e%252e/src/a.js",
+    expected: "pkg/actual/%2e%2e/src/a.js",
+    decoy: "pkg/src/a.js",
   },
 ])(
   "resolves $source against $mapPath without selecting a same-basename decoy",
@@ -304,7 +304,7 @@ it.each([
     sourceRoot,
     expected,
     expectedUrlPath,
-    decoy: decoyPath = "core/a.js",
+    decoy: decoyPath = "src/a.js",
   }) => {
     if (sourceRoot !== undefined) {
       const resolved = resolveJavaScriptSourceMapUrl(
@@ -381,18 +381,18 @@ it("retains every map location when identical map artifacts merge", async () => 
   const current = join(root, "current");
   const map = JSON.stringify({
     version: 3,
-    sources: ["../core/x.js"],
+    sources: ["../src/x.js"],
     sourcesContent: ["export const value = 2;"],
     names: [],
     mappings: "AAAA",
   });
   for (const prefix of ["a", "b"]) {
     await Promise.all([
-      mkdir(join(previous, prefix, "core"), { recursive: true }),
+      mkdir(join(previous, prefix, "src"), { recursive: true }),
       mkdir(join(current, prefix, "maps"), { recursive: true }),
     ]);
     await Promise.all([
-      writeFile(join(previous, prefix, "core/x.js"), "export const value = 1;"),
+      writeFile(join(previous, prefix, "src/x.js"), "export const value = 1;"),
       writeFile(join(current, prefix, "maps/main.js.map"), map),
     ]);
   }
@@ -408,15 +408,15 @@ it("retains every map location when identical map artifacts merge", async () => 
   ).toEqual(
     expect.arrayContaining(
       ["a", "b"].map((prefix) => ({
-        source_name: "../core/x.js",
+        source_name: "../src/x.js",
         source_root: null,
         map_path: `${prefix}/maps/main.js.map`,
-        resolution: { kind: "artifact-relative", path: `${prefix}/core/x.js` },
+        resolution: { kind: "artifact-relative", path: `${prefix}/src/x.js` },
       })),
     ),
   );
   for (const prefix of ["a", "b"]) {
-    const path = `${prefix}/core/x.js`;
+    const path = `${prefix}/src/x.js`;
     const item = comparison.items.find(
       ({ source_path }) => source_path === path,
     );
@@ -517,17 +517,17 @@ it("keeps leaf source roots distinct after indexed maps are serialized", async (
 });
 
 it.each([
-  { source: "file:/repo/core/a.js", hasPath: true },
-  { source: "file:C:/repo/core/a.js", hasPath: true },
+  { source: "file:/repo/src/a.js", hasPath: true },
+  { source: "file:C:/repo/src/a.js", hasPath: true },
   { source: "file:C:\\repo\\src\\a.js", hasPath: true },
   { source: "C:\\repo\\src\\a.js", hasPath: true },
-  { source: "file://server/share/core/a.js", hasPath: true },
-  { source: "file:/repo/core/a.js?version=2#original", hasPath: true },
-  { source: "webpack:///core/a.js", hasPath: true },
+  { source: "file://server/share/src/a.js", hasPath: true },
+  { source: "file:/repo/src/a.js?version=2#original", hasPath: true },
+  { source: "webpack:///src/a.js", hasPath: true },
   { source: "https://example.com/src/a.js#original", hasPath: true },
-  { source: "node:internal/core/a.js", hasPath: false },
-  { source: "data:text/javascript,virtual/core/a.js", hasPath: false },
-  { source: "data:text/javascript,virtual/../core/a.js", hasPath: false },
+  { source: "node:internal/src/a.js", hasPath: false },
+  { source: "data:text/javascript,virtual/src/a.js", hasPath: false },
+  { source: "data:text/javascript,virtual/../src/a.js", hasPath: false },
   { source: "data:\\src\\a.js", hasPath: false },
 ])(
   "projects source references from $source only when they name a file",
@@ -536,11 +536,11 @@ it.each([
     const previous = join(root, "previous");
     const current = join(root, "current");
     await Promise.all([
-      mkdir(join(previous, "core"), { recursive: true }),
+      mkdir(join(previous, "src"), { recursive: true }),
       mkdir(join(current, "maps"), { recursive: true }),
     ]);
     await Promise.all([
-      writeFile(join(previous, "core/a.js"), "export const value = 1;"),
+      writeFile(join(previous, "src/a.js"), "export const value = 1;"),
       writeFile(
         join(current, "maps/main.js.map"),
         JSON.stringify({
@@ -578,14 +578,14 @@ it.each(["#original.js", "?version.js", "?version.js#original.js"])(
     const previous = join(root, "previous");
     const current = join(root, "current");
     await Promise.all([
-      mkdir(join(previous, "core"), { recursive: true }),
+      mkdir(join(previous, "src"), { recursive: true }),
       mkdir(join(current, "maps"), { recursive: true }),
     ]);
-    const source = `../core/a.js${suffix}`;
+    const source = `../src/a.js${suffix}`;
     await Promise.all([
-      writeFile(join(previous, "core/a.js"), "export const value = 1;"),
+      writeFile(join(previous, "src/a.js"), "export const value = 1;"),
       writeFile(
-        join(previous, `core/a.js${suffix}`),
+        join(previous, `src/a.js${suffix}`),
         "export const decoy = 3;",
       ),
       writeFile(
@@ -601,7 +601,7 @@ it.each(["#original.js", "?version.js", "?version.js#original.js"])(
     ]);
     const { comparison, application } = await compareTrees(previous, current);
     const actual = comparison.items.find(
-      ({ source_path }) => source_path === "core/a.js",
+      ({ source_path }) => source_path === "src/a.js",
     );
     expect(actual?.current_node_ids).toHaveLength(1);
     expect(actual?.candidates).toContainEqual(
@@ -610,13 +610,13 @@ it.each(["#original.js", "?version.js", "?version.js#original.js"])(
         signals: expect.arrayContaining([
           expect.objectContaining({
             kind: "source-map-original-path",
-            current_values: ["core/a.js"],
+            current_values: ["src/a.js"],
           }),
         ]),
       }),
     );
     const decoy = comparison.items.find(
-      ({ source_path }) => source_path === `core/a.js${suffix}`,
+      ({ source_path }) => source_path === `src/a.js${suffix}`,
     );
     expect(decoy?.current_node_ids).toEqual([]);
     expect(decoy?.candidates).toEqual([]);
@@ -639,10 +639,10 @@ it.each([
     const previous = join(root, "previous");
     const current = join(root, "current");
     const source = `\\\\server\\share\\src\\${filename}`;
-    const expected = `core/${filename}`;
-    const decoy = `core/${decoyFilename}`;
+    const expected = `src/${filename}`;
+    const decoy = `src/${decoyFilename}`;
     await Promise.all([
-      mkdir(join(previous, "core"), { recursive: true }),
+      mkdir(join(previous, "src"), { recursive: true }),
       mkdir(join(current, "maps"), { recursive: true }),
     ]);
     await Promise.all([
@@ -742,12 +742,12 @@ it("resolves parent segments against a nested source map's directory", async () 
   const previous = join(root, "previous");
   const current = join(root, "current");
   await Promise.all([
-    mkdir(join(previous, "web", "core"), { recursive: true }),
+    mkdir(join(previous, "web", "src"), { recursive: true }),
     mkdir(join(current, "web", "maps"), { recursive: true }),
   ]);
   await Promise.all([
     writeFile(
-      join(previous, "web", "core", "a.js"),
+      join(previous, "web", "src", "a.js"),
       "export const value = 1;\n",
     ),
     writeFile(
@@ -759,7 +759,7 @@ it("resolves parent segments against a nested source map's directory", async () 
       JSON.stringify({
         version: 3,
         file: "../main.js",
-        sources: ["../core/a.js"],
+        sources: ["../src/a.js"],
         sourcesContent: ["export const value = 2;\n"],
         names: [],
         mappings: "AAAA",
@@ -770,14 +770,14 @@ it("resolves parent segments against a nested source map's directory", async () 
 
   expect(comparison.items).toContainEqual(
     expect.objectContaining({
-      source_path: "web/core/a.js",
+      source_path: "web/src/a.js",
       candidates: expect.arrayContaining([
         expect.objectContaining({
           current_node_kind: "source-module",
           signals: expect.arrayContaining([
             expect.objectContaining({
               kind: "source-map-original-path",
-              current_values: ["web/core/a.js"],
+              current_values: ["web/src/a.js"],
             }),
           ]),
         }),

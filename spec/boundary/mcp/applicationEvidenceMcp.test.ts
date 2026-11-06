@@ -44,7 +44,7 @@ async function runUnicodeSourceMapComparison(
     kind: "source-module",
     identity: {
       strategy: "source-map-original",
-      source_root: "../core/",
+      source_root: "../src/",
       stability: "source-map-exact",
       source_map_sha256: "1".repeat(64),
       original_source: decomposedSource,
@@ -55,7 +55,7 @@ async function runUnicodeSourceMapComparison(
         label: "decomposed source-map spelling",
         source_map_reference: sourceMapReference(
           decomposedSource,
-          "../core/",
+          "../src/",
           "dist/main.js.map",
         ),
         properties: { content_available: true, content_sha256: "3".repeat(64) },
@@ -99,13 +99,13 @@ async function runUnicodeSourceMapComparison(
       evidenceLinks: baseApplication.evidence_links,
     },
   );
-  const historicalUnicodePath = "core/caf\u00e9.ts";
+  const historicalUnicodePath = "src/caf\u00e9.ts";
   const unicodeReference = createHistoricalSourceGraph({
     ...SOURCE_TO_BUNDLE_COMPARISON_EXAMPLE.reference,
     root_sha256: undefined,
     entries: SOURCE_TO_BUNDLE_COMPARISON_EXAMPLE.reference.entries.map(
       (entry) =>
-        entry.path === "core/main.ts"
+        entry.path === "src/main.ts"
           ? { ...entry, path: historicalUnicodePath }
           : entry,
     ),
@@ -129,7 +129,7 @@ async function runUnicodeSourceMapComparison(
                 expect.objectContaining({
                   kind: "unicode-equivalent-path",
                   source_value: historicalUnicodePath,
-                  current_values: ["core/cafe\u0301.ts"],
+                  current_values: ["src/cafe\u0301.ts"],
                 }),
               ]),
             }),
@@ -217,7 +217,7 @@ async function runInlineWorkflowScenarios(
       summary: { unchanged: 0, modified: 0, removed: 1, unknown: 0 },
       items: [
         {
-          source_path: "core/main.ts",
+          source_path: "src/main.ts",
           status: "removed",
           current_node_ids: [],
           candidates: [],

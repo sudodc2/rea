@@ -2020,7 +2020,7 @@ const assertSourceFileView = async (sourceCompared: unknown) => {
       view: {
         kind: "source-to-bundle",
         collection: "mappings",
-        source_paths: ["core/main.ts"],
+        source_paths: ["src/main.ts"],
         fields: ["status"],
       },
     }),
@@ -2030,7 +2030,7 @@ const assertSourceFileView = async (sourceCompared: unknown) => {
     normalized_result: {
       parent_operation: "compare_source_to_bundle",
       items: [
-        { source_path: "core/main.ts", source_index: 0, status: "removed" },
+        { source_path: "src/main.ts", source_index: 0, status: "removed" },
       ],
       coverage: { total: 1, exhausted: true },
     },

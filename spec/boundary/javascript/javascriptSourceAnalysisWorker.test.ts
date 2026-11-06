@@ -776,7 +776,7 @@ it("retains legacy routes and a bounded route-fact prefix inside one checkpoint 
   const count = 12000;
   const text = Array.from(
     { length: count },
-    (_, index) => `route('/verification/${index}/${"x".repeat(96)}');`,
+    (_, index) => `route('/reports/${index}/${"x".repeat(96)}');`,
   ).join("\n");
   const worker = new JavaScriptAnalysisWorker({
     heapMb: 512,
@@ -826,7 +826,7 @@ it("keeps wrapped route ancestry, navigation and unknown named parents in the re
       "/users",
       "/settings",
       "/reports",
-      "/verification/detail",
+      "/reports/detail",
       "/public",
     ]);
     expect(analyzed.value.javascript.routes!.unresolved).toHaveLength(3);

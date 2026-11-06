@@ -35,7 +35,7 @@ const stageHapEntries = [
   { path: "libs/arm64-v8a/libentry.so", content: elf },
   { path: "resources.index", content: "resource index" },
   { path: "resources/base/profile/main_pages.json", content: "{}" },
-  { path: "media/web/index.js", content: "bridge();" },
+  { path: "assets/web/index.js", content: "bridge();" },
   { path: "META-INF/FIXTURE.p7b", content: "opaque signing" },
 ] as const;
 
@@ -123,7 +123,7 @@ describe("HarmonyOS application projection", () => {
   it.each(["js", "mjs", "cjs", "jsx", "ts", "tsx", "mts", "cts"])(
     "retains the JavaScript runtime hint for an authenticated .%s component",
     async (extension) => {
-      const member = `media/js/index.${extension}`;
+      const member = `assets/js/index.${extension}`;
       const path = await writeApplicationZip(
         "rea-harmony-javascript-",
         "Fixture.hap",
@@ -149,7 +149,7 @@ describe("HarmonyOS application projection", () => {
       "Fixture.hap",
       [
         { path: "module.json", content: "{}" },
-        { path: "media/js/notes.txt", content: "ordinary text" },
+        { path: "assets/js/notes.txt", content: "ordinary text" },
       ],
     );
     const inventory = await inventoryApplicationPackage(path);
@@ -289,13 +289,13 @@ describe("HarmonyOS packaging boundaries", () => {
   it("claims the FA model only from config.json", async () => {
     const path = await writeApplicationZip("rea-harmony-fa-", "Legacy.hap", [
       { path: "config.json", content: '{"app":{}}' },
-      { path: "media/js/default.js", content: "legacy();" },
-      { path: "media/entry/resources.index", content: "resource index" },
+      { path: "assets/js/default.js", content: "legacy();" },
+      { path: "assets/entry/resources.index", content: "resource index" },
       {
-        path: "media/entry/resources/base/element/strings.json",
+        path: "assets/entry/resources/base/element/strings.json",
         content: "{}",
       },
-      { path: "media/feature/resources/rawfile/icon.png", content: "image" },
+      { path: "assets/feature/resources/rawfile/icon.png", content: "image" },
     ]);
     const inventory = await inventoryApplicationPackage(path);
     const result = projectHarmonyApplicationEvidence({
@@ -307,9 +307,9 @@ describe("HarmonyOS packaging boundaries", () => {
     expect(projection.packaging_model).toBe("fa");
     expect(projection.runtime_families).toEqual(["javascript"]);
     expect(projection.components.resources.map(({ path }) => path)).toEqual([
-      "media/entry/resources.index",
-      "media/entry/resources/base/element/strings.json",
-      "media/feature/resources/rawfile/icon.png",
+      "assets/entry/resources.index",
+      "assets/entry/resources/base/element/strings.json",
+      "assets/feature/resources/rawfile/icon.png",
     ]);
   });
 
@@ -320,7 +320,7 @@ describe("HarmonyOS packaging boundaries", () => {
       [
         { path: "config.json", content: '{"app":{}}' },
         {
-          path: "media/entry/resources/rawfile/module.json",
+          path: "assets/entry/resources/rawfile/module.json",
           content: '{"note":"ordinary raw resource"}',
         },
       ],
@@ -337,7 +337,7 @@ describe("HarmonyOS packaging boundaries", () => {
       "config.json",
     ]);
     expect(projection.components.resources.map(({ path }) => path)).toEqual([
-      "media/entry/resources/rawfile/module.json",
+      "assets/entry/resources/rawfile/module.json",
     ]);
   });
 

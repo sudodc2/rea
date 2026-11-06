@@ -46,7 +46,7 @@ const cases = [
   {
     name: "drive letter",
     source: "C:\\src\\source.ts",
-    expected: { kind: "suffix", path: "C:/core/source.ts" },
+    expected: { kind: "suffix", path: "C:/src/source.ts" },
   },
   {
     name: "soft hyphen source root",

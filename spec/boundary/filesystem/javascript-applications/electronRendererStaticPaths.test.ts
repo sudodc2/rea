@@ -9,14 +9,14 @@ import { javascriptApplicationAnalysisResultSchema } from "../../../../core/doma
 
 it("distinguishes module-anchored and application-relative BrowserWindow loadFile calls", async () => {
   const root = await createTestTempDirectory("rea-renderer-static-path-");
-  await mkdir(join(root, "core"));
+  await mkdir(join(root, "src"));
   await Promise.all([
     writeFile(
       join(root, "package.json"),
-      JSON.stringify({ main: "core/main.cjs" }),
+      JSON.stringify({ main: "src/main.cjs" }),
     ),
     writeFile(
-      join(root, "core", "main.cjs"),
+      join(root, "src", "main.cjs"),
       `const path = require('node:path');
 const { BrowserWindow } = require('electron');
 new BrowserWindow().loadFile(path.join(__dirname, 'anchored.html'));
@@ -24,13 +24,13 @@ new BrowserWindow().loadFile('literal.html');
 new BrowserWindow().loadFile(runtimePage);`,
     ),
     writeFile(
-      join(root, "core", "anchored.html"),
+      join(root, "src", "anchored.html"),
       "actual source-anchored page",
     ),
     writeFile(join(root, "anchored.html"), "wrong app-root decoy"),
     writeFile(join(root, "literal.html"), "actual app-root page"),
     writeFile(
-      join(root, "core", "literal.html"),
+      join(root, "src", "literal.html"),
       "wrong source-relative decoy",
     ),
   ]);
@@ -47,13 +47,13 @@ new BrowserWindow().loadFile(runtimePage);`,
     .flatMap(({ observations }) =>
       observations.map(({ properties }) => properties.resolved_path),
     );
-  expect(rendererPaths.sort()).toEqual(["literal.html", "core/anchored.html"]);
+  expect(rendererPaths.sort()).toEqual(["literal.html", "src/anchored.html"]);
   expect(graph.coverage.status).toBe("partial");
   const anchored = graph.nodes.find(
     ({ kind, observations }) =>
       kind === "electron-renderer" &&
       observations.some(
-        ({ properties }) => properties.resolved_path === "core/anchored.html",
+        ({ properties }) => properties.resolved_path === "src/anchored.html",
       ),
   );
   expect(anchored?.observations[0]?.evidence.limitations).toContain(

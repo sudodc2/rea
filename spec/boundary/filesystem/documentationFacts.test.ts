@@ -36,8 +36,8 @@ const README_LINK_DRIFT_MUTATIONS = [
     "https://rea.tools/zh-CN/guides/?other=1",
   ],
   [
-    'src="../media/rea-hopper-analysis.png"',
-    'src="../media/missing-hopper.png"',
+    'src="../assets/rea-hopper-analysis.png"',
+    'src="../assets/missing-hopper.png"',
   ],
   ['href="https://discord.gg/JUEc8rBVvC"', 'href="https://discord.gg/missing"'],
 ] as const;

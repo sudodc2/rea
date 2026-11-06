@@ -40,10 +40,10 @@ const sources = {
 };
 it("preserves recovered diagnostics and file evidence through filesystem import", async () => {
   const root = await createTestTempDirectory("rea-reference-recovery-");
-  await mkdir(join(root, "core"));
+  await mkdir(join(root, "src"));
   await Promise.all(
     Object.entries(sources).map(([path, source]) =>
-      writeFile(join(root, "core", path), source),
+      writeFile(join(root, "src", path), source),
     ),
   );
 
@@ -57,12 +57,12 @@ it("preserves recovered diagnostics and file evidence through filesystem import"
   expect(historicalSourceGraphSchema.safeParse(graph).success).toBe(true);
   expect(graph.entries.map(({ path }) => path)).toEqual([
     "src",
-    ...Object.keys(sources).map((path) => `core/${path}`),
+    ...Object.keys(sources).map((path) => `src/${path}`),
   ]);
   for (const [path, source] of Object.entries(sources)) {
     expect(graph.entries).toContainEqual(
       expect.objectContaining({
-        path: `core/${path}`,
+        path: `src/${path}`,
         kind: "file",
         size: Buffer.byteLength(source),
         sha256: createHash("sha256").update(source).digest("hex"),
@@ -74,32 +74,32 @@ it("preserves recovered diagnostics and file evidence through filesystem import"
 
   const failures = [
     {
-      path: "core/fatal.js",
+      path: "src/fatal.js",
       parser: "babel",
       reason: "Unexpected token (2:6)",
     },
     {
-      path: "core/recovered.d.cts",
+      path: "src/recovered.d.cts",
       parser: "babel",
       reason: "Identifier 'duplicate' has already been declared. (2:4)",
     },
     {
-      path: "core/recovered.js",
+      path: "src/recovered.js",
       parser: "babel",
       reason: "Identifier 'duplicate' has already been declared. (3:4)",
     },
     {
-      path: "core/recovered.js",
+      path: "src/recovered.js",
       parser: "babel",
       reason: "Identifier 'duplicate' has already been declared. (4:4)",
     },
     {
-      path: "core/recovered.js",
+      path: "src/recovered.js",
       parser: "babel",
       reason: "Missing initializer in const declaration. (1:13)",
     },
     {
-      path: "core/recovered.ts",
+      path: "src/recovered.ts",
       parser: "babel",
       reason: "Identifier 'duplicate' has already been declared. (2:4)",
     },
@@ -112,63 +112,63 @@ it("preserves recovered diagnostics and file evidence through filesystem import"
   ).toEqual(failures);
   expect(graph.relationships).toEqual([
     {
-      from_path: "core/recovered.d.cts",
+      from_path: "src/recovered.d.cts",
       to: "ambient-package",
       kind: "declares-module",
       resolution: "unknown",
       parse_state: "partial",
     },
     {
-      from_path: "core/recovered.d.cts",
-      to: "core/valid.js",
+      from_path: "src/recovered.d.cts",
+      to: "src/valid.js",
       kind: "requires",
       resolution: "internal",
       parse_state: "partial",
     },
     {
-      from_path: "core/recovered.js",
+      from_path: "src/recovered.js",
       to: "<dynamic-import>",
       kind: "imports",
       resolution: "unknown",
       parse_state: "partial",
     },
     {
-      from_path: "core/recovered.js",
-      to: "core/lazy.js",
+      from_path: "src/recovered.js",
+      to: "src/lazy.js",
       kind: "imports",
       resolution: "internal",
       parse_state: "partial",
     },
     {
-      from_path: "core/recovered.js",
-      to: "core/valid.js",
+      from_path: "src/recovered.js",
+      to: "src/valid.js",
       kind: "imports",
       resolution: "internal",
       parse_state: "partial",
     },
     {
-      from_path: "core/recovered.ts",
+      from_path: "src/recovered.ts",
       to: "ambient-package",
       kind: "declares-module",
       resolution: "unknown",
       parse_state: "partial",
     },
     {
-      from_path: "core/recovered.ts",
-      to: "core/valid.js",
+      from_path: "src/recovered.ts",
+      to: "src/valid.js",
       kind: "requires",
       resolution: "internal",
       parse_state: "partial",
     },
     {
-      from_path: "core/valid.js",
+      from_path: "src/valid.js",
       to: "node:fs",
       kind: "imports",
       resolution: "external",
       parse_state: "parsed",
     },
     {
-      from_path: "core/valid.js",
+      from_path: "src/valid.js",
       to: "node:path",
       kind: "imports",
       resolution: "external",

@@ -47,7 +47,7 @@ describe("reference source native unreadable directories", () => {
     },
   );
 
-  it.skipIf(permissionChecksUnavailable).each(["blocked", "core/blocked"])(
+  it.skipIf(permissionChecksUnavailable).each(["blocked", "src/blocked"])(
     "preserves a partial graph when %s cannot be enumerated",
     async (blocked) => {
       const root = await createTestTempDirectory("rea-source-unreadable-dir-");
@@ -146,11 +146,11 @@ describe("reference source native unreadable directories", () => {
 
   it("keeps readable and empty directories enumerated exactly once", async () => {
     const root = await createTestTempDirectory("rea-source-readable-dirs-");
-    await mkdir(join(root, "core", "empty"), { recursive: true });
-    await writeFile(join(root, "core", "main.ts"), "export const value = 1;\n");
+    await mkdir(join(root, "src", "empty"), { recursive: true });
+    await writeFile(join(root, "src", "main.ts"), "export const value = 1;\n");
     const imported = await importTree(root);
     if (!imported.ok) throw new Error(imported.error.message);
-    for (const path of ["src", "core/empty"]) {
+    for (const path of ["src", "src/empty"]) {
       expect(
         imported.value.entries.filter((entry) => entry.path === path),
       ).toEqual([

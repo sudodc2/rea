@@ -441,7 +441,7 @@ cliTest(
     const text = JSON.stringify({
       version: 3,
       sourceRoot: "",
-      sources: ["../core/a.ts", "webpack://app/./core/b.ts", "dir//c.ts"],
+      sources: ["../src/a.ts", "webpack://app/./src/b.ts", "dir//c.ts"],
       sourcesContent: ["a", "b", "c"],
       names: [],
       mappings: "AAAA,ACAA,ACAA",
@@ -483,7 +483,7 @@ cliTest(
           {
             source_index: 1,
             reported_source_root: "",
-            resolved_url: "webpack://app/core/b.ts",
+            resolved_url: "webpack://app/src/b.ts",
           },
           {
             source_index: 2,

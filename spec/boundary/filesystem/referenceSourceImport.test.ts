@@ -35,11 +35,11 @@ import { RegularFileCleanupFailure } from "../../../core/filesystem/OwnedRegular
 
 const fixture = async (parent: string, name: string): Promise<string> => {
   const root = join(parent, name);
-  await mkdir(join(root, "core"), { recursive: true });
+  await mkdir(join(root, "src"), { recursive: true });
   await Promise.all([
-    writeFile(join(root, "core", "main.ts"), 'import "./dep";\n'),
-    writeFile(join(root, "core", "dep.ts"), "export const value = 1;\n"),
-    writeFile(join(root, "core", "broken.ts"), "const = ;\n"),
+    writeFile(join(root, "src", "main.ts"), 'import "./dep";\n'),
+    writeFile(join(root, "src", "dep.ts"), "export const value = 1;\n"),
+    writeFile(join(root, "src", "broken.ts"), "const = ;\n"),
     writeFile(join(root, ".env"), "SECRET_SENTINEL=do-not-record\n"),
     writeFile(join(root, "package.json"), '{"name":"fixture"}\n'),
   ]);
@@ -89,12 +89,12 @@ describe("reference source import projections", () => {
 
   it("deduplicates exact parse failures without collapsing distinct reasons", () => {
     const malformed = {
-      path: "core/main.ts",
+      path: "src/main.ts",
       parser: "babel",
       reason: "Malformed input",
     };
     const unexpected = {
-      path: "core/main.ts",
+      path: "src/main.ts",
       parser: "babel",
       reason: "Unexpected token",
     };
@@ -488,7 +488,7 @@ describe("reference source symlink import", () => {
         {
           status: "failed",
           kind: "symlink",
-          path: "core/link.ts",
+          path: "src/link.ts",
           code: "io",
           message: "Symbolic link target could not be read",
         },
@@ -501,7 +501,7 @@ describe("reference source symlink import", () => {
     expect(parsed.entries).toContainEqual(
       expect.objectContaining({
         kind: "symlink",
-        path: "core/link.ts",
+        path: "src/link.ts",
         target: null,
         target_state: "unreadable",
       }),
@@ -538,7 +538,7 @@ describe("reference source manifest inventory", () => {
     const root = await createTestTempDirectory("rea-reference-classification-");
     const files = [
       ["CMakeLists.txt", "Text", ["documentation", "manifest"]],
-      ["core/CMAKELISTS.TXT", "Text", ["documentation", "manifest", "source"]],
+      ["src/CMAKELISTS.TXT", "Text", ["documentation", "manifest", "source"]],
       ["CMakeLists.txt.backup", null, ["unknown"]],
       ["Dockerfile.dev.ts", "Dockerfile", ["source"]],
       ["DockerfileGuide.d.mts", "TypeScript", ["generated", "source"]],
@@ -548,12 +548,12 @@ describe("reference source manifest inventory", () => {
       ["parser_spec.rs", "Rust", ["source", "test"]],
       ["main_test_helper.go", "Go", ["source"]],
       ["main_spec.ts.bak", null, ["unknown"]],
-      ["spec/main.go", "Go", ["source", "test"]],
+      ["tests/main.go", "Go", ["source", "test"]],
       ["out/widget_spec.js", "JavaScript", ["generated", "source", "test"]],
       ["vendor/widget_test.go", "Go", ["source", "test", "vendor"]],
       ["settings_spec.json", "JSON", ["config", "test"]],
       [
-        "handbook/api/client.ts",
+        "docs/api/client.ts",
         "TypeScript",
         ["documentation", "generated", "source"],
       ],
@@ -562,14 +562,14 @@ describe("reference source manifest inventory", () => {
         "TypeScript",
         ["documentation", "generated", "source"],
       ],
-      ["handbook/apis/client.ts", "TypeScript", ["documentation", "source"]],
+      ["docs/apis/client.ts", "TypeScript", ["documentation", "source"]],
       ["mydocs/api/client.ts", "TypeScript", ["source"]],
       [
-        "handbook/manual/api/client.ts",
+        "docs/manual/api/client.ts",
         "TypeScript",
         ["documentation", "source"],
       ],
-      ["handbook/api.ts", "TypeScript", ["documentation", "source"]],
+      ["docs/api.ts", "TypeScript", ["documentation", "source"]],
       ["public/client.ts", "TypeScript", ["generated", "source"]],
       [".github", null, ["config"]],
       [".husky", null, ["config"]],
@@ -587,7 +587,7 @@ describe("reference source manifest inventory", () => {
     if (!result.ok) throw result.error;
     expect(result.value.manifests).toEqual([
       "CMakeLists.txt",
-      "core/CMAKELISTS.TXT",
+      "src/CMAKELISTS.TXT",
     ]);
     const entries = new Map(
       result.value.entries.map((entry) => [entry.path, entry]),
@@ -598,7 +598,7 @@ describe("reference source manifest inventory", () => {
         language,
         classifications,
       });
-    for (const path of ["handbook/api", "packages/widget/Docs/API"])
+    for (const path of ["docs/api", "packages/widget/Docs/API"])
       expect(entries.get(path), path).toMatchObject({
         kind: "directory",
         classifications: ["documentation", "generated"],
@@ -622,8 +622,8 @@ const registerReferenceRelocationTests = (): void => {
       );
       expect(left.value.relationships).toContainEqual(
         expect.objectContaining({
-          from_path: "core/main.ts",
-          to: "core/dep.ts",
+          from_path: "src/main.ts",
+          to: "src/dep.ts",
           resolution: "internal",
         }),
       );
@@ -813,7 +813,7 @@ describe("reference source import behavior", () => {
     try {
       const root = await fixture(parent, "repo");
       await init({ fs, dir: root, defaultBranch: "main" });
-      for (const filepath of ["package.json", "core/main.ts", "core/dep.ts"])
+      for (const filepath of ["package.json", "src/main.ts", "src/dep.ts"])
         await add({ fs, dir: root, filepath });
       const oid = await commit({
         fs,
@@ -895,27 +895,27 @@ describe("reference source rooted module specifiers", () => {
 
   it("does not rebase an absolute import onto a coincidentally matching source member", async () => {
     const root = await createTestTempDirectory("rea-reference-rooted-");
-    await mkdir(join(root, "core", "outside"), { recursive: true });
+    await mkdir(join(root, "src", "outside"), { recursive: true });
     await writeFile(
-      join(root, "core", "main.js"),
+      join(root, "src", "main.js"),
       'import "/outside/dep.js"; import "./outside/dep.js";\n',
     );
     await writeFile(
-      join(root, "core", "outside", "dep.js"),
+      join(root, "src", "outside", "dep.js"),
       "export const value = 1;\n",
     );
     const result = await importTree(root);
     if (!result.ok) throw result.error;
     expect(result.value.relationships).toContainEqual({
-      from_path: "core/main.js",
+      from_path: "src/main.js",
       to: "/outside/dep.js",
       kind: "imports",
       resolution: "unresolved",
       parse_state: "parsed",
     });
     expect(result.value.relationships).toContainEqual({
-      from_path: "core/main.js",
-      to: "core/outside/dep.js",
+      from_path: "src/main.js",
+      to: "src/outside/dep.js",
       kind: "imports",
       resolution: "internal",
       parse_state: "parsed",

@@ -425,7 +425,7 @@ cliTest.for(["CLI", "stdio MCP"] as const)(
     const cases = [
       {
         sourceRoot: "https://cdn.example/src//",
-        resolution: { kind: "suffix", path: "cdn.example/core//a.js" },
+        resolution: { kind: "suffix", path: "cdn.example/src//a.js" },
       },
       {
         sourceRoot: "webpack://",

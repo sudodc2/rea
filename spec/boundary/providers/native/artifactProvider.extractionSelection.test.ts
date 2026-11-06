@@ -195,12 +195,12 @@ describe("selected PyInstaller destination paths", () => {
     },
   );
 
-  it.each(["assets", "media/item", "both"])(
+  it.each(["assets", "assets/item", "both"])(
     "keeps independent prefix-sharing TOC entries selectable: %s",
     async (selection) => {
       const contents = new Map([
         ["assets", "parent name bytes"],
-        ["media/item", "child name bytes"],
+        ["assets/item", "child name bytes"],
       ]);
       const data = await pyInstallerFixture(
         [...contents].map(([name, bytes]) => ({
@@ -216,7 +216,7 @@ describe("selected PyInstaller destination paths", () => {
       );
       expect(entries.map(({ logical_path }) => logical_path)).toEqual([
         "assets",
-        "media/item",
+        "assets/item",
       ]);
       expect(entries[0]?.parent_occurrence_id).toBe(
         entries[1]?.parent_occurrence_id,
@@ -393,15 +393,15 @@ describe("selected artifact extraction", () => {
     const source = join(root, "source");
     const contents = join(root, "contents");
     await mkdir(source);
-    await mkdir(join(contents, "media"), { recursive: true });
-    await writeFile(join(contents, "media", "nested.txt"), "nested bytes");
+    await mkdir(join(contents, "assets"), { recursive: true });
+    await writeFile(join(contents, "assets", "nested.txt"), "nested bytes");
     await createPackage(contents, join(source, "inner.asar"));
     const inventory = await scanArtifactInventory(source);
     const container = inventory.occurrences.find(
       ({ logical_path }) => logical_path === "inner.asar",
     );
     const nested = inventory.occurrences.find(
-      ({ logical_path }) => logical_path === "inner.asar/media/nested.txt",
+      ({ logical_path }) => logical_path === "inner.asar/assets/nested.txt",
     );
     if (container === undefined || nested === undefined)
       throw new Error("Nested ASAR fixture inventory missing");
