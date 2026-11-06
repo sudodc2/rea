@@ -543,14 +543,14 @@ it.each([false, true])(
 it.each([
   {
     name: "inherited exclusion",
-    config: { "exclude-paths": ["docs"] },
+    config: { "exclude-paths": ["handbook"] },
     excluded: true,
   },
   {
     name: "package exclusion",
     config: {
       packages: {
-        ".": { "package-name": "rea-agents", "exclude-paths": ["docs"] },
+        ".": { "package-name": "rea-agents", "exclude-paths": ["handbook"] },
       },
     },
     excluded: true,

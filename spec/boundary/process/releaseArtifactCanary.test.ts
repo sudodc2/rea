@@ -53,7 +53,7 @@ it.skipIf(process.platform === "win32")(
         name: "rea-agents",
         version,
         type: "module",
-        files: ["scripts"],
+        files: ["tooling"],
       }),
     );
     await copyFile(
@@ -156,7 +156,7 @@ if (process.argv[2] === "mcp") {
         name: "rea-agents",
         version: "0.0.0",
         type: "module",
-        files: ["scripts"],
+        files: ["tooling"],
       }),
     );
     const wrong = await execute("npm", ["pack", "--ignore-scripts", "--json"], {

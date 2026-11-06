@@ -84,6 +84,7 @@
         "handbook/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
         ".github/actions/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
         "web/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "lua/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
         "!handbook/.vitepress/cache/**",
         "!handbook/.vitepress/dist/**",
         "!web/_site/**",

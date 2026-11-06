@@ -150,7 +150,7 @@ describe.skipIf(process.platform === "win32")(
                 timeoutMs: 30_000,
               },
             );
-          const checkoutReports = join(workspace, "verification", "rea");
+          const checkoutReports = join(workspace, "reports", "rea");
           await mkdir(checkoutReports, { recursive: true });
           await writeFile(
             join(checkoutReports, "analysis.json"),

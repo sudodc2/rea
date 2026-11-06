@@ -1,6 +1,7 @@
 """Run every source-owned Python bridge and analysis-efficiency test."""
 
 from pathlib import Path
+import importlib.util
 import json
 import subprocess
 import sys
@@ -58,15 +59,25 @@ class ExecutedResult(unittest.TextTestResult):
         super().addExpectedFailure(test, err)
 
 
-def run_bridge(modules):
+def run_bridge(test_files):
     # The script directory is sys.path[0]; imports must resolve from the checkout.
     sys.path.insert(0, str(root))
-    suite = unittest.defaultTestLoader.loadTestsFromNames(modules)
+    loader = unittest.defaultTestLoader
+    suite = unittest.TestSuite()
+    for path in test_files:
+        parts = path.relative_to(root).with_suffix("").parts
+        # provider-bridges is not importable (hyphen); load each file directly.
+        module_name = ".".join(["bridge_tests", *[part.replace("-", "_") for part in parts]])
+        spec = importlib.util.spec_from_file_location(module_name, path)
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[module_name] = module
+        spec.loader.exec_module(module)
+        suite.addTests(loader.loadTestsFromModule(module))
     result = unittest.TextTestRunner(verbosity=2, resultclass=ExecutedResult).run(suite)
     completed_families = {
         parts[1]
         for name in result.completed
-        if len(parts := name.split(".")) > 2 and parts[0] == "bridge"
+        if len(parts := name.split(".")) > 2 and parts[0] == "bridge_tests"
     }
     missing = [
         family
@@ -104,11 +115,8 @@ if missing_families:
     fail("missing_bridge_family", families=missing_families)
 if not list(root.joinpath("spec/support/analysis-efficiency").glob("test_*.py")):
     fail("missing_analysis_efficiency_tests")
-modules = [
-    ".".join(path.relative_to(root).with_suffix("").parts) for path in bridge_tests
-]
 if sys.argv[1:] == ["--bridge"]:
-    run_bridge(modules)
+    run_bridge(bridge_tests)
     raise SystemExit(0)
 if sys.argv[1:] == ["--analysis-efficiency"]:
     run_analysis_efficiency()

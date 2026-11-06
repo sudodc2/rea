@@ -137,8 +137,8 @@ itWithCaptureCapability(
   async () => {
     const root = await createTestTempDirectory("rea-observed-parent-type-");
     const payload = '{"result":42}\n';
-    await mkdir(join(root, "verification"));
-    await writeFile(join(root, "verification", "final.json"), payload);
+    await mkdir(join(root, "reports"));
+    await writeFile(join(root, "reports", "final.json"), payload);
     const result = await captureProcessScenario(
       processScenarioSchema.parse({
         executable: process.execPath,
@@ -150,7 +150,7 @@ itWithCaptureCapability(
         ],
         working_directory: root,
         filesystem_observation_paths: [
-          join(root, "verification", "final.json"),
+          join(root, "reports", "final.json"),
         ],
         timeout_ms: 5_000,
         idle_timeout_ms: 5_000,

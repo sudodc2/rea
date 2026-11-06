@@ -223,7 +223,7 @@ test("recovers a denied Hopper launch through the same stdio MCP session and CLI
     details: { launcher: { exit_code: 2 } },
   });
 
-  await writeFile(mode, "provider-bridges");
+  await writeFile(mode, "bridge");
   expect((await call("open_binary", { path: target })).isError).not.toBe(true);
   expect((await call("current_document")).isError).not.toBe(true);
   expect((await call("close_binary")).isError).not.toBe(true);
@@ -364,7 +364,7 @@ test.for(["handoff", "not-found"] as const)(
     const owned = await closeWithLateBridge(mcp, () => lateBridge(runId));
     await vi.waitFor(() => expect(owned.exitCode).toBe(0));
     await expect(access(runtime)).rejects.toMatchObject({ code: "ENOENT" });
-    await writeFile(mode, "provider-bridges");
+    await writeFile(mode, "bridge");
     expect((await call("open_binary", { path: target })).isError).not.toBe(
       true,
     );

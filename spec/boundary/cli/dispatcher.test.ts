@@ -215,7 +215,7 @@ describe("executable dispatcher", () => {
         workspace,
         'export const closeCliResources = () => {}; export const createCli = () => ({ serve: (args) => process.stdout.write(JSON.stringify({ adapter: "cli", args })) });\n',
       );
-      const scripts = workspace.path("scripts");
+      const scripts = workspace.path("tooling");
       await workspace.mkdir("dist/mcp");
       await Promise.all([
         workspace.write(

@@ -32,7 +32,9 @@ def _install_host_stubs():
 
 
 _install_host_stubs()
-MODULE_PATH = Path(__file__).parents[2] / "bridge" / "cutter" / "rea_bridge.py"
+MODULE_PATH = (
+    Path(__file__).parents[2] / "provider-bridges" / "cutter" / "rea_bridge.py"
+)
 spec = importlib.util.spec_from_file_location("rea_cutter_bridge_test", MODULE_PATH)
 bridge = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = bridge

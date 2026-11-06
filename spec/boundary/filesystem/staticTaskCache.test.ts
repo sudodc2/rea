@@ -214,7 +214,7 @@ it.each(["workflow", "action manifest"])(
     const root = await createTestTempDirectory("rea-knip-github-inputs-");
     const cache = await createTestTempDirectory("rea-knip-github-cache-");
     for (const directory of [
-      "src",
+      "core",
       ".github/workflows",
       ".github/actions/probe",
     ])
@@ -410,7 +410,7 @@ it.each([
     const cache = await createTestTempDirectory("rea-compiler-cache-store-");
     await mkdir(join(root, "handbook/.vitepress"), { recursive: true });
     await mkdir(join(root, ".github/actions"), { recursive: true });
-    for (const directory of ["src", "tests", "scripts"])
+    for (const directory of ["core", "spec", "tooling"])
       await mkdir(join(root, directory));
     await symlink(
       join(repository, "node_modules"),
@@ -675,7 +675,7 @@ it.skipIf(resolveTypeScriptCompiler().name !== "tsrs")(
       JSON.stringify({
         compilerOptions: {
           strict: true,
-          rootDir: "src",
+          rootDir: "core",
           types: [],
           lib: ["ES2023", "DOM"],
           target: "ES2023",

@@ -32,8 +32,8 @@ try {
       "--others",
       "--exclude-standard",
       "--",
-      "src",
-      "tests",
+      "core",
+      "spec",
     ],
     { cwd: root, maxBuffer: 8 * 1024 * 1024 },
   );

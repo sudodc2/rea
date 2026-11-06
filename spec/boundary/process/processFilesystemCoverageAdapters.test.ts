@@ -223,10 +223,10 @@ itWithCaptureCapability.each(["cli", "mcp"] as const)(
       ...scenario,
       executable: process.execPath,
       working_directory: root,
-      filesystem_observation_paths: [join(root, "verification")],
+      filesystem_observation_paths: [join(root, "reports")],
     });
     const capture = parseProcessCapture(evidence.normalized_result);
-    const bytes = await readFile(join(root, "verification", "final.json"));
+    const bytes = await readFile(join(root, "reports", "final.json"));
     expect(JSON.parse(bytes.toString())).toEqual({
       status: "complete",
       data: "X".repeat(131072),
@@ -449,7 +449,7 @@ it
   "retains stable root and nested symlink uncertainty with known sibling effects through %s",
   async (adapter) => {
     const root = await createTestTempDirectory("rea-fs-stable-link-adapter-");
-    const reports = join(root, "real", "verification");
+    const reports = join(root, "real", "reports");
     await mkdir(reports, { recursive: true });
     await symlink("real/reports", join(root, "link"));
     await writeFile(join(root, "removed.txt"), "known sibling");
@@ -533,7 +533,7 @@ itWithCaptureCapability.each(["cli", "mcp"] as const)(
         ],
         working_directory: root,
         filesystem_observation_paths: [
-          join(root, "state", "verification"),
+          join(root, "state", "reports"),
           join(root, "state"),
         ],
       });

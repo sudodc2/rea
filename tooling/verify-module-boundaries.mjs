@@ -35,7 +35,7 @@ const enumerateSourceFiles = async () => {
           "--others",
           "--exclude-standard",
           "--",
-          "src",
+          "core",
         ],
         { cwd: root, maxBuffer: 8 * 1024 * 1024 },
       );

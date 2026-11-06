@@ -62,10 +62,10 @@ describe("Electron file scope", () => {
     const root = await createTestTempDirectory("rea-electron-asar-scope-");
     const source = join(root, "source");
     await mkdir(join(source, "build", "static"), { recursive: true });
-    await mkdir(join(source, "platform"));
+    await mkdir(join(source, "native"));
     await writeFile(join(source, "build", "index.html"), "<p>packed</p>");
     await writeFile(join(source, "build", "static", "app.js"), "app();");
-    await writeFile(join(source, "platform", "addon.node"), "platform");
+    await writeFile(join(source, "native", "addon.node"), "native");
     await writeFile(join(source, "notes.txt"), "plain");
     const archive = join(root, "app.asar");
     await createPackageWithOptions(source, archive, { unpack: "*.node" });
@@ -82,7 +82,7 @@ describe("Electron file scope", () => {
       ),
     ).toBe(join(canonical, "build", "static", "app.js"));
     expect(await authorizedElectronFile(member("native", "addon.node"))).toBe(
-      join(canonical, "platform", "addon.node"),
+      join(canonical, "native", "addon.node"),
     );
     expect(await authorizedElectronFile(member("build"))).toBeUndefined();
     expect(

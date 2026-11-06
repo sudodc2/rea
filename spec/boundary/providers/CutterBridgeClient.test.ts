@@ -1228,7 +1228,7 @@ describe("CutterBridgeClient: bridge paths and native descriptor reads", () => {
   it("uses the selected caller home for tilde and default bridge discovery", async () => {
     directory = await mkdtemp(join(tmpdir(), "rea-cutter-selected-home-"));
     const selectedHome = join(directory, "selected-home");
-    const tildeDirectory = join(selectedHome, "provider-bridges");
+    const tildeDirectory = join(selectedHome, "bridge");
     const defaultDirectory = join(
       selectedHome,
       ".cache",
@@ -1304,9 +1304,7 @@ describe("CutterBridgeClient: bridge paths and native descriptor reads", () => {
       },
     ).listSessions();
 
-    expect(result.bridge_directory).toBe(
-      join(selectedHome, "provider-bridges"),
-    );
+    expect(result.bridge_directory).toBe(join(selectedHome, "bridge"));
     expect(result.discovery_status).toBe("no_live_bridge_found");
   });
 
