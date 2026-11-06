@@ -53,9 +53,9 @@ jobs:
           report=".cache/rea-signal-required-tests.json"
           mkdir -p .cache
           rm -f "$report"
-          node scripts/run-exact-tests.mjs run --reporter=default --reporter=json --outputFile.json="$report" \
-            tests/boundary/signals/decoderDiscovery.test.ts src/process/LinuxResourceLimits.test.ts src/domain/signals/annotationTextWindow.test.ts tests/boundary/signals/recordingProvider.test.ts tests/boundary/signals/recordingDescriptorCleanup.test.ts tests/boundary/signals/resourceLimits.test.ts tests/boundary/mcp/signalRecordingMcp.test.ts tests/boundary/cli/signalCleanup.test.ts
-          node scripts/ci/require-provider-tests.mjs signal "$report"
-      - run: node scripts/verify-signal-recording.mjs
+          node tooling/run-exact-tests.mjs run --reporter=default --reporter=json --outputFile.json="$report" \
+            spec/boundary/signals/decoderDiscovery.test.ts core/process/LinuxResourceLimits.test.ts core/domain/signals/annotationTextWindow.test.ts spec/boundary/signals/recordingProvider.test.ts spec/boundary/signals/recordingDescriptorCleanup.test.ts spec/boundary/signals/resourceLimits.test.ts spec/boundary/mcp/signalRecordingMcp.test.ts spec/boundary/cli/signalCleanup.test.ts
+          node tooling/ci/require-provider-tests.mjs signal "$report"
+      - run: node tooling/verify-signal-recording.mjs
         env:
           REA_SIGROK_COMMAND: /usr/bin/sigrok-cli

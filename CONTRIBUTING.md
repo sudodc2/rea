@@ -11,14 +11,14 @@ incorrect user instructions warrant standalone corrections. Collect other
 cosmetic-only suggestions in an issue rather than separate PRs.
 
 For selected architectural owners and dependency paths, use the
-[architecture map](docs/architecture.mermaid). It is not a complete directory or
+[architecture map](handbook/architecture.mermaid). It is not a complete directory or
 import inventory. For current provider wiring, start with
-[`src/composition/binary.ts`](src/composition/binary.ts) for deep candidates and
-the other `src/composition/` factories for tool services, including
-[`gpu.ts`](src/composition/gpu.ts) and [`model.ts`](src/composition/model.ts).
+[`core/composition/binary.ts`](core/composition/binary.ts) for deep candidates and
+the other `core/composition/` factories for tool services, including
+[`gpu.ts`](core/composition/gpu.ts) and [`model.ts`](core/composition/model.ts).
 Live Frida, Cutter, GDB and Rizin construction also uses shared composition
 factories. For service ownership, availability and catalog declarations, follow
-the [capability composition guide](docs/capability-composition.md).
+the [capability composition guide](handbook/capability-composition.md).
 Production factories construct fresh providers without starting engines or
 acquiring targets; optional adapter failures must preserve successful peers. Run
 `npm run verify:test-discovery` after adding or moving tests. Resolved import
@@ -32,7 +32,7 @@ removing it. Preserve validation, lazy loading, caller policy, and resource
 acquisition and cleanup supplied by the old boundary. Published APIs, persisted
 formats, and independently versioned bridges require an explicit compatibility
 decision; an internal representation alone does not establish that obligation.
-See [interpreting boundary facts once](docs/tool-design.md#interpret-boundary-facts-once)
+See [interpreting boundary facts once](handbook/tool-design.md#interpret-boundary-facts-once)
 for admission ownership and the distinction between repeated validation and
 independent checks.
 
@@ -44,9 +44,9 @@ Use the [analysis optimization skill](.agents/skills/rea-analysis-optimization/S
 to locate provider and shared-workflow bottlenecks, preserve Evidence, and
 compare equivalent real tasks before claiming an improvement.
 
-When adding or changing an MCP tool, follow the [tool design guide](docs/tool-design.md) and preserve the canonical contracts and generated catalog.
+When adding or changing an MCP tool, follow the [tool design guide](handbook/tool-design.md) and preserve the canonical contracts and generated catalog.
 When adding or changing an admission ceiling, budget, or deadline, follow
-[analysis settings, limits, and recovery](docs/design/limits-and-recovery.md)
+[analysis settings, limits, and recovery](handbook/design/limits-and-recovery.md)
 for ownership, operation snapshots, provider integration, and the steps for
 adding a runtime setting.
 
@@ -234,7 +234,7 @@ guarantee.
 Use the development toolchain pinned in `.nvmrc` and
 `package.json#packageManager`. Run `nvm use` before installing dependencies;
 installed-package runtime support is documented in
-[installation](docs/installation.md#start-setup).
+[installation](handbook/installation.md#start-setup).
 Use Node.js and npm for source builds and verifier scripts; the installed
 package's Bun runtime support does not extend to those development scripts.
 
@@ -254,7 +254,7 @@ caches deterministic builds and static checks across Git worktrees. After a pack
 Dependabot proposes updates for the npm lockfiles, website Python requirements,
 and GitHub Actions. Review dependency changes and run the checks relevant to
 their consumers. For dependencies maintained outside Dependabot, including
-`third_party/` and the HTTP/3 lab's pinned requirements, the maintainer should
+`vendor/` and the HTTP/3 lab's pinned requirements, the maintainer should
 review upstream security advisories when updating or using them. Preserve source
 and version provenance, update license notices when needed, and report which
 verification was actually repeated. The lab requirements describe a recorded
@@ -266,7 +266,7 @@ protocols in adapters and shared CLI/MCP workflows in the application layer.
 ### Windows source checkouts
 
 The published npm package includes the Windows x64 native addon and its
-manifest. A source checkout does not: `native/windows/build/` is ignored by
+manifest. A source checkout does not: `platform/windows/build/` is ignored by
 Git, and neither `npm ci` nor `npm run build:cached` (or `npm run build`)
 produces `rea-windows-x64.node` or `manifest.json` in that directory.
 Windows workflows and tests that require native controls need these artifacts;
@@ -275,7 +275,7 @@ the artifact lock until every command descendant has exited. Without the
 artifacts, those controls are unavailable even after a successful runtime
 build.
 
-Follow the [Windows native build guide](native/windows/README.md#build) before
+Follow the [Windows native build guide](platform/windows/README.md#build) before
 running those workflows from source. The artifact build requires Linux,
 MinGW-w64, and `tar`; the build script does not run on Windows. See that guide
 for the build and artifact-verification commands and the separate real Windows
@@ -289,29 +289,29 @@ base revision, or run the suite on Linux or WSL, before attributing them to a
 change. The embedded-artifact parent-swap tests exercise the selected-path
 replacement when the rename succeeds; if Windows refuses it while the admitted
 file is open, they instead verify the refusal and cleanup. See
-[testing](docs/testing.md#developer-commands) for command scopes
+[testing](handbook/testing.md#developer-commands) for command scopes
 and lane selection.
 
 `git submodule update --init --recursive` fails at the pinned Unblob submodule
 on Windows and can leave later submodules unchecked out. Apply the
-[Unblob checkout workaround](docs/firmware-analysis.md#windows-submodule-checkout),
+[Unblob checkout workaround](handbook/firmware-analysis.md#windows-submodule-checkout),
 then rerun the command.
 
 ## Documentation website
 
-The VitePress site uses the Markdown files in `docs/`. Run `npm run docs:dev`
+The VitePress site uses the Markdown files in `handbook/`. Run `npm run docs:dev`
 for live editing, `npm run docs:build` to check the production build and
 links, and `npm run docs:preview` to preview that build at `/rea/`.
 
-Site navigation lives in `docs/.vitepress/config.ts`. Keep links to guides
+Site navigation lives in `handbook/.vitepress/config.ts`. Keep links to guides
 relative so they work on GitHub and the website; link to repository files
-outside `docs/` using their full GitHub URLs. Generated reference documents
+outside `handbook/` using their full GitHub URLs. Generated reference documents
 use `npm run docs:generate`; `docs:build` generates them before building the website.
 
 Pull requests run `npm run docs:check`. `.github/workflows/pages.yml` is a
 manual VitePress build and does not publish. The public site at
-<https://rea.tools/> serves `website/public/` through Cloudflare Workers. See
-the [website README](website/README.md#cloudflare-workers) for previews and
+<https://rea.tools/> serves `web/public/` through Cloudflare Workers. See
+the [website README](web/README.md#cloudflare-workers) for previews and
 manual deployments.
 
 The separate GitHub Pages host uses only the manual
@@ -324,16 +324,16 @@ The separate GitHub Pages host uses only the manual
 README editions and website editions have separate translation sources:
 
 - Find the language's `readme` path in the
-  [language inventory](website/locales/languages.json) and edit that file.
+  [language inventory](web/locales/languages.json) and edit that file.
   Locale codes and README suffixes can differ. Use the
   [English README](README.md) to check commands, requirements, and analysis claims.
-- Edit `msgstr` values in `website/locales/<language>/messages.po` for website
-  text. Follow the [website translation guide](website/locales/README.md) for
+- Edit `msgstr` values in `web/locales/<language>/messages.po` for website
+  text. Follow the [website translation guide](web/locales/README.md) for
   the Python environment, catalog validation, and local preview. Preserve source
   strings, contexts, placeholders, commands, paths, and recorded evidence.
 
 Before submitting a website translation, run the catalog and website checks in
-that guide. Translated HTML in `website/_site/` is generated; edit the PO catalog
+that guide. Translated HTML in `web/_site/` is generated; edit the PO catalog
 rather than the generated pages.
 
 ## Development feedback and PR verification
@@ -345,14 +345,14 @@ If `main` is broken, prioritize a focused repair before updating affected PRs.
 Select checks for the behavior changed. For a source edit:
 
 ```bash
-npm run test:focused -- src/config.test.ts
+npm run test:focused -- core/config.test.ts
 npm run check:fast
 ```
 
 `test:local` runs source tests without building. `check:changed` combines cached
 static checks with source tests affected since the merge base with `origin/main`.
 Import-graph selection can miss runtime registration, bridges, and generated data;
-select relevant boundary tests explicitly. See [testing](docs/testing.md#developer-commands)
+select relevant boundary tests explicitly. See [testing](handbook/testing.md#developer-commands)
 for commands, test placement, pruning, and real-provider prerequisites.
 
 Before requesting review, run relevant tests and `npm run check`; add
@@ -377,15 +377,15 @@ Pre-commit formats and lints staged files; pre-push runs `check:fast`.
 
 `docs:generate` prepares documentation and portable managed evidence;
 `evidence:generate` prepares only the managed commitment and its runtime/skill
-dependencies. The ignored outputs are `docs/public/product-catalog.json`,
-`docs/verification/managed-conformance-*.json`, and `skills/`. Edit authored
+dependencies. The ignored outputs are `handbook/public/product-catalog.json`,
+`handbook/verification/managed-conformance-*.json`, and `skills/`. Edit authored
 skill instructions in `.agents/skills/reverse-engineer-anything/`, where Skills
 can discover the public bundle directly from a clean checkout. `verify:package`
 installs that bundle with Skills 1.7.2 using default repository-root discovery
 and checks every installed file, alongside the packaged setup checks.
 CI validates generated outputs and retains them as artifacts; do not commit
 them. Reviewed source metadata, including
-`src/generatedPackageMetadata.ts` and `docs/error-contract.schema.json`, remains
+`core/generatedPackageMetadata.ts` and `handbook/error-contract.schema.json`, remains
 tracked and checked for freshness.
 
 The packaged skill contains instructions and inventory metadata, not runtime
@@ -402,11 +402,11 @@ Real-provider execution is uncached.
 
 ### Temporary files and diagnostics
 
-Tests use `createTestTempDirectory` from `tests/fixtures/temporaryDirectory.ts`
+Tests use `createTestTempDirectory` from `spec/fixtures/temporaryDirectory.ts`
 for exact-path, awaited cleanup, including failures and timeouts. It registers
 deletion with Vitest's `onTestFinished`; do not also add its result to a roots
 array or an `afterEach` removal. `createTestWorkspace` from
-`tests/support/workspace/workspaceFixture.ts` leaves cleanup with its caller,
+`spec/support/workspace/workspaceFixture.ts` leaves cleanup with its caller,
 which must await `removeTestWorkspace`. Keep explicit resource teardown before
 directory deletion, using the case's `finally` or `afterEach`; Vitest runs
 `afterEach` before `onTestFinished` and awaits finish hooks in reverse
@@ -427,8 +427,8 @@ Run `npm run verify:hopper` on a supported macOS host or
 `npm run verify:hopper:linux` on the supported Linux demo runner. These build
 native fixtures and verify the installed engine through CLI/MCP; package or
 simulated-provider checks do not establish engine behavior. See
-[real-toolchain verification](docs/testing.md#end-to-end-integration-and-golden-evidence)
-for prerequisites and scope, and [Hopper setup](docs/installation.md#hopper)
+[real-toolchain verification](handbook/testing.md#end-to-end-integration-and-golden-evidence)
+for prerequisites and scope, and [Hopper setup](handbook/installation.md#hopper)
 for supported hosts and unattended startup.
 
 Use the default `build/conformance/manifest.json` unless explicitly verifying
@@ -437,7 +437,7 @@ Generated fixtures and manifests remain ignored.
 
 ## Maintainer release checklist
 
-Use the [release guide](docs/releasing.md). Main pushes automatically refresh a
+Use the [release guide](handbook/releasing.md). Main pushes automatically refresh a
 Release Please PR with the next version and changelog. Review its migration
 notes, wait for the current CI checks to pass, and merge it into main to publish.
 

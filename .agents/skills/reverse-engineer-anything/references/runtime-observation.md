@@ -41,10 +41,10 @@ behavior unknown. Record truncation, unmatched breakpoints, changed target
 identity and cleanup uncertainty as limitations, rather than treating no retained
 event as proof that the behavior never occurs.
 
-Detailed contracts and prerequisites: [Frida](https://github.com/sudodc2/rea/blob/main/docs/frida-instrumentation.md),
-[GDB/Rizin/Cutter](https://github.com/sudodc2/rea/blob/main/docs/reverse-engineering-tools.md),
-[process capture](https://github.com/sudodc2/rea/blob/main/docs/process-capture.md),
-and [native calls/UI](https://github.com/sudodc2/rea/blob/main/docs/native-investigation.md#native-desktop-observation).
+Detailed contracts and prerequisites: [Frida](https://github.com/sudodc2/rea/blob/main/handbook/frida-instrumentation.md),
+[GDB/Rizin/Cutter](https://github.com/sudodc2/rea/blob/main/handbook/reverse-engineering-tools.md),
+[process capture](https://github.com/sudodc2/rea/blob/main/handbook/process-capture.md),
+and [native calls/UI](https://github.com/sudodc2/rea/blob/main/handbook/native-investigation.md#native-desktop-observation).
 
 ## Browser and Electron
 
@@ -130,5 +130,5 @@ Inspect native `.saz` snapshots with `inspect_web_network_capture` and
 traffic analysis, connect Everywhere's separate MCP server and use its
 advertised session tools with an explicit `sessionsSource` (`LiveTraffic` or
 `AgentCalls`). Preserve existing sessions and filters when inspecting a
-recorded run. See the [capture and MCP guide](https://github.com/sudodc2/rea/blob/main/docs/web-network-captures.md)
+recorded run. See the [capture and MCP guide](https://github.com/sudodc2/rea/blob/main/handbook/web-network-captures.md)
 for the workflow and Telerik's public setup and traffic-debugging skills.

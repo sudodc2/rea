@@ -52,7 +52,7 @@ jobs:
           heap-size: 512M
           disk-size: 8192M
           disable-animations: true
-          script: bash scripts/verify/termux/emulator.sh
+          script: bash tooling/verify/termux/emulator.sh
       - name: Upload Termux and Android diagnostics
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

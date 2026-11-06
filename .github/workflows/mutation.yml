@@ -47,11 +47,11 @@ jobs:
         env:
           MUTATION_CONFIG: ${{ matrix.config }}
         run: |
-          node scripts/prepare-reverse-tools-mutation.mjs
+          node tooling/prepare-reverse-tools-mutation.mjs
           npx --no-install stryker run "${MUTATION_CONFIG}"
       - name: Require both reports from the completed sweep
         env:
-          REPORT_BASE: reports/mutation/${{ matrix.suite }}
+          REPORT_BASE: verification/mutation/${{ matrix.suite }}
         run: |
           test -s "${REPORT_BASE}.json"
           test -s "${REPORT_BASE}.html"
@@ -61,7 +61,7 @@ jobs:
         with:
           name: mutation-${{ matrix.suite }}-${{ github.run_attempt }}
           path: |
-            reports/mutation/${{ matrix.suite }}.json
-            reports/mutation/${{ matrix.suite }}.html
+            verification/mutation/${{ matrix.suite }}.json
+            verification/mutation/${{ matrix.suite }}.html
           if-no-files-found: warn
           retention-days: 7

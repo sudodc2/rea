@@ -20,10 +20,10 @@
     "verbatimModuleSyntax": true
   },
   "include": [
-    "src/**/*.ts",
-    "tests/**/*.ts",
+    "core/**/*.ts",
+    "spec/**/*.ts",
     "vitest.config.ts",
-    "docs/.vitepress/config.ts"
+    "handbook/.vitepress/config.ts"
   ],
   "exclude": ["dist", "node_modules"]
 }

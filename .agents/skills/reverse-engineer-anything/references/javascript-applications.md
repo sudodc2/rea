@@ -6,7 +6,7 @@ For captured or bundled JavaScript that needs readable source recovery, use
 `additional_paths` when advertised, then analyze the returned `analysis_input`
 directory together. Each input retains its own snapshot, digest and byte-range
 provenance; inputs and recovered code are never executed. Recovery requires a
-caller-supplied Wakaru on Linux x64; see [the recovery guide](https://github.com/sudodc2/rea/blob/main/docs/javascript-recovery.md).
+caller-supplied Wakaru on Linux x64; see [the recovery guide](https://github.com/sudodc2/rea/blob/main/handbook/javascript-recovery.md).
 
 Use `analyze_javascript_application` directly on the operator-supplied ASAR or
 extracted tree. When the question concerns known source paths and the connected
@@ -76,7 +76,7 @@ The complete source Evidence is retained; use its `parent_evidence_id` with
 complete record. Static patterns, inferred deployment bases, heuristic system
 classification, and unavailable sources never establish route reachability or
 the complete application route denominator. See the
-[route inventory guide](https://github.com/sudodc2/rea/blob/main/docs/javascript-route-inventory.md).
+[route inventory guide](https://github.com/sudodc2/rea/blob/main/handbook/javascript-route-inventory.md).
 
 For captured endpoint observations and inference facts, `analyze_web_bundle`
 also accepts `view: {kind: "web-bundle", collection: "endpoints", limit: 32}`

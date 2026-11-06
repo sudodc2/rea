@@ -17,10 +17,10 @@
     ".": {
       "package-name": "rea-agents",
       "extra-files": [
-        { "type": "generic", "path": "docs/installation.md" },
+        { "type": "generic", "path": "handbook/installation.md" },
         {
           "type": "generic",
-          "path": "src/generatedPackageMetadata.ts"
+          "path": "core/generatedPackageMetadata.ts"
         },
         {
           "type": "json",

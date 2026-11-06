@@ -44,7 +44,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           RECOVERY_VERSION: ${{ inputs.version }}
           RECOVERY_RUN_ID: ${{ inputs.release_run_id }}
-        run: node scripts/ci/release-recovery.mjs resolve
+        run: node tooling/ci/release-recovery.mjs resolve
       - name: Check out released metadata
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
@@ -73,15 +73,15 @@ jobs:
           RECOVERY_SOURCE_SHA: ${{ steps.release.outputs.source_sha }}
           RECOVERY_SOURCE_DIRECTORY: .cache/release-source
           RECOVERY_ARTIFACT_DIRECTORY: .cache/verified-package
-        run: node scripts/ci/release-recovery.mjs verify
+        run: node tooling/ci/release-recovery.mjs verify
       - name: Rehearse the original qualified tarball
         env:
           RECOVERY_VERSION: ${{ steps.release.outputs.version }}
-        run: node scripts/verify-release-artifact.mjs .cache/verified-package/package.tgz "$RECOVERY_VERSION"
+        run: node tooling/verify-release-artifact.mjs .cache/verified-package/package.tgz "$RECOVERY_VERSION"
       - name: Verify published CLI, MCP and update
         env:
           RECOVERY_VERSION: ${{ steps.release.outputs.version }}
-        run: node scripts/verify-published-package.mjs "$RECOVERY_VERSION"
+        run: node tooling/verify-published-package.mjs "$RECOVERY_VERSION"
       - name: Validate released registry metadata
         working-directory: .cache/release-source
         run: npm run mcp-registry:check

@@ -1,4 +1,4 @@
-import { mutationRanges } from "./scripts/lib/reverse-tools-mutation-targets.mjs";
+import { mutationRanges } from "./tooling/lib/reverse-tools-mutation-targets.mjs";
 
 const config = {
   $schema: "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
@@ -22,14 +22,14 @@ const config = {
   concurrency: 2,
   timeoutMS: 30000,
   reporters: ["clear-text", "progress", "html", "json"],
-  jsonReporter: { fileName: "reports/mutation/reverse-tools.json" },
-  htmlReporter: { fileName: "reports/mutation/reverse-tools.html" },
+  jsonReporter: { fileName: "verification/mutation/reverse-tools.json" },
+  htmlReporter: { fileName: "verification/mutation/reverse-tools.html" },
 };
 
 export default {
   ...config,
   mutate: [
-    ...mutationRanges("src/application/reverse/ReverseEngineeringService.ts", [
+    ...mutationRanges("core/application/reverse/ReverseEngineeringService.ts", [
       {
         kind: "method",
         owner: "ReverseEngineeringService",
@@ -92,25 +92,25 @@ export default {
         text: "snapshot.signal !== null && snapshot.signal !== undefined",
       },
     ]),
-    ...mutationRanges("src/process/ExecFileOutput.ts", [
+    ...mutationRanges("core/process/ExecFileOutput.ts", [
       {
         kind: "declaration",
         name: "execFileOutputFailure",
       },
     ]),
-    ...mutationRanges("src/server/providerEnvironment.ts", [
+    ...mutationRanges("core/server/providerEnvironment.ts", [
       {
         kind: "declaration",
         name: "captureProviderEnvironment",
       },
     ]),
-    ...mutationRanges("src/server/registerReverseEngineeringTools.ts", [
+    ...mutationRanges("core/server/registerReverseEngineeringTools.ts", [
       {
         kind: "declaration",
         name: "registerReverseEngineeringTools",
       },
     ]),
-    ...mutationRanges("src/gdb/GdbSessionManager.ts", [
+    ...mutationRanges("core/gdb/GdbSessionManager.ts", [
       {
         kind: "constructor",
         owner: "GdbCommandTimeoutError",
@@ -175,13 +175,13 @@ export default {
         name: "close",
       },
     ]),
-    ...mutationRanges("src/process/ownedDebuggerSession.ts", [
+    ...mutationRanges("core/process/ownedDebuggerSession.ts", [
       {
         kind: "declaration",
         name: "waitForInferiorDetach",
       },
     ]),
-    ...mutationRanges("src/rizin/RizinDebugSessionManager.ts", [
+    ...mutationRanges("core/rizin/RizinDebugSessionManager.ts", [
       {
         kind: "guard",
         owner: "RizinDebugSessionManager",
@@ -209,13 +209,13 @@ export default {
         name: "nextOffset",
       },
     ]),
-    ...mutationRanges("src/domain/analysisResourceLimits.ts", [
+    ...mutationRanges("core/domain/analysisResourceLimits.ts", [
       {
         kind: "declaration",
         name: "DEFAULT_DEBUGGER_MAX_SESSIONS",
       },
     ]),
-    ...mutationRanges("src/cli/reverseEngineeringCommands.ts", [
+    ...mutationRanges("core/cli/reverseEngineeringCommands.ts", [
       {
         kind: "command-handler",
         command: "debugWithGdb",
@@ -225,7 +225,7 @@ export default {
         command: "debugWithRizin",
       },
     ]),
-    ...mutationRanges("src/cutter/CutterBridgeClient.ts", [
+    ...mutationRanges("core/cutter/CutterBridgeClient.ts", [
       {
         kind: "expression",
         text: "status.data.current_file === undefined",

@@ -24,7 +24,7 @@ jobs:
         with:
           node-version-file: .nvmrc
       - name: Validate the SDK pin against the provider's verified release
-        run: node scripts/verify-ghidra-bridge-sources.mjs --check-sdk-pin >> "$GITHUB_ENV"
+        run: node tooling/verify-ghidra-bridge-sources.mjs --check-sdk-pin >> "$GITHUB_ENV"
       # The bridge probe imports only source-owned ARM/Thumb bytes and never
       # executes target code. All SDK/project state stays in runner storage.
       - name: Acquire checksum-verified Ghidra SDK in isolated runner storage
@@ -57,8 +57,8 @@ jobs:
           timeout 180s "${GHIDRA_INSTALL_DIR}/support/analyzeHeadless" "${probe_root}/project" ArmContext \
             -import "${probe_root}/arm-thumb.bin" -loader BinaryLoader -processor ARM:LE:32:v7 \
             -noanalysis -readOnly -deleteProject \
-            -scriptPath "${GITHUB_WORKSPACE}/tests/conformance/ghidra;${GITHUB_WORKSPACE}/bridge/ghidra" \
-            -postScript ReaArmContextProbe.java "${GITHUB_WORKSPACE}/bridge/ghidra" \
+            -scriptPath "${GITHUB_WORKSPACE}/spec/conformance/ghidra;${GITHUB_WORKSPACE}/provider-bridges/ghidra" \
+            -postScript ReaArmContextProbe.java "${GITHUB_WORKSPACE}/provider-bridges/ghidra" \
             > "${probe_root}/output.log" 2>&1 || { cat "${probe_root}/output.log"; exit 1; }
           cat "${probe_root}/output.log"
           grep -F 'REA_ARM_CONTEXT_OK arm=0 thumb=1 unavailable=null (injected provider value)' "${probe_root}/output.log"
@@ -86,7 +86,7 @@ jobs:
             timeout 180s "${GHIDRA_INSTALL_DIR}/support/analyzeHeadless" "${probe_root}/${name}-project" Decode \
               -import "${probe_root}/${name}.bin" -loader BinaryLoader -loader-baseAddr 0x1000 \
               -processor "${language}" -noanalysis -readOnly -deleteProject \
-              -scriptPath "${GITHUB_WORKSPACE}/tests/conformance/ghidra" \
+              -scriptPath "${GITHUB_WORKSPACE}/spec/conformance/ghidra" \
               -postScript ReaDecodeProbe.java "${language}" "$@" \
               > "${probe_root}/${name}.log" 2>&1 || { cat "${probe_root}/${name}.log"; exit 1; }
             cat "${probe_root}/${name}.log"

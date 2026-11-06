@@ -7,14 +7,14 @@ threat-models: [local]
 # need their own root; use a directory so Python can share this configuration.
 paths:
   - .
-  - docs/.vitepress
+  - handbook/.vitepress
 
-# Keep the default query suite and all production roots, including bridge/,
+# Keep the default query suite and all production roots, including provider-bridges/,
 # install.sh, runtime scripts, release controllers, and GitHub Actions.
 # Exclude test inputs at extraction time so they cannot taint production callers.
 paths-ignore:
   - tests
-  - scripts/fixtures
+  - tooling/fixtures
   - "**/*.test.*"
   - "**/*.fixture.*"
   - "**/test_*.py"

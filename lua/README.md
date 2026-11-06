@@ -50,8 +50,8 @@ node lua/tests/run.mjs
 ```
 
 Analyzes every file in `lua/tests/fixtures/` and writes JSON reports to
-`reports/lua/`. Exits non-zero on analyzer crashes or unexpected primary
-formats. Machine-readable fixture output is committed under `reports/lua/`.
+`verification/lua/`. Exits non-zero on analyzer crashes or unexpected primary
+formats. Machine-readable fixture output is committed under `verification/lua/`.
 
 ## Exit codes
 

@@ -53,10 +53,10 @@ jobs:
           report=".cache/rea-packet-required-tests.json"
           mkdir -p .cache
           rm -f "$report"
-          node scripts/run-exact-tests.mjs run --reporter=default --reporter=json --outputFile.json="$report" \
-            tests/boundary/captures/fieldDiscovery.test.ts src/process/LinuxResourceLimits.test.ts tests/boundary/captures/captureProvider.test.ts tests/boundary/captures/captureDescriptorCleanup.test.ts tests/boundary/pcap/pcapProvider.test.ts tests/boundary/pcap/pcapProviderCrossPlatform.test.ts tests/boundary/captures/resourceLimits.test.ts tests/boundary/captures/packetOutput.test.ts tests/boundary/mcp/packetCaptureMcp.test.ts tests/boundary/cli/captureCleanup.test.ts tests/acceptance/pcapVerifier.test.ts
-          node scripts/ci/require-provider-tests.mjs packet "$report"
-      - run: node scripts/verify-packet-capture.mjs
+          node tooling/run-exact-tests.mjs run --reporter=default --reporter=json --outputFile.json="$report" \
+            spec/boundary/captures/fieldDiscovery.test.ts core/process/LinuxResourceLimits.test.ts spec/boundary/captures/captureProvider.test.ts spec/boundary/captures/captureDescriptorCleanup.test.ts spec/boundary/pcap/pcapProvider.test.ts spec/boundary/pcap/pcapProviderCrossPlatform.test.ts spec/boundary/captures/resourceLimits.test.ts spec/boundary/captures/packetOutput.test.ts spec/boundary/mcp/packetCaptureMcp.test.ts spec/boundary/cli/captureCleanup.test.ts spec/acceptance/pcapVerifier.test.ts
+          node tooling/ci/require-provider-tests.mjs packet "$report"
+      - run: node tooling/verify-packet-capture.mjs
         env:
           REA_TSHARK_COMMAND: /usr/bin/tshark
           REA_CAPINFOS_COMMAND: /usr/bin/capinfos

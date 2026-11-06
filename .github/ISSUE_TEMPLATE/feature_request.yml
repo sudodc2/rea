@@ -83,7 +83,7 @@ body:
       options:
         - Read existing files or captured data
         - Launch or attach to a process
-        - Inject instrumentation or run scripts/code
+        - Inject instrumentation or run tooling/code
         - Change process memory or registers
         - Write or change files/configuration
         - Contact network services

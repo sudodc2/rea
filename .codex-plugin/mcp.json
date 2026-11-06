@@ -3,7 +3,7 @@
     "rea": {
       "command": "node",
       "args": [
-        "./scripts/plugin-mcp-launcher.mjs",
+        "./tooling/plugin-mcp-launcher.mjs",
         "6.8.0"
       ],
       "cwd": ".",

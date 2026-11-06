@@ -5,16 +5,16 @@ on:
   pull_request:
     paths:
       - ".github/workflows/real-go-binary.yml"
-      - "src/go/**"
-      - "src/domain/go/**"
-      - "src/domain/dosMz.ts"
-      - "src/application/go/**"
-      - "src/contracts/go/**"
-      - "src/composition/go.ts"
-      - "src/cli/goCommands.ts"
-      - "src/server/registerGoTools.ts"
-      - "scripts/verify-go-binary.mjs"
-      - "scripts/lib/mcp-verifier-results.mjs"
+      - "core/go/**"
+      - "core/domain/go/**"
+      - "core/domain/dosMz.ts"
+      - "core/application/go/**"
+      - "core/contracts/go/**"
+      - "core/composition/go.ts"
+      - "core/cli/goCommands.ts"
+      - "core/server/registerGoTools.ts"
+      - "tooling/verify-go-binary.mjs"
+      - "tooling/lib/mcp-verifier-results.mjs"
 
 permissions:
   contents: read

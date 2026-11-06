@@ -10,8 +10,8 @@ equivalent completed investigations. A useful outcome can also be a measured
 decision to leave an implementation alone.
 
 Follow the checkout's [performance priorities](../../../AGENTS.md#performance),
-[tool design](../../../docs/tool-design.md), and
-[testing guide](../../../docs/testing.md). This skill supplies an optimization
+[tool design](../../../handbook/tool-design.md), and
+[testing guide](../../../handbook/testing.md). This skill supplies an optimization
 workflow, not additional permission to execute targets, publish, or merge.
 Use the current contracts, provider prerequisites, and user authorization.
 

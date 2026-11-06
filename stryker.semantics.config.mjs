@@ -1,4 +1,4 @@
-import { mutationRanges } from "./scripts/lib/reverse-tools-mutation-targets.mjs";
+import { mutationRanges } from "./tooling/lib/reverse-tools-mutation-targets.mjs";
 
 const config = {
   $schema: "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
@@ -18,14 +18,14 @@ const config = {
   concurrency: 2,
   timeoutMS: 30000,
   reporters: ["clear-text", "progress", "html", "json"],
-  jsonReporter: { fileName: "reports/mutation/reverse-tools-semantics.json" },
-  htmlReporter: { fileName: "reports/mutation/reverse-tools-semantics.html" },
+  jsonReporter: { fileName: "verification/mutation/reverse-tools-semantics.json" },
+  htmlReporter: { fileName: "verification/mutation/reverse-tools-semantics.html" },
 };
 
 export default {
   ...config,
   mutate: [
-    ...mutationRanges("src/cutter/CutterBridgeClient.ts", [
+    ...mutationRanges("core/cutter/CutterBridgeClient.ts", [
       {
         kind: "expression",
         text: "status.data.current_file === undefined",
@@ -35,7 +35,7 @@ export default {
         text: "response.current_file === undefined",
       },
     ]),
-    ...mutationRanges("src/rizin/RizinDebugSessionManager.ts", [
+    ...mutationRanges("core/rizin/RizinDebugSessionManager.ts", [
       {
         kind: "declaration",
         name: "isRizinCommandDeadlineExpired",

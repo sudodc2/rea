@@ -5,8 +5,8 @@
 /.github/actions/ @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
 /package.json @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
 /package-lock.json @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
-/scripts/verify-tools/skills/package.json @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
-/scripts/verify-tools/skills/package-lock.json @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
-/scripts/fixtures/http3-lab-requirements.txt @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
-/website/requirements.txt @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
-/third_party/ @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
+/tooling/verify-tools/skills/package.json @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
+/tooling/verify-tools/skills/package-lock.json @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
+/tooling/fixtures/http3-lab-requirements.txt @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
+/web/requirements.txt @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev
+/vendor/ @morluto @kaoru0822-kitauji @N0zoM1z0 @gensokyo-dev

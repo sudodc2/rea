@@ -65,22 +65,22 @@
   "overrides": [
     {
       "files": [
-        "scripts/electron-active-hook*.cjs",
-        "tests/conformance/readiness/electron/*.js",
-        "website/public/examples/notes-electron/*.js"
+        "tooling/electron-active-hook*.cjs",
+        "spec/conformance/readiness/electron/*.js",
+        "web/public/examples/notes-electron/*.js"
       ],
       "rules": {
         "no-var-requires": "off"
       }
     },
     {
-      "files": ["src/**/*.ts"],
+      "files": ["core/**/*.ts"],
       "rules": {
         "typescript/no-misused-promises": "error"
       }
     },
     {
-      "files": ["tests/**/*.ts", "src/**/*.test.ts", "src/**/*.fixture.ts"],
+      "files": ["spec/**/*.ts", "core/**/*.test.ts", "core/**/*.fixture.ts"],
       "rules": {
         "max-lines": "off",
         "max-lines-per-function": [
@@ -95,7 +95,7 @@
       }
     },
     {
-      "files": ["src/application/**/*.test.ts"],
+      "files": ["core/application/**/*.test.ts"],
       "rules": {
         "no-restricted-imports": [
           "error",
@@ -111,7 +111,7 @@
       }
     },
     {
-      "files": ["tests/composition/**/*.test.ts"],
+      "files": ["spec/composition/**/*.test.ts"],
       "rules": {
         "no-restricted-imports": [
           "error",
@@ -137,7 +137,7 @@
       }
     },
     {
-      "files": ["tests/**/*.test.ts", "src/**/*.test.ts"],
+      "files": ["spec/**/*.test.ts", "core/**/*.test.ts"],
       "rules": {
         "vitest/valid-expect": [
           "warn",
@@ -151,8 +151,8 @@
     },
     {
       "files": [
-        "scripts/lib/http3-capture-assertions.test.mjs",
-        "scripts/lib/http3-verifier-lifecycle.test.mjs"
+        "tooling/lib/http3-capture-assertions.test.mjs",
+        "tooling/lib/http3-verifier-lifecycle.test.mjs"
       ],
       "rules": {
         "typescript/no-floating-promises": [
@@ -170,7 +170,7 @@
       }
     },
     {
-      "files": ["scripts/fixtures/javascript-recovery/code-split/entry.mjs"],
+      "files": ["tooling/fixtures/javascript-recovery/code-split/entry.mjs"],
       "rules": {
         "typescript/no-floating-promises": "off"
       }
@@ -184,7 +184,7 @@
     "dist",
     "build",
     "node_modules",
-    "docs/api",
+    "handbook/api",
     "coverage",
     ".turbo",
     ".cache",
@@ -199,7 +199,7 @@
   "jsPlugins": [
     {
       "name": "rea",
-      "specifier": "./scripts/lint/index.mjs"
+      "specifier": "./tooling/lint/index.mjs"
     }
   ]
 }

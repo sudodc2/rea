@@ -284,7 +284,7 @@ list any `credential-named-members` warning pointers for review. Never publish
 or share the bundle yourself.
 
 See
-[agent environments](https://github.com/sudodc2/rea/blob/main/docs/agent-environments.md)
+[agent environments](https://github.com/sudodc2/rea/blob/main/handbook/agent-environments.md)
 for what the state, replay and the bundle establish, and
 [evidence workflows](evidence-workflows.md) for the manifest and state views.
 
@@ -338,7 +338,7 @@ Kinds: `file_present` and `file_absent`; `lines_present` and `lines_absent`
 such as `/groups/GROUP/KEY` for a key file); `row_present` and `row_absent`
 (`table`, `where` by column) and `row_count`. Each names its `file` as a path
 under the home. The
-[desktop application tasks](https://github.com/sudodc2/rea/blob/main/docs/desktop-application-tasks.md)
+[desktop application tasks](https://github.com/sudodc2/rea/blob/main/handbook/desktop-application-tasks.md)
 guide has the exact rules.
 
 ### Export the task

@@ -44,14 +44,14 @@ Use "none" or "not applicable" only when established. -->
 - Provider, bridge, target-format, or platform compatibility:
 - Evidence, artifact, provenance, or reconstruction contract:
 - Target selection, authority, upstream behavior, and cleanup details (if applicable):
-- Generated metadata (`docs/public/product-catalog.json`), package, or installation impact (CI generates and validates ignored catalogs and `skills/`; edit authored instructions in `.agents/skills/reverse-engineer-anything/` and never commit build outputs):
+- Generated metadata (`handbook/public/product-catalog.json`), package, or installation impact (CI generates and validates ignored catalogs and `skills/`; edit authored instructions in `.agents/skills/reverse-engineer-anything/` and never commit build outputs):
 
 Expected effects (check known effects; use documentation-only on its own).
 Unchecked items do not establish absence; leave uncertainties visible.
 
 - [ ] Read existing files or captured data.
 - [ ] Launch or attach to a process.
-- [ ] Inject instrumentation or run scripts/code.
+- [ ] Inject instrumentation or run tooling/code.
 - [ ] Change process memory, registers, files, or configuration.
 - [ ] Contact network services.
 - [ ] Recover protected code or work around protections.
@@ -71,8 +71,8 @@ source, link, or rendered-document checks. -->
 - User-visible CLI/MCP output (if applicable):
 - Remaining proof gaps:
 
-For boundary fixes, identify the applicable [boundary regressions](https://github.com/sudodc2/rea/blob/main/docs/testing.md#boundary-regressions)
-and [lifecycle regressions](https://github.com/sudodc2/rea/blob/main/docs/testing.md#lifecycle-regressions)
+For boundary fixes, identify the applicable [boundary regressions](https://github.com/sudodc2/rea/blob/main/handbook/testing.md#boundary-regressions)
+and [lifecycle regressions](https://github.com/sudodc2/rea/blob/main/handbook/testing.md#lifecycle-regressions)
 covered by the evidence above, and explain relevant gaps.
 
 For evidence-bearing changes:
@@ -99,7 +99,7 @@ limits, security/privacy/containment implications, and meaningful proof gaps. --
   its new behavior and migration, and why compatibility/deprecation cannot
   preserve it. Every release increments minor, including breaking changes;
   keep breaking markers and migration notes so callers can assess compatibility.
-  See docs/releasing.md. -->
+  See handbook/releasing.md. -->
 - Real Hopper/Ghidra, browser, or OS coverage:
 - Package or release metadata impact:
 - Security, privacy, process, or containment review:

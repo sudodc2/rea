@@ -1,14 +1,14 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",
+    "rootDir": "core",
     "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["core/**/*.ts"],
   "exclude": [
-    "src/**/*.fixture.ts",
-    "src/**/*.test.ts",
-    "tests",
+    "core/**/*.fixture.ts",
+    "core/**/*.test.ts",
+    "spec",
     "dist",
     "node_modules"
   ]

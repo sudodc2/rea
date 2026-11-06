@@ -6,7 +6,7 @@ description: Prepare or rewrite REA release changelogs and GitHub release notes 
 # REA changelog update
 
 Use this for release-note preparation and contributor attribution. Read
-[docs/releasing.md](../../../docs/releasing.md) from the repository root for
+[handbook/releasing.md](../../../handbook/releasing.md) from the repository root for
 publication authority and the existing checkpoint checks. This skill prepares
 notes; it does not authorize merging, tagging, or publishing.
 
@@ -19,11 +19,11 @@ Use the proposed version, including its prerelease suffix; do not change the
 `always-bump-minor` strategy to imitate OpenClaw's calendar versions.
 
 ```bash
-node scripts/release-notes.mjs inventory \
+node tooling/release-notes.mjs inventory \
   --repository morluto/rea --base rea-agents-PREVIOUS \
   --target FULL_BASE_BRANCH_SHA --version VERSION \
   --manifest /tmp/rea-VERSION.contributions.json
-node scripts/release-notes.mjs record \
+node tooling/release-notes.mjs record \
   --manifest /tmp/rea-VERSION.contributions.json \
   --summary \
   --output /tmp/rea-VERSION.record.md
@@ -96,16 +96,16 @@ Local preparation and validation can proceed independently.
    A proposal already running must finish before editing. Do not dispatch
    manual preparation over finalized notes.
 2. On that release branch, save the reviewed inventory as
-   `docs/releases/VERSION.contributions.json`. This is durable public release
+   `handbook/releases/VERSION.contributions.json`. This is durable public release
    provenance, not a temporary planning file. Do not add credentials or local
    environment dumps. Keep the existing version artifacts aligned.
 3. Run the existing checkpoint validator and the new checker:
 
    ```bash
-   node scripts/release-notes.mjs check \
-     --manifest docs/releases/VERSION.contributions.json
-   node scripts/release-notes.mjs render \
-     --manifest docs/releases/VERSION.contributions.json \
+   node tooling/release-notes.mjs check \
+     --manifest handbook/releases/VERSION.contributions.json
+   node tooling/release-notes.mjs render \
+     --manifest handbook/releases/VERSION.contributions.json \
      --output /tmp/rea-VERSION.notes.md
    ```
 

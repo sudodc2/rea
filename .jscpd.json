@@ -4,15 +4,15 @@
   "ignore": [
     "node_modules/**",
     "dist/**",
-    "docs/**",
+    "handbook/**",
     ".codex/**",
     ".devin/**",
-    "tests/fixtures/**",
-    "third_party/**",
-    "tests/conformance/**/*.c",
-    "tests/conformance/**/*.m",
-    "tests/conformance/**/*.swift",
-    "tests/conformance/**/*.xib"
+    "spec/fixtures/**",
+    "vendor/**",
+    "spec/conformance/**/*.c",
+    "spec/conformance/**/*.m",
+    "spec/conformance/**/*.swift",
+    "spec/conformance/**/*.xib"
   ],
   "gitignore": true,
   "minLines": 5,

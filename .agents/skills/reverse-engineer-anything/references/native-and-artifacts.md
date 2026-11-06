@@ -60,7 +60,7 @@ coverage, read-range identity and unknowns; directory snapshot identity is not
 a digest of every file's contents. Component path markers do not establish
 runtime presence. For compact CLI output, use
 `inspect-desktop-application PATH --detail summary --evidence_output BUNDLE`.
-See [desktop installations](https://github.com/sudodc2/rea/blob/main/docs/desktop-applications.md).
+See [desktop installations](https://github.com/sudodc2/rea/blob/main/handbook/desktop-applications.md).
 
 ## Go build metadata
 
@@ -82,7 +82,7 @@ read weights or establish full-file identity. `hash: "full"` explicitly streams
 all bytes. Retained `model-artifact` views page `metadata`, `tensors` and derived
 `types`, with exact batch filters and selected fields. Arrays retain typed counts
 and eight-element previews; omitted values, unknown types and runtime behavior
-stay explicit. See [model files](https://github.com/sudodc2/rea/blob/main/docs/model-artifacts.md).
+stay explicit. See [model files](https://github.com/sudodc2/rea/blob/main/handbook/model-artifacts.md).
 
 ## IL2CPP metadata
 
@@ -100,7 +100,7 @@ without member collections retain unknown counts rather than empty inventories. 
 artifact SHA-256 and index widths. Unrecognized magic may mean encryption and
 is unsupported, not decrypted. Linking names to `GameAssembly` or
 `UnityFramework` code addresses remains a separate native-analysis question.
-See [IL2CPP metadata](https://github.com/sudodc2/rea/blob/main/docs/il2cpp-metadata.md).
+See [IL2CPP metadata](https://github.com/sudodc2/rea/blob/main/handbook/il2cpp-metadata.md).
 
 ## Rust dependency metadata
 
@@ -113,7 +113,7 @@ Preserve artifact SHA-256, package order, dependency indices, and the section
 file range. A missing section is null metadata, not proof the binary has no
 dependencies. An omitted package kind stays null. A rustc commit hash is
 inferred from a read-only `/rustc/<40-hex>/` path and does not by itself
-identify the compiler. See [Rust binaries](https://github.com/sudodc2/rea/blob/main/docs/rust-binaries.md).
+identify the compiler. See [Rust binaries](https://github.com/sudodc2/rea/blob/main/handbook/rust-binaries.md).
 
 ## PE Authenticode certificate tables
 
@@ -127,7 +127,7 @@ payload hashes, original validity-time spellings, and
 `IMAGE_DIRECTORY_ENTRY_SECURITY` directory is observed absence of that table,
 not proof the image is unsigned in every catalog or overlay sense. Signatures,
 chains, timestamps, and Authenticode digest coverage remain unobserved. See
-[PE Authenticode certificate tables](https://github.com/sudodc2/rea/blob/main/docs/pe-certificates.md).
+[PE Authenticode certificate tables](https://github.com/sudodc2/rea/blob/main/handbook/pe-certificates.md).
 
 ## PE import and delay-load tables
 
@@ -140,7 +140,7 @@ ILT/IAT RVAs. A missing `IMAGE_DIRECTORY_ENTRY_IMPORT` directory is observed
 absence of that table, not proof the image never imported APIs through another
 table or overlay. Bound snapshots, loaded IAT contents, and export-forward
 resolution remain unobserved. See
-[PE import and delay-load tables](https://github.com/sudodc2/rea/blob/main/docs/pe-imports.md).
+[PE import and delay-load tables](https://github.com/sudodc2/rea/blob/main/handbook/pe-imports.md).
 
 ## PE TLS callbacks and load configuration
 
@@ -153,7 +153,7 @@ SHA-256, directory and callback-array file ranges, and callback VAs as
 hexadecimal strings. Fields outside the declared `Size` are `null`. Guard-flag
 mitigations carry `evidence_kind: "inferred"`; enforcement remains unobserved.
 See
-[PE TLS callbacks and load configuration](https://github.com/sudodc2/rea/blob/main/docs/pe-load-config.md).
+[PE TLS callbacks and load configuration](https://github.com/sudodc2/rea/blob/main/handbook/pe-load-config.md).
 
 ## Binary hardening
 
@@ -165,7 +165,7 @@ target execution is required. The CLI equivalent is
 slice. A missing import is `unknown`, not proof the protection was omitted.
 Authenticode and Mach-O code-signature rows report presence, not validity.
 `hardened_runtime` stays unknown and names `inspect_signature`. See
-[binary hardening](https://github.com/sudodc2/rea/blob/main/docs/binary-hardening.md).
+[binary hardening](https://github.com/sudodc2/rea/blob/main/handbook/binary-hardening.md).
 
 ## ELF note tables
 
@@ -176,7 +176,7 @@ is `inspect-elf-notes PATH`. Preserve artifact SHA-256, table file ranges,
 descriptor hashes, and original owner spellings. A missing table is observed
 absence of those declarations, not proof the image never carried notes in
 another container. See
-[ELF note tables](https://github.com/sudodc2/rea/blob/main/docs/elf-notes.md).
+[ELF note tables](https://github.com/sudodc2/rea/blob/main/handbook/elf-notes.md).
 
 ## Apple IPS crash reports
 
@@ -188,7 +188,7 @@ Xcode, atos, or target execution is required. The CLI equivalent is
 uppercase image UUIDs, and integer literals that exceed IEEE-754 range. Only
 `bug_type` `"309"` yields a crash body; other DiagnosticReports types return
 no crash result. Opened Mach-O and dSYM UUID joins remain unobserved. See
-[Apple IPS crash reports](https://github.com/sudodc2/rea/blob/main/docs/apple-ips.md).
+[Apple IPS crash reports](https://github.com/sudodc2/rea/blob/main/handbook/apple-ips.md).
 
 ## Linux kernel modules
 
@@ -207,7 +207,7 @@ unvalidated. An absent trailer is not proof the module is unsigned in another
 container. gzip, xz, and zstd whole-file containers are unsupported and name
 `external_decompression` as the next probe: use an external codec utility to
 decompress into a separate file, then call `inspect_kernel_module` on that file. See
-[Linux kernel modules](https://github.com/sudodc2/rea/blob/main/docs/kernel-modules.md).
+[Linux kernel modules](https://github.com/sudodc2/rea/blob/main/handbook/kernel-modules.md).
 
 ## CPython pyc files
 
@@ -217,7 +217,7 @@ code-object names, or bytecode identity. No `open_binary`, Python installation,
 or target execution is required. The CLI equivalent is `inspect-python-pyc PATH`.
 Preserve artifact SHA-256, the 16-byte header fields, nested code names, and
 bytecode SHA-256. Bytecode is not decompiled. A decoded header does not prove
-the matching `.py` is present. See [CPython pyc inspection](https://github.com/sudodc2/rea/blob/main/docs/python-pyc.md).
+the matching `.py` is present. See [CPython pyc inspection](https://github.com/sudodc2/rea/blob/main/handbook/python-pyc.md).
 
 ## Erlang BEAM files
 
@@ -231,7 +231,7 @@ a `beam` view selecting a collection, exact names/indices and fields; read later
 pages from `parent_evidence_id` or the complete Evidence bundle. Same-name
 exports retain every arity and original atom index. CLI summary delivery requires
 `--evidence_output`. Null table counts remain distinct from decoded empty tables. See
-[Erlang BEAM files](https://github.com/sudodc2/rea/blob/main/docs/erlang-beam.md).
+[Erlang BEAM files](https://github.com/sudodc2/rea/blob/main/handbook/erlang-beam.md).
 
 ## SQLite snapshots
 
@@ -246,7 +246,7 @@ Choose `row_limit` when a finite sample is useful and keep truncation and
 unspecified row order explicit. Virtual tables, shadow tables and views are
 schema facts, not row-read targets. REA inspects private copies and leaves
 the source files untouched; obtain a coherent quiescent database/WAL snapshot
-before inspection. See [SQLite snapshots](https://github.com/sudodc2/rea/blob/main/docs/sqlite-databases.md).
+before inspection. See [SQLite snapshots](https://github.com/sudodc2/rea/blob/main/handbook/sqlite-databases.md).
 
 ## Recorded Linux crashes
 
@@ -261,7 +261,7 @@ The optional `include_debugger_context` facet adds mapping candidates through
 caller-supplied GDB/pwndbg in an owned core-only session. Display names do not
 establish current file identity; zero reported flags leave permissions unknown.
 Requested unavailable context fails with setup guidance. See
-[recorded crashes](https://github.com/sudodc2/rea/blob/main/docs/recorded-crashes.md)
+[recorded crashes](https://github.com/sudodc2/rea/blob/main/handbook/recorded-crashes.md)
 for exact upstream profiles, bounds and verification coverage.
 
 ## Offline ELF layout
@@ -392,7 +392,7 @@ import overrides and repair scripts are unavailable in this mode. Treat original
 analysis completeness/settings as unknown and prior edits as caller-project state.
 The program's recorded import digest must match the target; changed project content
 requires reopening for a fresh profile. See the
-[setup and preparation guide](https://github.com/sudodc2/rea/blob/main/docs/installation.md#reuse-an-existing-ghidra-project).
+[setup and preparation guide](https://github.com/sudodc2/rea/blob/main/handbook/installation.md#reuse-an-existing-ghidra-project).
 
 ## Ghidra startup deadline recovery
 
@@ -426,7 +426,7 @@ and memory controls in place. Disable specific expensive analyzers only when
 their missing coverage is acceptable and retain the resulting limitations.
 Exported C and embedded resources remain useful independent evidence, but a
 timeout does not establish complete analysis or absence of code. See the
-[deadline and client guide](https://github.com/sudodc2/rea/blob/main/docs/mcp-contracts.md#ghidra-first-query-deadlines-and-recovery).
+[deadline and client guide](https://github.com/sudodc2/rea/blob/main/handbook/mcp-contracts.md#ghidra-first-query-deadlines-and-recovery).
 
 ## Bridge request ceiling
 
@@ -577,7 +577,7 @@ broader metadata recovery on Linux; it requires an explicitly configured
 NativeAOT JAR. These are separate routes. The built-in parser also runs on
 Windows Ghidra P0; read frozen literals from its report, because
 `search_strings` does not include them. See the
-[NativeAOT guide](https://github.com/sudodc2/rea/blob/main/docs/ghidra-nativeaot.md)
+[NativeAOT guide](https://github.com/sudodc2/rea/blob/main/handbook/ghidra-nativeaot.md)
 for setup, supported layouts, and host restrictions. Preserve binary identity
 and distinguish derived metadata from Ghidra database observations. Recovered
 types and native pseudocode are not original C# source. Windows Ghidra P0 has
@@ -606,7 +606,7 @@ every executable in the bundle. It also lists missing or weak loads and earlier
 provides them.
 
 Use `extract_artifact` when materialized files from a supported format are needed.
-It extracts the active target and accepts optional `integrity_policy`; see the [MCP contracts](https://github.com/sudodc2/rea/blob/main/docs/mcp-contracts.md).
+It extracts the active target and accepts optional `integrity_policy`; see the [MCP contracts](https://github.com/sudodc2/rea/blob/main/handbook/mcp-contracts.md).
 It materializes all regular files into a fresh temporary directory chosen by
 REA. Symlinks and encrypted entries are inventory facts, not extractable files.
 The result reports the materialized directory; callers do not choose the
@@ -620,7 +620,7 @@ whole-file digest. Extraction includes the original header, optional trainer
 and uninterpreted trailing bytes. These file units are not mapper/CPU bank
 maps. NES 2.0, UNIF, dirty legacy headers and truncated payloads are explicitly
 refused. No emulator or 6502 analysis is performed. See the
-[iNES guide](https://github.com/sudodc2/rea/blob/main/docs/ines-containers.md).
+[iNES guide](https://github.com/sudodc2/rea/blob/main/handbook/ines-containers.md).
 
 Native DMG traversal automatically uses a read-only mount on supported macOS
 hosts, with an owned temporary mount directory and cleanup. It needs no approval
@@ -634,7 +634,7 @@ temporary, not a retained export of the image's contents.
 For headerless DOS COM, explicitly open with `format: "dos-com"` (CLI
 `--target-format dos-com`). Inspect the load image before trusting function
 analysis: the entry is `0x10100`, file offset zero, with imposed real-mode segment
-context. PSP/stack/device state remains unmodeled. See [DOS guide](https://github.com/sudodc2/rea/blob/main/docs/ghidra-dos.md).
+context. PSP/stack/device state remains unmodeled. See [DOS guide](https://github.com/sudodc2/rea/blob/main/handbook/ghidra-dos.md).
 
 Use `inspect_byte_entropy` to triage high- and low-entropy ranges before extraction.
 
@@ -648,14 +648,14 @@ otherwise. Big-endian ARM, Thumb-only, and Cortex-M variants are unsupported.
 `0x0000..0xffff`. 65C02, 65816, cartridge containers, bank switching, and mapper
 semantics are unsupported. `m68k` requires an even entry and decodes the 68040
 superset of the 68000 family; Amiga/Atari containers and vector-table entry
-discovery are unsupported. Windows Ghidra P0 admits raw images only for `6502`. See [raw binary guide](https://github.com/sudodc2/rea/blob/main/docs/raw-binary.md).
+discovery are unsupported. Windows Ghidra P0 admits raw images only for `6502`. See [raw binary guide](https://github.com/sudodc2/rea/blob/main/handbook/raw-binary.md).
 
 Intel HEX, S-record, UF2 and DfuSe files are containers, not raw images:
 `inspect_artifact` lists address regions (UF2 per familyID, DfuSe per element
 with its alternate setting), and `extract_artifact` writes each region. Open an
 extracted region as `raw-binary` with its start address as `entry_point`. UF2
 numbering gaps leave coverage unknown; a DfuSe suffix CRC mismatch follows
-`integrity_policy`. See [UF2 and DfuSe](https://github.com/sudodc2/rea/blob/main/docs/uf2-dfuse.md).
+`integrity_policy`. See [UF2 and DfuSe](https://github.com/sudodc2/rea/blob/main/handbook/uf2-dfuse.md).
 
 ### Function annotations in Ghidra
 
@@ -682,7 +682,7 @@ code pages, payload hashes and static icon-group references. Same-language icon
 resolution is explicit; missing references and size mismatch remain visible.
 Other payloads are opaque, and this operation does not decode images or simulate
 Windows resource loading. Consult the budgets and supported tree profile in
-[offline binary diagnostics](https://github.com/sudodc2/rea/blob/main/docs/binary-diagnostics.md).
+[offline binary diagnostics](https://github.com/sudodc2/rea/blob/main/handbook/binary-diagnostics.md).
 
 ## Offline PE and ELF export tables
 
@@ -692,7 +692,7 @@ directory or ELF dynamic symbol table on any host without opening a native
 target. Ordinal-only, forwarded and hidden-version exports stay distinct;
 partial or unsupported coverage means the inventory is incomplete, not that
 exports are absent. Use `inspect_macho` for Mach-O. See
-[offline binary diagnostics](https://github.com/sudodc2/rea/blob/main/docs/binary-diagnostics.md).
+[offline binary diagnostics](https://github.com/sudodc2/rea/blob/main/handbook/binary-diagnostics.md).
 
 For exact core-module import/export differences, use `compare_wasm_interfaces`
 with two complete inspection Evidence records (or current-session retained
@@ -719,7 +719,7 @@ coverage; encrypted members have unknown content identity. An empty filtered
 page cannot prove absence in unknown coverage. Retained views are historical,
 not fresh filesystem checks. No decryption, Godot resource decoding, GDScript
 decompilation or target execution is provided. See
-[Godot PCK](https://github.com/sudodc2/rea/blob/main/docs/godot-pck.md).
+[Godot PCK](https://github.com/sudodc2/rea/blob/main/handbook/godot-pck.md).
 
 UnityFS AssetBundle containers (`.bundle`, `.ab`, YooAsset packages and other
 byte-identified files) list `CAB-*` SerializedFiles and `.resS` members with
@@ -729,21 +729,21 @@ coverage; LZMA member bytes retain named occurrences with unavailable hashes.
 Virtual member offsets are not physical carrier locations. Format 6–8 readers
 cache one decoded block and support retained filtered/paged views. No
 decryption or SerializedFile object decoding is provided. See
-[UnityFS](https://github.com/sudodc2/rea/blob/main/docs/unityfs.md).
+[UnityFS](https://github.com/sudodc2/rea/blob/main/handbook/unityfs.md).
 
 WeChat mini-program packages (`.wxapkg` files with `0xBE`/`0xED` marks) list
 members with declared names and absolute carrier offsets; member bytes are
 stored verbatim. `V1MMWX` PC-client packages report `encrypted` directory
 status with unknown coverage and are refused on extraction; no decryption is
 attempted. See
-[wxapkg](https://github.com/sudodc2/rea/blob/main/docs/wxapkg.md).
+[wxapkg](https://github.com/sudodc2/rea/blob/main/handbook/wxapkg.md).
 
 U-Boot legacy uImages use the same inspection/extraction workflows. Prefer a
 retained summary and selected inventory views for header facts or component
 IDs. Header addresses/CPU/OS are declarations; payloads remain as stored.
 Multi-file components retain their aligned physical ranges; the full payload
 is also materialized. Unknown name text retains its original 32 bytes. See
-[U-Boot uImage](https://github.com/sudodc2/rea/blob/main/docs/uimage.md).
+[U-Boot uImage](https://github.com/sudodc2/rea/blob/main/handbook/uimage.md).
 
 ## ESP images
 
@@ -764,7 +764,7 @@ from it. Erased flash is described. Integrity mismatches are facts, not
 refusals. ESP8266 images are refused, and flash-encrypted images are not
 recognized. Segments are not disassembled, and RISC-V or Xtensa segments
 cannot be opened as raw-binary. See
-[ESP images](https://github.com/sudodc2/rea/blob/main/docs/esp-image.md).
+[ESP images](https://github.com/sudodc2/rea/blob/main/handbook/esp-image.md).
 
 ## ESP flash images
 
@@ -790,7 +790,7 @@ image, and a limitation says so. For a dump read from another flash address, cal
 relocated table can be named with `partition_table_offset`. No table found
 means unknown, often flash encryption. Extraction writes `nvs_keys` as
 ordinary data. See
-[ESP flash images](https://github.com/sudodc2/rea/blob/main/docs/esp-flash-image.md).
+[ESP flash images](https://github.com/sudodc2/rea/blob/main/handbook/esp-flash-image.md).
 
 ## Bun standalone executables
 
@@ -807,4 +807,4 @@ output tree; route extracted JavaScript to `analyze_javascript_application`.
 Layout labels describe record shapes, not a detected compiler version; unknown
 or ambiguous layouts are unsupported. Bytecode is retained, not decoded, and the
 executable is never run. See
-[Bun standalone executables](https://github.com/sudodc2/rea/blob/main/docs/bun-standalone.md).
+[Bun standalone executables](https://github.com/sudodc2/rea/blob/main/handbook/bun-standalone.md).

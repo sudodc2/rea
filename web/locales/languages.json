@@ -1,0 +1,140 @@
+[
+  {
+    "code": "en",
+    "name": "English",
+    "readme": "README.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "zh-CN",
+    "name": "简体中文",
+    "readme": "handbook/readme/README_zh.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "zh-TW",
+    "name": "繁體中文",
+    "readme": "handbook/readme/README_zh-TW.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "ja",
+    "name": "日本語",
+    "readme": "handbook/readme/README_ja.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "ko",
+    "name": "한국어",
+    "readme": "handbook/readme/README_ko.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "tr",
+    "name": "Türkçe",
+    "readme": "handbook/readme/README_tr.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "ru",
+    "name": "Русский",
+    "readme": "handbook/readme/README_ru.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "vi",
+    "name": "Tiếng Việt",
+    "readme": "handbook/readme/README_vi.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "th",
+    "name": "ไทย",
+    "readme": "handbook/readme/README_th.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "de",
+    "name": "Deutsch",
+    "readme": "handbook/readme/README_de.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "es",
+    "name": "Español",
+    "readme": "handbook/readme/README_es.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "fr",
+    "name": "Français",
+    "readme": "handbook/readme/README_fr.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "uk",
+    "name": "Українська",
+    "readme": "handbook/readme/README_uk.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "pl",
+    "name": "Polski",
+    "readme": "handbook/readme/README_pl.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "pt-BR",
+    "name": "Português (Brasil)",
+    "readme": "handbook/readme/README_pt-BR.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "ar",
+    "name": "العربية",
+    "readme": "handbook/readme/README_ar.md",
+    "dir": "rtl"
+  },
+  {
+    "code": "fa",
+    "name": "فارسی",
+    "readme": "handbook/readme/README_fa.md",
+    "dir": "rtl"
+  },
+  {
+    "code": "id",
+    "name": "Bahasa Indonesia",
+    "readme": "handbook/readme/README_id.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "it",
+    "name": "Italiano",
+    "readme": "handbook/readme/README_it.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "el",
+    "name": "Ελληνικά",
+    "readme": "handbook/readme/README_el.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "ml",
+    "name": "മലയാളം",
+    "readme": "handbook/readme/README_ml.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "ur-Latn",
+    "name": "Roman Urdu",
+    "readme": "handbook/readme/README_ur-Latn.md",
+    "dir": "ltr"
+  },
+  {
+    "code": "ro",
+    "name": "Română",
+    "readme": "handbook/readme/README_ro.md",
+    "dir": "ltr"
+  }
+]

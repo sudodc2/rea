@@ -3,15 +3,15 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     include: [
-      "tests/boundary/providers/CutterBridgeClient.test.ts",
-      "tests/boundary/providers/RizinCommandTimeout.test.ts",
-      "tests/boundary/providers/RizinTimeoutEvidence.test.ts",
-      "tests/boundary/mcp/rizinPendingOutput.test.ts",
+      "spec/boundary/providers/CutterBridgeClient.test.ts",
+      "spec/boundary/providers/RizinCommandTimeout.test.ts",
+      "spec/boundary/providers/RizinTimeoutEvidence.test.ts",
+      "spec/boundary/mcp/rizinPendingOutput.test.ts",
     ],
     pool: "forks",
     maxWorkers: 2,
     retry: 0,
     testTimeout: 60_000,
-    runner: "./tests/processOwnershipRunner.ts",
+    runner: "./spec/processOwnershipRunner.ts",
   },
 });

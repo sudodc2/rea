@@ -11,7 +11,7 @@ main and an older release expose the same arguments. Tool-name prefixes belong
 to the client: find the canonical REA operation in its actual tool listing and
 server association before concluding that it is absent. A shared prefix alone
 does not establish which server an approval wildcard covers. See
-[client tool names and discovery](https://github.com/sudodc2/rea/blob/main/docs/client-configuration.md#client-tool-names-and-discovery).
+[client tool names and discovery](https://github.com/sudodc2/rea/blob/main/handbook/client-configuration.md#client-tool-names-and-discovery).
 
 ## Choose the remedy from the observed failure
 
@@ -53,7 +53,7 @@ response delivery. In Codex, the setting is
 `mcp_servers.<server-id>.tool_timeout_sec` in **seconds**, not
 `startup_timeout_sec`. Select a value for the actual operation budget and
 headroom, not a universal timeout. See the
-[official MCP configuration reference](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
+[official MCP configuration reference](https://learn.chatgpt.com/handbook/extend/mcp?surface=cli).
 Apply configuration changes only within the authorized scope, preserving
 unrelated entries and backups; reconnect/restart as required by the host.
 When configuration is not editable, report the setting needed or use an
@@ -200,7 +200,7 @@ Use the actual server ID and only the operations whose effects were approved;
 this example does not approve inspection, extraction or runtime execution.
 Show the proposed config edit and preserve unrelated entries and backups before
 writing. Managed policy can constrain client settings. Consult the
-[Codex configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference)
+[Codex configuration reference](https://learn.chatgpt.com/handbook/config-file/config-reference)
 for the installed client's supported settings. This is an optional recovery
 choice, not a prerequisite for every REA task.
 

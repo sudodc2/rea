@@ -1,15 +1,15 @@
-[submodule "third_party/jadx-headless-mcp"]
-	path = third_party/jadx-headless-mcp
+[submodule "vendor/jadx-headless-mcp"]
+	path = vendor/jadx-headless-mcp
 	url = https://github.com/1013503897/jadx-headless-mcp.git
-[submodule "third_party/binwalk"]
-	path = third_party/binwalk
+[submodule "vendor/binwalk"]
+	path = vendor/binwalk
 	url = https://github.com/ReFirmLabs/binwalk.git
-[submodule "third_party/unblob"]
-	path = third_party/unblob
+[submodule "vendor/unblob"]
+	path = vendor/unblob
 	url = https://github.com/onekey-sec/unblob.git
-[submodule "third_party/ghidra-nativeaot"]
-	path = third_party/ghidra-nativeaot
+[submodule "vendor/ghidra-nativeaot"]
+	path = vendor/ghidra-nativeaot
 	url = https://github.com/Washi1337/ghidra-nativeaot.git
-[submodule "third_party/wakaru"]
-	path = third_party/wakaru
+[submodule "vendor/wakaru"]
+	path = vendor/wakaru
 	url = https://github.com/pionxzh/wakaru.git

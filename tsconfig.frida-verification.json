@@ -4,8 +4,8 @@
     "noEmit": true
   },
   "files": [
-    "src/frida/frida-bindings.d.ts",
-    "scripts/verify/fridaBindingsCompatibility.ts"
+    "core/frida/frida-bindings.d.ts",
+    "tooling/verify/fridaBindingsCompatibility.ts"
   ],
   "include": []
 }

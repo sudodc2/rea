@@ -15,18 +15,18 @@
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/run-turbo.mjs",
-        "scripts/run-typescript.mjs",
-        "scripts/check-dependency-install.mjs",
-        "scripts/clean-build-output.mjs",
-        "scripts/bundle-runtime.mjs",
-        "scripts/record-catalog-digests.mjs",
-        "scripts/record-mcp-catalog.mjs",
-        "scripts/generate-package-metadata.mjs",
-        "src/**/*.{cts,mts,ts,tsx}",
-        "src/**/package.json",
-        "!src/**/*.test.ts",
-        "!src/**/*.fixture.ts",
+        "tooling/run-turbo.mjs",
+        "tooling/run-typescript.mjs",
+        "tooling/check-dependency-install.mjs",
+        "tooling/clean-build-output.mjs",
+        "tooling/bundle-runtime.mjs",
+        "tooling/record-catalog-digests.mjs",
+        "tooling/record-mcp-catalog.mjs",
+        "tooling/generate-package-metadata.mjs",
+        "core/**/*.{cts,mts,ts,tsx}",
+        "core/**/package.json",
+        "!core/**/*.test.ts",
+        "!core/**/*.fixture.ts",
         "tsconfig.json",
         "tsconfig.build.json"
       ],
@@ -37,23 +37,23 @@
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/run-turbo.mjs",
-        "scripts/run-typescript.mjs",
-        "src/**/*.{cts,mts,ts,tsx}",
-        "src/**/package.json",
-        "tests/**/*.{cts,mts,ts,tsx}",
-        "tests/**/package.json",
+        "tooling/run-turbo.mjs",
+        "tooling/run-typescript.mjs",
+        "core/**/*.{cts,mts,ts,tsx}",
+        "core/**/package.json",
+        "spec/**/*.{cts,mts,ts,tsx}",
+        "spec/**/package.json",
         "tsconfig.json",
         "tsconfig.build.json",
         "vitest.config.ts",
-        "scripts/**/*.d.{cts,mts,ts}",
-        "scripts/**/package.json",
+        "tooling/**/*.d.{cts,mts,ts}",
+        "tooling/**/package.json",
         ".github/actions/**/*.{cts,mts,ts,tsx}",
         ".github/**/package.json",
-        "docs/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
-        "docs/**/package.json",
-        "!docs/.vitepress/cache/**",
-        "!docs/.vitepress/dist/**"
+        "handbook/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "handbook/**/package.json",
+        "!handbook/.vitepress/cache/**",
+        "!handbook/.vitepress/dist/**"
       ],
       "outputs": [],
       "env": ["REA_TYPESCRIPT_COMPILER"]
@@ -62,13 +62,13 @@
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/generate-package-metadata.mjs",
-        "scripts/lib/generated-file.mjs",
-        "scripts/lib/verifier-source-loader.mjs",
-        "src/domain/skillManifest.ts",
-        "src/domain/result.ts",
+        "tooling/generate-package-metadata.mjs",
+        "tooling/lib/generated-file.mjs",
+        "tooling/lib/verifier-source-loader.mjs",
+        "core/domain/skillManifest.ts",
+        "core/domain/result.ts",
         ".agents/skills/reverse-engineer-anything/SKILL.md",
-        "src/generatedPackageMetadata.ts"
+        "core/generatedPackageMetadata.ts"
       ]
     },
     "lint": {
@@ -78,15 +78,15 @@
         ".oxlintrc.json",
         "package.json",
         "package-lock.json",
-        "scripts/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
-        "src/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
-        "tests/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
-        "docs/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "tooling/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "core/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "spec/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "handbook/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
         ".github/actions/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
-        "website/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
-        "!docs/.vitepress/cache/**",
-        "!docs/.vitepress/dist/**",
-        "!website/_site/**",
+        "web/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "!handbook/.vitepress/cache/**",
+        "!handbook/.vitepress/dist/**",
+        "!web/_site/**",
         "*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}"
       ]
     },
@@ -98,16 +98,16 @@
         "knip.json",
         "package.json",
         "package-lock.json",
-        "scripts/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
-        "src/**/*.ts",
-        "tests/**/*.ts",
+        "tooling/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "core/**/*.ts",
+        "spec/**/*.ts",
         ".github/actions/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
         ".github/**/package.json",
         ".github/workflows/*.{yml,yaml}",
         ".github/**/action.{yml,yaml}",
         "tsconfig.json",
         "tsconfig.build.json",
-        "docs/.vitepress/config.ts",
+        "handbook/.vitepress/config.ts",
         "*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}"
       ]
     },
@@ -117,18 +117,18 @@
         ".jscpd.json",
         "package.json",
         "package-lock.json",
-        "scripts/ci/static-check-report.mjs",
-        "src/**",
-        "tests/**"
+        "tooling/ci/static-check-report.mjs",
+        "core/**",
+        "spec/**"
       ],
       "outputs": [".cache/static-checks/jscpd/jscpd-report.json"]
     },
     "scan:todos": {
       "inputs": [
-        "bridge/**/*.{java,py}",
-        "scripts/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
-        "src/**/*.ts",
-        "tests/**/*.ts"
+        "provider-bridges/**/*.{java,py}",
+        "tooling/**/*.{cjs,cts,js,jsx,mjs,mts,ts,tsx}",
+        "core/**/*.ts",
+        "spec/**/*.ts"
       ]
     },
     "test:run": {
@@ -149,28 +149,28 @@
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/generate-*.mjs",
-        "scripts/check-doc-facts.mjs",
-        "scripts/lib/*.mjs",
-        "scripts/verify/managed/*.mjs",
-        "scripts/fixtures/managed/*.mjs",
-        "scripts/verify/apple/*.mjs",
-        "scripts/fixtures/apple/*.mjs",
-        "src/generated*.ts",
-        "src/contracts/**/*.ts",
-        "licenses/**",
-        "docs/**",
-        "!docs/public/product-catalog.json",
-        "!docs/verification/managed-conformance-*.json",
+        "tooling/generate-*.mjs",
+        "tooling/check-doc-facts.mjs",
+        "tooling/lib/*.mjs",
+        "tooling/verify/managed/*.mjs",
+        "tooling/fixtures/managed/*.mjs",
+        "tooling/verify/apple/*.mjs",
+        "tooling/fixtures/apple/*.mjs",
+        "core/generated*.ts",
+        "core/contracts/**/*.ts",
+        "attribution/**",
+        "handbook/**",
+        "!handbook/public/product-catalog.json",
+        "!handbook/verification/managed-conformance-*.json",
         ".agents/skills/reverse-engineer-anything/**",
         "README*.md",
         {
           "mode": "dependencyOutputs",
           "globs": [
             "skills/**",
-            "docs/public/product-catalog.json",
-            "docs/verification/managed-conformance-manifest.json",
-            "docs/verification/managed-conformance-ledger.json"
+            "handbook/public/product-catalog.json",
+            "handbook/verification/managed-conformance-manifest.json",
+            "handbook/verification/managed-conformance-ledger.json"
           ]
         }
       ]
@@ -180,8 +180,8 @@
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/generate-mcp-tool-catalog.mjs",
-        "scripts/lib/generated-file.mjs"
+        "tooling/generate-mcp-tool-catalog.mjs",
+        "tooling/lib/generated-file.mjs"
       ],
       "outputs": [".cache/mcp-tool-catalog.json"]
     },
@@ -190,9 +190,9 @@
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/generate-skill-metadata.mjs",
-        "scripts/lib/generated-file.mjs",
-        "scripts/lib/verifier-source-loader.mjs",
+        "tooling/generate-skill-metadata.mjs",
+        "tooling/lib/generated-file.mjs",
+        "tooling/lib/verifier-source-loader.mjs",
         ".agents/skills/reverse-engineer-anything/**"
       ],
       "outputs": ["skills/**"]
@@ -202,25 +202,25 @@
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/generate-product-catalog.mjs",
-        "scripts/lib/**/*.mjs",
+        "tooling/generate-product-catalog.mjs",
+        "tooling/lib/**/*.mjs",
         ".oxfmtrc.json"
       ],
-      "outputs": ["docs/public/product-catalog.json"]
+      "outputs": ["handbook/public/product-catalog.json"]
     },
     "artifacts:managed-evidence": {
       "dependsOn": ["artifacts:skills"],
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/generate-completion-ledger.mjs",
-        "scripts/lib/generated-file.mjs",
-        "scripts/verify/managed/**",
-        "scripts/fixtures/managed/**"
+        "tooling/generate-completion-ledger.mjs",
+        "tooling/lib/generated-file.mjs",
+        "tooling/verify/managed/**",
+        "tooling/fixtures/managed/**"
       ],
       "outputs": [
-        "docs/verification/managed-conformance-manifest.json",
-        "docs/verification/managed-conformance-ledger.json"
+        "handbook/verification/managed-conformance-manifest.json",
+        "handbook/verification/managed-conformance-ledger.json"
       ]
     },
     "artifacts:error-schema": {
@@ -228,20 +228,20 @@
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/generate-error-schema.mjs",
-        "scripts/lib/generated-file.mjs",
-        "scripts/lib/format-generated-file.mjs",
+        "tooling/generate-error-schema.mjs",
+        "tooling/lib/generated-file.mjs",
+        "tooling/lib/format-generated-file.mjs",
         ".oxfmtrc.json"
       ],
-      "outputs": ["docs/error-contract.schema.json"]
+      "outputs": ["handbook/error-contract.schema.json"]
     },
     "mcp-catalog:check:built": {
       "dependsOn": ["artifacts:mcp-catalog"],
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/generate-mcp-tool-catalog.mjs",
-        "scripts/lib/generated-file.mjs",
+        "tooling/generate-mcp-tool-catalog.mjs",
+        "tooling/lib/generated-file.mjs",
         {
           "mode": "dependencyOutputs",
           "globs": [".cache/mcp-tool-catalog.json"]
@@ -253,15 +253,15 @@
       "inputs": [
         "package.json",
         "package-lock.json",
-        "scripts/generate-completion-ledger.mjs",
-        "scripts/lib/generated-file.mjs",
-        "scripts/verify/managed/**",
-        "scripts/fixtures/managed/**",
+        "tooling/generate-completion-ledger.mjs",
+        "tooling/lib/generated-file.mjs",
+        "tooling/verify/managed/**",
+        "tooling/fixtures/managed/**",
         {
           "mode": "dependencyOutputs",
           "globs": [
-            "docs/verification/managed-conformance-manifest.json",
-            "docs/verification/managed-conformance-ledger.json"
+            "handbook/verification/managed-conformance-manifest.json",
+            "handbook/verification/managed-conformance-ledger.json"
           ]
         }
       ]

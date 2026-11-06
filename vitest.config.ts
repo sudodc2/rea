@@ -7,9 +7,9 @@ import { parseCLI } from "vitest/node";
 import {
   BUILT_TEST_PROJECTS,
   SOURCE_TEST_PROJECTS,
-} from "./scripts/lib/test-projects.mjs";
+} from "./tooling/lib/test-projects.mjs";
 
-import { CiTestSequencer } from "./tests/ciTestSequencer.js";
+import { CiTestSequencer } from "./spec/ciTestSequencer.js";
 
 // Playwright's registry does not derive a cache directory for Termux's
 // `android` platform. Match the production CLI fallback before workers import
@@ -100,13 +100,13 @@ const ZERO_COVERAGE_THRESHOLDS = {
   branches: 0,
   functions: 0,
   lines: 0,
-  "src/domain/**": {
+  "core/domain/**": {
     statements: 0,
     branches: 0,
     functions: 0,
     lines: 0,
   },
-  "src/contracts/**": {
+  "core/contracts/**": {
     statements: 0,
     branches: 0,
     functions: 0,
@@ -141,7 +141,7 @@ export default defineConfig({
       : {}),
     retry: 0,
     reporters: ["default"],
-    runner: "./tests/processOwnershipRunner.ts",
+    runner: "./spec/processOwnershipRunner.ts",
     // Boundary projects may compete with TypeScript, docs, and package checks
     // under Turbo. Keep the deadline bounded while avoiding false failures from
     // host-level CPU and filesystem contention.
@@ -153,7 +153,7 @@ export default defineConfig({
         tmpdir(),
         `rea-vitest-coverage-${String(process.pid)}`,
       ),
-      include: ["src/**"],
+      include: ["core/**"],
       thresholds: COVERAGE_SHARD
         ? ZERO_COVERAGE_THRESHOLDS
         : {
@@ -161,13 +161,13 @@ export default defineConfig({
             branches: 60,
             functions: 60,
             lines: 68,
-            "src/domain/**": {
+            "core/domain/**": {
               statements: 80,
               branches: 75,
               functions: 75,
               lines: 80,
             },
-            "src/contracts/**": {
+            "core/contracts/**": {
               statements: 85,
               branches: 80,
               functions: 80,

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * rea-lua fixture runner — analyzes every file in tests/fixtures and writes
- * JSON reports to reports/lua/. Exits non-zero if any fixture crashes the
+ * rea-lua fixture runner — analyzes every file in spec/fixtures and writes
+ * JSON reports to verification/lua/. Exits non-zero if any fixture crashes the
  * analyzer or produces an unexpected primary format.
  *
  *   node lua/tests/run.mjs
@@ -15,7 +15,7 @@ import { readFileSync } from 'node:fs';
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, '..', '..');
 const fixtures = join(here, 'fixtures');
-const outDir = join(repo, 'reports', 'lua');
+const outDir = join(repo, 'verification', 'lua');
 mkdirSync(outDir, { recursive: true });
 
 const EXPECTED = {

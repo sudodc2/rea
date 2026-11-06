@@ -1,25 +1,25 @@
 {
   "$schema": "./node_modules/knip/schema.json",
   "entry": [
-    "src/main.ts",
-    "src/cli.ts",
-    "src/cliOutput.ts",
-    "src/cliBuiltinArguments.ts",
-    "src/cli/cliResultOutput.ts",
-    "src/mcpDoctor.ts",
-    "src/composition/javascriptAnalysisWorkerProcess.ts",
-    "src/composition/webBundleAnalysisWorkerProcess.ts",
-    "src/contracts/errorSchemas.ts",
-    "scripts/verify/fridaBindingsCompatibility.ts",
-    "scripts/verify/termux/browser.mjs",
-    "scripts/verify-real-ghidra-noreturn.mjs",
-    "scripts/verify-real-ghidra-decompiler-failure.mjs",
-    "scripts/verify-real-ghidra-decompile-timeout.mjs",
-    "tests/processOwnershipRunner.ts"
+    "core/main.ts",
+    "core/cli.ts",
+    "core/cliOutput.ts",
+    "core/cliBuiltinArguments.ts",
+    "core/cli/cliResultOutput.ts",
+    "core/mcpDoctor.ts",
+    "core/composition/javascriptAnalysisWorkerProcess.ts",
+    "core/composition/webBundleAnalysisWorkerProcess.ts",
+    "core/contracts/errorSchemas.ts",
+    "tooling/verify/fridaBindingsCompatibility.ts",
+    "tooling/verify/termux/browser.mjs",
+    "tooling/verify-real-ghidra-noreturn.mjs",
+    "tooling/verify-real-ghidra-decompiler-failure.mjs",
+    "tooling/verify-real-ghidra-decompile-timeout.mjs",
+    "spec/processOwnershipRunner.ts"
   ],
-  "project": ["src/**/*.ts", "tests/**/*.ts", "scripts/**/*.mjs"],
+  "project": ["core/**/*.ts", "spec/**/*.ts", "tooling/**/*.mjs"],
   "vitepress": {
-    "entry": ["docs/.vitepress/config.ts"]
+    "entry": ["handbook/.vitepress/config.ts"]
   },
   "ignoreBinaries": ["^g\\+\\+$", "mkfifo"],
   "ignoreDependencies": [

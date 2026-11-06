@@ -45,7 +45,7 @@ jobs:
           script: |
             const { pathToFileURL } = require("node:url");
             const entry = pathToFileURL(
-              `${process.env.GITHUB_WORKSPACE}/scripts/ci/pr-readiness.mjs`,
+              `${process.env.GITHUB_WORKSPACE}/tooling/ci/pr-readiness.mjs`,
             );
             const { runReadinessCheck } = await import(entry.href);
             await runReadinessCheck({ github, context, core });
