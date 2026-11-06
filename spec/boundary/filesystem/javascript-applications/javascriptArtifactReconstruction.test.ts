@@ -1406,7 +1406,7 @@ it("produces deterministic ASAR graphs with unpacked native linkage and complete
         observations: expect.arrayContaining([
           expect.objectContaining({
             properties: expect.objectContaining({
-              path: "platform/addon.node",
+              path: "native/addon.node",
               unpacked: true,
             }),
           }),
@@ -1418,7 +1418,7 @@ it("produces deterministic ASAR graphs with unpacked native linkage and complete
     expect.objectContaining({
       relation: "loads",
       properties: expect.objectContaining({
-        resolved_path: "platform/addon.node",
+        resolved_path: "native/addon.node",
       }),
     }),
   );
@@ -1474,11 +1474,11 @@ it("keeps ASAR analysis usable when unpacked native companion bytes are absent",
   await writeJavaScriptArtifactFixture(source);
   const archive = join(root, "app.asar");
   await createPackageWithOptions(source, archive, { unpack: "*.node" });
-  await rm(join(`${archive}.unpacked`, "platform", "addon.node"));
+  await rm(join(`${archive}.unpacked`, "native", "addon.node"));
 
   const snapshot = await scanArtifactInventory(archive);
   const missingNative = snapshot.occurrences.find(
-    ({ logical_path }) => logical_path === "platform/addon.node",
+    ({ logical_path }) => logical_path === "native/addon.node",
   );
 
   expect(missingNative).toMatchObject({

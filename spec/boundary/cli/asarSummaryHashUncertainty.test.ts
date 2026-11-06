@@ -18,13 +18,13 @@ cliTest(
   async ({ cli }) => {
     const root = await createTestTempDirectory("rea-asar-summary-");
     const source = join(root, "source");
-    await mkdir(join(source, "platform"), { recursive: true });
+    await mkdir(join(source, "native"), { recursive: true });
     await writeFile(join(source, "main.js"), "console.log(1);\n");
     const bytes = "inert addon bytes\n";
-    await writeFile(join(source, "platform", "addon.node"), bytes);
+    await writeFile(join(source, "native", "addon.node"), bytes);
     const archive = join(root, "app.asar");
     await createPackageWithOptions(source, archive, { unpack: "*.node" });
-    const companion = join(`${archive}.unpacked`, "platform", "addon.node");
+    const companion = join(`${archive}.unpacked`, "native", "addon.node");
     const caveat =
       "Content hashes are unknown for some recorded files; missing node IDs do not prove content absence.";
     for (const phase of ["present", "missing", "restored"]) {
@@ -73,7 +73,7 @@ cliTest(
       );
       const occurrence = inspection.substeps
         .flatMap((step) => step.evidence.normalized_result.occurrences)
-        .find((row) => row.logical_path === "platform/addon.node");
+        .find((row) => row.logical_path === "native/addon.node");
       expect(occurrence).toMatchObject({
         hash_status: phase === "missing" ? "unavailable" : "verified",
         ...(phase === "missing" ? { artifact_id: null } : {}),

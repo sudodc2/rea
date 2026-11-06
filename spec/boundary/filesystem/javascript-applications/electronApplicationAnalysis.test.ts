@@ -687,13 +687,13 @@ bridge.exposeInMainWorld("reaApi", {
 
 const computedMemberFixtureDirectory = async (): Promise<string> => {
   const root = await createTestTempDirectory("rea-electron-computed-members-");
-  await mkdir(join(root, "platform"));
+  await mkdir(join(root, "native"));
   await Promise.all([
     writeFile(
       join(root, "main.js"),
       String.raw`
 const member = "read";
-const selected = require("./platform/addon.node")[member];
+const selected = require("./native/addon.node")[member];
 const startsWith = "includes";
 function validate(event) {
   return event.senderFrame.url[startsWith]("file://");
@@ -701,7 +701,7 @@ function validate(event) {
 module.exports = { selected, validate };
 `,
     ),
-    writeFile(join(root, "platform", "addon.node"), Buffer.from([0, 1, 2, 3])),
+    writeFile(join(root, "native", "addon.node"), Buffer.from([0, 1, 2, 3])),
   ]);
   return root;
 };

@@ -367,15 +367,15 @@ it("preserves every equal-content occurrence and copies a nested ASAR as its con
 it("ignores unavailable members of a nested ASAR but refuses them as active entries", async () => {
   const root = await createTestTempDirectory("rea-extract-nested-unpacked-");
   const contents = join(root, "contents");
-  await mkdir(join(contents, "platform"), { recursive: true });
+  await mkdir(join(contents, "native"), { recursive: true });
   await writeFile(join(contents, "main.js"), "export default 1;\n");
-  await writeFile(join(contents, "platform", "addon.node"), "native bytes\n");
+  await writeFile(join(contents, "native", "addon.node"), "native bytes\n");
 
   const source = join(root, "bundle");
   await mkdir(source);
   const archive = join(source, "app.asar");
   await createPackageWithOptions(contents, archive, { unpack: "*.node" });
-  await rm(join(`${archive}.unpacked`, "platform", "addon.node"));
+  await rm(join(`${archive}.unpacked`, "native", "addon.node"));
 
   const nestedOutput = join(root, "nested-output");
   const nestedExtraction = await extractDirectory(source, nestedOutput);
@@ -399,7 +399,7 @@ it("ignores unavailable members of a nested ASAR but refuses them as active entr
   expect(projectAnalysisError(activeResult.error)).toMatchObject({
     code: "artifact_operation_failed",
     category: "unavailable",
-    details: { logical_path: "platform/addon.node", unpacked: true },
+    details: { logical_path: "native/addon.node", unpacked: true },
   });
   await expect(access(activeOutput)).rejects.toThrow();
 });

@@ -191,7 +191,7 @@
     ".codex",
     ".devin",
     ".factory",
-    "third_party"
+    "vendor"
   ],
   "options": {
     "reportUnusedDisableDirectives": "error"

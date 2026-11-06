@@ -8,7 +8,7 @@ export const writeElectronBoundaryFixture = async (
   await Promise.all([
     mkdir(join(root, "renderer"), { recursive: true }),
     mkdir(join(root, "utility"), { recursive: true }),
-    mkdir(join(root, "platform"), { recursive: true }),
+    mkdir(join(root, "native"), { recursive: true }),
   ]);
   await Promise.all([
     writeFile(
@@ -28,14 +28,14 @@ export const writeElectronBoundaryFixture = async (
       "<script src='./renderer.js'></script>",
     ),
     writeFile(join(root, "utility", "worker.js"), UTILITY_SOURCE),
-    writeFile(join(root, "platform", "addon.node"), Buffer.from([0, 1, 2, 3])),
+    writeFile(join(root, "native", "addon.node"), Buffer.from([0, 1, 2, 3])),
   ]);
 };
 
 const MAIN_SOURCE = String.raw`
 const path = require("node:path");
 const { BrowserWindow, ipcMain, utilityProcess } = require("electron");
-const { read, write: nativeWrite } = require("./platform/addon.node");
+const { read, write: nativeWrite } = require("./native/addon.node");
 
 new BrowserWindow({
   width: 900,
@@ -69,7 +69,7 @@ ipcMain.handle("rea:ambiguous", async () => 2);
 ipcMain.handle(dynamicChannel, dynamicHandler);
 
 utilityProcess.fork("./utility/worker.js", [], { serviceName: "fixture-db" });
-module.exports.nativeRead = require("./platform/addon.node").read;
+module.exports.nativeRead = require("./native/addon.node").read;
 
 globalThis.__rea_electron_fixture_executed = true;
 throw new Error("Electron boundary fixture must never execute");
@@ -77,7 +77,7 @@ throw new Error("Electron boundary fixture must never execute");
 
 const PRELOAD_SOURCE = String.raw`
 const { contextBridge, ipcRenderer } = require("electron");
-const { read, write } = require("./platform/addon.node");
+const { read, write } = require("./native/addon.node");
 
 contextBridge.exposeInMainWorld("reaApi", {
   read: (key) => ipcRenderer.invoke("rea:read", key),
@@ -102,6 +102,6 @@ ipcRenderer.on("rea:event", (_event, value) => console.log(value));
 `;
 
 const UTILITY_SOURCE = String.raw`
-const addon = require("../platform/addon.node");
+const addon = require("../native/addon.node");
 module.exports = addon;
 `;

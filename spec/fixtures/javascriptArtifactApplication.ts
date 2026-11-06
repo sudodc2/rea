@@ -8,7 +8,7 @@ export const writeJavaScriptArtifactFixture = async (
   const sourceMapDirective = `${String.fromCharCode(47, 47)}# sourceMap${"ping"}URL=renderer.js.map`;
   await Promise.all([
     mkdir(join(root, "renderer", "chunks"), { recursive: true }),
-    mkdir(join(root, "platform"), { recursive: true }),
+    mkdir(join(root, "native"), { recursive: true }),
   ]);
   await Promise.all([
     writeFile(
@@ -33,7 +33,7 @@ export const writeJavaScriptArtifactFixture = async (
           webPreferences: { preload: path.join(__dirname, "preload.js") }
         });
         window.loadFile("./renderer/index.html");
-        require("./platform/addon.node");
+        require("./native/addon.node");
       `,
     ),
     writeFile(
@@ -118,7 +118,7 @@ export const writeJavaScriptArtifactFixture = async (
       }),
     ),
     writeFile(
-      join(root, "platform", "addon.node"),
+      join(root, "native", "addon.node"),
       Buffer.from([0x7f, 0x45, 0x4c, 0x46, 0x02, 0x01, 0x01, 0x00]),
     ),
   ]);
