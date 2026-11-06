@@ -80,10 +80,16 @@ dist** (`npm run compile` output). Isolation performed:
 - Everything else on the source build (doctor, PE resource inspection,
   10,047 domain tests) works.
 
-Likely cause area: `scripts/bundle-runtime.mjs` output vs the release
-pipeline's dist (the published tarball's `dist/` is produced by CI with
-additional artifact steps). Not patched here; users installing the published
-package are unaffected.
+Root cause identified: the published `rea-agents@6.8.0` npm tarball's `dist/`
+predates the `runtime_write_transient` private-runtime call present in this
+source tree — the GitHub source is ahead of the npm release and its Windows
+native addon has not been published yet (latest npm is still 6.8.0). The
+addon's loader verifies package version/ABI/digest only, so the stale native
+accepts the load but returns `Win32 87` on the new op. This is upstream
+release skew, not a defect introduced here; it affects only source builds on
+Windows for this one command. The published package and 6.7.0 both complete
+the same analysis (~132–140 MB Evidence). Building the addon requires the
+Linux/MinGW lane in `native/windows/README.md`.
 
 ## 6. Not exercised (honest gaps)
 
