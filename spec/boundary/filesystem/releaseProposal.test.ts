@@ -23,7 +23,7 @@ import { createTestTempDirectory } from "../../fixtures/temporaryDirectory.js";
 const execute = promisify(execFile);
 const require = createRequire(import.meta.url);
 let upstream: typeof import("release-please");
-let githubRuntime: typeof import("release-please/build/core/github.js");
+let githubRuntime: typeof import("release-please/build/src/github.js");
 const baseline = "a".repeat(40);
 const latest = "b".repeat(40);
 const silent = {
@@ -46,7 +46,7 @@ it("reports an HTTP status when a release proposal error has no message", () => 
 
 beforeAll(async () => {
   upstream = await import("release-please");
-  githubRuntime = require("release-please/build/core/github.js");
+  githubRuntime = require("release-please/build/src/github.js");
 });
 
 afterEach(() => vi.restoreAllMocks());
@@ -992,7 +992,7 @@ it.each(["partial", "mismatched"])(
   "rejects a %s private dependency patch without changing its files",
   async (state) => {
     const fixture = await releasePatchFixture();
-    const manifest = join(fixture.directory, "build/core/manifest.js");
+    const manifest = join(fixture.directory, "build/src/manifest.js");
     const original = await readFile(manifest, "utf8");
     await fixture.apply();
     const patched = await readFile(manifest, "utf8");

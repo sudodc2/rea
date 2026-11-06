@@ -1,4 +1,4 @@
-import type { validateJadxConfiguration } from "../../src/android/JadxConfiguration.js";
+import type { validateJadxConfiguration } from "../../core/android/JadxConfiguration.js";
 
 type ConfigurationArguments = Parameters<typeof validateJadxConfiguration>;
 

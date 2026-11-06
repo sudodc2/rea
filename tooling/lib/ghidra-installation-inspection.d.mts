@@ -2,7 +2,7 @@ import type {
   GhidraInstallationHost,
   GhidraInstallationInspection,
   GhidraInstallationOptions,
-} from "../../src/ghidra/GhidraInstallation.js";
+} from "../../core/ghidra/GhidraInstallation.js";
 
 /** Inspect prerequisites with a real owner, including cleanup before completion. */
 export function inspectVerifierGhidraInstallation(

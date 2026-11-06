@@ -1,7 +1,7 @@
 import type {
   McpPhaseBudget,
   McpStartupBudgets,
-} from "../../src/config/mcpStartupBudgets.js";
+} from "../../core/config/mcpStartupBudgets.js";
 
 interface McpProcessOptions {
   readonly command: string;

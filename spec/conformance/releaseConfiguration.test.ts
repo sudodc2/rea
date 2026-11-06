@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 
-import { GenericJson } from "release-please/build/core/updaters/generic-json.js";
-import { Version } from "release-please/build/core/version.js";
+import { GenericJson } from "release-please/build/src/updaters/generic-json.js";
+import { Version } from "release-please/build/src/version.js";
 import { describe, expect, it } from "vitest";
 
 import { SUPPORTED_NODE_VERSION_RANGE } from "../../core/domain/runtimeVersion.js";

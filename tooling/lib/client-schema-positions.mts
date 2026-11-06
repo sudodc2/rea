@@ -1,9 +1,9 @@
-import { JsonSchemaReferences } from "../../src/contracts/jsonSchemaReferences.js";
+import { JsonSchemaReferences } from "../../core/contracts/jsonSchemaReferences.js";
 import {
   schemaArrays,
   schemaChildren,
   schemaMaps,
-} from "../../src/contracts/jsonSchemaKeywords.js";
+} from "../../core/contracts/jsonSchemaKeywords.js";
 
 type SchemaObject = Readonly<Record<string, unknown>>;
 export type ClientSchemaPosition =

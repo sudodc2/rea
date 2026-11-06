@@ -1,22 +1,22 @@
 import { z } from "zod";
 
-import { digestCanonicalValue } from "../../src/domain/canonicalDigest.js";
-import { IDENTIFIER_PATTERN } from "../../src/domain/stringPatterns.js";
-import { utcDateTimeSchema } from "../../src/domain/offsetDateTime.js";
+import { digestCanonicalValue } from "../../core/domain/canonicalDigest.js";
+import { IDENTIFIER_PATTERN } from "../../core/domain/stringPatterns.js";
+import { utcDateTimeSchema } from "../../core/domain/offsetDateTime.js";
 import {
   compareAsciiStrings,
   isSortedUniqueAscii,
-} from "../../src/domain/canonicalOrdering.js";
+} from "../../core/domain/canonicalOrdering.js";
 
 import {
   createEvidenceCompletionLedger,
   evidenceCompletionRecordSchema,
   type EvidenceCompletionLedger,
-} from "../../src/domain/evidenceCompletionLedger.js";
+} from "../../core/domain/evidenceCompletionLedger.js";
 import {
   digestSchema,
   prefixedDigestSchema,
-} from "../../src/domain/digests.js";
+} from "../../core/domain/digests.js";
 
 const identifierSchema = z.string().regex(IDENTIFIER_PATTERN);
 const identitySchema = z.strictObject({

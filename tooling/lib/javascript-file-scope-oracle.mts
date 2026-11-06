@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { jsonRecordSchema } from "../../src/domain/jsonRecord.js";
+import { jsonRecordSchema } from "../../core/domain/jsonRecord.js";
 
 /** Independent expected outcomes supplied by the verification scenario. */
 export const structuredScopeExpectationsSchema = jsonRecordSchema(

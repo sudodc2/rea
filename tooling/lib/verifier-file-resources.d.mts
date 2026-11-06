@@ -1,5 +1,5 @@
-import type { ArtifactResourceScope } from "../../src/artifacts/ArtifactResourceScope.js";
-import type { RetainedResourceScope } from "../../src/application/AnalysisProvider.js";
+import type { ArtifactResourceScope } from "../../core/artifacts/ArtifactResourceScope.js";
+import type { RetainedResourceScope } from "../../core/application/AnalysisProvider.js";
 
 /** Complete a prerequisite operation, including retained cleanup on failure. */
 export function withVerifierResourceOwner<T>(

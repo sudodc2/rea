@@ -1,23 +1,23 @@
 import { randomUUID } from "node:crypto";
 
-import type { RetainedResourceScope } from "../../src/application/AnalysisProvider.js";
-import { AnalysisCleanupLease } from "../../src/artifacts/AnalysisCleanupLease.js";
+import type { RetainedResourceScope } from "../../core/application/AnalysisProvider.js";
+import { AnalysisCleanupLease } from "../../core/artifacts/AnalysisCleanupLease.js";
 import {
   ArtifactResourceScope,
   type ArtifactResourceOwner,
-} from "../../src/artifacts/ArtifactResourceScope.js";
+} from "../../core/artifacts/ArtifactResourceScope.js";
 import {
   prepareOwnedCommand,
   runOwnedCommand,
-} from "../../src/process/OwnedCommand.js";
+} from "../../core/process/OwnedCommand.js";
 import {
   spawnOwnedProviderProcess,
   type OwnedProviderProcessSpawnOptions,
   type ProviderProcessSnapshot,
   type SpawnedOwnedProviderProcess,
-} from "../../src/process/ProviderProcess.js";
-import { retainOwnedCommandCleanup } from "../../src/providers/OwnedCommandCleanup.js";
-import { WindowsOwnedProcess } from "../../src/windows/WindowsOwnedProcess.js";
+} from "../../core/process/ProviderProcess.js";
+import { retainOwnedCommandCleanup } from "../../core/providers/OwnedCommandCleanup.js";
+import { WindowsOwnedProcess } from "../../core/windows/WindowsOwnedProcess.js";
 import { createWindowsOwnedCommand } from "./windows-owned-command.mjs";
 
 interface VerifierCommandContext {

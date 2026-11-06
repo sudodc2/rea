@@ -1,4 +1,4 @@
-import type { ElfFamilyMetadata } from "../../../src/domain/binaryTargetTypes.js";
+import type { ElfFamilyMetadata } from "../../../core/domain/binaryTargetTypes.js";
 
 export interface PowerPcReadelfFacts {
   powerpc: ElfFamilyMetadata;

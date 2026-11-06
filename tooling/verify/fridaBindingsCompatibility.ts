@@ -3,7 +3,7 @@ import type {
   DeviceManager as VendorDeviceManager,
   Script as VendorScript,
   Session as VendorSession,
-} from "../../node_modules/frida/build/core/frida_binding.js";
+} from "../../node_modules/frida/build/src/frida_binding.js";
 import type { Device, DeviceManager, Script, Session } from "frida";
 
 type Assert<Condition extends true> = Condition;

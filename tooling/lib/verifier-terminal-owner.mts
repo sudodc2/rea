@@ -1,23 +1,23 @@
 import { randomUUID } from "node:crypto";
 import type { IDisposable, IPty } from "@lydell/node-pty";
 
-import type { RetainedResourceScope } from "../../src/application/AnalysisProvider.js";
-import { AnalysisCleanupLease } from "../../src/artifacts/AnalysisCleanupLease.js";
-import { ArtifactResourceScope } from "../../src/artifacts/ArtifactResourceScope.js";
-import { err, ok, type Result } from "../../src/domain/result.js";
+import type { RetainedResourceScope } from "../../core/application/AnalysisProvider.js";
+import { AnalysisCleanupLease } from "../../core/artifacts/AnalysisCleanupLease.js";
+import { ArtifactResourceScope } from "../../core/artifacts/ArtifactResourceScope.js";
+import { err, ok, type Result } from "../../core/domain/result.js";
 import {
   cleanupOwnedProcessGroup,
   type PersistentOwnedProcessGroup,
-} from "../../src/process/ProcessOwnership.js";
-import { ProcessOwnershipEvidenceOwner } from "../../src/process/ProcessOwnershipEvidence.js";
+} from "../../core/process/ProcessOwnership.js";
+import { ProcessOwnershipEvidenceOwner } from "../../core/process/ProcessOwnershipEvidence.js";
 import {
   prepareProcessOwnershipInspection,
   systemProcessOwnershipHost,
-} from "../../src/process/ProcessOwnershipObservation.js";
-import { PROCESS_CLEANUP_VERIFICATION_GRACE_MS } from "../../src/process/ProcessLifecycle.js";
-import { ProviderStartupDeadline } from "../../src/process/ProviderDeadline.js";
-import { processCaptureOwnershipUnavailableReason } from "../../src/process/capture/ProcessCaptureCapability.js";
-import { retainOwnedCommandCleanup } from "../../src/providers/OwnedCommandCleanup.js";
+} from "../../core/process/ProcessOwnershipObservation.js";
+import { PROCESS_CLEANUP_VERIFICATION_GRACE_MS } from "../../core/process/ProcessLifecycle.js";
+import { ProviderStartupDeadline } from "../../core/process/ProviderDeadline.js";
+import { processCaptureOwnershipUnavailableReason } from "../../core/process/capture/ProcessCaptureCapability.js";
+import { retainOwnedCommandCleanup } from "../../core/providers/OwnedCommandCleanup.js";
 import type {
   VerifierCleanupOwner,
   VerifierCommands,

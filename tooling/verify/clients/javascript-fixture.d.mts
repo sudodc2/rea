@@ -1,6 +1,6 @@
 import type { z } from "zod";
-import type { JavaScriptApplicationAnalysisResult } from "../../../src/domain/javascript/javascriptApplicationAnalysis.js";
-import type { toolContract } from "../../../src/contracts/toolContracts.js";
+import type { JavaScriptApplicationAnalysisResult } from "../../../core/domain/javascript/javascriptApplicationAnalysis.js";
+import type { toolContract } from "../../../core/contracts/toolContracts.js";
 
 type FixtureContract = ReturnType<
   typeof toolContract<"analyze_javascript_application">

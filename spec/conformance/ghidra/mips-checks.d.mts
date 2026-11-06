@@ -2,9 +2,9 @@ import type {
   MipsAbiFlags,
   MipsElfMetadata,
   MipsGnuAttributes,
-} from "../../../src/domain/binaryTargetTypes.js";
+} from "../../../core/domain/binaryTargetTypes.js";
 
-import type { JsonValue } from "../../../src/domain/jsonValue.js";
+import type { JsonValue } from "../../../core/domain/jsonValue.js";
 
 export type MipsReadelfMetadata = MipsElfMetadata & {
   readonly abiFlags: MipsAbiFlags;

@@ -1,7 +1,7 @@
 import type { EventEmitter } from "node:events";
 
-import type { WindowsNativeAuthority } from "../../src/windows/WindowsNativeLoader.js";
-import type { WindowsOwnedProcess } from "../../src/windows/WindowsOwnedProcess.js";
+import type { WindowsNativeAuthority } from "../../core/windows/WindowsNativeLoader.js";
+import type { WindowsOwnedProcess } from "../../core/windows/WindowsOwnedProcess.js";
 
 export type WindowsOwnedProcessConstructor = typeof WindowsOwnedProcess;
 
