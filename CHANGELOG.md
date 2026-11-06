@@ -1,5 +1,33 @@
 # Changelog
 
+## [6.9.0](https://github.com/sudodc2/rea/compare/rea-agents-6.8.0...rea-agents-6.9.0) (2026-11-06)
+
+
+### Bug Fixes
+
+* restore bridge test-id prefix and handbook release path after layout rename ([c2bc686](https://github.com/sudodc2/rea/commit/c2bc686d4469205caf1d470169a019e68361c3fd))
+* restore executable bits lost in layout migration ([cbc8989](https://github.com/sudodc2/rea/commit/cbc8989b0ea7600e2f42bf18ae9fff5edae53e64))
+* restore native addon fixture dirs and lint ignore path after layout rename ([0ccc54f](https://github.com/sudodc2/rea/commit/0ccc54f65b40e2af1e34f7c63e2b596aa09daec7))
+* restore semantic assets/ paths corrupted to media/ across fixtures, readers and website tooling ([7599d9d](https://github.com/sudodc2/rea/commit/7599d9d1a09ed0f58cd0942a058a9b44e279edcd))
+* restore semantic native/examples paths corrupted to platform/samples by layout rename ([caf5b7e](https://github.com/sudodc2/rea/commit/caf5b7eee80df383d713e79b326395462e04ace4))
+* restore semantic reports/ paths in docs and recovery publication ([c675a0a](https://github.com/sudodc2/rea/commit/c675a0ac9c423af5e192afba369e4d519d2b35fa))
+* revert semantic fixture strings and stale identity paths after rename ([db351c7](https://github.com/sudodc2/rea/commit/db351c7e1ff28ca5a24bd24a2bfb34eec3008a96))
+* update packaged plugin icon expectation to renamed media path ([4334c02](https://github.com/sudodc2/rea/commit/4334c0276754fe92f20e609658e36b4e74fed915))
+
+
+### Documentation
+
+* restore semantic public asset paths and refresh locale source references ([8214d8f](https://github.com/sudodc2/rea/commit/8214d8fa1cb452d7afd21ed5f5eab0985f74b3bd))
+
+
+### Tests
+
+* fix typed-lint expectation order and python bridge family names ([da445c5](https://github.com/sudodc2/rea/commit/da445c596fa42809b00a41a31f2d07c4d43aeb0c))
+* repair fixture semantics and CI scope paths after layout rename ([0a7ae8f](https://github.com/sudodc2/rea/commit/0a7ae8f69c54bb1a4ae2d0d730153f32dd034af0))
+* restore semantic src fixture dirs and formatting after layout rename ([ff919f9](https://github.com/sudodc2/rea/commit/ff919f9757e5d02ef57c79a89be3231a09fa35c9))
+* restore semantic src/assets/examples fixture dirs corrupted by layout rename ([c6b33e8](https://github.com/sudodc2/rea/commit/c6b33e83432d8bebcdb5176fe763dac1e8b67ca4))
+* restore target-fixture path semantics after layout rename ([61c53ec](https://github.com/sudodc2/rea/commit/61c53ecaa9ee61b78d48057d84f1c7a13c7595df))
+
 ## [6.8.0](https://github.com/sudodc2/rea/compare/rea-agents-6.7.0...rea-agents-6.8.0) (2026-10-25)
 
 ### Highlights
