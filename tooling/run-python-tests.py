@@ -67,7 +67,7 @@ def run_bridge(test_files):
     for path in test_files:
         parts = path.relative_to(bridge_root).with_suffix("").parts
         # provider-bridges is not importable (hyphen); load each file directly.
-        module_name = ".".join(["bridge_tests", *[part.replace("-", "_") for part in parts]])
+        module_name = ".".join(["bridge", *[part.replace("-", "_") for part in parts]])
         spec = importlib.util.spec_from_file_location(module_name, path)
         module = importlib.util.module_from_spec(spec)
         sys.modules[module_name] = module
@@ -77,7 +77,7 @@ def run_bridge(test_files):
     completed_families = {
         parts[1]
         for name in result.completed
-        if len(parts := name.split(".")) > 2 and parts[0] == "bridge_tests"
+        if len(parts := name.split(".")) > 2 and parts[0] == "bridge"
     }
     missing = [
         family
