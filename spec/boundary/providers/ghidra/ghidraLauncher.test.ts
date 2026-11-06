@@ -367,6 +367,9 @@ describe("Ghidra headless launcher", () => {
       );
   });
 
+});
+
+describe("Ghidra RISC-V calling convention ordering", () => {
   it("runs the committed RISC-V policy after the no-return refit and before the bridge", () => {
     const base = {
       platform: "linux" as const,
