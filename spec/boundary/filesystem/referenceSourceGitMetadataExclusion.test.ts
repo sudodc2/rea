@@ -76,7 +76,7 @@ describe.skipIf(process.platform === "win32")(
       await writeFile(join(repository, ".gitignore"), "*.log\n");
       const git = (...args: string[]) => fixtureGit(repository, root, args);
       await git("init", "--initial-branch=main");
-      await git("add", ".gitignore", "core/main.js");
+      await git("add", ".gitignore", "src/main.js");
       await git(
         "-c",
         "user.name=REA fixture",
@@ -107,7 +107,7 @@ describe.skipIf(process.platform === "win32")(
           graph.entries
             .filter(({ kind }) => kind === "file")
             .map(({ path }) => path),
-        ).toEqual([".gitignore", "core/main.js"]);
+        ).toEqual([".gitignore", "src/main.js"]);
         expect(
           graph.entries.some(
             ({ path }) => path === ".git" || path.startsWith(".git/"),

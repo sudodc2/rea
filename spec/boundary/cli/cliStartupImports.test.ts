@@ -250,11 +250,11 @@ describe("CLI startup imports", () => {
       JSON.stringify({
         name: "startup-fixture",
         version: "1.0.0",
-        main: "core/index.js",
+        main: "src/index.js",
       }),
     );
     await writeFile(
-      join(source, "core/index.js"),
+      join(source, "src/index.js"),
       "export const answer = 42;\n",
     );
 

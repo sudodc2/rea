@@ -89,15 +89,15 @@ Edit the page's HTML in `public/`. Keep the question, evidence and result easy t
 follow. The writing and design guidance in [style-guide.md](style-guide.md)
 applies to every page.
 
-| Change                          | Edit                                                            | Then run                                        |
-| ------------------------------- | --------------------------------------------------------------- | ----------------------------------------------- |
-| Page text, examples or figures  | The page's HTML outside the marked shared regions               | `python3 tooling/website.py check`              |
-| Search title or description     | The page's `<title>` and first description meta tag             | `python3 tooling/website.py sync`, then `check` |
-| Main navigation                 | `NAVIGATION` in `tooling/website.py`                            | `sync`, then `check`                            |
-| Header, social links or footer  | `templates/header.html.tmpl` or `templates/footer.html.tmpl`    | `sync`, then `check`                            |
+| Change                          | Edit                                                             | Then run                                        |
+| ------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------- |
+| Page text, examples or figures  | The page's HTML outside the marked shared regions                | `python3 tooling/website.py check`              |
+| Search title or description     | The page's `<title>` and first description meta tag              | `python3 tooling/website.py sync`, then `check` |
+| Main navigation                 | `NAVIGATION` in `tooling/website.py`                             | `sync`, then `check`                            |
+| Header, social links or footer  | `templates/header.html.tmpl` or `templates/footer.html.tmpl`     | `sync`, then `check`                            |
 | Theme loading and browser color | `templates/theme.html.tmpl` and `public/assets/theme.js`         | `sync`, then `check`                            |
 | Shared link previews            | `templates/sharing.html.tmpl` or `public/assets/social-card.svg` | `sync`, then `check`                            |
-| Translation                     | `locales/<language>/messages.po`                                | `translations check`, then `check`              |
+| Translation                     | `locales/<language>/messages.po`                                 | `translations check`, then `check`              |
 
 After changing English text, run `python3 tooling/website.py translations extract`
 before `check`. Existing translations and reviewer comments survive extraction;

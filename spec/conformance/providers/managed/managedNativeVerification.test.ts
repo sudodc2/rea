@@ -561,12 +561,12 @@ it("keeps explicit PE module suffixes distinct and permits the Windows DLL varia
       }),
     ).pinvoke_imports[0];
 
-  expect(verify("nativehelper.dll", "/examples/nativehelper.dll")).toMatchObject(
-    {
-      status: "verified",
-      basis: "exact-function-name",
-    },
-  );
+  expect(
+    verify("nativehelper.dll", "/examples/nativehelper.dll"),
+  ).toMatchObject({
+    status: "verified",
+    basis: "exact-function-name",
+  });
   for (const suffix of ["exe", "node"]) {
     expect(
       verify("nativehelper.dll", `/examples/nativehelper.${suffix}`),

@@ -108,7 +108,8 @@ describe("Vite build-output preload dependencies", () => {
     });
     const result = await reconstructJavaScriptFixture(root);
     const edge = result.graph.edges.find(
-      ({ properties }) => properties.specifier === "vite-output:assets/lazy.css",
+      ({ properties }) =>
+        properties.specifier === "vite-output:assets/lazy.css",
     );
 
     expect(edge?.properties).toMatchObject({

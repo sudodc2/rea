@@ -362,15 +362,15 @@ cliTest(
           JSON.stringify({
             name: "source-module-fixture",
             version: "1.0.0",
-            main: "core/main.js",
+            main: "src/main.js",
           }),
         );
         await writeFile(
-          join(application, "core/main.js"),
+          join(application, "src/main.js"),
           'require("./util.js");\n',
         );
         await writeFile(
-          join(application, "core/util.js"),
+          join(application, "src/util.js"),
           `module.exports = ${JSON.stringify(name)};\n`,
         );
         const response = await cli.run({
@@ -394,7 +394,7 @@ cliTest(
           observations.some(
             ({ properties }) =>
               properties.semantic_role === "source-module" &&
-              properties.path === "core/main.js",
+              properties.path === "src/main.js",
           ),
       );
       if (node === undefined) throw new Error("Missing main source module");
@@ -475,14 +475,14 @@ cliTest(
         JSON.stringify({
           name: "export-fixture",
           version,
-          main: "core/main.js",
+          main: "src/main.js",
         }),
       );
       await writeFile(
-        join(application, "core/main.js"),
+        join(application, "src/main.js"),
         'const util = require("./util.js");\nmodule.exports = { start: () => util.greet() };\n',
       );
-      await writeFile(join(application, "core/util.js"), utilSource);
+      await writeFile(join(application, "src/util.js"), utilSource);
       const response = await cli.run({
         arguments: ["analyze-javascript-application", application, "--json"],
         environment: { REA_LOG_LEVEL: "silent" },
@@ -540,7 +540,7 @@ cliTest(
     const changed = await compare(base, edited);
     const utilExport = baseExports.find(({ observations }) =>
       observations.some(
-        ({ properties }) => properties.module_path === "core/util.js",
+        ({ properties }) => properties.module_path === "src/util.js",
       ),
     );
     expect(changed.items).toContainEqual(
