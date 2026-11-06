@@ -248,7 +248,7 @@ describe("APK v1 duplicate signing names", () => {
   it("decodes only the first few duplicate names, in first-occurrence order", () => {
     const names = Array.from(
       { length: MAX_DUPLICATE_NAME_SAMPLE + 3 },
-      (_, i) => `media/f${String(i)}`,
+      (_, i) => `assets/f${String(i)}`,
     );
     const { duplicates } = scan([...names, ...[...names].reverse()]);
     expect(duplicates).toMatchObject({

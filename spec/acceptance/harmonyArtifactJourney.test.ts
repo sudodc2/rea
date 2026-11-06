@@ -62,7 +62,7 @@ const harmonyFixture = async () => {
   await writer.add("pkgContextInfo.json", new TextReader("{}"));
   await writer.add(".pages.info", new TextReader("page metadata fixture"));
   const javascriptPaths = ["cts", "jsx", "mts", "ts", "tsx"].map(
-    (extension) => `media/js/index.${extension}`,
+    (extension) => `assets/js/index.${extension}`,
   );
   for (const path of javascriptPaths)
     await writer.add(path, new TextReader("export const value = 1;"));

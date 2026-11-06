@@ -53,7 +53,7 @@ describe("UnityFsArtifactReader", () => {
     await withReader(
       buildUnityFs([
         { path: "assets", data: "", flags: 1 },
-        { path: "media/data.bin", data: "bytes", flags: 4 },
+        { path: "assets/data.bin", data: "bytes", flags: 4 },
       ]),
       async (reader) => {
         const entries = await list(reader);
@@ -64,7 +64,7 @@ describe("UnityFsArtifactReader", () => {
             encrypted: false,
           }),
           expect.objectContaining({
-            path: "media/data.bin",
+            path: "assets/data.bin",
             kind: "file",
             encrypted: false,
           }),

@@ -7,7 +7,7 @@ export const JAVASCRIPT_AST_FINGERPRINT_ALGORITHM = "babel-ast-v3";
 
 /**
  * Marks a Vite preload dependency written relative to the build output
- * directory (Vite's absolute-base form, such as `media/chunk.js`). The
+ * directory (Vite's absolute-base form, such as `assets/chunk.js`). The
  * runtime helper prefixes the configured base, so the path is not a module
  * specifier and not relative to the importing chunk.
  */

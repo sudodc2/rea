@@ -41,7 +41,7 @@ become logical paths after the shared NFC path normalization. Names that are
 unsafe as relative paths, have an exact or file-prefix collision with another
 entry, or occupy the reserved `__node_sea__`
 namespace receive deterministic logical paths: `__node_sea__/main.cjs` for the
-main CommonJS source and `__node_sea__/media/<ordinal>` for assets, using their
+main CommonJS source and `__node_sea__/assets/<ordinal>` for assets, using their
 zero-based order in the blob. The original declared name remains
 in `source_path`, including an empty asset key. Snapshots and code caches use
 `__node_sea__/snapshot` and `__node_sea__/code-cache`. Extraction materializes

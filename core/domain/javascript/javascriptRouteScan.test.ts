@@ -367,7 +367,7 @@ it.each([
   ["app/reports/page.ts", "/reports"],
   ["app/handbook/[[...slug]]/page", "/handbook/:slug*"],
   ["app/@modal/(.)photo/[id]/page.js", undefined],
-  ["/media/app.js", undefined],
+  ["/assets/app.js", undefined],
 ] as const)(
   "interprets Next App Router path %s without claiming reachability",
   (value, expected) => {
@@ -1030,7 +1030,7 @@ it("preserves initializer provenance for aliased registration segments", () => {
 it.each(
   [
     "const paths=[];paths.push('/cache/key');",
-    "text.replace('/media/logo.svg','');",
+    "text.replace('/assets/logo.svg','');",
     "const paths=[];paths.push(('/cache/key' as const));",
     "const literal='/cache/key';const paths=[];paths.push(literal);",
     "createBrowserRouter([{path:'/cache',component:View}]);const paths=[];paths.push('/cache/key');",
@@ -1044,7 +1044,7 @@ it.each(
   ).toEqual([]);
   expect(
     facts.candidates.filter(
-      ({ path }) => path === "/cache/key" || path === "/media/logo.svg",
+      ({ path }) => path === "/cache/key" || path === "/assets/logo.svg",
     ),
   ).toEqual([]);
 });

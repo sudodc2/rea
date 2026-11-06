@@ -1637,7 +1637,7 @@ const mixedCArchiveRoleFixture = () => {
       compress: false,
     },
     {
-      name: "other-app:media/data.bin",
+      name: "other-app:assets/data.bin",
       typeCode: "d",
       payload: Buffer.alloc(0),
       compress: false,

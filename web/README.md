@@ -332,7 +332,7 @@ language editions and tabs on the same host. If storage is blocked, the button
 still works for the current page. Without JavaScript, the site stays light and
 the button stays hidden.
 
-The shared `theme` head region loads `media/theme.js` before the stylesheet so a
+The shared `theme` head region loads `assets/theme.js` before the stylesheet so a
 saved choice applies before the first paint. That script owns the resolved
 `data-theme`, browser `theme-color` and `website-theme-change` event. The CSS
 palette, embedded SVGs and dinosaur canvas follow that choice. Keep the theme

@@ -95,7 +95,7 @@ function assertObservationMetadata(result, origin) {
   if (
     !result.metadata.dom_urls.some(
       ({ attribute, url }) =>
-        attribute === "href" && url === `${origin}/media/guide`,
+        attribute === "href" && url === `${origin}/assets/guide`,
     )
   )
     throw new Error(

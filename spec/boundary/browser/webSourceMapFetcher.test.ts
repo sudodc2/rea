@@ -17,8 +17,8 @@ import {
 const origin = "https://app.example.test";
 const request = {
   scriptKey: `scr_${"1".repeat(64)}`,
-  declaredUrl: `${origin}/media/app.js.map?token=secret&v=2#source-map`,
-  fetchUrl: `${origin}/media/app.js.map?token=secret`,
+  declaredUrl: `${origin}/assets/app.js.map?token=secret&v=2#source-map`,
+  fetchUrl: `${origin}/assets/app.js.map?token=secret`,
 };
 
 const expectInvalidSourceMaps = (value: unknown): void => {
@@ -336,7 +336,7 @@ it("parses ECMA-426 HTTP source-map prefixes while retaining exact response evid
 
 describe("source-map redirect URL resolution", () => {
   const deliveredPath =
-    "/media/v2/app.js.map?revision=2&token=public-selection";
+    "/assets/v2/app.js.map?revision=2&token=public-selection";
   it.each(["/maps/current", deliveredPath])(
     "resolves relative sources against the delivered map at %s",
     async (initialPath) => {
@@ -388,13 +388,13 @@ describe("source-map redirect URL resolution", () => {
                 sha256: createHash("sha256").update(text).digest("hex"),
               },
               original_sources: [
-                { source: `${localOrigin}/media/core/main.ts` },
+                { source: `${localOrigin}/assets/core/main.ts` },
               ],
-              mappings: [{ source: `${localOrigin}/media/core/main.ts` }],
+              mappings: [{ source: `${localOrigin}/assets/core/main.ts` }],
               original_module_edges: [
                 {
-                  from_source: `${localOrigin}/media/core/main.ts`,
-                  resolved_source: `${localOrigin}/media/core/dependency.ts`,
+                  from_source: `${localOrigin}/assets/core/main.ts`,
+                  resolved_source: `${localOrigin}/assets/core/dependency.ts`,
                 },
               ],
             },
@@ -641,7 +641,7 @@ describe("source-map declared URL policy", () => {
             ? new Response(null, {
                 status: 302,
                 headers: {
-                  location: `${origin}/media/app.js.map?hop=${String(hop + 1)}`,
+                  location: `${origin}/assets/app.js.map?hop=${String(hop + 1)}`,
                 },
               })
             : validMapResponse(),
@@ -1169,13 +1169,13 @@ describe("web source-map sourcesContent validation", () => {
           {
             source_index: 0,
             declaration_index: 0,
-            source: `${origin}/media/a.ts`,
+            source: `${origin}/assets/a.ts`,
             artifact: { text: "import './a.ts';" },
           },
           {
             source_index: 1,
             declaration_index: 1,
-            source: `${origin}/media/b.ts`,
+            source: `${origin}/assets/b.ts`,
             artifact: null,
           },
         ],
@@ -1207,7 +1207,7 @@ describe("web source-map sourcesContent validation", () => {
         {
           source_index: 0,
           declaration_index: 0,
-          source: `${origin}/media/source.ts`,
+          source: `${origin}/assets/source.ts`,
           artifact: null,
         },
       ],
@@ -1243,7 +1243,7 @@ describe("web source-map sourcesContent validation", () => {
         {
           source_index: 1,
           declaration_index: 1,
-          source: `${origin}/media/source.ts`,
+          source: `${origin}/assets/source.ts`,
           artifact: { text: "named source text" },
         },
       ],
@@ -1251,7 +1251,7 @@ describe("web source-map sourcesContent validation", () => {
         {
           source_index: 1,
           declaration_index: 1,
-          source: `${origin}/media/source.ts`,
+          source: `${origin}/assets/source.ts`,
         },
       ],
     });
@@ -1316,7 +1316,7 @@ describe("source-map original dependency syntax", () => {
       expect.objectContaining({
         kind: "dynamic_import",
         specifier: "./dep.js",
-        resolved_source: `${origin}/media/dep.js`,
+        resolved_source: `${origin}/assets/dep.js`,
       }),
       expect.objectContaining({ kind: "require", specifier: "./common.cjs" }),
     ]);
@@ -1453,12 +1453,12 @@ describe("source-map dependency coverage of hard-to-parse sources", () => {
     expect(result.items[0]?.status).toBe("included");
     expect(result.items[0]?.limitation).toBeNull();
     expect(result.items[0]?.original_sources[0]?.source).toBe(
-      `${origin}/media/main.ts?revision=2#view.tsx`,
+      `${origin}/assets/main.ts?revision=2#view.tsx`,
     );
     expect(result.items[0]?.original_module_edges).toEqual([
       expect.objectContaining({
         specifier: "./dep.ts",
-        resolved_source: `${origin}/media/dep.ts`,
+        resolved_source: `${origin}/assets/dep.ts`,
       }),
     ]);
   });
@@ -1589,7 +1589,7 @@ describe("web source-map collection", () => {
     const requests = Array.from({ length: 101 }, (_, index) => ({
       ...request,
       scriptKey: `scr_${String(index + 1).padStart(64, "0")}`,
-      fetchUrl: `${origin}/media/${String(index)}.js.map`,
+      fetchUrl: `${origin}/assets/${String(index)}.js.map`,
     }));
     const result = await fetchWebSourceMapsOk(requests, input(), undefined, {
       fetch: (url) => {
@@ -1810,7 +1810,7 @@ describe("expanded source-map evidence budget", () => {
     });
     expect(result.items[0]?.status).toBe("included");
     expect(result.items[0]?.original_sources[0]?.source).toBe(
-      `${origin}/media/${source}`,
+      `${origin}/assets/${source}`,
     );
   });
 
@@ -1893,7 +1893,7 @@ describe("expanded source-map evidence budget", () => {
 
     expect(result.items[0]?.status).toBe("included");
     expect(result.items[0]?.original_sources[0]?.source).toBe(
-      `${origin}/media/main.ts`,
+      `${origin}/assets/main.ts`,
     );
   });
 
@@ -2011,7 +2011,7 @@ it("keeps bare original module specifiers unresolved", async () => {
   expect(
     edges?.find(({ specifier }) => specifier === "./actual.js")
       ?.resolved_source,
-  ).toContain("/media/actual.js");
+  ).toContain("/assets/actual.js");
 });
 
 describe("source-map original artifact language metadata", () => {

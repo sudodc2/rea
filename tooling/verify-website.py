@@ -214,7 +214,7 @@ def check_search_metadata(site, pages):
             "og:title": title,
             "og:description": description,
             "og:url": url,
-            "og:image": f"{SITE_ORIGIN}/media/social-card.png",
+            "og:image": f"{SITE_ORIGIN}/assets/social-card.png",
             "og:image:type": "image/png",
             "og:image:width": "1200",
             "og:image:height": "630",
@@ -304,7 +304,7 @@ def check_search_metadata(site, pages):
                 "robots.txt: expected crawl access and one absolute rea.tools sitemap directive"
             )
 
-    image = site / "media/social-card.png"
+    image = site / "assets/social-card.png"
     if not image.is_file():
         errors.append("Social preview PNG is missing; run tooling/prepare-website.py")
     else:

@@ -424,7 +424,7 @@ const inspection = (sources: readonly string[]) =>
     sources.map((source, index) => ({
       source,
       scriptKey: `scr_${String(index + 1).repeat(64)}`,
-      url: `${origin}/media/${String(index)}.js`,
+      url: `${origin}/assets/${String(index)}.js`,
       origin,
       cdpHash: `hash-${String(index)}`,
     })),

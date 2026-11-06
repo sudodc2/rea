@@ -133,7 +133,7 @@ cliTest(
     });
     expect(
       graph.occurrences.find(
-        (row) => row.logical_path === "__node_sea__/media/0",
+        (row) => row.logical_path === "__node_sea__/assets/0",
       ),
     ).toMatchObject({ source_path: "", format_metadata: { source_path: "" } });
   },
@@ -172,12 +172,12 @@ cliTest(
         body: main,
       },
       {
-        path: "__node_sea__/media/0",
+        path: "__node_sea__/assets/0",
         source: "",
         body: Buffer.from("empty key"),
       },
       {
-        path: "__node_sea__/media/1",
+        path: "__node_sea__/assets/1",
         source: "../outside.txt",
         body: Buffer.from("parent key"),
       },
@@ -187,7 +187,7 @@ cliTest(
         body: Buffer.from("safe key"),
       },
       {
-        path: "__node_sea__/media/3",
+        path: "__node_sea__/assets/3",
         source: "__node_sea__/main.cjs",
         body: Buffer.from("reserved key"),
       },
@@ -197,7 +197,7 @@ cliTest(
         body: Buffer.from("composed key"),
       },
       {
-        path: "__node_sea__/media/5",
+        path: "__node_sea__/assets/5",
         source: "data/cafe\u0301.txt",
         body: Buffer.from("decomposed key"),
       },

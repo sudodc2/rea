@@ -85,8 +85,8 @@ public class ReaJadxMetadataRegression {
       Path apk = output.resolve(assetFirst ? "manifest-asset-first.apk" : "manifest-root-first.apk");
       try (ZipOutputStream zip = new ZipOutputStream(Files.newOutputStream(apk))) {
         for (String path : assetFirst
-            ? List.of("media/AndroidManifest.xml", "AndroidManifest.xml")
-            : List.of("AndroidManifest.xml", "media/AndroidManifest.xml")) {
+            ? List.of("assets/AndroidManifest.xml", "AndroidManifest.xml")
+            : List.of("AndroidManifest.xml", "assets/AndroidManifest.xml")) {
           zip.putNextEntry(new ZipEntry(path));
           zip.write((path.equals("AndroidManifest.xml") ? root : asset).getBytes(StandardCharsets.UTF_8));
           zip.closeEntry();
@@ -134,7 +134,7 @@ public class ReaJadxMetadataRegression {
         "Manifest text did not retain the existing source byte limit");
     Path missing = output.resolve("manifest-asset-only.apk");
     try (ZipOutputStream zip = new ZipOutputStream(Files.newOutputStream(missing))) {
-      zip.putNextEntry(new ZipEntry("media/AndroidManifest.xml"));
+      zip.putNextEntry(new ZipEntry("assets/AndroidManifest.xml"));
       zip.write("<manifest package=\"org.example.asset\"/>".getBytes(StandardCharsets.UTF_8));
       zip.closeEntry();
     }

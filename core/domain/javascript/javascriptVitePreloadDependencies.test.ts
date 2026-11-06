@@ -125,7 +125,7 @@ describe("Vite preload dependency recovery", () => {
   it("marks build-output paths apart from importer-relative module URLs", () => {
     const analysis = analyzeJavaScriptStaticSource(`
       const __vite__mapDeps = (indexes, map = __vite__mapDeps, dependencies =
-        (map.f || (map.f = ["media/lazy.js", "./near.js", "https://cdn.example/x.js", "/abs.js"]))) =>
+        (map.f || (map.f = ["assets/lazy.js", "./near.js", "https://cdn.example/x.js", "/abs.js"]))) =>
         indexes.map((index) => dependencies[index]);
       __vite__mapDeps([0, 1, 2, 3]);
     `);
@@ -139,7 +139,7 @@ describe("Vite preload dependency recovery", () => {
       "./near.js",
       "/abs.js",
       "https://cdn.example/x.js",
-      "vite-output:media/lazy.js",
+      "vite-output:assets/lazy.js",
     ]);
   });
 });

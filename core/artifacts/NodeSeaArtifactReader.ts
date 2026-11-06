@@ -31,7 +31,7 @@ import {
 const SNAPSHOT_PATH = "__node_sea__/snapshot";
 const CODE_CACHE_PATH = "__node_sea__/code-cache";
 const MAIN_FALLBACK_PATH = "__node_sea__/main.cjs";
-const ASSET_FALLBACK_PREFIX = "__node_sea__/media/";
+const ASSET_FALLBACK_PREFIX = "__node_sea__/assets/";
 
 type NodeSeaRole = "main-script" | "snapshot" | "code-cache" | "asset";
 

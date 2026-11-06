@@ -23,7 +23,7 @@ describe("artifact archive inventory", () => {
     const root = await createTestTempDirectory("rea-containers-");
     const zipPath = join(root, "fixture.apk");
     const zipWriter = new ZipWriter(new Uint8ArrayWriter());
-    await zipWriter.add("media/index.js", new TextReader("export default 1;"));
+    await zipWriter.add("assets/index.js", new TextReader("export default 1;"));
     await zipWriter.add("lib/arm64-v8a/addon.so", new TextReader("native"));
     await writeFile(zipPath, await zipWriter.close());
     const parsed = await parseBinaryTarget(zipPath);

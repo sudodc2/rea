@@ -437,7 +437,7 @@ describe("web bundle analyzer", () => {
         expect.objectContaining({
           kind: "static_import",
           specifier: "./chunk.js?token=secret",
-          resolved_url: `${origin}/media/chunk.js?token=secret`,
+          resolved_url: `${origin}/assets/chunk.js?token=secret`,
         }),
         expect.objectContaining({
           kind: "dynamic_import",
@@ -962,7 +962,7 @@ describe("web bundle endpoint candidate classification", () => {
           {
             ...first,
             script_key: secondKey,
-            url: `${origin}/media/second.js`,
+            url: `${origin}/assets/second.js`,
           },
         ],
       },
@@ -1186,7 +1186,7 @@ describe("deep captured web bundle syntax", () => {
       expect.objectContaining({
         kind: "static_import",
         specifier: "./last.js",
-        resolved_url: `${origin}/media/last.js`,
+        resolved_url: `${origin}/assets/last.js`,
         location: expect.objectContaining({ line: 2, column: 0 }),
       }),
     );
@@ -1204,7 +1204,7 @@ const inspection = (source: string) =>
     {
       source,
       scriptKey: `scr_${"1".repeat(64)}`,
-      url: `${origin}/media/app.js`,
+      url: `${origin}/assets/app.js`,
       origin,
       cdpHash: "hash",
     },
@@ -1638,12 +1638,12 @@ it("keeps bare module locations unresolved without inventing URL-relative paths"
     result.observations.chunks.edges.find(
       (edge) => edge.specifier === "./actual.js",
     )?.resolved_url,
-  ).toBe(`${origin}/media/actual.js`);
+  ).toBe(`${origin}/assets/actual.js`);
   expect(
     result.observations.chunks.edges.find(
       (edge) => edge.specifier === "worker.js",
     )?.resolved_url,
-  ).toBe(`${origin}/media/worker.js`);
+  ).toBe(`${origin}/assets/worker.js`);
 });
 
 it("retains each literal importScripts argument in source order", () => {
@@ -1846,7 +1846,7 @@ it("reads expression-free template dynamic imports as chunk edges", () => {
     expect.objectContaining({
       kind: "dynamic_import",
       specifier: "./lazy.js",
-      resolved_url: `${origin}/media/lazy.js`,
+      resolved_url: `${origin}/assets/lazy.js`,
     }),
     expect.objectContaining({
       kind: "dynamic_import",

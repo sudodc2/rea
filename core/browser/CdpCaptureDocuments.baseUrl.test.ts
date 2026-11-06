@@ -15,7 +15,7 @@ const input = inspectWebPageInputSchema.parse({
 
 const snapshot = (
   baseUrl?: string,
-  baseHref = "media/",
+  baseHref = "assets/",
   pageUrl = documentUrl,
   linkHref = "guide",
 ) => ({
@@ -61,7 +61,7 @@ const capture = (value: ReturnType<typeof snapshot>) => {
 const prefixedXhtmlSnapshot = () => {
   const strings = [
     `${origin}/root/prefixed.xhtml`,
-    `${origin}/media/`,
+    `${origin}/assets/`,
     "#document",
     "h:html",
     "h:head",
@@ -73,7 +73,7 @@ const prefixedXhtmlSnapshot = () => {
     "xmlns:h",
     "http://www.w3.org/1999/xhtml",
     "href",
-    "/media/",
+    "/assets/",
     "action",
     "formaction",
   ];
@@ -133,20 +133,20 @@ describe("DOM metadata document base URLs", () => {
   });
 
   it("resolves links, actions and agent hints against the captured document base", () => {
-    const result = capture(snapshot(`${origin}/screens/media/`));
+    const result = capture(snapshot(`${origin}/screens/assets/`));
     expect(result.urls.map(({ url }) => url)).toEqual([
-      `${origin}/screens/media/`,
-      `${origin}/screens/media/guide`,
-      `${origin}/screens/media/agent`,
-      `${origin}/screens/media/submit`,
+      `${origin}/screens/assets/`,
+      `${origin}/screens/assets/guide`,
+      `${origin}/screens/assets/agent`,
+      `${origin}/screens/assets/submit`,
     ]);
-    expect(result.agentHints[0]?.url).toBe(`${origin}/screens/media/agent`);
+    expect(result.agentHints[0]?.url).toBe(`${origin}/screens/assets/agent`);
   });
 
   it("uses the document URL as fallback when no baseURL was supplied", () => {
     const result = capture(snapshot());
     expect(result.urls.map(({ url }) => url)).toEqual([
-      `${origin}/screens/media/`,
+      `${origin}/screens/assets/`,
       `${origin}/screens/guide`,
       `${origin}/screens/agent`,
       `${origin}/screens/submit`,
@@ -184,7 +184,7 @@ describe("DOM metadata document base URLs", () => {
     "data:text/plain,hello",
     "ftp://app.example.test/file",
   ])("classifies the non-http(s) destination %s as unsupported", (href) => {
-    const result = capture(snapshot(undefined, "media/", documentUrl, href));
+    const result = capture(snapshot(undefined, "assets/", documentUrl, href));
     expect(result.urls[1]).toMatchObject({
       url: null,
       destination_scope: "unsupported",
@@ -193,7 +193,7 @@ describe("DOM metadata document base URLs", () => {
 
   it("classifies an unparseable destination as unsupported", () => {
     const result = capture(
-      snapshot(undefined, "media/", documentUrl, "https://[invalid"),
+      snapshot(undefined, "assets/", documentUrl, "https://[invalid"),
     );
     expect(result.urls[1]).toMatchObject({
       url: null,
@@ -205,7 +205,7 @@ describe("DOM metadata document base URLs", () => {
     const result = capture(
       snapshot(
         undefined,
-        "media/",
+        "assets/",
         documentUrl,
         "https://user:secret@app.example.test/guide",
       ),
@@ -219,8 +219,8 @@ describe("DOM metadata document base URLs", () => {
   it("does not authorize a foreign document using its approved base URL", () => {
     const result = capture(
       snapshot(
-        `${origin}/media/`,
-        "media/",
+        `${origin}/assets/`,
+        "assets/",
         "https://outside.example.test/app",
       ),
     );
@@ -233,11 +233,11 @@ describe("DOM metadata document base URLs", () => {
 describe("prefixed XHTML form destinations", () => {
   it("resolves a prefixed base href against the document, not itself", () => {
     const value = prefixedXhtmlSnapshot();
-    value.strings[1] = `${origin}/root/media/`;
-    value.strings[13] = "media/";
+    value.strings[1] = `${origin}/root/assets/`;
+    value.strings[13] = "assets/";
     const step = captureDom(value, new Set([origin]), input).next();
     if (!step.done) throw new Error("Unexpected SVG identity query");
-    expect(step.value.urls[0]?.url).toBe(`${origin}/root/media/`);
+    expect(step.value.urls[0]?.url).toBe(`${origin}/root/assets/`);
   });
 
   it("resolves empty actions to the document URL", () => {
@@ -251,7 +251,7 @@ describe("prefixed XHTML form destinations", () => {
       {
         node_index: 3,
         attribute: "href",
-        url: `${origin}/media/`,
+        url: `${origin}/assets/`,
         destination_scope: "approved",
       },
       {
@@ -284,7 +284,7 @@ describe("empty form destinations with a document base URL", () => {
   it.each([" ", "\t\r\n\f"])(
     "resolves an HTML-whitespace-only form action to the document: %j",
     (action) => {
-      const baseUrl = `${origin}/media/`;
+      const baseUrl = `${origin}/assets/`;
       const value = snapshot(baseUrl);
       value.strings[15] = action;
       expect(capture(value).urls[3]?.url).toBe(documentUrl);
@@ -294,7 +294,7 @@ describe("empty form destinations with a document base URL", () => {
   it.each(["BUTTON", "INPUT"])(
     "retains document-base resolution for a whitespace-only %s formaction",
     (nodeName) => {
-      const baseUrl = `${origin}/media/`;
+      const baseUrl = `${origin}/assets/`;
       const value = snapshot(baseUrl);
       value.strings[6] = nodeName;
       value.strings[14] = "formaction";
@@ -309,7 +309,7 @@ describe("empty form destinations with a document base URL", () => {
   ])(
     "does not treat non-HTML whitespace as an empty form action: $value",
     ({ value: action, suffix }) => {
-      const baseUrl = `${origin}/media/`;
+      const baseUrl = `${origin}/assets/`;
       const value = snapshot(baseUrl);
       value.strings[15] = action;
       expect(capture(value).urls[3]?.url).toBe(`${baseUrl}${suffix}`);
@@ -334,7 +334,7 @@ describe("empty form destinations with a document base URL", () => {
   });
 
   it("does not apply form semantics to an action attribute on another element", () => {
-    const baseUrl = `${origin}/media/`;
+    const baseUrl = `${origin}/assets/`;
     const value = snapshot(baseUrl);
     value.strings[6] = "DIV";
     value.strings[15] = "";
@@ -344,7 +344,7 @@ describe("empty form destinations with a document base URL", () => {
 
 describe("repeated DOM attribute names", () => {
   it("keeps the first declaration for attribute names and destination URLs", () => {
-    const value = snapshot(undefined, "media/", documentUrl, "guide");
+    const value = snapshot(undefined, "assets/", documentUrl, "guide");
     const hrefUpperIndex = value.strings.length;
     const secondGuideIndex = hrefUpperIndex + 1;
     value.strings.push("href", "second-guide");
@@ -405,7 +405,7 @@ interface SvgSnapshotNode {
 
 const svgDocument = (
   elements: readonly SvgSnapshotNode[],
-  baseUrl = `${origin}/screens/media/`,
+  baseUrl = `${origin}/screens/assets/`,
 ) => {
   const strings = [documentUrl, baseUrl];
   const intern = (value: string): number => {
@@ -744,13 +744,13 @@ describe("SVG xlink:href destinations", () => {
       {
         node_index: 2,
         attribute: "href",
-        url: `${origin}/screens/media/guide`,
+        url: `${origin}/screens/assets/guide`,
         destination_scope: "approved",
       },
       {
         node_index: 3,
         attribute: "href",
-        url: `${origin}/screens/media/icon.svg`,
+        url: `${origin}/screens/assets/icon.svg`,
         destination_scope: "approved",
       },
     ]);
@@ -843,7 +843,7 @@ describe("SVG xlink:href context", () => {
 
 describe("SVG XLink precedence and unknown identity", () => {
   it("keeps an empty href ahead of xlink:href", () => {
-    const baseUrl = `${origin}/screens/media/`;
+    const baseUrl = `${origin}/screens/assets/`;
     const result = captureSvg(
       svgDocument(
         [
@@ -1121,7 +1121,7 @@ describe("XHTML and XML SVG namespace prefixes", () => {
     expect(result.nodes[3]?.attribute_names).toEqual(["xlink:href"]);
     expect(result.urls).toEqual([
       approvedHref(3, `${origin}/xl-pa1`),
-      approvedHref(4, `${origin}/screens/media/guide`),
+      approvedHref(4, `${origin}/screens/assets/guide`),
       approvedHref(5, `${origin}/xl-orphan`),
     ]);
   });
@@ -1190,7 +1190,7 @@ describe("XHTML and XML SVG namespace prefixes", () => {
   });
 
   it("keeps plain href ahead of a namespaced XLink href, including an empty href", () => {
-    const baseUrl = `${origin}/screens/media/`;
+    const baseUrl = `${origin}/screens/assets/`;
     const anchor = (
       parent: number,
       attributes: readonly (readonly [string, string])[],

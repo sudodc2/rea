@@ -99,10 +99,10 @@ const assertMetadataQueries = async (
       expect.objectContaining({
         format_metadata: expect.objectContaining({
           type_code: "d",
-          source_name: "../shared/app:media/data.bin",
+          source_name: "../shared/app:assets/data.bin",
           dependency_status: "unresolved",
           dependency_archive: "../shared/app",
-          dependency_member: "media/data.bin",
+          dependency_member: "assets/data.bin",
         }),
       }),
     ]),
@@ -138,7 +138,7 @@ const writeExecutable = async (opaque: boolean): Promise<string> => {
           compress: false,
         },
         {
-          name: "../shared/app:media/data.bin",
+          name: "../shared/app:assets/data.bin",
           typeCode: "d",
           payload: Buffer.alloc(0),
           compress: false,
@@ -571,9 +571,9 @@ const PYZ_ROLE_FILES = [
     bytecode: true,
   },
   {
-    name: "media/config.json",
+    name: "assets/config.json",
     typeCode: 2,
-    path: "media/config.json",
+    path: "assets/config.json",
     body: Buffer.from('{"enabled":true}'),
     bytecode: false,
   },

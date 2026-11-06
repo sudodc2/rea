@@ -49,12 +49,12 @@ def prepare_sharing_image(site):
         sys.exit(
             f"Cannot prepare sharing image: {error}. Install web/requirements.txt and native Cairo; see web/README.md."
         )
-    source = site / "media/social-card.svg"
-    destination = site / "media/social-card.png"
+    source = site / "assets/social-card.svg"
+    destination = site / "assets/social-card.png"
     cairosvg.svg2png(
         url=str(source), write_to=str(destination), output_width=1200, output_height=630
     )
-    print("Prepared media/social-card.png (1200 × 630).")
+    print("Prepared assets/social-card.png (1200 × 630).")
 
 
 def prepare_notes_example(site):

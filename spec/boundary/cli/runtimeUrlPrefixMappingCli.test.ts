@@ -67,7 +67,7 @@ const reconciledSchema = z.object({
   }),
 });
 
-/** Reconcile one source-free browser capture under `${origin}/media/`. */
+/** Reconcile one source-free browser capture under `${origin}/assets/`. */
 const reconcileThroughCli = async (
   root: string,
   analysis: Awaited<ReturnType<typeof analyzeFixture>>,
@@ -83,7 +83,7 @@ const reconcileThroughCli = async (
     items: suffixes.map((suffix, index) => ({
       script_key: `scr_${String(index).padStart(64, "0")}`,
       frame_id: "frame-main",
-      url: `${origin}/media/${suffix}`,
+      url: `${origin}/assets/${suffix}`,
       origin,
       cdp_hash: null,
       length: null,
@@ -124,7 +124,7 @@ const reconcileThroughCli = async (
           runtime_mappings: [
             {
               kind: "url-prefix",
-              prefix: `${origin}/media/`,
+              prefix: `${origin}/assets/`,
               artifact_prefix: "",
             },
           ],
@@ -154,7 +154,7 @@ const reconcileThroughCli = async (
       .filter(({ entity_kind }) => entity_kind === "script")
       .map((item) => [
         String(property(item.runtime_node_id, "location")).slice(
-          `${origin}/media/`.length,
+          `${origin}/assets/`.length,
         ),
         {
           status: item.status,

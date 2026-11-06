@@ -522,14 +522,14 @@ describe("artifact URI scheme classification", () => {
   it("keeps references under a digit-bearing external base href external", () => {
     const files = fileMap([
       file("index.html", "root"),
-      file("web3:media/app.js", "root"),
+      file("web3:assets/app.js", "root"),
     ]);
     expect(
       resolve({
         declaredPath: "app.js",
         sourcePath: "index.html",
         context: "html-reference",
-        htmlBaseHref: "web3:media/",
+        htmlBaseHref: "web3:assets/",
         files,
       }),
     ).toMatchObject({ resolution_status: "external", resolved_path: null });
@@ -1377,7 +1377,7 @@ describe("contextual JavaScript artifact path resolution", () => {
   it("applies document and base-href semantics to HTML references", () => {
     const files = fileMap([
       file("renderer/index.html", "root"),
-      file("media/app.js", "root"),
+      file("assets/app.js", "root"),
       file("renderer/local.js", "root"),
     ]);
 
@@ -1386,12 +1386,12 @@ describe("contextual JavaScript artifact path resolution", () => {
         declaredPath: "app.js?v=1",
         sourcePath: "renderer/index.html",
         context: "html-reference",
-        htmlBaseHref: "/media/",
+        htmlBaseHref: "/assets/",
         files,
       }),
     ).toMatchObject({
       resolution_status: "resolved",
-      resolved_path: "media/app.js",
+      resolved_path: "assets/app.js",
     });
     expect(
       resolve({
@@ -1510,10 +1510,10 @@ describe("ESM module URL path decoding", () => {
 
 describe("JavaScript file URL resolution", () => {
   it("keeps absolute file URL modules unavailable without a host mapping", () => {
-    const files = fileMap([file("media/app.js", "root")]);
+    const files = fileMap([file("assets/app.js", "root")]);
     for (const declaredPath of [
-      "file:///media/app.js#entry",
-      "FILE:///media/app.js?token=%2F#entry",
+      "file:///assets/app.js#entry",
+      "FILE:///assets/app.js?token=%2F#entry",
     ]) {
       expect(
         resolve({
@@ -1547,7 +1547,7 @@ describe("JavaScript file URL resolution", () => {
 
     expect(
       resolve({
-        declaredPath: "file:/media/app.js",
+        declaredPath: "file:/assets/app.js",
         sourcePath: "main.js",
         context: "module-specifier",
         moduleKind: "import",
@@ -3734,22 +3734,22 @@ describe("exact HTML resource resolution", () => {
   it("prefers an exact extensionless resource and retains URL suffix handling", () => {
     const files = fileMap([
       file("renderer/index.html", "root"),
-      file("media/app", "root"),
-      file("media/app.js", "root"),
-      file("media/app/index.js", "root"),
+      file("assets/app", "root"),
+      file("assets/app.js", "root"),
+      file("assets/app/index.js", "root"),
     ]);
     expect(
       resolve({
         declaredPath: "./app?cache=1#v2",
         sourcePath: "renderer/index.html",
         context: "html-reference",
-        htmlBaseHref: "/media/",
+        htmlBaseHref: "/assets/",
         files,
       }),
     ).toMatchObject({
       declared_path: "./app?cache=1#v2",
       resolution_status: "resolved",
-      resolved_path: "media/app",
+      resolved_path: "assets/app",
     });
   });
 });

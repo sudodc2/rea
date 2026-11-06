@@ -55,7 +55,7 @@ const onefile = async (
           compress: false,
         },
         {
-          name: "../shared/app:media/data.bin",
+          name: "../shared/app:assets/data.bin",
           typeCode: "d",
           payload: Buffer.alloc(0),
           compress: false,
@@ -213,7 +213,7 @@ it("lists CArchive members and the Python version through inspect-artifact", asy
     artifact_id: null,
     format_metadata: {
       dependency_archive: "../shared/app",
-      dependency_member: "media/data.bin",
+      dependency_member: "assets/data.bin",
       dependency_status: "unresolved",
     },
   });

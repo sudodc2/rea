@@ -865,7 +865,7 @@ it.each([false, true])(
               modules: [
                 { name: "app.mod", typeCode: 0, body },
                 { name: "app.pkg", typeCode: 1, body },
-                { name: "media/config.json", typeCode: 2, body },
+                { name: "assets/config.json", typeCode: 2, body },
                 { name: "app.ns", typeCode: 3, body: Buffer.alloc(0) },
               ],
             }),
@@ -879,7 +879,7 @@ it.each([false, true])(
         for (const [logicalPath, code, bytecode] of [
           ["PYZ.pyz/app/mod.pyc", 0, true],
           ["PYZ.pyz/app/pkg/__init__.pyc", 1, true],
-          ["PYZ.pyz/media/config.json", 2, false],
+          ["PYZ.pyz/assets/config.json", 2, false],
           ["PYZ.pyz/app/ns", 3, false],
         ] as const) {
           const entry = entries.find(
@@ -1202,8 +1202,8 @@ it("retains the producer's nonzero namespace offset without inventing data", asy
 
 it("retains multipackage references as distinct unresolved declarations", async () => {
   const names = [
-    "../owner/app:media/x:y",
-    "../owner/app:media/x:y",
+    "../owner/app:assets/x:y",
+    "../owner/app:assets/x:y",
     "missing-colon",
     ":empty-owner",
   ];
@@ -1238,7 +1238,7 @@ it("retains multipackage references as distinct unresolved declarations", async 
           type_code: "d",
           dependency_status: index < 2 ? "unresolved" : "invalid-reference",
           dependency_archive: index < 2 ? "../owner/app" : null,
-          dependency_member: index < 2 ? "media/x:y" : null,
+          dependency_member: index < 2 ? "assets/x:y" : null,
         });
         await expect(reader.open(entry)).rejects.toMatchObject({
           reason: "format",

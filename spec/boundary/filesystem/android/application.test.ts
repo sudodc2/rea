@@ -44,7 +44,7 @@ describe("Android application projection", () => {
     await writer.add("lib/arm64-v8a/libflutter.so", elf());
     await writer.add("lib/arm64-v8a/libunity.so", elf());
     await writer.add("lib/arm64-v8a/libcommunity.so", elf());
-    await writer.add("media/index.js", new TextReader("bridge();"));
+    await writer.add("assets/index.js", new TextReader("bridge();"));
     await writer.add("META-INF/FIXTURE.RSA", new TextReader("opaque signing"));
     await writeFile(path, await writer.close());
 
@@ -181,7 +181,7 @@ it("projects APK v1 metadata candidates at any META-INF depth", async () => {
     "META-INF/keys/CERT.EC",
     "META-INF/keys/readme.txt",
     "META-INF/keys/MANIFEST.MF",
-    "media/not-signing.SF",
+    "assets/not-signing.SF",
     "meta-inf/lower.SF",
   ];
   for (const entry of names)
@@ -425,8 +425,8 @@ it("does not infer a runtime from library-named directories or their text descen
   const writer = new ZipWriter(new Uint8ArrayWriter());
   await writer.add("AndroidManifest.xml", new TextReader("fixture"));
   for (const name of ["libflutter.so", "libunity.so", "libreactnative.so"]) {
-    await writer.add(`media/${name}/`, undefined, { directory: true });
-    await writer.add(`media/${name}/NOTICE.txt`, new TextReader("inert text"));
+    await writer.add(`assets/${name}/`, undefined, { directory: true });
+    await writer.add(`assets/${name}/NOTICE.txt`, new TextReader("inert text"));
   }
   await writeFile(path, await writer.close());
   const inventory = await inventoryApplicationPackage(path);

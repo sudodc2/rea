@@ -797,7 +797,7 @@ const urlDirectoryState = (directory: string): UrlPathState => ({
 
 /**
  * Apply URL dot segments: `..` removes the previous segment even when it is
- * empty, so `media//../app.js` names `media/app.js`. A final `.` or `..`
+ * empty, so `assets//../app.js` names `assets/app.js`. A final `.` or `..`
  * leaves directory form, as the URL parser does.
  */
 const applyUrlReference = (

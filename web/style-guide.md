@@ -250,7 +250,7 @@ the site follows the system preference; a manual choice is saved for later visit
 and shared across pages and languages on that host. Without JavaScript, the site
 uses the light palette and hides the switch.
 
-`media/theme.js` applies the choice before styles load and owns theme changes.
+`assets/theme.js` applies the choice before styles load and owns theme changes.
 The stylesheet scopes the dark palette to `data-theme="dark"` on the root,
 using [Catppuccin Mocha](https://github.com/catppuccin/palette) colors (MIT).
 Any new fixed color needs a dark counterpart in that section. Keep selector

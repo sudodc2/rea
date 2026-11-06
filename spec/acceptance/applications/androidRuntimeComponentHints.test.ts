@@ -22,7 +22,7 @@ cliTest(
       await writer.add("AndroidManifest.xml", new TextReader("fixture"));
       for (const extension of ["dex", "class"])
         await writer.add(
-          `media/${prefix}.${extension}`,
+          `assets/${prefix}.${extension}`,
           new TextReader("ordinary text"),
         );
       const path = join(root, `${prefix || "dot-names"}.apk`);
@@ -48,10 +48,10 @@ cliTest(
         evidence.normalized_result,
       );
       expect(graph.components.dex.map(({ path }) => path)).toEqual(
-        prefix ? ["media/named.dex"] : [],
+        prefix ? ["assets/named.dex"] : [],
       );
       expect(graph.components.jvm_classes.map(({ path }) => path)).toEqual(
-        prefix ? ["media/named.class"] : [],
+        prefix ? ["assets/named.class"] : [],
       );
       expect(graph.runtime_families).toEqual(
         prefix ? ["dalvik-art", "java-kotlin"] : [],
@@ -77,7 +77,7 @@ cliTest(
       "META-INF/keys/NESTED.SF",
       "META-INF/keys/NESTED.EC",
       "META-INF/keys/readme.txt",
-      "media/not-signing.SF",
+      "assets/not-signing.SF",
     ];
     const writer = new ZipWriter(new Uint8ArrayWriter());
     await writer.add("AndroidManifest.xml", new TextReader("fixture"));

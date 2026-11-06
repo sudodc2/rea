@@ -53,7 +53,7 @@ const populated = {
   codePath: "app/main.js",
   main: script,
   codeCache: Buffer.from("cache"),
-  assets: [{ name: "media/message.txt", body: "hello" }],
+  assets: [{ name: "assets/message.txt", body: "hello" }],
   execArgv: ["--no-warnings"],
   disableExperimentalSeaWarning: true,
   fuse: "set" as const,
@@ -107,7 +107,7 @@ it.each([
   });
   expect(
     snapshot.occurrences.find(
-      (row) => row.logical_path === "media/message.txt",
+      (row) => row.logical_path === "assets/message.txt",
     ),
   ).toMatchObject({ format_metadata: { role: "asset" } });
   const scriptNode = snapshot.nodes.find(
@@ -496,7 +496,7 @@ it("extracts the main script and assets without executing them", async () => {
       await readFile(join(extracted.output_root, "app/main.js"), "utf8"),
     ).toBe(script);
     expect(
-      await readFile(join(extracted.output_root, "media/message.txt"), "utf8"),
+      await readFile(join(extracted.output_root, "assets/message.txt"), "utf8"),
     ).toBe("hello");
     expect(
       Buffer.compare(
@@ -564,13 +564,13 @@ it("maps an unsafe main path and opaque asset keys without losing their sources"
   ).toEqual(
     [
       ["__node_sea__/main.cjs", "/absolute/main.js"],
-      ["__node_sea__/media/0", ""],
-      ["__node_sea__/media/1", "__node_sea__/snapshot"],
+      ["__node_sea__/assets/0", ""],
+      ["__node_sea__/assets/1", "__node_sea__/snapshot"],
       ["a/café.txt", "a/café.txt"],
-      ["__node_sea__/media/3", "a/cafe\u0301.txt"],
+      ["__node_sea__/assets/3", "a/cafe\u0301.txt"],
       ["tree", "tree"],
-      ["__node_sea__/media/5", "tree/child"],
-      ["__node_sea__/media/6", "__node_sea__"],
+      ["__node_sea__/assets/5", "tree/child"],
+      ["__node_sea__/assets/6", "__node_sea__"],
     ].sort(),
   );
   expect(rows.map((row) => row.source_path).sort()).toEqual(
@@ -616,9 +616,9 @@ it("maps a script collision and later file-prefix asset collision", async () => 
   ).toEqual(
     [
       ["main.js", "main.js"],
-      ["__node_sea__/media/0", "main.js"],
+      ["__node_sea__/assets/0", "main.js"],
       ["folder/item", "folder/item"],
-      ["__node_sea__/media/2", "folder"],
+      ["__node_sea__/assets/2", "folder"],
     ].sort(),
   );
 });

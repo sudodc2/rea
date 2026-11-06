@@ -242,7 +242,7 @@ class WebsiteSearchChecks(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             site = Path(directory) / "public"
             shutil.copytree(ROOT / "web/_site", site)
-            (site / "media/social-card.png").unlink()
+            (site / "assets/social-card.png").unlink()
             self.assertIn(
                 "Social preview PNG is missing; run tooling/prepare-website.py",
                 VERIFY.check_site(site)[3],
@@ -391,12 +391,12 @@ class WebsiteMaintenanceChecks(unittest.TestCase):
                 shutil.copytree(ROOT / "website" / name, root / "website" / name)
             site = root / "web/public"
             WEBSITE.sync_pages(root)
-            shutil.copyfile(ROOT / "web/_site/media/social-card.png", site / "media/social-card.png")
+            shutil.copyfile(ROOT / "web/_site/assets/social-card.png", site / "assets/social-card.png")
             PREPARE.prepare_notes_example(site)
             page = WEBSITE.new_page(root, "blog/new-example", 'A <test> & "result"', 'Check "quotes" & <markup>.')
             source = page.read_text()
             self.assertIn('href="../../blog/" aria-current="page"', source)
-            self.assertIn('href="../../media/styles.css"', source)
+            self.assertIn('href="../../assets/styles.css"', source)
             self.assertIn("A &lt;test&gt; &amp; &quot;result&quot;", source)
             with self.assertRaisesRegex(ValueError, "Page already exists"):
                 WEBSITE.new_page(root, "blog/new-example", "Another page", "Description")
@@ -578,7 +578,7 @@ class WebsiteTranslationChecks(unittest.TestCase):
             # check_site canonicalizes its root before collecting page keys.
             site = Path(directory).resolve()
             (site / "assets").mkdir()
-            shutil.copyfile(ROOT / "web/_site/media/social-card.png", site / "media/social-card.png")
+            shutil.copyfile(ROOT / "web/_site/assets/social-card.png", site / "assets/social-card.png")
             shutil.copyfile(ROOT / "web/public/robots.txt", site / "robots.txt")
             pages = {}
             for code in ("ur-Latn", "ur-Latn-PK"):
@@ -598,7 +598,7 @@ class WebsiteTranslationChecks(unittest.TestCase):
                       <meta property="og:title" content="REA ka ta'aruf" />
                       <meta property="og:description" content="REA ko samjhein." />
                       <meta property="og:url" content="{url}" />
-                      <meta property="og:image" content="https://rea.tools/media/social-card.png" />
+                      <meta property="og:image" content="https://rea.tools/assets/social-card.png" />
                       <meta property="og:image:type" content="image/png" />
                       <meta property="og:image:width" content="1200" />
                       <meta property="og:image:height" content="630" />
@@ -606,7 +606,7 @@ class WebsiteTranslationChecks(unittest.TestCase):
                       <meta name="twitter:card" content="summary_large_image" />
                       <meta name="twitter:title" content="REA ka ta'aruf" />
                       <meta name="twitter:description" content="REA ko samjhein." />
-                      <meta name="twitter:image" content="https://rea.tools/media/social-card.png" />
+                      <meta name="twitter:image" content="https://rea.tools/assets/social-card.png" />
                       <meta name="twitter:image:alt" content="REA" />
                     </head>
                     <body><h1>REA ka ta'aruf</h1></body>
@@ -677,7 +677,7 @@ class WebsiteTranslationChecks(unittest.TestCase):
             result = (site / "zh-CN/faq/index.html").read_text()
             self.assertIn("现在如何安装 REA？", result)
             self.assertNotIn("data-translation-fallback", result)
-            self.assertIn('href="../media/styles.css"', (site / "zh-CN/index.html").read_text())
+            self.assertIn('href="../assets/styles.css"', (site / "zh-CN/index.html").read_text())
             self.assertIn('hreflang="zh-CN"', (site / "faq/index.html").read_text())
             self.assertIn("https://rea.tools/zh-CN/faq/", (site / "sitemap.xml").read_text())
 
@@ -782,7 +782,7 @@ class WebsiteTranslationChecks(unittest.TestCase):
                 with urlopen(base + "ar/faq?test=1") as response:
                     self.assertEqual(response.url, base + "ar/faq/?test=1")
                     self.assertIn(b'lang="ar"', response.read())
-                with urlopen(base + "media/i18n.js") as response:
+                with urlopen(base + "assets/i18n.js") as response:
                     self.assertIn(b"export function t", response.read())
                 with urlopen(base + "examples/notes-example.zip") as response:
                     self.assertEqual(response.read(), (site / "examples/notes-example.zip").read_bytes())
@@ -805,7 +805,7 @@ class WebsiteTranslationChecks(unittest.TestCase):
                         self.assertEqual(len(colors), 1)
                         self.assertEqual(colors[0].attrs.get("content"), "#ffffff")
                         self.assertNotIn("media", colors[0].attrs)
-                        theme = [node for node in doc.nodes if node.tag == "script" and (node.attrs.get("src") or "").endswith("/media/theme.js")]
+                        theme = [node for node in doc.nodes if node.tag == "script" and (node.attrs.get("src") or "").endswith("/assets/theme.js")]
                         self.assertEqual(len(theme), 1)
                         for deferred in ("defer", "async", "type"):
                             self.assertNotIn(deferred, theme[0].attrs)

@@ -116,7 +116,7 @@ it("keeps duplicate library-name occurrences bound to their own opaque ZIP keys"
     second = "lib/arm64-v8a/libcopy2.so";
   const source = await fixture(
     [
-      ["media/ignored.so", Buffer.from("an unrelated member")],
+      ["assets/ignored.so", Buffer.from("an unrelated member")],
       [first, bytes],
       [second, bytes],
     ],

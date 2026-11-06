@@ -30,7 +30,7 @@ const harmony = {
     "module.json",
     "ets/modules.abc",
     "libs/arm64-v8a/libflutter.so",
-    "media/main.js",
+    "assets/main.js",
     "resources.index",
     "resources/base",
     "META-INF/TEST.p7b",
@@ -44,7 +44,7 @@ const harmony = {
     bytecode: ["ets/modules.abc"],
     resources: ["resources.index", "resources/base"],
     native_libraries: ["libs/arm64-v8a/libflutter.so"],
-    javascript: ["media/main.js"],
+    javascript: ["assets/main.js"],
     signing: ["META-INF/TEST.p7b"],
   },
   fileBridges: [

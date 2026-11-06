@@ -1460,7 +1460,7 @@ it.each([
   },
 );
 
-it.each(["media/game.unx", "Example.app/Contents/Resources/game.ios"])(
+it.each(["assets/game.unx", "Example.app/Contents/Resources/game.ios"])(
   "probes the GameMaker data file at %s",
   async (path) => {
     const root = await createTestTempDirectory("rea-desktop-gamemaker-data-");

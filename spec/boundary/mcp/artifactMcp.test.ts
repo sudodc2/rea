@@ -799,7 +799,7 @@ const pyInstallerComparisonArchive = (
         compress: false,
       },
       {
-        name: "shared-app:media/data.bin",
+        name: "shared-app:assets/data.bin",
         typeCode: "d",
         payload: Buffer.alloc(0),
         compress: false,

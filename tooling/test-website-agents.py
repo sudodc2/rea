@@ -80,7 +80,7 @@ class AgentPublishingChecks(unittest.TestCase):
               <p><a href="../other/?q=a%2Fb#code">Another guide</a></p>
               <pre><code>const value = a &lt; b ? "x_y" : "&amp;";\n  keepIndent();</code></pre>
               <details><summary>Evidence</summary><p>Hidden evidence remains available.</p></details>
-              <img src="../../../media/diagram.svg" alt="Investigation diagram">
+              <img src="../../../assets/diagram.svg" alt="Investigation diagram">
               <button>Copy code</button><script>doNotPublish()</script></main></body></html>''')
             fixture = site / "samples/notes-web/index.html"
             fixture.parent.mkdir(parents=True)
@@ -96,7 +96,7 @@ class AgentPublishingChecks(unittest.TestCase):
             self.assertIn("Shortened display paths.", markdown)
             self.assertNotIn("Read`input.exe`", markdown)
             self.assertIn("https://rea.tools/zh-CN/guides/other/?q=a%2Fb#code", markdown)
-            self.assertIn("https://rea.tools/media/diagram.svg", markdown)
+            self.assertIn("https://rea.tools/assets/diagram.svg", markdown)
             for text in ("Outside navigation", "Contents navigation", "Copy code", "doNotPublish"):
                 self.assertNotIn(text, markdown)
             self.assertFalse(fixture.with_suffix(".md").exists())

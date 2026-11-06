@@ -346,7 +346,7 @@ def source_catalog(root):
             add(context, text, slots, "web/public/" + relative, node.line)
     for _, text, reference, line in runtime_units(root):
         add("runtime", text, {}, reference, line)
-    for path in sorted((site / "media/figures").glob("*.svg")):
+    for path in sorted((site / "assets/figures").glob("*.svg")):
         source = path.read_text(encoding="utf-8")
         for node in Document(source).nodes:
             if node.tag in {"text", "title", "desc"} and not any(isinstance(child, Node) for child in node.children):
@@ -489,7 +489,7 @@ def relative_reference(reference, source_path, output_path, site, available, cod
     if not language_link and lookup.as_posix() in available and code != "en":
         relative = Path(code) / relative
     if relative.as_posix() in figures and code != "en":
-        relative = Path("media/localized") / code / relative.relative_to("assets")
+        relative = Path("assets/localized") / code / relative.relative_to("assets")
     destination = os.path.relpath(site / relative, output_path.parent).replace(os.sep, "/")
     if parsed.path.endswith("/") and not destination.endswith("/"):
         destination += "/"
@@ -575,7 +575,7 @@ def required_messages(root, path, template):
         reference = node.attrs.get("src")
         if reference and not urlsplit(reference).scheme:
             target = (path.parent / unquote(urlsplit(reference).path)).resolve()
-            if target.parent == (site / "media/figures").resolve():
+            if target.parent == (site / "assets/figures").resolve():
                 required.update((entry.msgctxt, entry.msgid) for entry in template if entry.msgctxt == "figure:" + target.name)
     return required
 
@@ -635,7 +635,7 @@ def build_translations(root, destination, finalize=None):
             messages = catalogs[language["code"]]
             available = {relative for relative, codes in page_languages.items() if language["code"] in codes}
             figures = set()
-            for path in sorted((site / "media/figures").glob("*.svg")):
+            for path in sorted((site / "assets/figures").glob("*.svg")):
                 source = path.read_text(encoding="utf-8")
                 edits = []
                 for node in Document(source).nodes:
@@ -645,7 +645,7 @@ def build_translations(root, destination, finalize=None):
                             translated = messages[("figure:" + path.name, text)]
                             edits.append((node.open_end, node.end_start, escape(translated, quote=False)))
                 translated = apply_edits(source, edits)
-                output = staging / "media/localized" / language["code"] / path.relative_to(site / "assets")
+                output = staging / "assets/localized" / language["code"] / path.relative_to(site / "assets")
                 output.parent.mkdir(parents=True, exist_ok=True)
                 output.write_text(translated, encoding="utf-8")
                 figures.add(path.relative_to(site).as_posix())

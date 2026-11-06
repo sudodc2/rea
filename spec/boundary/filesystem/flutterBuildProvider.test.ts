@@ -1145,7 +1145,7 @@ it.each(["identify_flutter_build", "inspect_dart_aot"] as const)(
     const comment = "x".repeat(65535);
     for (let index = 0; index < 129; index += 1)
       await writer.add(
-        `media/empty-${String(index)}`,
+        `assets/empty-${String(index)}`,
         new Uint8ArrayReader(new Uint8Array()),
         { comment, level: 0 },
       );
