@@ -189,7 +189,10 @@ it("retains available quality diagnostics after failure without keeping canceled
       .split("\n")
       .map((path) => path.trim()),
   ).toEqual(
-    expect.arrayContaining(["coverage/reverse-tools/", "verification/mutation/"]),
+    expect.arrayContaining([
+      "coverage/reverse-tools/",
+      "verification/mutation/",
+    ]),
   );
   expect(options["retention-days"]).toBe(7);
   expect(options["if-no-files-found"]).toBe("warn");

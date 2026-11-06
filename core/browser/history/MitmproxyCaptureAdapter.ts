@@ -58,7 +58,10 @@ export class MitmproxyCaptureAdapter implements HistoricalCaptureFormatAdapter {
         `rea_request_path=${requestPath}`,
         "-s",
         fileURLToPath(
-          new URL("../../../provider-bridges/mitmproxy/capture.py", import.meta.url),
+          new URL(
+            "../../../provider-bridges/mitmproxy/capture.py",
+            import.meta.url,
+          ),
         ),
       ],
     };

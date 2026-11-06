@@ -584,7 +584,10 @@ it.each(["#original.js", "?version.js", "?version.js#original.js"])(
     const source = `../core/a.js${suffix}`;
     await Promise.all([
       writeFile(join(previous, "core/a.js"), "export const value = 1;"),
-      writeFile(join(previous, `core/a.js${suffix}`), "export const decoy = 3;"),
+      writeFile(
+        join(previous, `core/a.js${suffix}`),
+        "export const decoy = 3;",
+      ),
       writeFile(
         join(current, "maps/main.js.map"),
         JSON.stringify({

@@ -564,7 +564,11 @@ describe("reference source manifest inventory", () => {
       ],
       ["handbook/apis/client.ts", "TypeScript", ["documentation", "source"]],
       ["mydocs/api/client.ts", "TypeScript", ["source"]],
-      ["handbook/manual/api/client.ts", "TypeScript", ["documentation", "source"]],
+      [
+        "handbook/manual/api/client.ts",
+        "TypeScript",
+        ["documentation", "source"],
+      ],
       ["handbook/api.ts", "TypeScript", ["documentation", "source"]],
       ["public/client.ts", "TypeScript", ["generated", "source"]],
       [".github", null, ["config"]],

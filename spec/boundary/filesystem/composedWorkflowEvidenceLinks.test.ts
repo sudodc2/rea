@@ -5,7 +5,10 @@ import { ok } from "../../../core/domain/result.js";
 import { createDeferred } from "../../fixtures/binarySession.js";
 import { expect, it } from "vitest";
 import { runDirectAnalysis } from "../../../core/application/DirectAnalysis.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { composedWorkflowFixture } from "../../fixtures/composedWorkflowEvidence.js";
 import { readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";

@@ -276,7 +276,11 @@ function releaseFileEntries(
 async function releaseFixture({
   config = {},
   commits = [
-    { sha: latest, message: "fix: direct change", files: ["handbook/changed.md"] },
+    {
+      sha: latest,
+      message: "fix: direct change",
+      files: ["handbook/changed.md"],
+    },
     { sha: baseline, message: "chore: release 6.7.0", files: ["package.json"] },
   ],
   depth = 500,
@@ -619,7 +623,11 @@ it("rejects a missing manifest release before replaying a historical version ove
     releasedVersions: { ".": "6.8.0" },
     releases: [releaseRecord("6.7.0", "d".repeat(40))],
     commits: [
-      { sha: latest, message: "fix: current change", files: ["core/change.ts"] },
+      {
+        sha: latest,
+        message: "fix: current change",
+        files: ["core/change.ts"],
+      },
       {
         sha: baseline,
         message: "chore: release 6.8.0",
@@ -649,7 +657,11 @@ it("uses a tag-only manifest release and excludes older version overrides", asyn
     releases: [],
     tags: [{ name: "rea-agents-6.8.0", commit: { sha: baseline } }],
     commits: [
-      { sha: latest, message: "fix: current change", files: ["core/change.ts"] },
+      {
+        sha: latest,
+        message: "fix: current change",
+        files: ["core/change.ts"],
+      },
       {
         sha: baseline,
         message: "chore: release 6.8.0",

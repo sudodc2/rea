@@ -1,6 +1,9 @@
 import { join } from "node:path";
 import { expect, it } from "vitest";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { analysisViewResultSchema } from "../../../core/domain/analysisView/analysisView.js";
 import { createApplicationMcpHarness } from "../../fixtures/applicationMcpHarness.js";
 import { createTestBinarySession } from "../../fixtures/binarySession.js";

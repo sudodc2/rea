@@ -18,7 +18,10 @@ import { AnalysisCapabilityUnavailableError } from "../../../core/domain/analysi
 import { err, ok as resultOk } from "../../../core/domain/result.js";
 import { observed as ok } from "../../fixtures/analysisExecution.js";
 import { createServer } from "../../../core/server/createServer.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import {
   createEvidenceBundle,
   parseEvidenceBundle,

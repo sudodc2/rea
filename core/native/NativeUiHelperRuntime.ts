@@ -48,7 +48,10 @@ export const createNativeUiHelperRuntime = (
     const main = join(root, "main.swift");
     await symlink(
       fileURLToPath(
-        new URL("../../provider-bridges/native/ReaNativeUI.swift", import.meta.url),
+        new URL(
+          "../../provider-bridges/native/ReaNativeUI.swift",
+          import.meta.url,
+        ),
       ),
       main,
     );
@@ -68,7 +71,10 @@ export const createNativeUiHelperRuntime = (
           ),
         ),
         fileURLToPath(
-          new URL("../../provider-bridges/native/NativeUIValues.swift", import.meta.url),
+          new URL(
+            "../../provider-bridges/native/NativeUIValues.swift",
+            import.meta.url,
+          ),
         ),
         main,
         "-o",

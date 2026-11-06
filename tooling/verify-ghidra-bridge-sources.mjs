@@ -86,7 +86,9 @@ const sourceNames = (await readdir(bridge, { withFileTypes: true }))
   .map((entry) => entry.name);
 for (const name of Object.values(GHIDRA_BRIDGE_SOURCES))
   if (!sourceNames.includes(name))
-    fail(`Required Ghidra bridge source is missing: provider-bridges/ghidra/${name}`);
+    fail(
+      `Required Ghidra bridge source is missing: provider-bridges/ghidra/${name}`,
+    );
 const requiredNames = new Set(Object.values(GHIDRA_BRIDGE_SOURCES));
 const unregistered = sourceNames.filter((name) => !requiredNames.has(name));
 if (unregistered.length)

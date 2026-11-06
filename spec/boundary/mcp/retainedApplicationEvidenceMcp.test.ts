@@ -10,7 +10,10 @@ import {
   SOURCE_TO_BUNDLE_COMPARISON_EXAMPLE,
 } from "../../../core/contracts/javascript/javascriptApplicationWorkflowExamples.js";
 import { JAVASCRIPT_EXPORT_SHAPE_COMPARISON_EXAMPLE } from "../../../core/contracts/javascript/javascriptExportShapeComparisonExample.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { createMcpSchemaValidation } from "../../fixtures/mcpSchemaValidation.js";
 
 const schemaValidation = createMcpSchemaValidation();

@@ -12,8 +12,7 @@ const adbBoundary =
   "spec/boundary/providers/adb/adbBugreportPublication.test.ts";
 const cliBoundary = "spec/boundary/cli/apktoolCli.test.ts";
 const mcpBoundary = "spec/boundary/mcp/apktoolMcp.test.ts";
-const processBoundary =
-  "spec/boundary/process/processCaptureLifecycle.test.ts";
+const processBoundary = "spec/boundary/process/processCaptureLifecycle.test.ts";
 const acceptance = "spec/acceptance/tools/localToolContracts.test.ts";
 const composition = "spec/composition/directAnalysisCleanup.test.ts";
 const evaluation = "spec/evaluation/testDiscovery.test.ts";

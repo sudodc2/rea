@@ -26,7 +26,10 @@ const packageJson = JSON.parse(
 );
 const parsed = parseWindowsNativeManifest(
   JSON.parse(
-    await readFile(new URL("platform/windows/build/manifest.json", root), "utf8"),
+    await readFile(
+      new URL("platform/windows/build/manifest.json", root),
+      "utf8",
+    ),
   ),
   packageJson.version,
 );

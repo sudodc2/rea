@@ -8,7 +8,10 @@ import { runDirectAnalysis } from "../../../core/application/DirectAnalysis.js";
 import { registerCoreNativeCommands } from "../../../core/cli/coreNativeCommands.js";
 import { projectCliAnalysisResult } from "../../../core/cli/projectCliAnalysisResult.js";
 import type { CliInstance } from "../../../core/cli/types.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import {
   createEvidenceBundle,
   parseEvidenceBundle,

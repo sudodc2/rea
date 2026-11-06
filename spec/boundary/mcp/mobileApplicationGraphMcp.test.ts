@@ -13,7 +13,10 @@ import { expect, it } from "vitest";
 import { createDirectAnalysis } from "../../../core/composition/directAnalysis.js";
 import { androidApplicationProjectionResultSchema } from "../../../core/domain/android/androidApplication.js";
 import { artifactInventoryResultSchema } from "../../../core/domain/artifactGraph.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { fragmentInventoryEvidence } from "../../fixtures/artifactEvidence.js";
 import { parseMcpToolError } from "../../fixtures/mcpToolError.js";
 import { createTestBinarySession } from "../../fixtures/binarySession.js";

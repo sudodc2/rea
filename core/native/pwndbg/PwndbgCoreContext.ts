@@ -176,7 +176,10 @@ export const inspectPwndbgCore = async ({
         arguments: [
           "-I",
           fileURLToPath(
-            new URL("../../../provider-bridges/pwndbg/launch.py", import.meta.url),
+            new URL(
+              "../../../provider-bridges/pwndbg/launch.py",
+              import.meta.url,
+            ),
           ),
           join(stage, "resource.failure"),
           requestPath,

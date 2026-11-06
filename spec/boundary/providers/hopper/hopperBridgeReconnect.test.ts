@@ -20,7 +20,10 @@ it.skipIf(process.platform === "win32")(
         ),
       ),
       fileURLToPath(
-        new URL("../../../../provider-bridges/hopper_bridge.py", import.meta.url),
+        new URL(
+          "../../../../provider-bridges/hopper_bridge.py",
+          import.meta.url,
+        ),
       ),
       runtime.path,
     ]);

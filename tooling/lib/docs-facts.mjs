@@ -123,7 +123,12 @@ export const documentationFactIssues = async (root, catalog) => {
         content,
         "(handbook/installation.md#supported-agents)",
       );
-      requireText(issues, path, content, "(handbook/installation.md#mcp-registry)");
+      requireText(
+        issues,
+        path,
+        content,
+        "(handbook/installation.md#mcp-registry)",
+      );
       requireText(
         issues,
         path,
@@ -162,7 +167,12 @@ export const documentationFactIssues = async (root, catalog) => {
     requireText(issues, installationPath, installation, client.display_name);
 
   const agents = await readFile(join(root, "AGENTS.md"), "utf8");
-  requireText(issues, "AGENTS.md", agents, "handbook/public/product-catalog.json");
+  requireText(
+    issues,
+    "AGENTS.md",
+    agents,
+    "handbook/public/product-catalog.json",
+  );
 
   const templatePath = ".github/pull_request_template.md";
   const template = await readFile(join(root, templatePath), "utf8");

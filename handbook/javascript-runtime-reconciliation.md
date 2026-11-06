@@ -44,7 +44,7 @@ are complete Evidence objects, not only evidence IDs:
       "runtime_mappings": [
         {
           "kind": "url-prefix",
-          "prefix": "https://example.test/media/",
+          "prefix": "https://example.test/assets/",
           "artifact_prefix": "dist"
         }
       ]

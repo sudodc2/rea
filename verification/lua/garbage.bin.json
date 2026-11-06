@@ -33,10 +33,7 @@
     "9&0e~C",
     ":_ojE`"
   ],
-  "decoded_strings": [
-    "@nNdw!pl",
-    "}EwPxI"
-  ],
+  "decoded_strings": ["@nNdw!pl", "}EwPxI"],
   "limitations": [
     "Static byte analysis only; the artifact is never executed.",
     "String recovery is limited to escape-sequence decoding; runtime-constructed strings (string.char/concat chains) are not resolved.",

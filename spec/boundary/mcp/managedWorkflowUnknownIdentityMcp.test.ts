@@ -4,7 +4,10 @@ import {
   MANAGED_NATIVE_VERIFICATION_EXAMPLE,
   MANAGED_RECONSTRUCTION_IMPORT_EXAMPLE,
 } from "../../../core/contracts/managed/managedWorkflowExamples.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 
 import {
   managedMemberInspectionSchema,

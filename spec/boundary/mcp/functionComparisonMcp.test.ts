@@ -11,7 +11,10 @@ import { compareFunctions } from "../../../core/domain/functionComparison.js";
 
 import { createTestBinarySession } from "../../fixtures/binarySession.js";
 import { FUNCTION_COMPARISON_EXAMPLE } from "../../../core/contracts/functionComparisonExample.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { observed } from "../../fixtures/analysisExecution.js";
 import { reconstructionVerificationResultSchema } from "../../../core/domain/reconstructionVerificationSchemas.js";
 import { functionDossierSchema } from "../../../core/domain/native/functionDossier.js";

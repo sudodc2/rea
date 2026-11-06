@@ -15,7 +15,10 @@ import { parseMcpToolError } from "../../fixtures/mcpToolError.js";
 import { createTestTempDirectory } from "../../fixtures/temporaryDirectory.js";
 import { mcpTest } from "../../support/mcp/mcpFixture.js";
 import { openProductionTarget } from "../../support/mcp/productionSession.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { advertisedMcpToolSchemas } from "../../fixtures/advertisedMcpTool.js";
 
 const schemaValidation = createMcpSchemaValidation();

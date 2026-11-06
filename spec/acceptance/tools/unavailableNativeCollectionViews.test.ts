@@ -3,7 +3,10 @@ import { join } from "node:path";
 import { expect } from "vitest";
 
 import { analysisViewResultSchema } from "../../../core/domain/analysisView/analysisView.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import {
   nativeLoadImageObservationFixture,
   nativeRawLoadImageFixture,

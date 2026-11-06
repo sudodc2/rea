@@ -15,7 +15,10 @@ import {
   compareArtifacts,
 } from "../../../core/domain/artifactComparison.js";
 import { parseArtifactInventoryEvidence } from "../../../core/domain/artifactInventoryEvidence.js";
-import { createEvidence, type Evidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  type Evidence,
+} from "../../../core/domain/evidence.js";
 import { jsonValueSchema } from "../../../core/domain/jsonValue.js";
 
 const PROVIDER = {

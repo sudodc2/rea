@@ -1,5 +1,8 @@
 import { awaitAcknowledgement } from "../../fixtures/lifecycleAcknowledgement.js";
-import { parseEvidence, createEvidence } from "../../../core/domain/evidence.js";
+import {
+  parseEvidence,
+  createEvidence,
+} from "../../../core/domain/evidence.js";
 import { ok as resultOk } from "../../../core/domain/result.js";
 import { Client, InMemoryTransport } from "@modelcontextprotocol/client";
 import { expect, it } from "vitest";

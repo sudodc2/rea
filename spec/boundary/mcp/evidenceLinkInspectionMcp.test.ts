@@ -4,7 +4,10 @@ import { afterAll, expect, it } from "vitest";
 import { z } from "zod";
 import { FUNCTION_COMPARISON_EXAMPLE } from "../../../core/contracts/functionComparisonExample.js";
 import { MCP_TRANSPORT_EVIDENCE_LINKS } from "../../../core/domain/analysisErrorPresentation.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { createEvidenceBundle } from "../../../core/domain/evidenceBundle.js";
 import {
   EVIDENCE_LINK_INSPECTION_LIMIT,

@@ -6,7 +6,10 @@ import { Client } from "@modelcontextprotocol/client";
 import { StdioClientTransport } from "@modelcontextprotocol/client/stdio";
 import { expect, onTestFinished } from "vitest";
 
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { bundleComparisonResultSchema } from "../../../core/domain/bundleComparison.js";
 import {
   createEvidenceBundle,

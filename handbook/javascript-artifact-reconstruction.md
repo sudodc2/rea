@@ -1016,7 +1016,7 @@ their percent-encoded path bytes are decoded; encoded dot and separator bytes
 are still rejected. CommonJS module lookups retain extension and directory
 resolution.
 ESM, HTML, and URL references apply URL dot segments to empty path segments:
-`./media//../app.js` selects `assets/app.js`, while a remaining empty segment
+`./assets//../app.js` selects `assets/app.js`, while a remaining empty segment
 such as `./assets/app.js` stays unavailable. CommonJS keeps filesystem path
 semantics and selects `app.js` for the same text.
 Unresolved HTML references retain their declaration, source range, and resolution

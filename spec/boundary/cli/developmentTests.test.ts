@@ -244,7 +244,12 @@ describe("development test runner exact selection", () => {
       'export default { test: { projects: [{ test: { name: "domain", include: ["core/value.test.ts"] } }] } };\n',
     );
     await expect(
-      testCommand(root, "focused", "core/value.test.ts", "core/excluded.test.ts"),
+      testCommand(
+        root,
+        "focused",
+        "core/value.test.ts",
+        "core/excluded.test.ts",
+      ),
     ).rejects.toMatchObject({
       code: 1,
       stderr: expect.stringContaining(
@@ -260,7 +265,12 @@ describe("development test runner exact selection", () => {
       'import { it } from "vitest"; it("selected failure", () => { throw new Error("selected regression"); });\n',
     );
     await expect(
-      testCommand(root, "focused", "core/value.test.ts", "core/failure.test.ts"),
+      testCommand(
+        root,
+        "focused",
+        "core/value.test.ts",
+        "core/failure.test.ts",
+      ),
     ).rejects.toMatchObject({
       code: 1,
       stdout: expect.stringContaining("1 failed | 1 passed"),

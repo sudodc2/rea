@@ -23,41 +23,44 @@ const gates = vi.hoisted(() => {
   };
 });
 
-vi.mock("../../../../core/filesystem/RegularFile.js", async (importOriginal) => {
-  const original =
-    await importOriginal<
-      typeof import("../../../../core/filesystem/RegularFile.js")
-    >();
-  return {
-    ...original,
-    openRegularFile: vi.fn(
-      async (...args: Parameters<typeof original.openRegularFile>) => {
-        const descriptor = await original.openRegularFile(...args);
-        const { handle } = descriptor;
-        const index = gates.opens++;
-        const read = handle.read.bind(handle);
-        const close = handle.close.bind(handle);
-        vi.spyOn(handle, "read").mockImplementation(async (...readArgs) => {
-          if (index === 1 && gates.holdIdentityRead) {
-            gates.identityRead.enter();
-            await gates.identityRead.hold;
-          }
-          return read(...readArgs);
-        });
-        vi.spyOn(handle, "close").mockImplementation(async () => {
-          if (index === 1 && gates.holdHashClose) {
-            gates.hashClose.enter();
-            await gates.hashClose.hold;
-          }
-          if (gates.failClose)
-            throw new Error("controlled final close refusal");
-          await close();
-        });
-        return descriptor;
-      },
-    ),
-  };
-});
+vi.mock(
+  "../../../../core/filesystem/RegularFile.js",
+  async (importOriginal) => {
+    const original =
+      await importOriginal<
+        typeof import("../../../../core/filesystem/RegularFile.js")
+      >();
+    return {
+      ...original,
+      openRegularFile: vi.fn(
+        async (...args: Parameters<typeof original.openRegularFile>) => {
+          const descriptor = await original.openRegularFile(...args);
+          const { handle } = descriptor;
+          const index = gates.opens++;
+          const read = handle.read.bind(handle);
+          const close = handle.close.bind(handle);
+          vi.spyOn(handle, "read").mockImplementation(async (...readArgs) => {
+            if (index === 1 && gates.holdIdentityRead) {
+              gates.identityRead.enter();
+              await gates.identityRead.hold;
+            }
+            return read(...readArgs);
+          });
+          vi.spyOn(handle, "close").mockImplementation(async () => {
+            if (index === 1 && gates.holdHashClose) {
+              gates.hashClose.enter();
+              await gates.hashClose.hold;
+            }
+            if (gates.failClose)
+              throw new Error("controlled final close refusal");
+            await close();
+          });
+          return descriptor;
+        },
+      ),
+    };
+  },
+);
 
 import { ArtifactResourceScope } from "../../../../core/artifacts/ArtifactResourceScope.js";
 import type { RetainedResourceScope } from "../../../../core/application/AnalysisProvider.js";

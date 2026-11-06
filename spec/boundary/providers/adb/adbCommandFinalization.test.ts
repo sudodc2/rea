@@ -23,37 +23,42 @@ const hooks = vi.hoisted(() => ({
   failure: undefined as unknown,
 }));
 
-vi.mock("../../../../core/process/ExecFileOutput.js", async (importOriginal) => {
-  const actual =
-    await importOriginal<
-      typeof import("../../../../core/process/ExecFileOutput.js")
-    >();
-  return {
-    ...actual,
-    execFileBytes: async (...args: Parameters<typeof actual.execFileBytes>) => {
-      try {
-        return await actual.execFileBytes(...args);
-      } catch (cause: unknown) {
-        hooks.failure = cause;
-        throw cause;
-      } finally {
-        hooks.afterCommand?.();
-      }
-    },
-    execFileOutput: async (
-      ...args: Parameters<typeof actual.execFileOutput>
-    ) => {
-      try {
-        return await actual.execFileOutput(...args);
-      } catch (cause: unknown) {
-        hooks.failure = cause;
-        throw cause;
-      } finally {
-        hooks.afterCommand?.();
-      }
-    },
-  };
-});
+vi.mock(
+  "../../../../core/process/ExecFileOutput.js",
+  async (importOriginal) => {
+    const actual =
+      await importOriginal<
+        typeof import("../../../../core/process/ExecFileOutput.js")
+      >();
+    return {
+      ...actual,
+      execFileBytes: async (
+        ...args: Parameters<typeof actual.execFileBytes>
+      ) => {
+        try {
+          return await actual.execFileBytes(...args);
+        } catch (cause: unknown) {
+          hooks.failure = cause;
+          throw cause;
+        } finally {
+          hooks.afterCommand?.();
+        }
+      },
+      execFileOutput: async (
+        ...args: Parameters<typeof actual.execFileOutput>
+      ) => {
+        try {
+          return await actual.execFileOutput(...args);
+        } catch (cause: unknown) {
+          hooks.failure = cause;
+          throw cause;
+        } finally {
+          hooks.afterCommand?.();
+        }
+      },
+    };
+  },
+);
 
 beforeEach(() => {
   hooks.afterCommand = undefined;

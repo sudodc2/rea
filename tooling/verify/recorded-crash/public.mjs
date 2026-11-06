@@ -6,7 +6,7 @@ import { promisify } from "node:util";
 import { Client } from "@modelcontextprotocol/client";
 import { StdioClientTransport } from "@modelcontextprotocol/client/stdio";
 import { parseEvidence } from "../../../dist/domain/evidence.js";
-import { recordedCrashSchema } from "../../../dist/domain/platform/recordedCrash.js";
+import { recordedCrashSchema } from "../../../dist/domain/native/recordedCrash.js";
 import { mcpTextValue } from "../../lib/mcp-verifier-results.mjs";
 
 const execute = promisify(execFile);

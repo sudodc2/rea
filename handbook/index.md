@@ -72,4 +72,4 @@ and [releasing](releasing.md).
 conformance verifier. [The 6.2 migration](migration-6.2.md) records that release's
 compatibility changes; [the roadmap](roadmap.md) tracks future work.
 
-![REA inspecting a native binary in Hopper](./media/rea-hopper-analysis.png)
+![REA inspecting a native binary in Hopper](./assets/rea-hopper-analysis.png)

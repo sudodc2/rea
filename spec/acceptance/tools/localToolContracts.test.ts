@@ -6,7 +6,10 @@ import { promisify } from "node:util";
 import { expect, it } from "vitest";
 
 import { toolContract } from "../../../core/contracts/toolContracts.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { EMPTY_PROCESS_CAPTURE_EXAMPLE } from "../../../core/domain/process/processCaptureExample.js";
 import { PROCESS_PROVIDER } from "../../../core/domain/process/processEvidenceProvider.js";
 import { itWithCaptureCapability as captureTest } from "../../boundary/process/processCaptureCapability.js";

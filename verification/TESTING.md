@@ -7,11 +7,11 @@ are listed as unavailable, not skipped silently.
 
 ## 1. Source build
 
-| Step | Command | Result |
-| --- | --- | --- |
-| Dependency install | `npm install` (Node v24.22.1, `.nvmrc`-pinned) | pass — full workspace install |
-| TypeScript compile | `npm run compile` | pass — `tsc -p tsconfig.build.json` clean; only benign `INEFFECTIVE_DYNAMIC_IMPORT` bundler notes |
-| CLI smoke | `node tooling/rea.mjs doctor` | runs; `healthy: false` solely due to bring-your-own providers (Ghidra/IDA/Hopper/Kuna/JADX unset) and MCP client registrations — expected on a bare machine |
+| Step               | Command                                        | Result                                                                                                                                                      |
+| ------------------ | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Dependency install | `npm install` (Node v24.22.1, `.nvmrc`-pinned) | pass — full workspace install                                                                                                                               |
+| TypeScript compile | `npm run compile`                              | pass — `tsc -p tsconfig.build.json` clean; only benign `INEFFECTIVE_DYNAMIC_IMPORT` bundler notes                                                           |
+| CLI smoke          | `node tooling/rea.mjs doctor`                  | runs; `healthy: false` solely due to bring-your-own providers (Ghidra/IDA/Hopper/Kuna/JADX unset) and MCP client registrations — expected on a bare machine |
 
 The full `npm run build` lane additionally requires the packaged Windows
 native artifact (`platform/windows/build/`). It is restored from the published
@@ -20,17 +20,17 @@ SHA-256 verified by the loader). It is gitignored and not committed.
 
 ## 2. Unit / domain test suite
 
-| Command | Result |
-| --- | --- |
+| Command                       | Result                                              |
+| ----------------------------- | --------------------------------------------------- |
 | `vitest run --project domain` | **477 test files, 10,047 tests — all passed** (59s) |
 
 ## 3. Real-provider-free command checks (live CLI)
 
-| Command | Target | Result |
-| --- | --- | --- |
-| `inspect-pe-resources` | `C:\Windows\System32\curl.exe` | pass — Evidence record `ev_9791ab81…`, PE32+ inventory, sha256 `73d24149…`, 2 resources, coverage `complete`, limitations recorded |
-| `doctor` | — | pass (runs; provider gaps reported as designed) |
-| `analyze-javascript-application` | directory of 18 JS/HTML files | **see §5** |
+| Command                          | Target                         | Result                                                                                                                             |
+| -------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `inspect-pe-resources`           | `C:\Windows\System32\curl.exe` | pass — Evidence record `ev_9791ab81…`, PE32+ inventory, sha256 `73d24149…`, 2 resources, coverage `complete`, limitations recorded |
+| `doctor`                         | —                              | pass (runs; provider gaps reported as designed)                                                                                    |
+| `analyze-javascript-application` | directory of 18 JS/HTML files  | **see §5**                                                                                                                         |
 
 ## 4. rea-lua — Luau/Lua artifact analyzer (new in this repo)
 
@@ -43,13 +43,13 @@ escape-decoded string recovery. Static only — the artifact is never executed.
 
 Fixture suite (`lua/tests/run.mjs`, fixtures in `lua/tests/fixtures/`):
 
-| Fixture | Expected | Got | Notes |
-| --- | --- | --- | --- |
-| `plain.lua` | `luau-plain` | `luau-plain` | pass |
-| `luraph-marker.lua` | `luraph` | `luraph` | pass — LPH markers + env probes detected |
-| `webhook.lua` | `luau-plain` | `luau-plain` | pass — `discord-webhook`, `http-url`, `game-httpget` surface reported |
-| `malformed.lua` (ESC-Lua header + random tail) | `luau-bytecode` | `luau-bytecode` | pass |
-| `garbage.bin` (random bytes) | `unknown` | `unknown` (exit 2) | pass |
+| Fixture                                        | Expected        | Got                | Notes                                                                 |
+| ---------------------------------------------- | --------------- | ------------------ | --------------------------------------------------------------------- |
+| `plain.lua`                                    | `luau-plain`    | `luau-plain`       | pass                                                                  |
+| `luraph-marker.lua`                            | `luraph`        | `luraph`           | pass — LPH markers + env probes detected                              |
+| `webhook.lua`                                  | `luau-plain`    | `luau-plain`       | pass — `discord-webhook`, `http-url`, `game-httpget` surface reported |
+| `malformed.lua` (ESC-Lua header + random tail) | `luau-bytecode` | `luau-bytecode`    | pass                                                                  |
+| `garbage.bin` (random bytes)                   | `unknown`       | `unknown` (exit 2) | pass                                                                  |
 
 Machine-readable reports for every fixture: `verification/lua/*.json`.
 

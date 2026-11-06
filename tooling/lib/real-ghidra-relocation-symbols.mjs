@@ -9,10 +9,7 @@ import { withVerifierCleanup } from "./verifier-cleanup.mjs";
 import { createVerifierCommands } from "./verify-commands.mjs";
 
 const source = fileURLToPath(
-  new URL(
-    "../../spec/conformance/ghidra/relocation-symbol.c",
-    import.meta.url,
-  ),
+  new URL("../../spec/conformance/ghidra/relocation-symbol.c", import.meta.url),
 );
 
 /** Verify named and unnamed ELF relocations through the shipped CLI and Ghidra. */

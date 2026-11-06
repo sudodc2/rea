@@ -63,7 +63,10 @@ await verifyAndroidMetadata({
   jvmArguments,
   entrypoint,
   environment,
-  bridge: resolve(dirname(entrypoint), "../provider-bridges/android/ReaJadxBridge.java"),
+  bridge: resolve(
+    dirname(entrypoint),
+    "../provider-bridges/android/ReaJadxBridge.java",
+  ),
 });
 const tasks = [
   {

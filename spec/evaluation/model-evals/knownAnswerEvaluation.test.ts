@@ -2,7 +2,10 @@ import { STDIO_DEFAULT_MAX_BUFFER_SIZE } from "@modelcontextprotocol/server";
 import { describe, expect, it } from "vitest";
 
 import { toolContract } from "../../../core/contracts/toolContracts.js";
-import { createEvidence, type Evidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  type Evidence,
+} from "../../../core/domain/evidence.js";
 import type { JsonValue } from "../../../core/domain/jsonValue.js";
 import { evaluateCodexEvents } from "./CodexAgentEval.js";
 import {

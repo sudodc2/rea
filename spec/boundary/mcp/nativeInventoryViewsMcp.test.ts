@@ -5,7 +5,10 @@ import { z } from "zod";
 import { createAnalysisExecution } from "../../../core/application/AnalysisProvider.js";
 import { toolContract } from "../../../core/contracts/toolContracts.js";
 import { inspectAnalysisViewInputSchema } from "../../../core/domain/analysisView/analysisView.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { NATIVE_INVENTORY_OPERATIONS } from "../../../core/domain/native/nativeInventory.js";
 import { ok } from "../../../core/domain/result.js";
 import { createServer } from "../../../core/server/createServer.js";

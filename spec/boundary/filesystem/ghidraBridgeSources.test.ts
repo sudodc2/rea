@@ -85,7 +85,8 @@ const admissionCases: readonly AdmissionCase[] = [
     name: "compiler fails",
     properties: "application.version=12.1.4\n",
     compilerStatus: 1,
-    error: "provider-bridges/ghidra/ReaGhidraBridge.java:1: error: cannot find symbol",
+    error:
+      "provider-bridges/ghidra/ReaGhidraBridge.java:1: error: cannot find symbol",
   },
   { name: "colon separator", properties: "application.version : 12.1.4\n" },
   {
@@ -158,9 +159,13 @@ it.skipIf(process.platform === "win32").each([
       "core/ghidra/GhidraReleasePolicy.ts",
     ])
       await copyFile(resolve(path), join(repository, path));
-    await cp(resolve("provider-bridges/ghidra"), join(repository, "provider-bridges/ghidra"), {
-      recursive: true,
-    });
+    await cp(
+      resolve("provider-bridges/ghidra"),
+      join(repository, "provider-bridges/ghidra"),
+      {
+        recursive: true,
+      },
+    );
     const path = join(repository, "provider-bridges/ghidra", source);
     if (action === "added")
       await writeFile(path, "class UnregisteredHelper {}\n");
@@ -174,7 +179,10 @@ it.skipIf(process.platform === "win32").each([
           `Renamed${className}`,
         ),
       );
-      await rename(path, join(repository, "provider-bridges/ghidra", `Renamed${source}`));
+      await rename(
+        path,
+        join(repository, "provider-bridges/ghidra", `Renamed${source}`),
+      );
     }
     const fixture = await installation();
     await expect(

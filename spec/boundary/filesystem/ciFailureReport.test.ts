@@ -88,7 +88,10 @@ const comparison = (): Parameters<typeof classifyFailure>[0] => ({
 });
 
 it("attributes a deep duplication failure when both gates record the same jscpd task", () => {
-  const duplicate = { kind: "jscpd" as const, paths: ["core/a.ts", "core/b.ts"] };
+  const duplicate = {
+    kind: "jscpd" as const,
+    paths: ["core/a.ts", "core/b.ts"],
+  };
   const deepContext = (sourceSha: string) => ({
     ...context(sourceSha),
     taskHashes: { jscpd: "c".repeat(16) },

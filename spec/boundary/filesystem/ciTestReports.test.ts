@@ -746,7 +746,10 @@ it("requires executed Python analysis-efficiency cases while allowing optional s
     "import unittest\nclass Example(unittest.TestCase):\n def test_case(self): pass\n";
   for (const family of ["mitmproxy", "native", "pwndbg"]) {
     await mkdir(join(root, "provider-bridges", family), { recursive: true });
-    await writeFile(join(root, "provider-bridges", family, "test_case.py"), passing);
+    await writeFile(
+      join(root, "provider-bridges", family, "test_case.py"),
+      passing,
+    );
   }
   const directory = join(root, "spec", "support", "analysis-efficiency");
   await mkdir(directory, { recursive: true });
@@ -809,10 +812,19 @@ it("requires executed Python cases in every bridge family", async () => {
     "import unittest\nclass Example(unittest.TestCase):\n def test_case(self): pass\n";
   for (const family of ["mitmproxy", "native", "pwndbg"]) {
     await mkdir(join(root, "provider-bridges", family), { recursive: true });
-    await writeFile(join(root, "provider-bridges", family, "capture.py"), "VALUE = 1\n");
-    await writeFile(join(root, "provider-bridges", family, "test_case.py"), passing);
+    await writeFile(
+      join(root, "provider-bridges", family, "capture.py"),
+      "VALUE = 1\n",
+    );
+    await writeFile(
+      join(root, "provider-bridges", family, "test_case.py"),
+      passing,
+    );
   }
-  await writeFile(join(root, "provider-bridges", "example", "test_first.py"), passing);
+  await writeFile(
+    join(root, "provider-bridges", "example", "test_first.py"),
+    passing,
+  );
   await writeFile(
     join(root, "spec", "support", "analysis-efficiency", "test_example.py"),
     passing,

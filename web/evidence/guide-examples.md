@@ -108,8 +108,8 @@ These digests identify the files used for the recorded analyses. The browser
 page later gained the site's shared `↑ Top` navigation; its `export.js` and
 `notes.json` retain the versions below.
 
-| File                                   | SHA-256                                                            |
-| -------------------------------------- | ------------------------------------------------------------------ |
+| File                                  | SHA-256                                                            |
+| ------------------------------------- | ------------------------------------------------------------------ |
 | `samples/notes-electron/csv.js`       | `6875aeecc1d3e6c1ff5b888a199c26b377d812d5b10e5fb4025e192a206b0018` |
 | `samples/notes-electron/index.html`   | `a31df9b29eb9d479f913c7806364609019eedd1d19cda386cc24706d5068082d` |
 | `samples/notes-electron/main.js`      | `cc5b00911bfe428754d94ca40e8c0f354cfaae86f716873423aa5a62b9e0379a` |

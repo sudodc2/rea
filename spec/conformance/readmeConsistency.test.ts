@@ -66,7 +66,10 @@ describe("onboarding documentation product facts", () => {
   });
 
   it("preserves Persian joiners in links to GitHub-rendered headings", async () => {
-    const persian = await readFile(resolve("handbook/readme/README_fa.md"), "utf8");
+    const persian = await readFile(
+      resolve("handbook/readme/README_fa.md"),
+      "utf8",
+    );
     // Confirmed against GitHub's rendered README, which retains U+200C.
     for (const heading of [
       "REA چگونه کار می‌کند",

@@ -3,7 +3,10 @@ import { expect, it } from "vitest";
 
 import { FUNCTION_COMPARISON_EXAMPLE } from "../../../core/contracts/functionComparisonExample.js";
 import { toolContract } from "../../../core/contracts/toolContracts.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { reconstructionVerificationResultSchema } from "../../../core/domain/reconstructionVerificationSchemas.js";
 import { connectLocalToolsMcp } from "../../fixtures/localToolsMcp.js";
 

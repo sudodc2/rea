@@ -149,7 +149,9 @@ itWithCaptureCapability(
            fs.writeFileSync('reports', 'regular file'); console.log('finished');`,
         ],
         working_directory: root,
-        filesystem_observation_paths: [join(root, "verification", "final.json")],
+        filesystem_observation_paths: [
+          join(root, "verification", "final.json"),
+        ],
         timeout_ms: 5_000,
         idle_timeout_ms: 5_000,
         settle_ms: 100,

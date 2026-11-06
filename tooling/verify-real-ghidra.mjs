@@ -504,7 +504,10 @@ async function verifyTarget(targetPath, variant, expectedTarget = null) {
       analyzeHeadlessPath: installation.analyzeHeadlessPath,
       javaHome: installation.javaHome,
       bridgeScriptPath: fileURLToPath(
-        new URL("../provider-bridges/ghidra/ReaGhidraBridge.java", import.meta.url),
+        new URL(
+          "../provider-bridges/ghidra/ReaGhidraBridge.java",
+          import.meta.url,
+        ),
       ),
       platform: installation.platform,
     }),

@@ -146,7 +146,10 @@ it("restores a real lint report across cold, warm, and fresh consumer checkouts"
       join(root, ".oxlintrc.json"),
       JSON.stringify({ rules: { "no-debugger": "error" } }),
     );
-    await writeFile(join(root, "core/check.js"), "export const ready = true;\n");
+    await writeFile(
+      join(root, "core/check.js"),
+      "export const ready = true;\n",
+    );
     await writeFile(
       join(root, "tooling/ci/static-check-report.mjs"),
       await readFile(reportScript, "utf8"),

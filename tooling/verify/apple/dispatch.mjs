@@ -14,7 +14,7 @@ import {
   artifactMcpResult,
   withArtifactMcp,
 } from "../../lib/artifact-e2e.mjs";
-import { nativeDispatchMetadataResultSchema } from "../../../dist/domain/platform/objcSwiftMetadata.js";
+import { nativeDispatchMetadataResultSchema } from "../../../dist/domain/native/objcSwiftMetadata.js";
 import { analysisErrorProjectionSchema } from "../../../dist/contracts/errorSchemas.js";
 import { cliOperationFailurePayload } from "../../../dist/cliLogging.js";
 import { requireMcpToolError } from "../../lib/mcp-verifier-results.mjs";

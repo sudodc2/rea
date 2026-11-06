@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import type { BinaryTarget } from "../../../core/domain/binaryTargetTypes.js";
 import { createAnalysisProfile } from "../../../core/domain/analysisProfile.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { createEvidenceBundle } from "../../../core/domain/evidenceBundle.js";
 import {
   createAnalysisSnapshotEntry,

@@ -17,7 +17,10 @@ import { peExportImage } from "../../fixtures/binaryDiagnostics/nativeExports.js
 import { observed } from "../../fixtures/analysisExecution.js";
 import { err, ok } from "../../../core/domain/result.js";
 import { toolContract } from "../../../core/contracts/toolContracts.js";
-import { createEvidence, type Evidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  type Evidence,
+} from "../../../core/domain/evidence.js";
 import { EvidenceIntegrityError } from "../../../core/domain/evidenceErrors.js";
 import { AnalysisProtocolError } from "../../../core/domain/analysisErrorCore.js";
 import { silentLogger } from "../../../core/logger.js";

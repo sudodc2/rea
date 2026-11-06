@@ -311,8 +311,12 @@ describe("Ghidra headless launcher", () => {
       ["-postScript", "/package/provider-bridges/ReaGhidraNoReturnFix.java"],
     ]);
     // The no-return repair must finish before the bridge starts serving.
-    const fix = arguments_.indexOf("/package/provider-bridges/ReaGhidraNoReturnFix.java");
-    const bridge = arguments_.indexOf("/package/provider-bridges/ReaGhidraBridge.java");
+    const fix = arguments_.indexOf(
+      "/package/provider-bridges/ReaGhidraNoReturnFix.java",
+    );
+    const bridge = arguments_.indexOf(
+      "/package/provider-bridges/ReaGhidraBridge.java",
+    );
     expect(fix).toBeLessThan(bridge);
     expect(arguments_[bridge + 1]).toBe("/tmp/session.json");
     expect(arguments_).toContain("-readOnly");
@@ -377,7 +381,8 @@ describe("Ghidra headless launcher", () => {
         compilerSpecId: "gcc",
       },
     };
-    const script = "/package/provider-bridges/ReaGhidraRiscvCallingConvention.java";
+    const script =
+      "/package/provider-bridges/ReaGhidraRiscvCallingConvention.java";
     // PSP, DOS and raw imports carry their own languages, so they omit the pin.
     const { languageOverride: _pin, ...unpinned } = base;
     expect(ghidraHeadlessArguments(base)).not.toContain(script);
@@ -585,7 +590,11 @@ describe("Ghidra disabled analyzers", () => {
         disabledAnalyzers: ["Objective-C Message Analyzer"],
       });
       const options = arguments_.indexOf(
-        path.join("/package", "provider-bridges", "ReaGhidraAnalysisOptions.java"),
+        path.join(
+          "/package",
+          "provider-bridges",
+          "ReaGhidraAnalysisOptions.java",
+        ),
       );
       expect(arguments_[options - 1]).toBe("-preScript");
       expect(arguments_[options + 1]).toBe("Objective-C Message Analyzer");
@@ -1037,7 +1046,9 @@ describe("Ghidra Windows launcher", () => {
       ghidraLogPath: "/tmp/ghidra.log",
       scriptLogPath: "/tmp/script.log",
     });
-    expect(args).not.toContain("/package/provider-bridges/ReaGhidraNoReturnFix.java");
+    expect(args).not.toContain(
+      "/package/provider-bridges/ReaGhidraNoReturnFix.java",
+    );
     expect(args).toContain("/package/provider-bridges/ReaGhidraBridge.java");
   });
 });

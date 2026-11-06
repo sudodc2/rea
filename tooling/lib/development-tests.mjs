@@ -52,9 +52,7 @@ const artifactConsumers = {
     "spec/boundary/filesystem/documentationFacts.test.ts",
     "spec/boundary/filesystem/productCatalog.test.ts",
   ],
-  "artifacts:managed-evidence": [
-    "spec/boundary/filesystem/setupSkill.test.ts",
-  ],
+  "artifacts:managed-evidence": ["spec/boundary/filesystem/setupSkill.test.ts"],
 };
 
 /** Plan source feedback or explicit tests with their runtime/artifact prerequisites. */

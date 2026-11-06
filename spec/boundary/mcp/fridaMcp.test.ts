@@ -13,7 +13,10 @@ import { createTestBinarySession } from "../../fixtures/binarySession.js";
 import { fridaSessionStatusSummaryViewResultSchema } from "../../../core/domain/analysisView/analysisView.js";
 import { fridaSessionStatusSchema } from "../../../core/domain/fridaSessionStatus.js";
 import { evidenceBundleSummarySchema } from "../../../core/domain/evidenceRecordSummary.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { parseMcpEvidenceBundle } from "../../fixtures/mcpEvidenceBundle.js";
 import { createMcpSchemaValidation } from "../../fixtures/mcpSchemaValidation.js";
 

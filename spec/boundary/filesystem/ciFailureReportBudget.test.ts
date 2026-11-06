@@ -403,7 +403,9 @@ it.each([true, false])(
       }),
     });
     expect(
-      await api.getBlobIdentity(repository, mainSha, prSha, ["core/example.ts"]),
+      await api.getBlobIdentity(repository, mainSha, prSha, [
+        "core/example.ts",
+      ]),
     ).toEqual({ "core/example.ts": equal });
   },
 );

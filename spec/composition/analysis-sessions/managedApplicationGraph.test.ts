@@ -8,7 +8,10 @@ import {
 import { MANAGED_APPLICATION_GRAPH_EXAMPLE } from "../../../core/contracts/managed/managedWorkflowExamples.js";
 import { traceApplicationFeatureEvidence } from "../../../core/application/javascript/JavaScriptApplicationWorkflowService.js";
 import { MANAGED_STATIC_PROVIDER } from "../../../core/domain/investigationProviders.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { parseJavaScriptApplicationGraph } from "../../../core/domain/javascript/javascriptApplicationGraph.js";
 import {
   managedMemberInspectionSchema,

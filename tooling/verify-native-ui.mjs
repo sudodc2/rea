@@ -26,10 +26,16 @@ try {
   await promisify(execFile)("/usr/bin/xcrun", [
     "swiftc",
     fileURLToPath(
-      new URL("../provider-bridges/native/NativeUIChildren.swift", import.meta.url),
+      new URL(
+        "../provider-bridges/native/NativeUIChildren.swift",
+        import.meta.url,
+      ),
     ),
     fileURLToPath(
-      new URL("../provider-bridges/native/NativeUIValues.swift", import.meta.url),
+      new URL(
+        "../provider-bridges/native/NativeUIValues.swift",
+        import.meta.url,
+      ),
     ),
     fileURLToPath(
       new URL(

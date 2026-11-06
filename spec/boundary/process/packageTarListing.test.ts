@@ -64,7 +64,10 @@ it.each(["\r\n", "\n"])(
   },
 );
 
-it.each(["package/provider-bridges/stale.pyc", "package/provider-bridges/__pycache__/stale"])(
+it.each([
+  "package/provider-bridges/stale.pyc",
+  "package/provider-bridges/__pycache__/stale",
+])(
   "rejects generated Python assets before parsing a bridge: %s",
   async (generated) => {
     expect(

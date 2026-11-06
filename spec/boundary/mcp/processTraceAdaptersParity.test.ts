@@ -11,7 +11,10 @@ import type { AnalysisClient } from "../../../core/application/AnalysisProvider.
 import { compareProcessEvidenceFiles } from "../../../core/application/process/ProcessCli.js";
 import { PROCESS_PROVIDER } from "../../../core/domain/process/processEvidenceProvider.js";
 import { processTraceCaptureFixture } from "../../../core/domain/process/processCapture.fixture.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 
 import { createServer } from "../../../core/server/createServer.js";
 import { observed as ok } from "../../fixtures/analysisExecution.js";

@@ -297,10 +297,7 @@ it("retains multiple question identities without assigning ambiguous response ow
 it("parses recorded DNS, mDNS and LLMNR trees with protocol-specific class semantics", async () => {
   const packets = JSON.parse(
     await readFile(
-      new URL(
-        "../../spec/fixtures/pcap/dns-family-tree.json",
-        import.meta.url,
-      ),
+      new URL("../../spec/fixtures/pcap/dns-family-tree.json", import.meta.url),
       "utf8",
     ),
   ) as { _source: { layers: Record<string, unknown> } }[];

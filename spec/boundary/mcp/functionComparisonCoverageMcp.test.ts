@@ -1,7 +1,10 @@
 import { expect, it } from "vitest";
 
 import { FUNCTION_COMPARISON_EXAMPLE } from "../../../core/contracts/functionComparisonExample.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { functionDossierSchema } from "../../../core/domain/native/functionDossier.js";
 import { jsonValueSchema } from "../../../core/domain/jsonValue.js";
 import { createTestBinarySession } from "../../fixtures/binarySession.js";

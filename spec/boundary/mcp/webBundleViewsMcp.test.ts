@@ -2,7 +2,10 @@ import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { afterAll, expect, it } from "vitest";
 import { createApplicationMcpHarness } from "../../fixtures/applicationMcpHarness.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import {
   webBundlePageViewResultSchema,
   webBundleSummaryViewResultSchema,

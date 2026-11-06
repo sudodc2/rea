@@ -7,7 +7,10 @@ import { AnalysisProviderRegistry } from "../../../core/application/binary/Analy
 import { inspectAnalysisView } from "../../../core/application/analysisView/AnalysisViewService.js";
 import { ManagedStaticProvider } from "../../../core/dotnet/ManagedStaticProvider.js";
 import { buildManagedPeFixture } from "../../../core/dotnet/ManagedPe.fixture.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import {
   managedArtifactSummaryViewResultSchema,
   analysisViewResultSchema,

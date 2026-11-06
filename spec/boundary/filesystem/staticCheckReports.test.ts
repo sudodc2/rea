@@ -269,8 +269,7 @@ it("excludes translation staging while retaining authored website errors", async
   );
   await writeRepositoryOxlintConfiguration(root);
   const authored = "web/public/assets/authored.js";
-  const staged =
-    "web/.i18n-regression/site/samples/notes-electron/main.js";
+  const staged = "web/.i18n-regression/site/samples/notes-electron/main.js";
   for (const name of [authored, staged]) {
     const path = join(root, name);
     await mkdir(dirname(path), { recursive: true });

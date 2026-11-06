@@ -66,120 +66,123 @@ afterEach(async () => {
   injected.handles.length = 0;
 });
 
-vi.mock("../../../../core/filesystem/RegularFile.js", async (importOriginal) => {
-  const original =
-    await importOriginal<
-      typeof import("../../../../core/filesystem/RegularFile.js")
-    >();
-  return {
-    ...original,
-    openRegularFile: vi.fn(
-      async (...args: Parameters<typeof original.openRegularFile>) => {
-        const descriptor = await original.openRegularFile(...args);
-        const { handle } = descriptor;
-        // Test teardown retains native release separately from the producer's
-        // injected close behavior, including when an assertion fails early.
-        const nativeClose = handle.close.bind(handle);
-        injected.nativeCloses.set(handle, nativeClose);
-        const isInstallation = String(args[0]) === injected.installationPath;
-        injected.handles.push(handle);
-        const failNextClose = injected.failNextClose;
-        const failCloseReadStage = injected.failCloseReadStage;
-        const failReadStage = injected.failReadStage;
-        const abortOnClose = injected.abortOnClose;
-        if (
-          !failNextClose &&
-          !injected.holdCloseFailures &&
-          !failCloseReadStage &&
-          !failReadStage &&
-          !abortOnClose
-        )
-          return descriptor;
-        injected.failNextClose = false;
-        let readStageMatched = false;
-        let failedClose = false;
-        let abortCloseMatched = false;
-        let fingerprintStage:
-          | "preProbeFingerprint"
-          | "fingerprint"
-          | "identity"
-          | undefined;
-        const tracksFingerprint = [
-          failCloseReadStage,
-          failReadStage,
-          abortOnClose?.stage,
-        ].some(
-          (stage) =>
-            stage === "preProbeFingerprint" ||
-            stage === "fingerprint" ||
-            stage === "identity",
-        );
-        const positional: {
-          read(
-            buffer: Buffer,
-            offset: number,
-            length: number,
-            position: number,
-          ): Promise<{ bytesRead: number; buffer: Buffer }>;
-        } = handle;
-        const nativeRead = positional.read.bind(handle);
-        vi.spyOn(positional, "read").mockImplementation(
-          (
-            buffer: Buffer,
-            offset: number,
-            length: number,
-            position: number,
-          ) => {
-            if (
-              length > 2 &&
-              tracksFingerprint &&
-              fingerprintStage === undefined
-            ) {
-              fingerprintStage = isInstallation
-                ? injected.fingerprintReads === 0
-                  ? "preProbeFingerprint"
-                  : "identity"
-                : "fingerprint";
-              if (isInstallation) injected.fingerprintReads += 1;
-            }
-            const readStage =
-              length === 2
-                ? undefined
-                : length > 2
-                  ? fingerprintStage
-                  : undefined;
-            if (abortOnClose?.stage === readStage) abortCloseMatched = true;
-            if (failReadStage !== undefined && failReadStage === readStage) {
-              readStageMatched = true;
-              injected.abortOnReadFailure?.();
-              throw new Error("injected read fault");
-            }
-            if (
-              failCloseReadStage !== undefined &&
-              failCloseReadStage === readStage
-            )
-              readStageMatched = true;
-            return nativeRead(buffer, offset, length, position);
-          },
-        );
-        vi.spyOn(handle, "close").mockImplementation(async () => {
-          injected.closeCalls += 1;
-          if (abortCloseMatched) abortOnClose?.abort();
+vi.mock(
+  "../../../../core/filesystem/RegularFile.js",
+  async (importOriginal) => {
+    const original =
+      await importOriginal<
+        typeof import("../../../../core/filesystem/RegularFile.js")
+      >();
+    return {
+      ...original,
+      openRegularFile: vi.fn(
+        async (...args: Parameters<typeof original.openRegularFile>) => {
+          const descriptor = await original.openRegularFile(...args);
+          const { handle } = descriptor;
+          // Test teardown retains native release separately from the producer's
+          // injected close behavior, including when an assertion fails early.
+          const nativeClose = handle.close.bind(handle);
+          injected.nativeCloses.set(handle, nativeClose);
+          const isInstallation = String(args[0]) === injected.installationPath;
+          injected.handles.push(handle);
+          const failNextClose = injected.failNextClose;
+          const failCloseReadStage = injected.failCloseReadStage;
+          const failReadStage = injected.failReadStage;
+          const abortOnClose = injected.abortOnClose;
           if (
-            (failNextClose && !failedClose) ||
-            (readStageMatched && injected.failReadClose && !failedClose) ||
-            (injected.holdCloseFailures && !injected.releaseCloseFailures)
-          ) {
-            failedClose = true;
-            throw new Error("injected close fault");
-          }
-          await nativeClose();
-        });
-        return descriptor;
-      },
-    ),
-  };
-});
+            !failNextClose &&
+            !injected.holdCloseFailures &&
+            !failCloseReadStage &&
+            !failReadStage &&
+            !abortOnClose
+          )
+            return descriptor;
+          injected.failNextClose = false;
+          let readStageMatched = false;
+          let failedClose = false;
+          let abortCloseMatched = false;
+          let fingerprintStage:
+            | "preProbeFingerprint"
+            | "fingerprint"
+            | "identity"
+            | undefined;
+          const tracksFingerprint = [
+            failCloseReadStage,
+            failReadStage,
+            abortOnClose?.stage,
+          ].some(
+            (stage) =>
+              stage === "preProbeFingerprint" ||
+              stage === "fingerprint" ||
+              stage === "identity",
+          );
+          const positional: {
+            read(
+              buffer: Buffer,
+              offset: number,
+              length: number,
+              position: number,
+            ): Promise<{ bytesRead: number; buffer: Buffer }>;
+          } = handle;
+          const nativeRead = positional.read.bind(handle);
+          vi.spyOn(positional, "read").mockImplementation(
+            (
+              buffer: Buffer,
+              offset: number,
+              length: number,
+              position: number,
+            ) => {
+              if (
+                length > 2 &&
+                tracksFingerprint &&
+                fingerprintStage === undefined
+              ) {
+                fingerprintStage = isInstallation
+                  ? injected.fingerprintReads === 0
+                    ? "preProbeFingerprint"
+                    : "identity"
+                  : "fingerprint";
+                if (isInstallation) injected.fingerprintReads += 1;
+              }
+              const readStage =
+                length === 2
+                  ? undefined
+                  : length > 2
+                    ? fingerprintStage
+                    : undefined;
+              if (abortOnClose?.stage === readStage) abortCloseMatched = true;
+              if (failReadStage !== undefined && failReadStage === readStage) {
+                readStageMatched = true;
+                injected.abortOnReadFailure?.();
+                throw new Error("injected read fault");
+              }
+              if (
+                failCloseReadStage !== undefined &&
+                failCloseReadStage === readStage
+              )
+                readStageMatched = true;
+              return nativeRead(buffer, offset, length, position);
+            },
+          );
+          vi.spyOn(handle, "close").mockImplementation(async () => {
+            injected.closeCalls += 1;
+            if (abortCloseMatched) abortOnClose?.abort();
+            if (
+              (failNextClose && !failedClose) ||
+              (readStageMatched && injected.failReadClose && !failedClose) ||
+              (injected.holdCloseFailures && !injected.releaseCloseFailures)
+            ) {
+              failedClose = true;
+              throw new Error("injected close fault");
+            }
+            await nativeClose();
+          });
+          return descriptor;
+        },
+      ),
+    };
+  },
+);
 
 import { AnalysisProviderRegistry } from "../../../../core/application/binary/AnalysisProviderRegistry.js";
 import { composeBinarySession } from "../../../../core/application/binary/BinarySessionComposition.js";

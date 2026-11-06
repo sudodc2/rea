@@ -9,7 +9,10 @@ import {
   HARMONY_APPLICATION_GRAPH_EXAMPLE,
   MACOS_APPLICATION_GRAPH_EXAMPLE,
 } from "../../../core/contracts/mobileApplicationGraphExamples.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { artifactInventoryResultSchema } from "../../../core/domain/artifactGraph.js";
 import { createTestTempDirectory } from "../../fixtures/temporaryDirectory.js";
 import { cliTest, runFileCli } from "../../support/cli/cliFixture.js";

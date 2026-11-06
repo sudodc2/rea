@@ -253,7 +253,10 @@ async function validateCandidate(git, sha, version, commits) {
     throw new Error(
       "Generated package metadata must declare one literal version.",
     );
-  versions.push(["core/generatedPackageMetadata.ts", generatedVersions[0]?.[1]]);
+  versions.push([
+    "core/generatedPackageMetadata.ts",
+    generatedVersions[0]?.[1],
+  ]);
   for (const [location, actual] of versions) {
     if (actual !== version) {
       throw new Error(

@@ -117,7 +117,10 @@ const client = new GhidraClient({
       ? {}
       : { javaHome: process.env.JAVA_HOME }),
     bridgeScriptPath: fileURLToPath(
-      new URL("../provider-bridges/ghidra/ReaGhidraBridge.java", import.meta.url),
+      new URL(
+        "../provider-bridges/ghidra/ReaGhidraBridge.java",
+        import.meta.url,
+      ),
     ),
     platform: "win32",
     ...(configuration.value.ghidraDisabledAnalyzers === undefined

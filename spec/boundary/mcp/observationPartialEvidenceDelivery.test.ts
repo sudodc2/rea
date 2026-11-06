@@ -3,7 +3,10 @@ import { afterEach, expect, it } from "vitest";
 
 import { toolContract } from "../../../core/contracts/toolContracts.js";
 import { AnalysisCancelledError } from "../../../core/domain/analysisErrorCore.js";
-import { createEvidence, type Evidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  type Evidence,
+} from "../../../core/domain/evidence.js";
 import { err, ok as resultOk } from "../../../core/domain/result.js";
 import { createServer } from "../../../core/server/createServer.js";
 import { parseMcpToolError } from "../../fixtures/mcpToolError.js";

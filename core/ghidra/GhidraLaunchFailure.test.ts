@@ -44,7 +44,11 @@ const probeLauncher = (javaHome: string, runtimeRoot: string) =>
     analyzeHeadlessPath: join(runtimeRoot, "support", "analyzeHeadless"),
     configurationDirectoryName: "ghidra_test_PUBLIC",
     javaHome,
-    bridgeScriptPath: join(runtimeRoot, "provider-bridges", "ReaGhidraBridge.java"),
+    bridgeScriptPath: join(
+      runtimeRoot,
+      "provider-bridges",
+      "ReaGhidraBridge.java",
+    ),
   });
 
 const launchOutcomeOf = (error: Error): Record<string, unknown> | undefined => {
@@ -131,7 +135,11 @@ describe("Ghidra launch failure diagnostics", () => {
         platform: "darwin",
         analyzeHeadlessPath: join(runtimeRoot, "support", "analyzeHeadless"),
         configurationDirectoryName: "ghidra_test_PUBLIC",
-        bridgeScriptPath: join(runtimeRoot, "provider-bridges", "ReaGhidraBridge.java"),
+        bridgeScriptPath: join(
+          runtimeRoot,
+          "provider-bridges",
+          "ReaGhidraBridge.java",
+        ),
       });
       const launched = await launcher.launch(launchSession(runtimeRoot));
       expect(launched.ok).toBe(false);

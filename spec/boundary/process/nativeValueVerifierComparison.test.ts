@@ -23,7 +23,7 @@ processTest.for([
       import { FUNCTION_COMPARISON_EXAMPLE } from ${moduleUrl("dist/contracts/functionComparisonExample.js")};
       import { createEvidence } from ${moduleUrl("dist/domain/evidence.js")};
       import { createEvidenceBundle } from ${moduleUrl("dist/domain/evidenceBundle.js")};
-      import { functionDossierSchema } from ${moduleUrl("dist/domain/platform/functionDossier.js")};
+      import { functionDossierSchema } from ${moduleUrl("dist/domain/native/functionDossier.js")};
       import { compareRetainedFunctionEvidence } from ${moduleUrl("tooling/lib/native-value-e2e.mjs")};
       import { requireMcpEvidenceBundle } from ${moduleUrl("tooling/lib/mcp-verifier-results.mjs")};
 

@@ -19,7 +19,10 @@ import { z } from "zod";
 
 import { BinaryLayoutService } from "../../../core/application/binaryDiagnostics/BinaryLayoutService.js";
 import { toolContract } from "../../../core/contracts/toolContracts.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { createAnalysisProfile } from "../../../core/domain/analysisProfile.js";
 import {
   jsonObjectSchema,

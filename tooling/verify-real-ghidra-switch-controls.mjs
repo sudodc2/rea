@@ -52,7 +52,10 @@ export async function verifySwitchEvidenceControls({
   const { cleanupOwnedProcessGroup } =
     await import("../dist/process/ProcessOwnership.js");
   const bridge = await realpath(
-    join(dirname(entrypoint), "../provider-bridges/ghidra/ReaGhidraBridge.java"),
+    join(
+      dirname(entrypoint),
+      "../provider-bridges/ghidra/ReaGhidraBridge.java",
+    ),
   );
   const fixtures = fileURLToPath(
     new URL("../spec/conformance/ghidra", import.meta.url),

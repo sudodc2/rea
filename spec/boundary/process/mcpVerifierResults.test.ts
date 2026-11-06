@@ -13,7 +13,10 @@ import { runInNewContext } from "node:vm";
 import { parse } from "@babel/parser";
 import type { ToolContract } from "../../../core/contracts/toolContractTypes.js";
 import { createAnalysisProfile } from "../../../core/domain/analysisProfile.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { SUPPORTED_GHIDRA_VERSION } from "../../../core/ghidra/GhidraReleasePolicy.js";
 import {
   createEvidenceBundle,

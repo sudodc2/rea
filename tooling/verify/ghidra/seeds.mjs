@@ -140,7 +140,9 @@ async function runHeadless(target, project, scriptArguments) {
       "-deleteProject",
       "-scriptPath",
       [
-        fileURLToPath(new URL("../../../provider-bridges/ghidra", import.meta.url)),
+        fileURLToPath(
+          new URL("../../../provider-bridges/ghidra", import.meta.url),
+        ),
         fileURLToPath(
           new URL("../../../spec/conformance/ghidra", import.meta.url),
         ),

@@ -115,7 +115,9 @@ describe("canonical product catalog", () => {
         ?.capabilities,
     ).toEqual(["inspect_binary_layout", "inspect_recorded_crash"]);
     expect(
-      JSON.parse(await readFile("handbook/public/product-catalog.json", "utf8")),
+      JSON.parse(
+        await readFile("handbook/public/product-catalog.json", "utf8"),
+      ),
     ).toEqual(catalog);
     expect(await serializeProductCatalog(catalog)).toBe(
       await readFile("handbook/public/product-catalog.json", "utf8"),

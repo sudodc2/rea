@@ -274,7 +274,11 @@ it("reports missing source facts as partial and preserves filename-only discover
 });
 it("does not interpret the URL authority or file URL prefix as an App Router directory or routing base", () => {
   const result = build([
-    source("script", `router.push('/reports');`, "https://app/verification/page.js"),
+    source(
+      "script",
+      `router.push('/reports');`,
+      "https://app/verification/page.js",
+    ),
   ]);
   expect(result.routes.map(({ path }) => path)).toEqual(["/reports"]);
   const local = build([

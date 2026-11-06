@@ -146,7 +146,10 @@ it.each([
   });
 });
 
-it.each(["core/domain/webCaptureDiffSchemas.ts", "core/domain/webScreenshot.ts"])(
+it.each([
+  "core/domain/webCaptureDiffSchemas.ts",
+  "core/domain/webScreenshot.ts",
+])(
   "selects real browser verification for %s without capture lanes",
   async (path) => {
     const { directory, base } = await fixture();
@@ -823,7 +826,10 @@ it.each([
     "core/process/WindowsExecutable.test.ts",
     { code: true, runtime: true, package: true },
   ],
-  ["core/adb/AdbConfiguration.ts", { code: true, runtime: true, package: true }],
+  [
+    "core/adb/AdbConfiguration.ts",
+    { code: true, runtime: true, package: true },
+  ],
   [
     "core/apktool/ApktoolConfiguration.ts",
     { code: true, runtime: true, package: true },

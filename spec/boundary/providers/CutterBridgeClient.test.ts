@@ -1304,7 +1304,9 @@ describe("CutterBridgeClient: bridge paths and native descriptor reads", () => {
       },
     ).listSessions();
 
-    expect(result.bridge_directory).toBe(join(selectedHome, "provider-bridges"));
+    expect(result.bridge_directory).toBe(
+      join(selectedHome, "provider-bridges"),
+    );
     expect(result.discovery_status).toBe("no_live_bridge_found");
   });
 

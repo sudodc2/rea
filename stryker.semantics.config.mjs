@@ -18,8 +18,12 @@ const config = {
   concurrency: 2,
   timeoutMS: 30000,
   reporters: ["clear-text", "progress", "html", "json"],
-  jsonReporter: { fileName: "verification/mutation/reverse-tools-semantics.json" },
-  htmlReporter: { fileName: "verification/mutation/reverse-tools-semantics.html" },
+  jsonReporter: {
+    fileName: "verification/mutation/reverse-tools-semantics.json",
+  },
+  htmlReporter: {
+    fileName: "verification/mutation/reverse-tools-semantics.html",
+  },
 };
 
 export default {

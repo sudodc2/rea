@@ -13,7 +13,10 @@ import {
   createAnalysisProfile,
   type AnalysisProfileCommitment,
 } from "../../../core/domain/analysisProfile.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { functionComparisonResultSchema } from "../../../core/domain/functionComparisonSchemas.js";
 import { functionDossierSchema } from "../../../core/domain/native/functionDossier.js";
 

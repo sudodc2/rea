@@ -607,11 +607,7 @@ describe("production MCP doctor probe validation", () => {
     for (const mode of ["valid", "invalid"]) {
       const result = await runProductionMcpDoctor({
         command: process.execPath,
-        args: [
-          resolve("spec/fixtures/mcpDoctorReply.mjs"),
-          snapshotPath,
-          mode,
-        ],
+        args: [resolve("spec/fixtures/mcpDoctorReply.mjs"), snapshotPath, mode],
         cwd: process.cwd(),
         environment,
       });

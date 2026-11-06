@@ -49,7 +49,9 @@ assert.equal(installation.providerVersion, SUPPORTED_GHIDRA_VERSION);
 const fixtures = fileURLToPath(
   new URL("../spec/conformance/ghidra", import.meta.url),
 );
-const bridge = fileURLToPath(new URL("../provider-bridges/ghidra", import.meta.url));
+const bridge = fileURLToPath(
+  new URL("../provider-bridges/ghidra", import.meta.url),
+);
 const workspace = await mkdtemp(join(tmpdir(), "rea-ghidra-decompiler-"));
 let cleaned = true;
 let report;

@@ -11,7 +11,10 @@ import { createTestTempDirectory } from "../../fixtures/temporaryDirectory.js";
 import { javascriptApplicationAnalysisResultSchema } from "../../../core/domain/javascript/javascriptApplicationAnalysis.js";
 import { reconstructionObligationLedgerSchema } from "../../../core/domain/reconstructionObligationLedgerSchemas.js";
 
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { createEvidenceBundle } from "../../../core/domain/evidenceBundle.js";
 import {
   MIXED_AUTHORITY_SUMMARY,

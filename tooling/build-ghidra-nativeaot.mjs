@@ -14,8 +14,7 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const source = resolve(
-  process.env.REA_NATIVEAOT_SOURCE ??
-    join(root, "vendor/ghidra-nativeaot"),
+  process.env.REA_NATIVEAOT_SOURCE ?? join(root, "vendor/ghidra-nativeaot"),
 );
 const install = process.env.GHIDRA_INSTALL_DIR;
 if (!install)

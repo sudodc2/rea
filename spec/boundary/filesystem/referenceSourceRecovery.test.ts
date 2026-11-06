@@ -73,7 +73,11 @@ it("preserves recovered diagnostics and file evidence through filesystem import"
   }
 
   const failures = [
-    { path: "core/fatal.js", parser: "babel", reason: "Unexpected token (2:6)" },
+    {
+      path: "core/fatal.js",
+      parser: "babel",
+      reason: "Unexpected token (2:6)",
+    },
     {
       path: "core/recovered.d.cts",
       parser: "babel",

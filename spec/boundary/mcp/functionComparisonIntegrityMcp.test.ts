@@ -8,7 +8,10 @@ import {
   PROCESS_CAPTURE_RECONSTRUCTION,
   PROCESS_COMPARISON_EVIDENCE,
 } from "../../../core/contracts/investigationExamples.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import {
   functionComparisonResultSchema,
   type FunctionComparisonResult,

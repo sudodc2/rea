@@ -30,7 +30,10 @@ import {
 import { projectAnalysisError } from "../../../core/domain/analysisErrorProjection.js";
 import { hasXmlPlistSignature } from "../../../core/domain/apple/appleArchiveFormat.js";
 import { parseExecutableHeader } from "../../../core/domain/binaryTarget.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { createTestTempDirectory } from "../../fixtures/temporaryDirectory.js";
 import { ESP8266_REFUSAL } from "../../../core/domain/firmware/espImage.js";
 import {

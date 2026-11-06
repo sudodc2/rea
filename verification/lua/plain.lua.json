@@ -6,9 +6,7 @@
       "id": "luau-plain",
       "label": "Plain Luau source",
       "score": 1,
-      "signals": [
-        "Luau statement head"
-      ]
+      "signals": ["Luau statement head"]
     }
   ],
   "primary_format": "luau-plain",

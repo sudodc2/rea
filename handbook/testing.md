@@ -848,9 +848,9 @@ unavailable coverage; a missing engine is not a pass.
 
 ## Behavioral depths
 
-| Depth        | Location                | What it proves                                                                                        |
-| ------------ | ----------------------- | ----------------------------------------------------------------------------------------------------- |
-| Module       | `core/**/*.test.ts`      | One domain, service, or adapter through its narrow public surface                                     |
+| Depth        | Location               | What it proves                                                                                        |
+| ------------ | ---------------------- | ----------------------------------------------------------------------------------------------------- |
+| Module       | `core/**/*.test.ts`    | One domain, service, or adapter through its narrow public surface                                     |
 | Composition  | `spec/composition/**`  | Provider-neutral session and registry wiring; filesystem access is limited to fixture materialization |
 | Boundary     | `spec/boundary/**`     | Exactly one production filesystem, process, network, browser, CLI, or provider boundary               |
 | MCP boundary | `spec/boundary/mcp/**` | MCP transport and tool-contract boundaries with isolated sessions and explicit cleanup                |

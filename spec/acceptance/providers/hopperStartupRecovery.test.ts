@@ -341,12 +341,7 @@ test.for(["handoff", "not-found"] as const)(
     const lateBridge = (identity: string, credential = token) => {
       const child = spawn(
         process.execPath,
-        [
-          resolve("spec/fixtures/fakeHopper.mjs"),
-          socket,
-          credential,
-          identity,
-        ],
+        [resolve("spec/fixtures/fakeHopper.mjs"), socket, credential, identity],
         { stdio: "ignore" },
       );
       children.push(child);

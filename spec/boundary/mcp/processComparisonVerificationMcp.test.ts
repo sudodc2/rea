@@ -3,7 +3,10 @@ import { join } from "node:path";
 
 import { expect, it, onTestFinished } from "vitest";
 
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { createEvidenceBundle } from "../../../core/domain/evidenceBundle.js";
 
 import { EMPTY_PROCESS_CAPTURE_EXAMPLE } from "../../../core/domain/process/processCaptureExample.js";

@@ -12,7 +12,10 @@ import {
   AnalysisCancelledError,
   AnalysisCapabilityUnavailableError,
 } from "../../../core/domain/analysisErrorCore.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { evmInterfaceSummaryViewResultSchema } from "../../../core/domain/analysisView/analysisView.js";
 import { inspectSolidityMetadata } from "../../../core/evm/SolidityMetadata.js";
 import { err, ok } from "../../../core/domain/result.js";

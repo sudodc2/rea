@@ -361,7 +361,10 @@ it.each([
   ["app/a/page.tsx", "/a"],
   ["app/100%/page.tsx", "/100%"],
   ["app/team%2Fadmin/page.tsx", "/team%2Fadmin"],
-  ["static/chunks/app/(account)/verification/[id]/page-deadbeef.js", "/verification/:id"],
+  [
+    "static/chunks/app/(account)/verification/[id]/page-deadbeef.js",
+    "/verification/:id",
+  ],
   ["app/handbook/[...slug]/page.js", "/handbook/:slug+"],
   ["app/(account)/verification/[id]/page.tsx", "/verification/:id"],
   ["app/verification/page.ts", "/reports"],

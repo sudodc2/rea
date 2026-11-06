@@ -31,7 +31,10 @@ export class PwntoolsLayoutProvider
       {
         identity: PWNTOOLS_PROVIDER_IDENTITY,
         operation: "inspect_binary_layout",
-        bridge: new URL("../../../provider-bridges/pwntools/layout.py", import.meta.url),
+        bridge: new URL(
+          "../../../provider-bridges/pwntools/layout.py",
+          import.meta.url,
+        ),
         payloadSchema: binaryLayoutPayloadSchema,
         project: ({ input, payload, snapshot, diagnostics }) => {
           const value = binaryLayoutSchema.safeParse({

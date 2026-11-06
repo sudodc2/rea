@@ -6,9 +6,7 @@
       "id": "luau-bytecode",
       "label": "Luau bytecode",
       "score": 3,
-      "signals": [
-        "ESC Lua signature"
-      ]
+      "signals": ["ESC Lua signature"]
     }
   ],
   "primary_format": "luau-bytecode",
@@ -28,13 +26,8 @@
   "suspicious_globals": [],
   "network_surface": {},
   "long_string_blocks": [],
-  "strings": [
-    "BQ&qTWB",
-    "2A&[6m"
-  ],
-  "decoded_strings": [
-    "BQ&qTWB"
-  ],
+  "strings": ["BQ&qTWB", "2A&[6m"],
+  "decoded_strings": ["BQ&qTWB"],
   "limitations": [
     "Static byte analysis only; the artifact is never executed.",
     "String recovery is limited to escape-sequence decoding; runtime-constructed strings (string.char/concat chains) are not resolved.",

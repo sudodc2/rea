@@ -6,7 +6,10 @@ import { expect, onTestFinished } from "vitest";
 import { readAnalysisSnapshot } from "../../../core/application/binary/AnalysisSnapshotFiles.js";
 import { toolContract } from "../../../core/contracts/toolContracts.js";
 import { createAnalysisProfile } from "../../../core/domain/analysisProfile.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { createEvidenceBundle } from "../../../core/domain/evidenceBundle.js";
 import { MANAGED_STATIC_PROVIDER } from "../../../core/domain/investigationProviders.js";
 import { ok } from "../../../core/domain/result.js";

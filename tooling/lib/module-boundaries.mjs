@@ -38,7 +38,8 @@ const sourceTarget = (file, specifier) => {
 };
 
 const failedBoundary = (file, target, typeOnly) => {
-  if (!file.startsWith("core/") || !target.startsWith("core/")) return undefined;
+  if (!file.startsWith("core/") || !target.startsWith("core/"))
+    return undefined;
   const layer = file.split("/")[1];
   const targetLayer = target.split("/")[1];
   if (

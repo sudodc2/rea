@@ -78,7 +78,10 @@ describe("live capability constructor ownership", () => {
     (owner) => {
       const source = `import { Constructor as Alias } from "../${owner}";`;
       const types = `import type { Port } from "../${owner}";`;
-      for (const file of ["core/application/probe.ts", "core/server/probe.ts"]) {
+      for (const file of [
+        "core/application/probe.ts",
+        "core/server/probe.ts",
+      ]) {
         expect(
           inspectModuleBoundaries(file, source, process.cwd()),
         ).toMatchObject([{ boundary: "provider-construction" }]);
@@ -248,7 +251,11 @@ describe("incremental module import boundaries", () => {
     ["core/domain/inspector/probe.ts", "./types.js", true],
     ["core/domain/firmware/probe.ts", "../android/types.js", true],
     ["core/domain/android/probe.ts", "../../android/JadxProvider.js", false],
-    ["core/application/android/probe.ts", "../../domain/android/types.js", true],
+    [
+      "core/application/android/probe.ts",
+      "../../domain/android/types.js",
+      true,
+    ],
     [
       "core/application/android/probe.ts",
       "../../android/JadxProvider.js",

@@ -19,8 +19,8 @@ node lua/rea-lua.mjs <file> --strings 50
 Importable as a module:
 
 ```js
-import { analyzeBuffer } from './lua/rea-lua.mjs';
-const report = analyzeBuffer(buf, 'target.lua');
+import { analyzeBuffer } from "./lua/rea-lua.mjs";
+const report = analyzeBuffer(buf, "target.lua");
 ```
 
 ## What it reports

@@ -8,7 +8,10 @@ import { createMcpSchemaValidation } from "../../fixtures/mcpSchemaValidation.js
 import { readFile, realpath, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { WasmArtifactService } from "../../../core/application/wasm/WasmArtifactService.js";
-import { createEvidence, parseEvidence } from "../../../core/domain/evidence.js";
+import {
+  createEvidence,
+  parseEvidence,
+} from "../../../core/domain/evidence.js";
 import { wasmArtifactSummaryViewResultSchema } from "../../../core/domain/analysisView/analysisView.js";
 import { createHash } from "node:crypto";
 import { z } from "zod";

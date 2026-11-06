@@ -10,7 +10,10 @@ const imports = `
 import { createEvidence, createImmutableEvidenceSteps } from "../domain/evidence.js";
 import { jsonValueSchema, jsonObjectSchema } from "../domain/jsonValue.js";
 `;
-const evidenceSource = new URL("../../core/domain/evidence.js", import.meta.url);
+const evidenceSource = new URL(
+  "../../core/domain/evidence.js",
+  import.meta.url,
+);
 const jsonSource = new URL("../../core/domain/jsonValue.js", import.meta.url);
 const fileImports = `
 import { createEvidence } from ${JSON.stringify(evidenceSource.href)};

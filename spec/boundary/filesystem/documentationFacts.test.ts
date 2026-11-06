@@ -69,7 +69,10 @@ describe("translated README facts", () => {
     const translatedPath = join(directory, "handbook/readme/README_zh.md");
     const translated = await readFile(translatedPath, "utf8");
     const catalog: ProductCatalog = JSON.parse(
-      await readFile(join(root, "handbook/public/product-catalog.json"), "utf8"),
+      await readFile(
+        join(root, "handbook/public/product-catalog.json"),
+        "utf8",
+      ),
     );
     await expect(documentationFactIssues(directory, catalog)).resolves.toEqual(
       [],

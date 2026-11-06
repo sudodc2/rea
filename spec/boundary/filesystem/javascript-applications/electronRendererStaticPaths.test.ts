@@ -29,7 +29,10 @@ new BrowserWindow().loadFile(runtimePage);`,
     ),
     writeFile(join(root, "anchored.html"), "wrong app-root decoy"),
     writeFile(join(root, "literal.html"), "actual app-root page"),
-    writeFile(join(root, "core", "literal.html"), "wrong source-relative decoy"),
+    writeFile(
+      join(root, "core", "literal.html"),
+      "wrong source-relative decoy",
+    ),
   ]);
   const result = await analyzeJavaScriptApplication({
     input_path: root,
