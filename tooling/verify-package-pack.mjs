@@ -259,7 +259,7 @@ export async function verifyPackagePack({ root, workspace, commands }) {
       : [manifest.icon];
     for (const icon of icons)
       if (
-        icon !== "./assets/rea-plugin.png" ||
+        icon !== "./media/rea-plugin.png" ||
         !packedFiles.includes(`package/${icon.slice(2)}`)
       )
         throw new Error(`Packaged plugin ${path} is missing its shared icon`);
