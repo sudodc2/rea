@@ -928,7 +928,7 @@ describe("ZIP non-entry coverage", () => {
     expect(zip.readUInt32LE(eocd)).toBe(0x06054b50);
     const directory = zip.readUInt32LE(eocd + 16);
     // APK Signing Block framing with one opaque padding pair, not a verified signature.
-    // https://source.android.com/handbook/security/features/apksigning/v2#apk-signing-block
+    // https://source.android.com/docs/security/features/apksigning/v2#apk-signing-block
     const block = Buffer.alloc(48);
     block.writeBigUInt64LE(40n, 0);
     block.writeBigUInt64LE(8n, 8);

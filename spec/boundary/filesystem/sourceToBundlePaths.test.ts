@@ -170,7 +170,7 @@ it("matches source-map originals named relative to the map", async () => {
 });
 
 it.each([
-  { root: "../core/", expected: "https://example.test/core/index.js" },
+  { root: "../core/", expected: "https://example.test/src/index.js" },
   // webpack 5 and tsc emit an empty root for map-relative sources.
   { root: "", expected: "https://example.test/maps/index.js" },
   { root: null, expected: "https://example.test/maps/index.js" },
@@ -179,7 +179,7 @@ it.each([
   { root: " ", expected: "https://example.test/index.js" },
   {
     root: "https://cdn.example/src",
-    expected: "https://cdn.example/core/index.js",
+    expected: "https://cdn.example/src/index.js",
   },
 ])("resolves sourceRoot $root according to ECMA-426", ({ root, expected }) => {
   expect(
@@ -524,7 +524,7 @@ it.each([
   { source: "file://server/share/core/a.js", hasPath: true },
   { source: "file:/repo/core/a.js?version=2#original", hasPath: true },
   { source: "webpack:///core/a.js", hasPath: true },
-  { source: "https://example.com/core/a.js#original", hasPath: true },
+  { source: "https://example.com/src/a.js#original", hasPath: true },
   { source: "node:internal/core/a.js", hasPath: false },
   { source: "data:text/javascript,virtual/core/a.js", hasPath: false },
   { source: "data:text/javascript,virtual/../core/a.js", hasPath: false },

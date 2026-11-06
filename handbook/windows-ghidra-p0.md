@@ -111,7 +111,7 @@ For MCP, register the resolved Node entry point and the same provider settings:
   "mcpServers": {
     "rea": {
       "command": "C:\\tools\\node\\node.exe",
-      "args": ["C:\\tools\\rea\\scripts\\rea.mjs", "mcp"],
+      "args": ["C:\\tools\\rea\\tooling\\rea.mjs", "mcp"],
       "env": {
         "REA_ANALYSIS_PROVIDER": "ghidra",
         "GHIDRA_INSTALL_DIR": "C:\\tools\\ghidra_12.1.4_PUBLIC",

@@ -1798,7 +1798,7 @@ it("never runs a manual-only verifier from an automatic workflow", async () => {
   const seen = new Set<string>();
   while (commands.length) {
     const command = commands.pop() ?? "";
-    for (const [, file] of command.matchAll(/\b(scripts\/[\w./-]+\.mjs)\b/g))
+    for (const [, file] of command.matchAll(/\b(tooling\/[\w./-]+\.mjs)\b/g))
       if (file) files.add(file);
     for (const [, script] of command.matchAll(/npm run ([\w:.-]+)/g)) {
       if (!script || seen.has(script)) continue;

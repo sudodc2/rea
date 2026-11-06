@@ -75,7 +75,7 @@ export const createJavaScriptNextAppContext = (
             directory: compiled,
             package: identity,
           };
-        // Selecting core/app requires proving that the higher-priority app is absent.
+        // Selecting src/app requires proving that the higher-priority app is absent.
         if (coverage.status !== "complete" && !directories.has(`${prefix}app`))
           return {
             kind: "unknown",
@@ -86,7 +86,7 @@ export const createJavaScriptNextAppContext = (
         let root = roots.get(manifest);
         if (root === undefined) {
           root =
-            ["app", "core/app"]
+            ["app", "src/app"]
               .map((candidate) => `${prefix}${candidate}`)
               .find((candidate) => directories.has(candidate)) ?? null;
           roots.set(manifest, root);

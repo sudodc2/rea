@@ -388,8 +388,8 @@ it.each([
 );
 
 it.each([
-  ["https://example.test/media/absent.js", "unmatched"],
-  ["https://other.test/media/absent.js", "unknown"],
+  ["https://example.test/assets/absent.js", "unmatched"],
+  ["https://other.test/assets/absent.js", "unknown"],
 ] as const)(
   "applies URL-prefix mapping presence to captured script %s",
   async (url, status) => {
@@ -403,7 +403,7 @@ it.each([
             runtime_mappings: [
               {
                 kind: "url-prefix",
-                prefix: "https://example.test/media/",
+                prefix: "https://example.test/assets/",
                 artifact_prefix: "",
               },
             ],

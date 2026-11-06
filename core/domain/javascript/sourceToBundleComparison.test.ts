@@ -318,7 +318,7 @@ describe("source to bundle Unicode path collisions", () => {
     const node = sourceMapNode(
       "remote",
       "cafe\u0301.ts",
-      "https://cdn.example/core/",
+      "https://cdn.example/src/",
       HASH.modified,
     );
     const result = comparePathToNodes(historicalPath, [node]);
@@ -386,7 +386,7 @@ describe("source to bundle path syntax", () => {
 
   it.each(
     [
-      "https://example.test/core/modified.ts?revision=2#section",
+      "https://example.test/src/modified.ts?revision=2#section",
       "webpack://fixture/./core/modified.ts?revision=2#section",
     ].flatMap((path) => ["path", "module_path"].map((key) => ({ key, path }))),
   )("still strips URL query and fragment from $key $path", ({ key, path }) => {
@@ -436,13 +436,13 @@ describe("source to bundle path syntax", () => {
 describe("source-map declaration resolution", () => {
   it.each([
     {
-      sourceRoot: "https://cdn.example/core/",
-      expectedSource: "https://cdn.example/core/a.js",
+      sourceRoot: "https://cdn.example/src/",
+      expectedSource: "https://cdn.example/src/a.js",
       expectedResolution: { kind: "suffix", path: "cdn.example/core/a.js" },
     },
     {
-      sourceRoot: "https://cdn.example/core//",
-      expectedSource: "https://cdn.example/core//a.js",
+      sourceRoot: "https://cdn.example/src//",
+      expectedSource: "https://cdn.example/src//a.js",
       expectedResolution: { kind: "suffix", path: "cdn.example/core//a.js" },
     },
     {

@@ -17,7 +17,7 @@ from urllib.parse import quote, urlsplit
 
 
 SITE_ORIGIN = "https://rea.tools"
-NOTES_FIXTURES = {"samples/notes-electron/index.html", "samples/notes-web/index.html"}
+NOTES_FIXTURES = {"examples/notes-electron/index.html", "examples/notes-web/index.html"}
 NAVIGATION = (
     ("Get started", "get-started/"),
     ("Showcases", "showcase/"),

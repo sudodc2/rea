@@ -948,7 +948,7 @@ Other custom bases and search options remain partial with unknown resolution and
 the literal requested specifier. Overwritten resolver methods retain that uncertainty; they are not
 attributed to Node. `require.main` is a module object, so calling it does not
 establish a loader reference. These relationships do not establish execution;
-Node's [`require.resolve`](https://nodejs.org/handbook/v24.22.1/api/modules.html#requireresolverequest-options)
+Node's [`require.resolve`](https://nodejs.org/docs/v24.22.1/api/modules.html#requireresolverequest-options)
 performs lookup without loading the target. An excluded `package.json`
 also leaves package-directory selection unknown rather than treating the
 manifest as absent and applying an `index` fallback.

@@ -195,7 +195,7 @@ describe("upstream source-map point evidence", () => {
     expect(report.matches[0]).toMatchObject({
       reported_source: "a.ts?v=2#source",
       reported_source_root: "../src",
-      resolved_url: "https://app.test/core/a.ts?v=2#source",
+      resolved_url: "https://app.test/src/a.ts?v=2#source",
       name: "answer",
       original_position: {
         line: 1,

@@ -25,7 +25,7 @@ const MIGRATED_PROVIDER_ROOTS = new Set([
   "javascript",
 ]);
 const CENTRALIZED_CONSTRUCTOR_OWNER =
-  /^src\/(?:frida\/FridaInstrumentationManager|cutter\/CutterBridge(?:Client|Service)|gdb\/GdbSessionManager|rizin\/RizinDebugSessionManager)\.(?:js|ts)$/u;
+  /^core\/(?:frida\/FridaInstrumentationManager|cutter\/CutterBridge(?:Client|Service)|gdb\/GdbSessionManager|rizin\/RizinDebugSessionManager)\.(?:js|ts)$/u;
 const repositoryPath = (root, path) =>
   relative(root, path).replaceAll("\\", "/");
 
@@ -47,12 +47,12 @@ const failedBoundary = (file, target, typeOnly) => {
     (["application", "composition", "server", "cli", "main"].includes(
       targetLayer,
     ) ||
-      /^src\/(?:cli|main)\./u.test(target))
+      /^core\/(?:cli|main)\./u.test(target))
   )
     return "process-capture";
   if (
     file.startsWith("core/application/javascript/") &&
-    /^src\/artifacts\/(?:Asar|Directory)ArtifactReader\.(?:js|ts)$/u.test(
+    /^core\/artifacts\/(?:Asar|Directory)ArtifactReader\.(?:js|ts)$/u.test(
       target,
     )
   )
@@ -62,17 +62,17 @@ const failedBoundary = (file, target, typeOnly) => {
       file.startsWith("core/artifacts/apple/") ||
       file.startsWith("core/artifacts/inventory/") ||
       file.startsWith("core/artifacts/extraction/") ||
-      /^src\/artifacts\/ArtifactHash\.(?:js|ts)$/u.test(file)) &&
+      /^core\/artifacts\/ArtifactHash\.(?:js|ts)$/u.test(file)) &&
     (["application", "composition", "server", "cli", "main"].includes(
       targetLayer,
     ) ||
-      /^src\/(?:cli|main)\./u.test(target))
+      /^core\/(?:cli|main)\./u.test(target))
   )
     return "artifact-acquisition";
   if (PURE_LAYERS.has(layer)) {
     if (
-      (/^src\/[^/]+\//u.test(target) && !PURE_LAYERS.has(targetLayer)) ||
-      /^src\/(?:cli|main)\./u.test(target)
+      (/^core\/[^/]+\//u.test(target) && !PURE_LAYERS.has(targetLayer)) ||
+      /^core\/(?:cli|main)\./u.test(target)
     )
       return "pure-layer";
   }
@@ -87,10 +87,10 @@ const failedBoundary = (file, target, typeOnly) => {
   if (
     (layer === "application" || layer === "server") &&
     (MIGRATED_PROVIDER_ROOTS.has(targetLayer) ||
-      /^src\/(?:artifacts\/ArtifactProvider|dotnet\/ManagedStaticProvider|native\/NativeMacOSProvider)\.[^/]+$/u.test(
+      /^core\/(?:artifacts\/ArtifactProvider|dotnet\/ManagedStaticProvider|native\/NativeMacOSProvider)\.[^/]+$/u.test(
         target,
       ) ||
-      /^src\/browser\/[^/]*Provider\.[^/]+$/u.test(target))
+      /^core\/browser\/[^/]*Provider\.[^/]+$/u.test(target))
   )
     return "provider-construction";
   return undefined;

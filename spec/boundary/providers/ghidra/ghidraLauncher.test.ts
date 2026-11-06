@@ -366,7 +366,6 @@ describe("Ghidra headless launcher", () => {
         }),
       );
   });
-
 });
 
 describe("Ghidra RISC-V calling convention ordering", () => {

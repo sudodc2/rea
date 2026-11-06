@@ -109,8 +109,8 @@ integration remains a separate project task.
 
 ## Public sources
 
-- [Gameplay observations and Evidence IDs](https://github.com/N0zoM1z0/dx-ball/blob/a55dca27ec0a07018c1b2c95ae2be027f7d8c3c4/handbook/GAMEPLAY_OWNER.md)
-- [Maintained function](https://github.com/N0zoM1z0/dx-ball/blob/a55dca27ec0a07018c1b2c95ae2be027f7d8c3c4/core/gameplay.c#L41)
+- [Gameplay observations and Evidence IDs](https://github.com/N0zoM1z0/dx-ball/blob/a55dca27ec0a07018c1b2c95ae2be027f7d8c3c4/docs/GAMEPLAY_OWNER.md)
+- [Maintained function](https://github.com/N0zoM1z0/dx-ball/blob/a55dca27ec0a07018c1b2c95ae2be027f7d8c3c4/src/gameplay.c#L41)
 - [Semantic acceptance ledger](https://github.com/N0zoM1z0/dx-ball/blob/a55dca27ec0a07018c1b2c95ae2be027f7d8c3c4/config/semantic-acceptance.csv)
 - [Complete function units and relocation mappings](https://github.com/N0zoM1z0/dx-ball/blob/a55dca27ec0a07018c1b2c95ae2be027f7d8c3c4/config/match-units.toml)
-- [Compiler replay method](https://github.com/N0zoM1z0/dx-ball/blob/a55dca27ec0a07018c1b2c95ae2be027f7d8c3c4/handbook/BUILD_MATCHING.md)
+- [Compiler replay method](https://github.com/N0zoM1z0/dx-ball/blob/a55dca27ec0a07018c1b2c95ae2be027f7d8c3c4/docs/BUILD_MATCHING.md)

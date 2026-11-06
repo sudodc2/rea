@@ -24,7 +24,7 @@ const localCleanupImports = `import {afterEach} from "vitest"; import {rm} from 
 tester.run("no-fixture-root-cleanup", rule, {
   valid: [
     `import {createTestTempDirectory as temp} from ${JSON.stringify(fixtureSource.href)}; ${localCleanupImports} function work(temp: Function) { const root = temp(); afterEach(() => rm(root)); }`,
-    `import {createTestTempDirectory as temp} from "https://example.test/spec/fixtures/temporaryDirectory.js"; ${localCleanupImports} const root = await temp("owned-"); afterEach(() => rm(root));`,
+    `import {createTestTempDirectory as temp} from "https://example.test/tests/fixtures/temporaryDirectory.js"; ${localCleanupImports} const root = await temp("owned-"); afterEach(() => rm(root));`,
     `import {createTestTempDirectory as temp} from ${JSON.stringify(`${fixtureSource.href}?other`)}; ${localCleanupImports} const root = await temp("owned-"); afterEach(() => rm(root));`,
     `${imports} const root = await temp("owned-"); await remove(root, { recursive: true });`,
     `${imports} const root = await temp("owned-"); cleanup(() => remove(join(root, "child"), {recursive: true}));`,

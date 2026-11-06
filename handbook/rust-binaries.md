@@ -111,7 +111,7 @@ list is an empty array. An omitted `features` field is `null`, because it does
 not establish whether features were empty or the producer did not record them;
 an explicit empty array establishes an empty list. An omitted `root` flag is
 false.
-Historical [cargo-auditable 0.4 package records](https://github.com/rust-secure-code/cargo-auditable/blob/v0.4.0/auditable-serde/core/lib.rs)
+Historical [cargo-auditable 0.4 package records](https://github.com/rust-secure-code/cargo-auditable/blob/v0.4.0/auditable-serde/src/lib.rs)
 may include the package `features` list; REA preserves those strings. That
 version omitted empty feature lists during serialization, while version 0.5
 removed the field entirely, as recorded in its

@@ -458,7 +458,7 @@ community-maintained build by **Hashbrown** ([sudodc2](https://github.com/sudodc
 it adds Luau/Roblox artifact analysis (`lua/rea-lua.mjs`), republishes the
 upstream project with our Discord community link, and ships verified test
 evidence under [`verification/`](verification/TESTING.md). All upstream licensing terms
-apply — see [LICENSE](LICENSE) and [NOTICE](NOTICE) where present.
+apply — see [LICENSE](LICENSE) and NOTICE where present.
 
 ## Disclaimer
 

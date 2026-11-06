@@ -123,7 +123,7 @@ runnable library linkage. See the [verification report](../../../../handbook/ver
 workflow scope and digests.
 
 Stable R8 consumes class files, not an APK's DEX. Official
-[R8 command source](https://r8.googlesource.com/r8/+/39af7ba2e061afeeca343db7541bbae64d9b5b81/core/main/java/com/android/tools/r8/R8Command.java)
+[R8 command source](https://r8.googlesource.com/r8/+/39af7ba2e061afeeca343db7541bbae64d9b5b81/src/main/java/com/android/tools/r8/R8Command.java)
 rejects DEX input; an archive can ignore DEX entries. The existing released
 ApiDemos APK was therefore not transformed or presented as an R8 test. All
 produced `.apk` files here are explicitly labelled DEX-only static containers,

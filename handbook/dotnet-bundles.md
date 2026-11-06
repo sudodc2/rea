@@ -104,7 +104,7 @@ Deterministic boundary and public-entrypoint coverage:
 npm run test:focused -- spec/boundary/filesystem/dotnetBundleArtifacts.test.ts spec/acceptance/dotnetBundleJourney.test.ts
 ```
 
-Layout references: Microsoft's [manifest writer](https://github.com/dotnet/runtime/blob/v8.0.22/core/installer/managed/Microsoft.NET.HostModel/Bundle/Manifest.cs),
-[file entry writer](https://github.com/dotnet/runtime/blob/v8.0.22/core/installer/managed/Microsoft.NET.HostModel/Bundle/FileEntry.cs),
-[apphost marker handling](https://github.com/dotnet/runtime/blob/v8.0.22/core/installer/managed/Microsoft.NET.HostModel/AppHost/HostWriter.cs),
-and [compression producer](https://github.com/dotnet/runtime/blob/v8.0.22/core/installer/managed/Microsoft.NET.HostModel/Bundle/Bundler.cs).
+Layout references: Microsoft's [manifest writer](https://github.com/dotnet/runtime/blob/v8.0.22/src/installer/managed/Microsoft.NET.HostModel/Bundle/Manifest.cs),
+[file entry writer](https://github.com/dotnet/runtime/blob/v8.0.22/src/installer/managed/Microsoft.NET.HostModel/Bundle/FileEntry.cs),
+[apphost marker handling](https://github.com/dotnet/runtime/blob/v8.0.22/src/installer/managed/Microsoft.NET.HostModel/AppHost/HostWriter.cs),
+and [compression producer](https://github.com/dotnet/runtime/blob/v8.0.22/src/installer/managed/Microsoft.NET.HostModel/Bundle/Bundler.cs).

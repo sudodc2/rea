@@ -511,7 +511,7 @@ describe("Link header value delimiters", () => {
       '</media/red,blue.js>; rel="preload"; as=script, </ordinary.js>; rel="modulepreload"',
     );
     expect(links.map(({ href }) => href)).toEqual([
-      "https://owned.test/media/red,blue.js",
+      "https://owned.test/assets/red,blue.js",
       "https://owned.test/ordinary.js",
     ]);
     expect(links[0]?.as).toBe("script");

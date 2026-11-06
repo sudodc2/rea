@@ -154,7 +154,7 @@ describe("DOM metadata document base URLs", () => {
   });
 
   it("applies destination policy after resolving an ordinary foreign base", () => {
-    const foreign = "https://cdn.example.test/media/";
+    const foreign = "https://cdn.example.test/assets/";
     const result = capture(snapshot(foreign, foreign));
     expect(result.nodes).toHaveLength(5);
     expect(result.urls).toHaveLength(4);
@@ -168,7 +168,7 @@ describe("DOM metadata document base URLs", () => {
   });
 
   it("keeps an absolute approved link independent of a foreign base", () => {
-    const foreign = "https://cdn.example.test/media/";
+    const foreign = "https://cdn.example.test/assets/";
     const result = capture(
       snapshot(foreign, foreign, documentUrl, `${origin}/guide`),
     );
@@ -272,7 +272,7 @@ describe("prefixed XHTML form destinations", () => {
 
 describe("empty form destinations with a document base URL", () => {
   it("keeps an empty form action approved when the document base is foreign", () => {
-    const foreign = "https://cdn.example.test/media/";
+    const foreign = "https://cdn.example.test/assets/";
     const value = snapshot(foreign, foreign);
     value.strings[15] = "";
     expect(capture(value).urls[3]).toMatchObject({

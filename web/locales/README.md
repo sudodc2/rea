@@ -154,4 +154,4 @@ and a small offline build instead of maintaining separate HTML trees.
 
 See [GNU gettext's PO format](https://www.gnu.org/software/gettext/manual/html_node/PO-File-Entries.html),
 [Weblate's translation workflows](https://docs.weblate.org/en/latest/workflows.html)
-and [Google's localized-page guidance](https://developers.google.com/search/handbook/specialty/international/localized-versions).
+and [Google's localized-page guidance](https://developers.google.com/search/docs/specialty/international/localized-versions).

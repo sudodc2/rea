@@ -415,9 +415,9 @@ have stable IDs and source ordinals. Candidates retain APK/library digests,
 ABI, function addresses and file offsets. Table candidates also retain section,
 table and entry identity plus all three name/signature/function pointer slots
 and their relocation sources. JNI exports follow the
-[UTF-16 escaping and short-before-long rules](https://docs.oracle.com/en/java/javase/21/handbook/specs/jni/design.html#resolving-native-method-names);
+[UTF-16 escaping and short-before-long rules](https://docs.oracle.com/en/java/javase/21/docs/specs/jni/design.html#resolving-native-method-names);
 failed escaping does not acquire an invented export match. Tables require
-NUL-terminated [Modified UTF-8 strings](https://docs.oracle.com/en/java/javase/21/handbook/specs/jni/types.html#modified-utf-8-strings),
+NUL-terminated [Modified UTF-8 strings](https://docs.oracle.com/en/java/javase/21/docs/specs/jni/types.html#modified-utf-8-strings),
 valid descriptors and executable load mappings. REL, RELA and RELR retain
 separate provenance; unsupported packed relocations and unresolved pointer
 spans stay explicit unknowns.

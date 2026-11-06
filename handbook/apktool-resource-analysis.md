@@ -34,7 +34,7 @@ advisory windows without refusing otherwise compatible launchers:
 | [CVE-2026-39973](https://github.com/iBotPeaches/Apktool/security/advisories/GHSA-m8mh-x359-vm8m)      | 3.0.0 release line through versions before 3.0.2 | All        |
 
 The 2026 advisory names 3.0.1 and its 3.0.2 fix. Inclusion of 3.0.0 is
-source-derived: [tagged 3.0.0](https://github.com/iBotPeaches/Apktool/blob/f770b39e425af4fa6ac4ca1e9ea6c4824339c6d3/brut.apktool/apktool-lib/core/main/java/brut/androlib/res/table/ResTypeSpec.java)
+source-derived: [tagged 3.0.0](https://github.com/iBotPeaches/Apktool/blob/f770b39e425af4fa6ac4ca1e9ea6c4824339c6d3/brut.apktool/apktool-lib/src/main/java/brut/androlib/res/table/ResTypeSpec.java)
 passes type names through unchanged; the [3.0.2 patch](https://github.com/iBotPeaches/Apktool/commit/65dd8480dfcb63068562ffaa527f71bb0a9f772c)
 validates those names at their owner before they reach the output-path producer.
 Prereleases before the fixed release are conservatively disclosed; the exact
@@ -106,9 +106,9 @@ still suppresses all string projection, including in this mode.
   and Unicode escapes decode once. Older/tagged documents retain YAML scalar
   semantics; double-quoted values also retain YAML string semantics.
   This distinction follows the released
-  [2.9.0 metadata writer](https://github.com/iBotPeaches/Apktool/blob/b64e257c9b689eb9630ad0241f2fe4f4a749955b/brut.apktool/apktool-lib/core/main/java/brut/androlib/apk/VersionInfo.java#L38-L42),
-  [3.0.3 metadata writer](https://github.com/iBotPeaches/Apktool/blob/18b5e99cb56ff9451e8aa55b065dcf5bbd616975/brut.apktool/apktool-lib/core/main/java/brut/androlib/meta/VersionInfo.java#L49-L55)
-  and [string escape owner](https://github.com/iBotPeaches/Apktool/blob/18b5e99cb56ff9451e8aa55b065dcf5bbd616975/brut.j.yaml/core/main/java/brut/yaml/YamlStringEscapeUtils.java#L55-L116).
+  [2.9.0 metadata writer](https://github.com/iBotPeaches/Apktool/blob/b64e257c9b689eb9630ad0241f2fe4f4a749955b/brut.apktool/apktool-lib/src/main/java/brut/androlib/apk/VersionInfo.java#L38-L42),
+  [3.0.3 metadata writer](https://github.com/iBotPeaches/Apktool/blob/18b5e99cb56ff9451e8aa55b065dcf5bbd616975/brut.apktool/apktool-lib/src/main/java/brut/androlib/meta/VersionInfo.java#L49-L55)
+  and [string escape owner](https://github.com/iBotPeaches/Apktool/blob/18b5e99cb56ff9451e8aa55b065dcf5bbd616975/brut.j.yaml/src/main/java/brut/yaml/YamlStringEscapeUtils.java#L55-L116).
 - **The manifest is the decoded text**, bounded at 512 KiB and reported as
   truncated when larger.
 - **Strings are projected verbatim.** Escaped entities stay escaped, and

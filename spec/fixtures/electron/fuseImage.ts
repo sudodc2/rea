@@ -1,5 +1,5 @@
 // Electron's documented on-disk fuse wire, independent of the reader constants:
-// https://github.com/electron/electron/blob/main/handbook/tutorial/fuses.md#the-hard-way
+// https://github.com/electron/electron/blob/main/docs/tutorial/fuses.md#the-hard-way
 export const FUSE_SENTINEL = Buffer.from(
   "dL7pKGdnNz796PbbjQWNKmHXBZaB9tsX",
   "ascii",

@@ -164,7 +164,7 @@ class WebsiteSearchChecks(unittest.TestCase):
             page("index.html")
             nested = page("guides/new/index.html")
             page(
-                "samples/fixture/index.html",
+                "examples/fixture/index.html",
                 '<meta name="robots" content="NOINDEX, follow">',
             )
             page("draft.html", '<meta name="googlebot" content="none">')
@@ -210,7 +210,7 @@ class WebsiteSearchChecks(unittest.TestCase):
                 "head canonical",
             ),
             (
-                "samples/notes-electron/index.html",
+                "examples/notes-electron/index.html",
                 'content="noindex"',
                 'content="index"',
                 "must have a head noindex",
@@ -260,7 +260,7 @@ class WebsiteMaintenanceChecks(unittest.TestCase):
         self.assertEqual(len(blocks), 1)
         self.assertEqual(blocks[0].tag, "code")
         displayed = unescape(source[blocks[0].open_end:blocks[0].end_start]) + "\n"
-        self.assertEqual(displayed, (public / "samples/notes-electron/renderer.js").read_text(encoding="utf-8"))
+        self.assertEqual(displayed, (public / "examples/notes-electron/renderer.js").read_text(encoding="utf-8"))
 
     def test_contributors_render_from_snapshot_and_reject_drift_without_rewriting(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -419,7 +419,7 @@ class WebsiteMaintenanceChecks(unittest.TestCase):
             cases = (
                 ('<a href="https://rea.tools/deleted/">Broken</a>', "missing local target"),
                 ('<code>https://rea.tools/guides/platform/#deleted</code>', "missing HTML fragment"),
-                ('<code>https://morluto.github.io/rea/samples/notes-web/</code>', "obsolete website URL"),
+                ('<code>https://morluto.github.io/rea/examples/notes-web/</code>', "obsolete website URL"),
                 ('<button data-copy="deleted">Copy</button>', "missing copy target"),
                 ('<a href="https://[">Malformed</a>', "invalid URL"),
             )
@@ -731,7 +731,7 @@ class WebsiteTranslationChecks(unittest.TestCase):
             catalog.save(path)
             site = root / "web/_site"
             build_translations(root, site)
-            self.assertIn('data-translation-fallback="true"', (site / "zh-CN/samples/dino-lab/index.html").read_text())
+            self.assertIn('data-translation-fallback="true"', (site / "zh-CN/examples/dino-lab/index.html").read_text())
             self.assertNotIn('data-translation-fallback="true"', (site / "zh-CN/faq/index.html").read_text())
 
     def test_all_readme_editions_preserve_code_targets_downloads_and_reciprocal_routes(self):
@@ -784,8 +784,8 @@ class WebsiteTranslationChecks(unittest.TestCase):
                     self.assertIn(b'lang="ar"', response.read())
                 with urlopen(base + "media/i18n.js") as response:
                     self.assertIn(b"export function t", response.read())
-                with urlopen(base + "samples/notes-example.zip") as response:
-                    self.assertEqual(response.read(), (site / "samples/notes-example.zip").read_bytes())
+                with urlopen(base + "examples/notes-example.zip") as response:
+                    self.assertEqual(response.read(), (site / "examples/notes-example.zip").read_bytes())
             finally:
                 server.shutdown()
                 worker.join()

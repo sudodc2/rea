@@ -287,12 +287,12 @@ not become empty observations. Ambiguous PE section mappings are rejected
 rather than interpreted according to section order.
 
 Minimal Edit-and-Continue metadata marked by `#JTD` is not a standalone
-assembly inventory. The pinned [.NET 9 reader](https://github.com/dotnet/runtime/blob/v9.0.0/core/libraries/System.Reflection.Metadata/core/System/Reflection/Metadata/MetadataReader.cs)
+assembly inventory. The pinned [.NET 9 reader](https://github.com/dotnet/runtime/blob/v9.0.0/src/libraries/System.Reflection.Metadata/src/System/Reflection/Metadata/MetadataReader.cs)
 uses different reference widths for this mode, and delta handles require the
 baseline and prior generations. The released
-[metadata serializer](https://github.com/dotnet/runtime/blob/v9.0.0/core/libraries/System.Reflection.Metadata/core/System/Reflection/Metadata/Ecma335/MetadataBuilder.cs)
+[metadata serializer](https://github.com/dotnet/runtime/blob/v9.0.0/src/libraries/System.Reflection.Metadata/src/System/Reflection/Metadata/Ecma335/MetadataBuilder.cs)
 emits this marker with `#-`; the
-[PE writer](https://github.com/dotnet/runtime/blob/v9.0.0/core/libraries/System.Reflection.Metadata/core/System/Reflection/PortableExecutable/ManagedPEBuilder.cs)
+[PE writer](https://github.com/dotnet/runtime/blob/v9.0.0/src/libraries/System.Reflection.Metadata/src/System/Reflection/PortableExecutable/ManagedPEBuilder.cs)
 can embed that metadata root. REA reports `unsupported-metadata` at the marker
 header before interpreting table rows, preserving the selected path, artifact
 digest, parsed metadata version and stream names, and admitted PE/CLI facts.
@@ -651,7 +651,7 @@ inherit these Windows defaults. Known ELF and Mach-O contexts use the declared
 entry point without A/W suffixes or Windows stdcall decoration, including when
 the metadata declares an explicit ANSI or Unicode marshalling charset. The
 original charset and calling convention remain unchanged. This follows the
-[.NET runtime's platform-specific entry-point lookup](https://github.com/dotnet/runtime/blob/v10.0.0/core/coreclr/vm/method.cpp#L3134-L3177).
+[.NET runtime's platform-specific entry-point lookup](https://github.com/dotnet/runtime/blob/v10.0.0/src/coreclr/vm/method.cpp#L3134-L3177).
 Windows name decorations are static inferred candidates;
 exact spelling still suppresses decoration and no runtime binding is proven.
 The mapping follows [Microsoft's charset guidance](https://learn.microsoft.com/en-us/dotnet/standard/native-interop/charset).

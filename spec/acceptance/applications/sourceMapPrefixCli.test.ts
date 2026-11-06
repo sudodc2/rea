@@ -424,7 +424,7 @@ cliTest.for(["CLI", "stdio MCP"] as const)(
     const root = await createTestTempDirectory("rea-source-root-identity-");
     const cases = [
       {
-        sourceRoot: "https://cdn.example/core//",
+        sourceRoot: "https://cdn.example/src//",
         resolution: { kind: "suffix", path: "cdn.example/core//a.js" },
       },
       {

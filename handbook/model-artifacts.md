@@ -64,7 +64,7 @@ standard numeric components such as `general.base_model.0.name` are preserved.
 Hyphenated components are retained for compatibility with the published
 llama.cpp v0.7.0 writer, which emits keys such as
 `gpt-oss.context_length` and `wavtokenizer-dec.context_length`; the current
-[GGUF specification](https://github.com/ggml-org/ggml/blob/master/handbook/gguf.md#standardized-key-value-pairs)
+[GGUF specification](https://github.com/ggml-org/ggml/blob/master/docs/gguf.md#standardized-key-value-pairs)
 restricts `general.architecture` values to letters and digits.
 This documents producer output that conflicts with that written restriction,
 not a claim that the specification permits hyphens. See the pinned
@@ -84,7 +84,7 @@ lengths; affected totals and storage validation remain unknown.
 Q8_1 (type ID 9) has two released layouts: 40 bytes per 32 elements in
 [llama.cpp b1500](https://github.com/ggml-org/llama.cpp/blob/57ad015dc3011b046ed5a23186c86ea55f987c54/ggml-quants.h#L49-L55)
 and 36 bytes in the pinned
-[modern ggml layout](https://github.com/ggml-org/ggml/blob/da8e2a54b919557b816b1c2beb432ccb766f7ce0/core/ggml-common.h#L242-L253). Both use GGUF v3 and
+[modern ggml layout](https://github.com/ggml-org/ggml/blob/da8e2a54b919557b816b1c2beb432ccb766f7ce0/src/ggml-common.h#L242-L253). Both use GGUF v3 and
 quantization version 2, so those declarations do not select a storage layout.
 REA retains the known type, shape, parameter count and starting offsets, with
 `byte_length: null`, `storage_validation: "unknown"`, partial storage/range
@@ -173,7 +173,7 @@ tensors and scalar shapes are supported. The reader retains shape dimensions as
 exact unsigned 64-bit values, including values above JavaScript's safe-integer
 range when a zero extent makes storage empty. Shape products are checked in
 declaration order, as in the
-[64-bit upstream reader](https://github.com/huggingface/safetensors/blob/e246a2560645b7525f5775669ed816eb57c5bcc8/safetensors/core/tensor.rs#L604-L609);
+[64-bit upstream reader](https://github.com/huggingface/safetensors/blob/e246a2560645b7525f5775669ed816eb57c5bcc8/safetensors/src/tensor.rs#L604-L609);
 a later zero does not erase an earlier product overflow. Actual file and data
 offsets must still fit exact host offset precision. Packed sub-byte types require whole
 byte storage. Unknown dtypes retain declared ranges and an explicit limitation
@@ -263,6 +263,6 @@ PyTorch pickle and ZIP model deserialization are unsupported; convert using a
 trusted external workflow and supply GGUF or safetensors. ONNX, TFLite, Core ML,
 model execution and conversion are outside this operation.
 
-Format references: [GGUF specification](https://github.com/ggml-org/ggml/blob/da8e2a54b919557b816b1c2beb432ccb766f7ce0/handbook/gguf.md),
-[ggml tensor layouts](https://github.com/ggml-org/ggml/blob/da8e2a54b919557b816b1c2beb432ccb766f7ce0/core/ggml-common.h),
+Format references: [GGUF specification](https://github.com/ggml-org/ggml/blob/da8e2a54b919557b816b1c2beb432ccb766f7ce0/docs/gguf.md),
+[ggml tensor layouts](https://github.com/ggml-org/ggml/blob/da8e2a54b919557b816b1c2beb432ccb766f7ce0/src/ggml-common.h),
 [safetensors format](https://github.com/huggingface/safetensors/tree/e246a2560645b7525f5775669ed816eb57c5bcc8#format).

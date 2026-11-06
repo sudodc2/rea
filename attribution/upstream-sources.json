@@ -31,7 +31,7 @@
   },
   {
     "file": "attribution/Apache-2.0.txt",
-    "source": "https://www.apache.org/attribution/LICENSE-2.0.txt",
+    "source": "https://www.apache.org/licenses/LICENSE-2.0.txt",
     "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
   },
   {
@@ -66,7 +66,7 @@
   },
   {
     "file": "attribution/LGPL-2.0.txt",
-    "source": "https://www.gnu.org/attribution/old-licenses/lgpl-2.0.txt",
+    "source": "https://www.gnu.org/licenses/old-licenses/lgpl-2.0.txt",
     "sha256": "cc535c21133c895b56b374c8a1dc1eb948d99003ed2b47372069456b62f42b24"
   },
   {

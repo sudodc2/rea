@@ -124,7 +124,7 @@ export const classifyNextAppRoutePath = (
       relative = value.slice(localChunk.length);
       chunk = true;
     } else if (context.kind === "source-literal") {
-      const prefix = value.startsWith("core/app/") ? "core/app/" : "app/";
+      const prefix = value.startsWith("src/app/") ? "src/app/" : "app/";
       if (value.startsWith(prefix)) relative = value.slice(prefix.length);
     }
   }

@@ -8,7 +8,7 @@ const WINDOW =
 const IMPORT = 'let electron = require("electron");';
 const WRAP = "electron = __toESM(electron, 1);";
 // The upstream runtime uses control-body braces that its bundled printer omits.
-// https://github.com/rolldown/rolldown/blob/22a0ab13732d81f2559ad2b7064b688699324889/crates/rolldown/core/runtime/runtime-base.js
+// https://github.com/rolldown/rolldown/blob/22a0ab13732d81f2559ad2b7064b688699324889/crates/rolldown/src/runtime/runtime-base.js
 const BLOCK_MODULE_INTEROP = ROLLDOWN_MODULE_INTEROP.replace(
   'if (from && typeof from === "object" || typeof from === "function") for',
   'if (from && typeof from === "object" || typeof from === "function") { for',

@@ -115,7 +115,7 @@ timers and can differ slightly from the outer peak.
 
 The positive whole-second maximum is 2,147,483. This follows Ghidra 12.1.4's
 signed integer seconds-to-milliseconds conversion, rather than an arbitrary
-day cap. [Pinned upstream implementation](https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.4_build/Ghidra/Features/Decompiler/core/main/java/ghidra/app/decompiler/DecompileProcess.java#L562).
+day cap. [Pinned upstream implementation](https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.4_build/Ghidra/Features/Decompiler/src/main/java/ghidra/app/decompiler/DecompileProcess.java#L562).
 Configuration tests cover the last safe value and the first overflowing value.
 A real MCP export/resume with that maximum succeeded on `/usr/bin/sha256sum`:
 two files matched the baseline bytes, one verified file was skipped on resume,

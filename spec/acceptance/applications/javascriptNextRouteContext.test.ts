@@ -20,7 +20,7 @@ cliTest.for(["CLI", "stdio MCP"] as const)(
       "pages/app/page.js": page,
       "pages/app/settings/page.js": page,
       "components/app/not-a-route/page.js": page,
-      "core/app/shadowed/page.js": page,
+      "src/app/shadowed/page.js": page,
       "node_modules/ordinary/package.json": JSON.stringify({
         name: "ordinary",
       }),
@@ -30,7 +30,7 @@ cliTest.for(["CLI", "stdio MCP"] as const)(
       "workspace/package.json": JSON.stringify({
         devDependencies: { next: "16.4.2" },
       }),
-      "workspace/core/app/control/page.js": page,
+      "workspace/src/app/control/page.js": page,
       "plain/package.json": JSON.stringify({ main: "main.cjs" }),
       "plain/main.cjs":
         "module.exports=require('./components/app/module-only/page.js');",

@@ -119,7 +119,7 @@ it("uses the same repository path admission for archived and compared diagnostic
     "../outside.ts",
     "core/./file.ts",
     "core//file.ts",
-    "src\\file.ts",
+    "core\\file.ts",
   ]) {
     await writeFile(
       join(root, "oxlint.json"),

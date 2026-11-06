@@ -46,8 +46,8 @@ new RuleTester({
     valid(
       "HTTP modules are not filesystem owners",
       `
-      import { createEvidence } from "https://example.test/core/domain/evidence.js";
-      import { jsonValueSchema } from "https://example.test/core/domain/jsonValue.js";
+      import { createEvidence } from "https://example.test/src/domain/evidence.js";
+      import { jsonValueSchema } from "https://example.test/src/domain/jsonValue.js";
       createEvidence(target, provider, {result: jsonValueSchema.parse(input)});`,
     ),
     valid(

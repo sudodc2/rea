@@ -7,9 +7,9 @@ at `public/blog/touhou-reconstruction/index.html`.
 
 The Factory checkpoint is
 [`038b6bed`](https://github.com/N0zoM1z0/touhou-reconstruction-factory/tree/038b6bed51d273c8b3680553b6f43e1b97d19bd1).
-Read its [agent autonomy](https://github.com/N0zoM1z0/touhou-reconstruction-factory/blob/038b6bed51d273c8b3680553b6f43e1b97d19bd1/handbook/agent-autonomy.md),
-[semantic workflow](https://github.com/N0zoM1z0/touhou-reconstruction-factory/blob/038b6bed51d273c8b3680553b6f43e1b97d19bd1/handbook/semantic-reconstruction.md),
-and [cross-game knowledge](https://github.com/N0zoM1z0/touhou-reconstruction-factory/blob/038b6bed51d273c8b3680553b6f43e1b97d19bd1/handbook/knowledge-base.md)
+Read its [agent autonomy](https://github.com/N0zoM1z0/touhou-reconstruction-factory/blob/038b6bed51d273c8b3680553b6f43e1b97d19bd1/docs/agent-autonomy.md),
+[semantic workflow](https://github.com/N0zoM1z0/touhou-reconstruction-factory/blob/038b6bed51d273c8b3680553b6f43e1b97d19bd1/docs/semantic-reconstruction.md),
+and [cross-game knowledge](https://github.com/N0zoM1z0/touhou-reconstruction-factory/blob/038b6bed51d273c8b3680553b6f43e1b97d19bd1/docs/knowledge-base.md)
 documents for the underlying method: autonomous investigation, bounded changes,
 empirical feedback, durable checkpoints and reusable lessons.
 
@@ -160,7 +160,7 @@ assign motives beyond what the public notice states.
 ## TH04's current DOS and 64-bit phases
 
 The latest public main checkpoint checked for this revision is
-[`bb9faca5`](https://github.com/N0zoM1z0/th04/blob/bb9faca54e2eb3c0d6c757c75d59ac29d2cd5e93/handbook/RE_HANDOFF.md),
+[`bb9faca5`](https://github.com/N0zoM1z0/th04/blob/bb9faca54e2eb3c0d6c757c75d59ac29d2cd5e93/docs/RE_HANDOFF.md),
 dated 10 October 2026. Its handoff records the standalone DOS products,
 repaired normal and invincible variants, and the user's manual Windows
 observations of complete Normal routes, endings and saves. It identifies
@@ -236,9 +236,9 @@ human with agents and about responsibility for oracle quality.
 ## Readability and the learned phase order
 
 The semantic discussion is based on the author's requested explanation,
-[TH08's semantic playbook](https://github.com/N0zoM1z0/th08/blob/d2a00f4acb4a13916e07a00bd13f714961714628/handbook/SEMANTIC_PLAYBOOK.md),
+[TH08's semantic playbook](https://github.com/N0zoM1z0/th08/blob/d2a00f4acb4a13916e07a00bd13f714961714628/docs/SEMANTIC_PLAYBOOK.md),
 and the Factory's
-[semantic-reconstruction workflow](https://github.com/N0zoM1z0/touhou-reconstruction-factory/blob/717e1b8560783ed17a39fdf159d30aa16bb307a7/handbook/semantic-reconstruction.md).
+[semantic-reconstruction workflow](https://github.com/N0zoM1z0/touhou-reconstruction-factory/blob/717e1b8560783ed17a39fdf159d30aa16bb307a7/docs/semantic-reconstruction.md).
 The workflow's latest public change was checked using `gh` on 10 October.
 
 The recommended order is an exact baseline, a working historical-platform

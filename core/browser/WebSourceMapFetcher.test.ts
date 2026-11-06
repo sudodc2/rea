@@ -122,12 +122,12 @@ it("observes a fetch rejection that arrives after its host aborts synchronously"
 
 it.each([
   {
-    sourceRoot: "https://cdn.example/core/",
-    expected: "https://cdn.example/core/a.js",
+    sourceRoot: "https://cdn.example/src/",
+    expected: "https://cdn.example/src/a.js",
   },
   {
-    sourceRoot: "https://cdn.example/core//",
-    expected: "https://cdn.example/core//a.js",
+    sourceRoot: "https://cdn.example/src//",
+    expected: "https://cdn.example/src//a.js",
   },
   { sourceRoot: "webpack://", expected: "webpack://a.js" },
   { sourceRoot: "webpack:///", expected: "webpack:///a.js" },

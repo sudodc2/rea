@@ -90,7 +90,7 @@ Additional selections:
 - `two_pass`: defaults to true for fields that need later packets and reassembly
   dependencies. MCP may set false; CLI uses `--no-two_pass` for a single pass.
 
-See the [TShark manual](https://www.wireshark.org/handbook/man-pages/tshark.html)
+See the [TShark manual](https://www.wireshark.org/docs/man-pages/tshark.html)
 for field names, display filters, decode-as syntax and pass semantics. Invalid
 fields or filters return producer diagnostics. An empty result does not prove
 absence of traffic outside the selected recording, filter or read range.

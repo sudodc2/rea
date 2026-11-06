@@ -619,7 +619,7 @@ class ReaJadxBridge {
     // The upstream placeholder means only that Java code was omitted, including
     // methods merged into synthetic bridges. Access flags established absence above.
     if (java.isEmpty() || java.equals(
-        "// method exists but has no decompiled body (platform/abstract)"))
+        "// method exists but has no decompiled body (native/abstract)"))
       return exactMethodSmali(current, cls, selected, List.of("java_body_unavailable"));
     List<String> markers = DecompileFailureKt.detectDecompileFailure(java);
     if (markers.stream().anyMatch(DecompileFailureKt.getSTRONG_FAILURE_MARKERS()::contains))

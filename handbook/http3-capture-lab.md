@@ -21,7 +21,7 @@ nghttp3 1.18.0 and nghttp2 1.70.0. **No guest rolling package upgrade is needed.
 Run `curl --version` and verify HTTP2 and HTTP3 features before starting. A stock
 cURL from another distribution may omit HTTP/3. For a different guest, building
 cURL requires a compatible TLS library, ngtcp2 and nghttp3; follow the
-[official build instructions](https://curl.se/handbook/http3.html), install to a guest
+[official build instructions](https://curl.se/docs/http3.html), install to a guest
 private prefix, and record exact source revisions and build inputs. That alternative
 has not been exercised by this laboratory; it is not the pinned reproduction path.
 
@@ -167,10 +167,10 @@ Local/WireGuard, browsers, QUIC v2, migration, 0-RTT, mTLS, replay, sustained lo
 and loss tolerance remain unverified by this profile. Passing it does not
 establish general HTTP/3 support in REA.
 
-Official references: [mitmproxy protocol support](https://github.com/mitmproxy/mitmproxy/blob/v12.2.3/handbook/core/content/concepts/protocols.md),
+Official references: [mitmproxy protocol support](https://github.com/mitmproxy/mitmproxy/blob/v12.2.3/docs/src/content/concepts/protocols.md),
 [HTTP/3 implementation](https://github.com/mitmproxy/mitmproxy/blob/v12.2.3/mitmproxy/proxy/layers/http/_http3.py),
 [serialized HTTP state](https://github.com/mitmproxy/mitmproxy/blob/v12.2.3/mitmproxy/http.py),
-[aioquic configuration](https://github.com/aiortc/aioquic/blob/1.2.0/core/aioquic/quic/configuration.py).
+[aioquic configuration](https://github.com/aiortc/aioquic/blob/1.2.0/src/aioquic/quic/configuration.py).
 
 ## Verifier regressions
 

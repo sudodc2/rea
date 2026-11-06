@@ -272,8 +272,8 @@ python3 tooling/website.py check
 
 These Search Console checks require the property owner's access. Local checks
 verify the website inputs; Google's indexing reports show how they were used.
-See Google's [canonical guidance](https://developers.google.com/search/handbook/crawling-indexing/consolidate-duplicate-urls)
-and [sitemap guidance](https://developers.google.com/search/handbook/crawling-indexing/sitemaps/build-sitemap),
+See Google's [canonical guidance](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+and [sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap),
 and Cloudflare's [managed robots behavior](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/).
 
 ## Content
@@ -607,7 +607,7 @@ retains its `workers.dev` address for direct checks. Only `rea.tools` is attache
 `www.rea.tools` is not configured by this file.
 
 Verify <https://rea.tools/>, <https://rea.tools/guides/javascript/>,
-<https://rea.tools/samples/notes-web/> and the Electron ZIP. Unknown paths return
+<https://rea.tools/examples/notes-web/> and the Electron ZIP. Unknown paths return
 404, and directory pages retain trailing slashes so relative assets and links
 resolve correctly. The root README and browser guide use `https://rea.tools/`
 as the public website URL.

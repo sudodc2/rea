@@ -55,7 +55,7 @@ it("uses the nearest declared Next package and root directory precedence", () =>
   const files = [
     file("package.json", '{"dependencies":{"next":"16.4.2"}}'),
     file("app/page.js"),
-    file("core/app/control/page.js"),
+    file("src/app/control/page.js"),
     file("pages/app/page.js"),
     file("components/app/page.js"),
     file("node_modules/ordinary/package.json", '{"name":"ordinary"}'),
@@ -66,7 +66,7 @@ it("uses the nearest declared Next package and root directory precedence", () =>
     new JavaScriptJsonDocuments(),
     new Set([
       "app",
-      "core/app",
+      "src/app",
       "pages",
       "components/app",
       "node_modules/ordinary/app",
@@ -102,49 +102,49 @@ it("keeps default compiled output under its declared package and unrelated chunk
   ).toMatchObject({ kind: "unknown" });
 });
 
-it("supports core/app only when app is not inventoried and retains missing framework identity", () => {
+it("supports src/app only when app is not inventoried and retains missing framework identity", () => {
   const manifest = file(
     "package.json",
     '{"devDependencies":{"next":"16.4.2"}}',
   );
-  const page = file("core/app/control/page.js");
+  const page = file("src/app/control/page.js");
   expect(
     contextFor(
       [manifest, page],
       new JavaScriptJsonDocuments(),
-      new Set(["core/app"]),
+      new Set(["src/app"]),
     )(page),
-  ).toMatchObject({ kind: "app-directory", directory: "core/app" });
+  ).toMatchObject({ kind: "app-directory", directory: "src/app" });
   expect(
     contextFor(
       [page],
       new JavaScriptJsonDocuments(),
-      new Set(["core/app"]),
+      new Set(["src/app"]),
     )(page),
   ).toMatchObject({ kind: "unknown", package: null });
 });
 
 it("does not infer absent manifests or higher-priority directories from incomplete traversal", () => {
   const manifest = file("package.json", '{"dependencies":{"next":"16.4.2"}}');
-  const page = file("core/app/control/page.js");
+  const page = file("src/app/control/page.js");
   const files = { files: [manifest, page], unavailable_relevant_files: [] };
   const context = createJavaScriptNextAppContext(
     files,
     new JavaScriptJsonDocuments(),
-    new Set(["core/app"]),
+    new Set(["src/app"]),
     { scope: "container-entries", status: "unknown" },
   );
   expect(context(page)).toMatchObject({
     kind: "unknown",
     package: null,
-    reason: expect.stringContaining("core/app/control/package.json"),
+    reason: expect.stringContaining("src/app/control/package.json"),
   });
   const rootPage = file("page.js");
   expect(
     createJavaScriptNextAppContext(
       files,
       new JavaScriptJsonDocuments(),
-      new Set(["core/app"]),
+      new Set(["src/app"]),
       { scope: "container-entries", status: "unknown" },
     )(rootPage),
   ).toMatchObject({

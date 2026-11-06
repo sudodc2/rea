@@ -406,7 +406,7 @@ def check_publisher(root):
 
 def check_example_archive(site):
     """Verify the downloadable ZIP contains the current six source files."""
-    source = site / "samples/notes-electron"
+    source = site / "examples/notes-electron"
     expected = {
         f"notes-example/{name}": source / name
         for name in (
@@ -418,7 +418,7 @@ def check_example_archive(site):
             "index.html",
         )
     }
-    path = site / "samples/notes-example.zip"
+    path = site / "examples/notes-example.zip"
     if not path.is_file():
         return ["Notes example ZIP is missing; run python3 tooling/prepare-website.py."]
     try:

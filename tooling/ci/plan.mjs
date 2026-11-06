@@ -52,7 +52,7 @@ const reasons = [];
 // Fast qualification keeps the portable suite and the Linux x64 runtime
 // baseline. Full qualification still selects every lane.
 const SHARED_BOUNDARY =
-  /^(src\/process\/|src\/filesystem\/|src\/contracts\/tool|src\/server\/createServer|src\/cli\.ts|scripts\/ci\/)/;
+  /^(core\/process\/|core\/filesystem\/|core\/contracts\/tool|core\/server\/createServer|core\/cli\.ts|tooling\/ci\/)/;
 const full = (reason) => {
   if (tier === "full") {
     for (const flag of flags) selected[flag] = true;
@@ -136,7 +136,7 @@ function classifyPackage(base, head) {
     // Verify scripts own provider setup as well as execution. Reuse their
     // existing source-file ownership rather than maintaining a second map.
     const entrypoint = (command) =>
-      /^(?:npm run build:cached && )?node (scripts\/[\w/-]+\.mjs)(?: [\w./=-]+)*$/.exec(
+      /^(?:npm run build:cached && )?node (tooling\/[\w/-]+\.mjs)(?: [\w./=-]+)*$/.exec(
         command ?? "",
       )?.[1];
     const beforeEntry = entrypoint(beforeScripts?.[script]);
@@ -225,7 +225,7 @@ if (tier === "reused") {
         if (matchesAny(file, earlyAll ? paths : earlyInputs))
           selected[owner] = true;
       if (
-        /^(README(?:_[^/]+)?\.md|AGENTS\.md|CONTRIBUTING\.md|CHANGELOG\.md|SECURITY\.md|native\/windows\/README\.md|\.github\/pull_request_template\.md)$/.test(
+        /^(README(?:_[^/]+)?\.md|AGENTS\.md|CONTRIBUTING\.md|CHANGELOG\.md|SECURITY\.md|platform\/windows\/README\.md|\.github\/pull_request_template\.md)$/.test(
           file,
         ) ||
         file.startsWith("handbook/") ||
@@ -288,7 +288,7 @@ if (tier === "reused") {
       if (file.startsWith("web/public/examples/notes-electron/"))
         selected.code = true;
       if (owners.length === 1 && owners[0] === "website") continue;
-      if (/^src\/(contracts|domain)\//.test(file)) selected.docs = true;
+      if (/^core\/(contracts|domain)\//.test(file)) selected.docs = true;
       if (file === "package.json") {
         classifyPackage(base, head);
         continue;
@@ -300,7 +300,7 @@ if (tier === "reused") {
       }
       if (file.startsWith("spec/")) continue;
       if (
-        /^(src\/process\/|src\/filesystem\/|src\/contracts\/tool|src\/server\/createServer|src\/cli\.ts|scripts\/ci\/)/.test(
+        /^(core\/process\/|core\/filesystem\/|core\/contracts\/tool|core\/server\/createServer|core\/cli\.ts|tooling\/ci\/)/.test(
           file,
         )
       ) {

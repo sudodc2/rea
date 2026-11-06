@@ -185,7 +185,7 @@ independently exercised through binary XML decoding or on a device.
 
 Commit `27b7dc1656b66a71796d6f0d1119d79be7ab586a` corrects two additional
 interpretation boundaries. Class identity expansion accepts the documented
-[DEX SimpleName character ranges](https://source.android.com/handbook/core/runtime/dex-format#simplename),
+[DEX SimpleName character ranges](https://source.android.com/docs/core/runtime/dex-format#simplename),
 including leading digits, hyphens and supplemental Unicode, instead of Java
 source identifier categories. The same predicate supplies activity and alias
 reference matching. Package declaration validation remains separate. Spaces
@@ -194,7 +194,7 @@ manifest projection does not establish a DEX version, class existence or
 runtime loadability.
 
 SDK interpretation now accepts decimal or hexadecimal positive signed-32-bit
-resource integers once per inventory. [JADX's typed value decoder](https://github.com/skylot/jadx/blob/v1.5.3/jadx-core/core/main/java/jadx/core/xmlgen/entry/ValuesParser.java#L84)
+resource integers once per inventory. [JADX's typed value decoder](https://github.com/skylot/jadx/blob/v1.5.3/jadx-core/src/main/java/jadx/core/xmlgen/entry/ValuesParser.java#L84)
 prints `TYPE_INT_HEX` with a hexadecimal prefix. The unchanged Java bridge
 retains those declaration strings; only the local numeric interpretation used
 for default rules changes. Unrecognized previews, malformed hex, exponent
@@ -307,7 +307,7 @@ separator controls remain covered. Package grammar retains its separate owner.
 The domain schema and retained summary consume these strings without another
 normalization step.
 
-The source authorities are [DEX SimpleName](https://source.android.com/handbook/core/runtime/dex-format#simplename)
+The source authorities are [DEX SimpleName](https://source.android.com/docs/core/runtime/dex-format#simplename)
 and Android 16's [buildClassName](https://android.googlesource.com/platform/frameworks/base/+/refs/tags/android-16.0.0_r1/core/java/com/android/internal/pm/pkg/parsing/ParsingUtils.java),
 which applies the package to the exact string. These are decoded-XML and
 source-qualified cases. No authentic space-named DEX APK or device load was

@@ -22,7 +22,7 @@ const isLanguageNavigation = (target) => {
   const path = target.split(/[#?]/u)[0];
   return (
     path === "README.md" ||
-    /^docs\/readme\/README_[A-Za-z0-9-]+\.md$/u.test(path)
+    /^handbook\/readme\/README_[A-Za-z0-9-]+\.md$/u.test(path)
   );
 };
 

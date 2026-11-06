@@ -643,8 +643,8 @@
   ],
   "author_scope": "Builds on the existing contributor PR and commits. Follow-up account gensokyo-dev; no coauthor trailers added.",
   "spec_sources": [
-    "https://source.android.com/handbook/security/features/apksigning/v2",
-    "https://source.android.com/handbook/security/features/apksigning/v3",
+    "https://source.android.com/docs/security/features/apksigning/v2",
+    "https://source.android.com/docs/security/features/apksigning/v3",
     "https://developer.android.com/tools/apksigner"
   ],
   "review_followup": {

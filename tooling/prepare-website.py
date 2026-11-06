@@ -59,7 +59,7 @@ def prepare_sharing_image(site):
 
 def prepare_notes_example(site):
     """Create a ZIP with public source only and reproducible metadata."""
-    source = site / "samples/notes-electron"
+    source = site / "examples/notes-electron"
     contents = BytesIO()
     with ZipFile(contents, "w") as archive:
         for name in EXAMPLE_FILES:
@@ -72,9 +72,9 @@ def prepare_notes_example(site):
                 compress_type=ZIP_DEFLATED,
                 compresslevel=9,
             )
-    destination = site / "samples/notes-example.zip"
+    destination = site / "examples/notes-example.zip"
     destination.write_bytes(contents.getvalue())
-    print(f"Prepared samples/notes-example.zip ({len(EXAMPLE_FILES)} files).")
+    print(f"Prepared examples/notes-example.zip ({len(EXAMPLE_FILES)} files).")
 
 
 def prepare_assets(site):

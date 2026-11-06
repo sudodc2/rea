@@ -56,9 +56,9 @@ Microsoft's MIT-licensed source at commit
 `d125246a4e19842ce1332e6c7839cf0e110027d8` supplies the operator meanings and
 an independently readable implementation:
 
-- [Operator IDs](https://github.com/microsoft/calculator/blob/d125246a4e19842ce1332e6c7839cf0e110027d8/core/CalcManager/Header%20Files/CCommand.h): `IDC_DIV = 91`, `IDC_MUL = 92`, `IDC_PERCENT = 118`.
-- [Percentage branch](https://github.com/microsoft/calculator/blob/d125246a4e19842ce1332e6c7839cf0e110027d8/core/CalcManager/CEngine/scifunc.cpp#L98-L111): multiply/divide uses `rat / 100`; other operators use `rat * (m_lastVal / 100)`.
-- [Standard-mode tests](https://github.com/microsoft/calculator/blob/d125246a4e19842ce1332e6c7839cf0e110027d8/core/CalculatorUnitTests/CalculatorManagerTest.cpp#L350-L370): `6 × 6 % = 0.36` and `50 + 20 % = 60`.
+- [Operator IDs](https://github.com/microsoft/calculator/blob/d125246a4e19842ce1332e6c7839cf0e110027d8/src/CalcManager/Header%20Files/CCommand.h): `IDC_DIV = 91`, `IDC_MUL = 92`, `IDC_PERCENT = 118`.
+- [Percentage branch](https://github.com/microsoft/calculator/blob/d125246a4e19842ce1332e6c7839cf0e110027d8/src/CalcManager/CEngine/scifunc.cpp#L98-L111): multiply/divide uses `rat / 100`; other operators use `rat * (m_lastVal / 100)`.
+- [Standard-mode tests](https://github.com/microsoft/calculator/blob/d125246a4e19842ce1332e6c7839cf0e110027d8/src/CalculatorUnitTests/CalculatorManagerTest.cpp#L350-L370): `6 × 6 % = 0.36` and `50 + 20 % = 60`.
 
 These source branches agree with the operator checks and two paths observed
 in the installed DLL. The public source commit is a crosscheck; it is not an

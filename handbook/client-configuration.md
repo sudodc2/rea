@@ -144,7 +144,7 @@ or `--user-data-dir`; configure that profile separately when needed.
 
 `rea setup --client copilot_cli` instead configures Copilot's user
 `mcp-config.json`. VS Code can forward eligible profile servers to Copilot
-sessions; see the [VS Code MCP configuration reference](https://code.visualstudio.com/handbook/agents/reference/mcp-configuration).
+sessions; see the [VS Code MCP configuration reference](https://code.visualstudio.com/docs/agents/reference/mcp-configuration).
 
 ## GitHub Copilot CLI
 
@@ -257,7 +257,7 @@ app is unverified.
 ## Claude Code
 
 Claude Code normally defers MCP tool definitions through tool search. It
-[turns tool search off](https://code.claude.com/handbook/en/mcp#configure-tool-search)
+[turns tool search off](https://code.claude.com/docs/en/mcp#configure-tool-search)
 when `ANTHROPIC_BASE_URL` points to a non-first-party host, such as DeepSeek's
 Anthropic-compatible endpoint. It then sends every REA tool's name, description
 and input schema with every request
@@ -369,7 +369,7 @@ Start a new Kimi Code session to pick up MCP and skill changes.
 
 ## LM Studio
 
-For [LM Studio](https://lmstudio.ai/handbook/app/mcp), setup writes `mcpServers.rea`
+For [LM Studio](https://lmstudio.ai/docs/app/mcp), setup writes `mcpServers.rea`
 into `mcp.json` in the LM Studio home directory. Setup finds that directory as
 LM Studio does: the path stored in `~/.lmstudio-home-pointer`, otherwise
 `~/.cache/lm-studio` when it exists, otherwise `~/.lmstudio`. Setup only reads
@@ -385,7 +385,7 @@ Windows remain unverified.
 
 ## Pi
 
-For [Pi](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/handbook/mcp.md),
+For [Pi](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/mcp.md),
 setup writes a `type: "stdio"` entry under `mcpServers.rea` in the user-level
 `~/.pi/agent/mcp.json` and installs the bundled skill under `~/.agents/skills`.
 Use `rea setup --client pi --dry-run --json` to inspect the plan, then
@@ -665,7 +665,7 @@ loading this registration in Trae remains unverified.
 
 ## WorkBuddy
 
-For [WorkBuddy](https://www.workbuddy.cn/handbook/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/MCP-Guide), setup writes `mcpServers.rea` into the
+For [WorkBuddy](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/MCP-Guide), setup writes `mcpServers.rea` into the
 global `~/.workbuddy/mcp.json` (a standard `mcpServers` JSON file at the user
 home root on every platform). Entries carry `command`, `args`, and `env`;
 stdio is the default transport. WorkBuddy discovers personal skills from
@@ -680,7 +680,7 @@ through WorkBuddy are verified.
 
 ## ZCode
 
-For [ZCode](https://zcode.z.ai/en/handbook/mcp-services), setup registers `rea` in the nested `mcp.servers` table of the
+For [ZCode](https://zcode.z.ai/en/docs/mcp-services), setup registers `rea` in the nested `mcp.servers` table of the
 user-level `~/.zcode/cli/config.json`. Entries carry `command`, `args`, and
 `env` without a transport discriminator. ZCode discovers personal skills from
 `~/.zcode/skills` rather than the shared directory, so setup installs its

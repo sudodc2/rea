@@ -64,8 +64,8 @@ source fields remain available in the retained Evidence.
 ## Supported layout and limits
 
 The decoder follows the 64-bit little-endian layout in Node
-[v24.10.0 node_sea.cc](https://github.com/nodejs/node/blob/v24.10.0/core/node_sea.cc)
-and [node_sea.h](https://github.com/nodejs/node/blob/v24.10.0/core/node_sea.h),
+[v24.10.0 node_sea.cc](https://github.com/nodejs/node/blob/v24.10.0/src/node_sea.cc)
+and [node_sea.h](https://github.com/nodejs/node/blob/v24.10.0/src/node_sea.h),
 including the exec-argument extension byte. Older layouts without that byte,
 32-bit length fields, big-endian blobs and future flags are not supported.
 Carrier byte order is independent of blob byte order.

@@ -236,7 +236,7 @@ later candidate. Candidate outcomes describe individual search paths, while
 slice, candidate slices are matched by CPU type and dyld's subtype preference
 order, independently of FAT table order. An ARMv7s root slice prefers ARMv7s,
 then ARMv7; other known ARM32 subtypes use their compatibility rows from
-[Apple's dyld source](https://github.com/apple-oss-distributions/dyld/blob/dyld-852.2/core/dyld2.cpp#L2811-L3105).
+[Apple's dyld source](https://github.com/apple-oss-distributions/dyld/blob/dyld-852.2/src/dyld2.cpp#L2811-L3105).
 An `x86_64h` process also loads generic `x86_64`. Unknown ARM32 subtype policy
 remains undetermined when ARM32 candidate slices exist. This is a static model
 keyed to the selected root slice; it does not observe the target device's host

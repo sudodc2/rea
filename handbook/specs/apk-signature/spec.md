@@ -110,4 +110,4 @@ algorithm (including a pooled-Buffer regression), set-based posture, the output
 budget, and the provider's error surfaces. Independent review before handoff.
 
 Format reference: APK Signature Scheme v2/v3 —
-https://source.android.com/handbook/security/features/apksigning
+https://source.android.com/docs/security/features/apksigning

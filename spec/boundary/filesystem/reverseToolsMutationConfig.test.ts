@@ -36,8 +36,8 @@ describe("reverse-tools mutation configuration", () => {
       .array(
         z.object({
           targets: z.number().int().positive(),
-          json: z.string().regex(/^reports\/mutation\/.+\.json$/u),
-          html: z.string().regex(/^reports\/mutation\/.+\.html$/u),
+          json: z.string().regex(/^verification\/mutation\/.+\.json$/u),
+          html: z.string().regex(/^verification\/mutation\/.+\.html$/u),
           dryRunOnly: z.literal(false),
           reporters: z.array(z.string()),
         }),

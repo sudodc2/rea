@@ -112,9 +112,9 @@ The reference JSON contains public test data, not a captured account key.
 After obtaining the calculation through REA, selected files from the matching
 release source were read for corroboration:
 
-- [HOTP.java](https://github.com/beemdevelopment/Aegis/blob/d6f4e5925a97e4e91593f1542085eae03432a759/app/core/main/java/com/beemdevelopment/aegis/crypto/otp/HOTP.java): counter encoding, HMAC and byte selection.
-- [TOTP.java](https://github.com/beemdevelopment/Aegis/blob/d6f4e5925a97e4e91593f1542085eae03432a759/app/core/main/java/com/beemdevelopment/aegis/crypto/otp/TOTP.java): time-to-counter transformation.
-- [OTP.java](https://github.com/beemdevelopment/Aegis/blob/d6f4e5925a97e4e91593f1542085eae03432a759/app/core/main/java/com/beemdevelopment/aegis/crypto/otp/OTP.java): decimal output and zero padding.
+- [HOTP.java](https://github.com/beemdevelopment/Aegis/blob/d6f4e5925a97e4e91593f1542085eae03432a759/app/src/main/java/com/beemdevelopment/aegis/crypto/otp/HOTP.java): counter encoding, HMAC and byte selection.
+- [TOTP.java](https://github.com/beemdevelopment/Aegis/blob/d6f4e5925a97e4e91593f1542085eae03432a759/app/src/main/java/com/beemdevelopment/aegis/crypto/otp/TOTP.java): time-to-counter transformation.
+- [OTP.java](https://github.com/beemdevelopment/Aegis/blob/d6f4e5925a97e4e91593f1542085eae03432a759/app/src/main/java/com/beemdevelopment/aegis/crypto/otp/OTP.java): decimal output and zero padding.
 
 These files confirm the interpretation. The public page's selected decompiled
 Java comes from the APK evidence. It includes fragments from several methods and

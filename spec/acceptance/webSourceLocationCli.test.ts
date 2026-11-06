@@ -478,7 +478,7 @@ cliTest(
           {
             source_index: 0,
             reported_source_root: "",
-            resolved_url: "https://cdn.test/npm/app@1/core/a.ts",
+            resolved_url: "https://cdn.test/npm/app@1/src/a.ts",
           },
           {
             source_index: 1,

@@ -110,7 +110,7 @@ REA uses a caller-supplied Node.js runtime ([MIT and component notices](https://
 Optional workflows may also use Python ([PSF and component licenses](https://docs.python.org/3/license.html)),
 OpenJDK ([GPLv2 with Classpath Exception and component notices](https://openjdk.org/legal/)),
 Electron ([MIT and component notices](https://github.com/electron/electron/blob/main/LICENSE)),
-or a Chromium-based browser ([BSD-3-Clause and third-party licenses](https://chromium.googlesource.com/chromium/core/+/main/LICENSE)).
+or a Chromium-based browser ([BSD-3-Clause and third-party licenses](https://chromium.googlesource.com/chromium/src/+/main/LICENSE)).
 These external installations are not licensed or bundled by REA's MIT license.
 
 Development, test, and website npm packages are included in the locked inventory.

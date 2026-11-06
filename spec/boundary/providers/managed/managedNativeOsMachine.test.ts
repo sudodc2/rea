@@ -7,7 +7,7 @@ import { buildManagedPeFixture } from "../../../../core/dotnet/ManagedPe.fixture
 import { ManagedStaticProvider } from "../../../../core/dotnet/ManagedStaticProvider.js";
 
 // ReadyToRun images compiled for a non-Windows OS store the machine XORed with
-// IMAGE_FILE_MACHINE_NATIVE_OS_OVERRIDE (dotnet/runtime core/coreclr/inc/pedecoder.h).
+// IMAGE_FILE_MACHINE_NATIVE_OS_OVERRIDE (dotnet/runtime src/coreclr/inc/pedecoder.h).
 it.each([
   ["Linux x86", 0x014c ^ 0x7b79, 0, "x86"],
   ["Linux ARM", 0x01c4 ^ 0x7b79, 0, "arm"],

@@ -85,7 +85,7 @@ equations match that value. A separate second-model search reached its timeout;
 the completed verification concerns the returned candidate.
 
 After obtaining and executing the candidate, the
-[organizers' source](https://github.com/DownUnderCTF/Challenges_2023_Public/blob/b48f83db2984bc7fa2ec7879a32d7efb1be8d333/rev/masked-squares-flag-checker/core/ms_flag_checker.c)
+[organizers' source](https://github.com/DownUnderCTF/Challenges_2023_Public/blob/b48f83db2984bc7fa2ec7879a32d7efb1be8d333/rev/masked-squares-flag-checker/src/ms_flag_checker.c)
 confirmed the decoding/summing interpretation, all masks and all targets.
 The
 [challenge metadata](https://github.com/DownUnderCTF/Challenges_2023_Public/blob/b48f83db2984bc7fa2ec7879a32d7efb1be8d333/rev/masked-squares-flag-checker/ctfcli.yaml)

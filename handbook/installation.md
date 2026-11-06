@@ -257,7 +257,7 @@ CLAUDE_CONFIG_DIR=~/.claude-rea claude
 
 A new profile may need authentication. Console sign-ins without an API key are
 stored outside `CLAUDE_CONFIG_DIR`; see
-[Claude Code authentication](https://code.claude.com/handbook/en/authentication#log-in-with-multiple-accounts).
+[Claude Code authentication](https://code.claude.com/docs/en/authentication#log-in-with-multiple-accounts).
 Sessions started without the variable use the default profile's registration,
 skill and history.
 
@@ -1391,7 +1391,7 @@ rea doctor --json
 
 The copy step requires the destination to be absent and preserves an existing
 decompiler. This recipe is specific to macOS x64: the
-[Ghidra 12.1.4 Makefile](https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.4_build/Ghidra/Features/Decompiler/core/decompile/cpp/Makefile)
+[Ghidra 12.1.4 Makefile](https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.4_build/Ghidra/Features/Decompiler/src/decompile/cpp/Makefile)
 explicitly selects `-arch x86_64` on Darwin. For a Gradle
 build, follow the matching release's
 [native component instructions](https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.4_build/GhidraDocs/GettingStarted.md#building-native-components).
@@ -1402,7 +1402,7 @@ REA accepts the matching executable under either `os/<platform>/` or
 
 On Apple Silicon the same source build works with explicit overrides; no
 Makefile edits and no Rosetta are needed. The Darwin block in the
-[Ghidra 12.1.4 Makefile](https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.4_build/Ghidra/Features/Decompiler/core/decompile/cpp/Makefile)
+[Ghidra 12.1.4 Makefile](https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.4_build/Ghidra/Features/Decompiler/src/decompile/cpp/Makefile)
 pins `-arch x86_64`, but `ARCH_TYPE` and `OSDIR` are ordinary make variables,
 and command-line assignments replace them for every compile and link rule:
 

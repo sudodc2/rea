@@ -21,7 +21,7 @@ const catalogSource = new URL(
 tester.run("no-positional-tool-contract", rule, {
   valid: [
     `import {GPU_TOOL_CONTRACTS as contracts} from ${JSON.stringify(catalogSource.href)}; function read(contracts: {name: string}[]) { return contracts[0].name; }`,
-    'import {GPU_TOOL_CONTRACTS as contracts} from "https://example.test/core/contracts/gpu/gpuToolContracts.js"; contracts[0].name;',
+    'import {GPU_TOOL_CONTRACTS as contracts} from "https://example.test/src/contracts/gpu/gpuToolContracts.js"; contracts[0].name;',
     `import {GPU_TOOL_CONTRACTS as contracts} from ${JSON.stringify(`${catalogSource.href}#other`)}; contracts[0].name;`,
     `${catalog} for (const contract of contracts) register(contract);`,
     `${catalog} contracts.forEach(register);`,

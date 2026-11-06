@@ -96,7 +96,7 @@ optional field only from its validation copy for this exact producer profile;
 it does not invent an empty string or body bytes.
 The observed Playwright 1.58.2 profile can report a bracketed IPv6
 `serverIPAddress`, forwarded from Chromium's `remoteIPAddress` through
-[Playwright's HAR tracer](https://github.com/microsoft/playwright/blob/v1.58.2/packages/playwright-core/core/server/har/harTracer.ts).
+[Playwright's HAR tracer](https://github.com/microsoft/playwright/blob/v1.58.2/packages/playwright-core/src/server/har/harTracer.ts).
 Chromium DevTools exports (declared as `WebInspector` `537.36`, the frozen
 AppleWebKit version in Chromium's user agent) report the same bracketed form:
 [its HAR writer](https://github.com/ChromeDevTools/devtools-frontend/blob/63739e8ec45ca01b9e4be9b8b05946acdadd8f1f/front_end/models/har/Log.ts)
@@ -205,7 +205,7 @@ presence, declared values and retained opaque unknown/custom-option fields.
 Opaque fields must match in their retained order and bytes; REA does not
 interpret them. Conflicting definitions are refused rather than selecting a
 file by its position. This is REA's supplied-schema admission policy, separate
-from protobuf wire validity and the [first-occurrence precedence in protoc v32.1](https://github.com/protocolbuffers/protobuf/blob/v32.1/core/google/protobuf/compiler/command_line_interface.cc#L1402).
+from protobuf wire validity and the [first-occurrence precedence in protoc v32.1](https://github.com/protocolbuffers/protobuf/blob/v32.1/src/google/protobuf/compiler/command_line_interface.cc#L1402).
 The descriptor-set byte count and SHA-256 continue to identify the complete
 original input, including repeated file facts.
 Map semantics, extensions and required-field validation are

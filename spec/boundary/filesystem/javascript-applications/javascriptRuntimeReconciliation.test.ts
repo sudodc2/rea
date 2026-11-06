@@ -826,7 +826,7 @@ it.skipIf(process.platform === "win32")(
             runtime_mappings: [
               {
                 kind: "url-prefix",
-                prefix: "https://example.test/media/",
+                prefix: "https://example.test/assets/",
                 artifact_prefix: "",
               },
             ],
@@ -846,17 +846,17 @@ it.skipIf(process.platform === "win32")(
         ...entity,
         location: { kind: "url", value },
       }).map(({ path }) => path);
-    expect(mapped("https://example.test/media/literal%5Cname.js")).toEqual([
+    expect(mapped("https://example.test/assets/literal%5Cname.js")).toEqual([
       "literal\\name.js",
     ]);
-    expect(mapped("https://example.test/media/literal/name.js")).toEqual([
+    expect(mapped("https://example.test/assets/literal/name.js")).toEqual([
       "literal/name.js",
     ]);
-    expect(mapped("https://example.test/media/literal\\name.js")).toEqual([
+    expect(mapped("https://example.test/assets/literal\\name.js")).toEqual([
       "literal/name.js",
     ]);
-    expect(mapped("https://other.test/media/literal/name.js")).toEqual([]);
-    expect(mapped("https://example.test/media/%2e%2e/outside.js")).toEqual([]);
+    expect(mapped("https://other.test/assets/literal/name.js")).toEqual([]);
+    expect(mapped("https://example.test/assets/%2e%2e/outside.js")).toEqual([]);
   },
 );
 

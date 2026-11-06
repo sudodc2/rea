@@ -68,8 +68,8 @@ format version `A`, the `gnu` vendor's file-scope `Tag_GNU_MIPS_ABI_FP` (4) and
 declarations, malformed lengths, and out-of-file or oversized payloads remain
 refusals. A nonzero FP tag must match the separate ABI flags `fp_abi` record;
 value 0 (`ANY`) declares no requirement. The [GNU Object Attributes v1
-format](https://sourceware.org/binutils/handbook/as/Object-Attributes-v1.html) and
-[GNU MIPS tag definitions](https://sourceware.org/binutils/handbook/as/GNU-Object-Attributes.html)
+format](https://sourceware.org/binutils/docs/as/Object-Attributes-v1.html) and
+[GNU MIPS tag definitions](https://sourceware.org/binutils/docs/as/GNU-Object-Attributes.html)
 are the format references. The MSA tag describes the vector
 argument ABI, while the ABI flags ASE field describes instruction-set
 extensions; REA does not treat those as interchangeable. The 128-bit MSA

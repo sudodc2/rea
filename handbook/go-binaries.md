@@ -136,10 +136,10 @@ file range. Gaps, conflicting file aliases and nonempty zero-fill overlap remain
 invalid. Discovery policy and the aggregate 1 MiB string-content limit are
 unchanged. These are static reads over REA's native mapping facts; they do not
 establish Windows/Linux loading or parity with Go's standard reader, whose
-[Go 1.24.0 ELF/PE readers](https://github.com/golang/go/blob/go1.24.0/core/debug/buildinfo/buildinfo.go#L445)
+[Go 1.24.0 ELF/PE readers](https://github.com/golang/go/blob/go1.24.0/src/debug/buildinfo/buildinfo.go#L445)
 read within individual segments or sections. The historical two-word string
 descriptor follows the
-[Go 1.17.13 reader](https://github.com/golang/go/blob/go1.17.13/core/cmd/go/internal/version/version.go#L212).
+[Go 1.17.13 reader](https://github.com/golang/go/blob/go1.17.13/src/cmd/go/internal/version/version.go#L212).
 
 A universal (FAT) Mach-O needs `architecture` (`x86`, `x86_64`, `arm`
 or `arm64`; CLI `--architecture`). REA reads its own FAT table, without `lipo`,

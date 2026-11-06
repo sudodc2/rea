@@ -384,7 +384,7 @@ const javaProperty = (output: string, name: string): string | null =>
   ).exec(output)?.[1] ?? null;
 
 // Runtime.Version's numeric/pre-release/build grammar; Java 8 used 1.8.0_... .
-// https://docs.oracle.com/en/java/javase/24/handbook/api/java.base/java/lang/Runtime.Version.html
+// https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/Runtime.Version.html
 const javaMajor = (version: string): number | undefined => {
   const legacy =
     /^1\.([1-8])(?:\.[0-9]+)*(?:_[0-9]+)?(?:-[-a-zA-Z0-9.]+)?$/u.exec(version);

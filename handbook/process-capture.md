@@ -637,7 +637,7 @@ Node does not expose enough handle validity to authorize another native close;
 REA retains that unresolved owner and blocks further captures in the session.
 
 On macOS, changing a Node process's `process.title` can make its run token
-unreadable. Node documents that [setting the title overwrites argv memory](https://nodejs.org/download/release/v24.18.0/handbook/api/process.html#processtitle).
+unreadable. Node documents that [setting the title overwrites argv memory](https://nodejs.org/download/release/v24.18.0/docs/api/process.html#processtitle).
 With the pinned toolchain, a live child retained a readable start identity
 while its token became unavailable after this change; npm changes its title
 as well. A newly started unreadable process can prevent verified cleanup even

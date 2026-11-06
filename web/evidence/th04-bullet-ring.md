@@ -124,12 +124,12 @@ fresh REA inspection.
 
 ## Public source anchors
 
-- [Ring macro](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/core/main/bullet/add_impl.hpp#L4).
-- [Complete angle helper](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/core/main/bullet/add.cpp#L292).
-- [Aim and velocity](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/core/main/bullet/add.cpp#L422).
-- [Angle representation](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/core/main/bullet/types.hpp#L6).
-- [Elly's firing template](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/core/main/boss/elly_phase_ring16.cpp#L26).
-- [Compiler checks](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/handbook/reconstruction/product/TH04_SEMANTIC_BULLET_GENERATION_V1236.md#validation).
+- [Ring macro](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/src/main/bullet/add_impl.hpp#L4).
+- [Complete angle helper](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/src/main/bullet/add.cpp#L292).
+- [Aim and velocity](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/src/main/bullet/add.cpp#L422).
+- [Angle representation](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/src/main/bullet/types.hpp#L6).
+- [Elly's firing template](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/src/main/boss/elly_phase_ring16.cpp#L26).
+- [Compiler checks](https://github.com/N0zoM1z0/th04/blob/0d72e9801a5c14c10384efcbb6734ceccb74ee63/docs/reconstruction/product/TH04_SEMANTIC_BULLET_GENERATION_V1236.md#validation).
 
 Original executables, game assets, complete raw Evidence, machine paths,
 account/configuration details and private compiler products remain outside

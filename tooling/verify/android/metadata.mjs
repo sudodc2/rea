@@ -139,7 +139,7 @@ export const verifyAndroidMetadata = async ({
       "PASS real folded and mixed static initializers, absent bodies and bounded smali",
     );
     console.log(
-      "PASS real platform/abstract absence before and after neighbouring code generation",
+      "PASS real native/abstract absence before and after neighbouring code generation",
     );
     console.log(
       "PASS real raw DEX direct-invoke offsets and cross-DEX source identity",

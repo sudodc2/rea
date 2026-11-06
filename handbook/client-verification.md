@@ -40,7 +40,7 @@ Custom renderer hosts can raise `inputMaxChars` through `renderToolSignature` or
 `renderToolSample`; `renderDeclarations` does not expose that override. The
 probe exercised the published renderer code, not a native Pi host or model, and
 does not establish broader Pi compatibility. See the pinned upstream
-[`declarations.ts`](https://github.com/earendil-works/pi/blob/b45e0ebcc5ae2fc42a6f2f23104d10e656e6bedb/packages/codemode/core/declarations.ts)
+[`declarations.ts`](https://github.com/earendil-works/pi/blob/b45e0ebcc5ae2fc42a6f2f23104d10e656e6bedb/packages/codemode/src/declarations.ts)
 and [renderer usage notes](https://github.com/earendil-works/pi/blob/b45e0ebcc5ae2fc42a6f2f23104d10e656e6bedb/packages/codemode/README.md#declarations-for-the-model).
 
 ## End-to-end, integration and golden evidence

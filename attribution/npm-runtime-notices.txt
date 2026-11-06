@@ -138,7 +138,7 @@ The locked archive omits standalone license files. The Apache license is preserv
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -330,7 +330,7 @@ The locked archive omits standalone license files. The Apache license is preserv
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-       http://www.apache.org/attribution/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -1162,7 +1162,7 @@ No rights beyond those granted by the applicable original license are conveyed f
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1366,7 +1366,7 @@ SOFTWARE.
 Creative Commons Attribution 4.0 International (CC-BY-4.0)
 
 Documentation in this project (excluding specifications) is licensed under
-CC-BY-4.0. See https://creativecommons.org/attribution/by/4.0/legalcode for
+CC-BY-4.0. See https://creativecommons.org/licenses/by/4.0/legalcode for
 the full license text.
 
 
@@ -1388,7 +1388,7 @@ No rights beyond those granted by the applicable original license are conveyed f
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1592,7 +1592,7 @@ SOFTWARE.
 Creative Commons Attribution 4.0 International (CC-BY-4.0)
 
 Documentation in this project (excluding specifications) is licensed under
-CC-BY-4.0. See https://creativecommons.org/attribution/by/4.0/legalcode for
+CC-BY-4.0. See https://creativecommons.org/licenses/by/4.0/legalcode for
 the full license text.
 
 
@@ -1614,7 +1614,7 @@ No rights beyond those granted by the applicable original license are conveyed f
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -1818,7 +1818,7 @@ SOFTWARE.
 Creative Commons Attribution 4.0 International (CC-BY-4.0)
 
 Documentation in this project (excluding specifications) is licensed under
-CC-BY-4.0. See https://creativecommons.org/attribution/by/4.0/legalcode for
+CC-BY-4.0. See https://creativecommons.org/licenses/by/4.0/legalcode for
 the full license text.
 
 
@@ -1920,7 +1920,7 @@ export type LicenseObject = {
 export type LicenseObject = {
   /** **REQUIRED**. The license name used for the API. */
   name: string
-  /** An [SPDX](https://spdx.org/attribution/) license expression for the API. The `identifier` field is mutually exclusive of the `url` field. */
+  /** An [SPDX](https://spdx.org/licenses/) license expression for the API. The `identifier` field is mutually exclusive of the `url` field. */
   identifier?: string
   /** A URI for the license used for the API. This MUST be in the form of a URI. The `url` field is mutually exclusive of the `identifier` field. */
   url?: string
@@ -1939,7 +1939,7 @@ export type LicenseObject = {
 export type LicenseObject = {
   /** **REQUIRED**. The license name used for the API. */
   name: string
-  /** An [SPDX](https://spdx.org/attribution/) license expression for the API. The `identifier` field is mutually exclusive of the `url` field. */
+  /** An [SPDX](https://spdx.org/licenses/) license expression for the API. The `identifier` field is mutually exclusive of the `url` field. */
   identifier?: string
   /** A URI for the license used for the API. This MUST be in the form of a URI. The `url` field is mutually exclusive of the `identifier` field. */
   url?: string
@@ -2515,7 +2515,7 @@ Scope: npm runtime dependency, including optional platform packages.
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -2707,7 +2707,7 @@ Scope: npm runtime dependency, including optional platform packages.
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-       http://www.apache.org/attribution/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -2730,7 +2730,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-  http://www.apache.org/attribution/LICENSE-2.0
+  http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -2743,7 +2743,7 @@ limitations under the License.
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -2935,7 +2935,7 @@ limitations under the License.
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-       http://www.apache.org/attribution/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -2961,7 +2961,7 @@ Standard license text from attribution/Apache-2.0.txt; this is not a recovered u
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -3153,7 +3153,7 @@ Standard license text from attribution/Apache-2.0.txt; this is not a recovered u
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-       http://www.apache.org/attribution/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -3172,7 +3172,7 @@ Scope: npm runtime dependency, including optional platform packages.
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -3364,7 +3364,7 @@ Scope: npm runtime dependency, including optional platform packages.
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-       http://www.apache.org/attribution/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -4130,7 +4130,7 @@ Scope: npm runtime dependency, including optional platform packages.
 
 --- package/LICENSE.md ---
 
-All packages under `core/` are licensed according to the terms in
+All packages under `src/` are licensed according to the terms in
 their respective `LICENSE` or `LICENSE.md` files.
 
 The remainder of this project is licensed under the Blue Oak
@@ -4502,7 +4502,7 @@ No rights beyond those granted by the applicable original license are conveyed f
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -4706,7 +4706,7 @@ SOFTWARE.
 Creative Commons Attribution 4.0 International (CC-BY-4.0)
 
 Documentation in this project (excluding specifications) is licensed under
-CC-BY-4.0. See https://creativecommons.org/attribution/by/4.0/legalcode for
+CC-BY-4.0. See https://creativecommons.org/licenses/by/4.0/legalcode for
 the full license text.
 
 
@@ -5911,7 +5911,7 @@ Scope: npm runtime dependency, including optional platform packages.
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -6104,7 +6104,7 @@ Scope: npm runtime dependency, including optional platform packages.
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-       http://www.apache.org/attribution/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -8241,7 +8241,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
 
 ==============================================================================
 
-This program uses portions of Node.js source code located in core/library_path.js,
+This program uses portions of Node.js source code located in src/library_path.js,
 in accordance with the terms of the MIT license. Node's license follows:
 
     """
@@ -8268,9 +8268,9 @@ in accordance with the terms of the MIT license. Node's license follows:
 The musl libc project is bundled in this repo, and it has the MIT license, see
 system/lib/libc/musl/COPYRIGHT
 
-The vendor/ subdirectory contains code with other licenses. None of it is
+The third_party/ subdirectory contains code with other licenses. None of it is
 used by default, but certain options use it (e.g., the optional closure compiler
-flag will run closure compiler from vendor/).
+flag will run closure compiler from third_party/).
 
 
 ===== plist@5.0.0 =====
@@ -9600,7 +9600,7 @@ Scope: npm runtime dependency, including optional platform packages.
 
                                  Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/attribution/
+                        http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -9792,7 +9792,7 @@ Scope: npm runtime dependency, including optional platform packages.
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-       http://www.apache.org/attribution/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -10431,7 +10431,7 @@ convey the exclusion of warranty; and each file should have at least the
     Library General Public License for more details.
 
     You should have received a copy of the GNU Library General Public
-    License along with this library; if not, see <https://www.gnu.org/attribution/>.
+    License along with this library; if not, see <https://www.gnu.org/licenses/>.
 
 Also add information on how to contact you by electronic and paper mail.
 
@@ -10711,7 +10711,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/attribution/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -10943,7 +10943,7 @@ Apache License
 
 Version 2.0, January 2004
 
-http://www.apache.org/attribution/
+http://www.apache.org/licenses/
 
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 

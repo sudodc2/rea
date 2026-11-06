@@ -11,12 +11,12 @@ import {
 } from "./webContentArtifact.js";
 
 const script = {
-  url: "https://app.example.test/media/app.js",
+  url: "https://app.example.test/assets/app.js",
   cdp_hash: "stable-cdp-hash",
   length: 1_024,
   is_module: true,
   language: "JavaScript",
-  source_map_url: "https://app.example.test/media/app.js.map",
+  source_map_url: "https://app.example.test/assets/app.js.map",
 };
 
 describe("web content artifacts", () => {
@@ -59,7 +59,7 @@ describe("stable web inventory", () => {
   it("sorts resources deterministically and reconciles observed raw URLs", () => {
     const inputs = [
       {
-        url: "https://app.example.test/media/vendor.js",
+        url: "https://app.example.test/assets/vendor.js",
         origin: "https://app.example.test",
         type: "Script",
         mime_type: "text/javascript",
@@ -131,12 +131,12 @@ describe("stable web inventory", () => {
       rawUrl: `${script.url}?token=secret`,
     };
     const vendor = {
-      url: "https://app.example.test/media/vendor.js",
+      url: "https://app.example.test/assets/vendor.js",
       origin: "https://app.example.test",
       type: "Script",
       mime_type: "text/javascript",
       content_size: 2_048,
-      rawUrl: "https://app.example.test/media/vendor.js?v=1",
+      rawUrl: "https://app.example.test/assets/vendor.js?v=1",
     };
 
     for (const rawResources of [

@@ -55,8 +55,8 @@ Synthetic tests cover the carriers and malformed declarations. Run
 verification, and add `--docker` to compile a Linux fixture with `oven/bun:1.4.0`.
 Bun and Docker are fixture producers only and are not installed by REA.
 
-Layout references: [Bun 1.3.3 serializer](https://github.com/oven-sh/bun/blob/bun-v1.3.3/core/StandaloneModuleGraph.zig)
-and [Bun 1.3.9 serializer](https://github.com/oven-sh/bun/blob/bun-v1.3.9/core/StandaloneModuleGraph.zig).
+Layout references: [Bun 1.3.3 serializer](https://github.com/oven-sh/bun/blob/bun-v1.3.3/src/StandaloneModuleGraph.zig)
+and [Bun 1.3.9 serializer](https://github.com/oven-sh/bun/blob/bun-v1.3.9/src/StandaloneModuleGraph.zig).
 
 The current 52-byte record order can also be checked in the
-[Bun 1.4.4 Rust serializer](https://github.com/oven-sh/bun/blob/bun-v1.4.4/core/standalone_graph/StandaloneModuleGraph.rs).
+[Bun 1.4.4 Rust serializer](https://github.com/oven-sh/bun/blob/bun-v1.4.4/src/standalone_graph/StandaloneModuleGraph.rs).

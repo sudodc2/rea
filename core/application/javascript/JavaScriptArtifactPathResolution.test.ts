@@ -3249,7 +3249,7 @@ describe("TypeScript declaration fallback ownership", () => {
   it("does not substitute source counterparts for directory or index resolution", () => {
     const files = fileMap([
       file("core/main.ts", container),
-      file("core/lib/index.ts", container),
+      file("src/lib/index.ts", container),
     ]);
     expect(
       resolve({
