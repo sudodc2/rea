@@ -361,13 +361,13 @@ explicit PE or ELF image on any supported host, without an active target,
 native engine, `objdump` or Windows SDK:
 
 ```sh
-rea inspect-native-exports ./runtimes/linux-x64/platform/libexample.so --json
+rea inspect-native-exports ./runtimes/linux-x64/native/libexample.so --json
 ```
 
 ```json
 {
   "name": "inspect_native_exports",
-  "arguments": { "path": "/artifacts/platform/example.dll" }
+  "arguments": { "path": "/artifacts/native/example.dll" }
 }
 ```
 

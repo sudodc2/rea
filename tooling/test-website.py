@@ -418,7 +418,7 @@ class WebsiteMaintenanceChecks(unittest.TestCase):
             original = page.read_text()
             cases = (
                 ('<a href="https://rea.tools/deleted/">Broken</a>', "missing local target"),
-                ('<code>https://rea.tools/guides/platform/#deleted</code>', "missing HTML fragment"),
+                ('<code>https://rea.tools/guides/native/#deleted</code>', "missing HTML fragment"),
                 ('<code>https://morluto.github.io/rea/examples/notes-web/</code>', "obsolete website URL"),
                 ('<button data-copy="deleted">Copy</button>', "missing copy target"),
                 ('<a href="https://[">Malformed</a>', "invalid URL"),

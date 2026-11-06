@@ -82,7 +82,7 @@ class AgentPublishingChecks(unittest.TestCase):
               <details><summary>Evidence</summary><p>Hidden evidence remains available.</p></details>
               <img src="../../../assets/diagram.svg" alt="Investigation diagram">
               <button>Copy code</button><script>doNotPublish()</script></main></body></html>''')
-            fixture = site / "samples/notes-web/index.html"
+            fixture = site / "examples/notes-web/index.html"
             fixture.parent.mkdir(parents=True)
             fixture.write_text("<main>Target application</main>")
             fallback = site / "zh-CN/fallback/index.html"

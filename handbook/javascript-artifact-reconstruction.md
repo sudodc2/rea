@@ -249,7 +249,7 @@ Mismatched nested ASARs stay opaque rather than being expanded.
 
 An unpacked entry whose companion bytes were not supplied remains
 `unavailable`. REA continues analyzing embedded JavaScript and records the
-missing platform/resource bytes as unknown. The occurrence keeps
+missing native/resource bytes as unknown. The occurrence keeps
 `hash_status: unavailable`; no content-addressed child artifact is created for
 those missing bytes. New ASAR file occurrences record `unpacked: true` for
 companion files and `unpacked: false` for packed entries, including when the

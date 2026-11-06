@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { parseBinaryTarget } from "../../../dist/application/BinaryTargetResolver.js";
 import { ArtifactResourceScope } from "../../../dist/artifacts/ArtifactResourceScope.js";
-import { inspectAppleDispatchMetadata } from "../../../dist/platform/AppleDispatchMetadata.js";
+import { inspectAppleDispatchMetadata } from "../../../dist/native/AppleDispatchMetadata.js";
 import {
   artifactCliEvidence,
   artifactMcpCall,

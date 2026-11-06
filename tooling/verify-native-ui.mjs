@@ -6,8 +6,8 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { parseBinaryTarget } from "../dist/application/BinaryTargetResolver.js";
-import { observeNativeUi } from "../dist/platform/NativeUiObservation.js";
-import { NATIVE_UI_HELPER_MAX_BUFFER } from "../dist/platform/NativeUiOutputBudget.js";
+import { observeNativeUi } from "../dist/native/NativeUiObservation.js";
+import { NATIVE_UI_HELPER_MAX_BUFFER } from "../dist/native/NativeUiOutputBudget.js";
 import { artifactMcpResult, withArtifactMcp } from "./lib/artifact-e2e.mjs";
 import { observeProcessStartIdentity } from "../dist/process/ProcessOwnershipObservation.js";
 

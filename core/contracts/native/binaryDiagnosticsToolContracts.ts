@@ -255,7 +255,7 @@ export const BINARY_DIAGNOSTICS_TOOL_CONTRACTS = [
     examples: [
       {
         title: "List a native library's exports",
-        input: { path: "/artifacts/platform/libexample.so" },
+        input: { path: "/artifacts/native/libexample.so" },
       },
     ],
   },

@@ -241,7 +241,7 @@ const buildNativeRuntimeNodes = (): FixtureNode[] => [
     { abi: "napi" },
     artifactEvidence(
       APPLICATION_GRAPH_DIGESTS.nativeAddon,
-      "platform/synthetic.node",
+      "native/synthetic.node",
       "native-analysis-provider",
     ),
   ),
@@ -258,7 +258,7 @@ const buildNativeRuntimeNodes = (): FixtureNode[] => [
     { calling_convention: "napi" },
     artifactEvidence(
       APPLICATION_GRAPH_DIGESTS.nativeAddon,
-      "platform/synthetic.node",
+      "native/synthetic.node",
       "native-analysis-provider",
     ),
   ),
@@ -379,7 +379,7 @@ const buildEdges = (nodes: FixtureNode[]) => {
       "contains",
       artifactEvidence(
         APPLICATION_GRAPH_DIGESTS.nativeAddon,
-        "platform/synthetic.node",
+        "native/synthetic.node",
         "native-analysis-provider",
       ),
     ),

@@ -24,7 +24,7 @@ const emptyManagedMembers = (
   signature_resolution: null,
   assembly: null,
   artifact: {
-    path: `/samples/${sha256.slice(0, 8)}.dll`,
+    path: `/examples/${sha256.slice(0, 8)}.dll`,
     sha256,
     byte_length: 4096,
     format: "pe",
@@ -149,7 +149,7 @@ export const MANAGED_APPLICATION_GRAPH_EXAMPLE = {
 const boundaryEvidence = () => {
   const result: ManagedNativeBoundaryInspection = {
     artifact: {
-      path: "/samples/ManagedInterop.exe",
+      path: "/examples/ManagedInterop.exe",
       sha256: "6".repeat(64),
       byte_length: 8192,
       format: "pe",
@@ -264,7 +264,7 @@ const nativeExportEvidence = () => {
   };
   return createEvidence(
     {
-      path: "/samples/nativehelper.dll",
+      path: "/examples/nativehelper.dll",
       sha256: "7".repeat(64),
       format: "mach-o",
       architecture: "x86_64",
@@ -306,7 +306,7 @@ export const MANAGED_RECONSTRUCTION_IMPORT_EXAMPLE = {
         kind: "decompiled-csharp",
         language: "csharp",
         text: "internal static void Main() { }",
-        source_path: "/samples/Example.Program.cs",
+        source_path: "/examples/Example.Program.cs",
         start_line: 1,
         end_line: 1,
       },

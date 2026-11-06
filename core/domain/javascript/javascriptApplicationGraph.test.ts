@@ -84,7 +84,7 @@ const createLargeNativeExportGraph = (): JavaScriptApplicationGraph => {
     ]),
   );
   const nodes = Array.from({ length: 1_001 }, (_, index) => {
-    const path = `platform/exports/${index}.symbol`;
+    const path = `native/exports/${index}.symbol`;
     return createJavaScriptApplicationNode({
       kind: "native-export",
       identity: {
@@ -134,7 +134,7 @@ it("accepts deeply nested canonical application properties", () => {
       strategy: "canonical-path",
       stability: "artifact-version",
       artifact_sha256: APPLICATION_GRAPH_DIGESTS.nativeAddon,
-      path: "platform/deep-export",
+      path: "native/deep-export",
     },
     observations: [
       {
@@ -142,7 +142,7 @@ it("accepts deeply nested canonical application properties", () => {
         properties: { nested },
         evidence: artifactEvidence(
           APPLICATION_GRAPH_DIGESTS.nativeAddon,
-          "platform/deep-export",
+          "native/deep-export",
           "native-analysis-provider",
         ),
       },

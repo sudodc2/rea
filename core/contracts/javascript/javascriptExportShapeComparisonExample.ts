@@ -22,7 +22,7 @@ import { javascriptApplicationAnalysisResultSchema } from "../../domain/javascri
 // The inline example retains only source-derived export facts, with explicit gaps.
 const captures = {
   count: {
-    input_path: "/samples/javascript-export-presence/left",
+    input_path: "/examples/javascript-export-presence/left",
     root_artifact_sha256:
       "5005ebc2f35719a2fc014f19a81c669f3a1ab471b7245ef6985a111b6845a747",
     inventory_manifest_id:
@@ -32,7 +32,7 @@ const captures = {
     integrity_contradictions: [],
   },
   total: {
-    input_path: "/samples/javascript-export-presence/right",
+    input_path: "/examples/javascript-export-presence/right",
     root_artifact_sha256:
       "269ae72a601ad5ac02f1c2dda6ff9accffa2d2e4f4a9e406facee0d5a78a5377",
     inventory_manifest_id:
