@@ -107,7 +107,7 @@ or in a reader's browser.
 
 Figure labels and accessibility descriptions are included in the catalogs under
 `figure:<filename>`. Keep labels short enough for the diagram. Interaction text
-is extracted directly from `t("message")` calls in `public/media/*.js`, with
+is extracted directly from `t("message")` calls in `public/assets/*.js`, with
 source locations in the catalog. Keep named values instead of concatenating
 translated fragments.
 

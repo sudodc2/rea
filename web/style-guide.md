@@ -11,7 +11,7 @@ and deliberate spacing.
 
 Use this guide for new pages and revisions. Create the common page structure
 with `python3 tooling/website.py new-page`, then reuse the relevant components
-from an existing page, `public/media/styles.css` and `public/media/main.js`.
+from an existing page, `public/assets/styles.css` and `public/assets/main.js`.
 Keep shared regions in sync with `templates/`. Contribution, preview and
 publication commands are in [README.md](README.md).
 

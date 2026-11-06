@@ -95,7 +95,7 @@ This digest also matches `index.js` in repository commit
 
 The source begins with the Chromium Authors' 2014 copyright notice. Selected
 excerpts are credited on the page. The repository's BSD license and the source
-copyright are reproduced in `public/media/attribution/dinosaur.txt`.
+copyright are reproduced in `public/assets/attribution/dinosaur.txt`.
 
 ### Controlled original-game check
 
@@ -119,7 +119,7 @@ than introducing a clamp.
 
 ### New game and reader experiment
 
-`public/media/dino-speed.js` contains the reconstructed rule and an update-count
+`public/assets/dino-speed.js` contains the reconstructed rule and an update-count
 replay. Its rounded results match the original-game check above. The website's
 mini-game imports this rule. It advances its own simulation at 60 updates per
 second, avoiding a different frame rate changing its demonstration pace.

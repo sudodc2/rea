@@ -10,10 +10,10 @@ the current SVG source for published labels.
 
 The published diagrams are SVG source assets:
 
-- `public/media/figures/rea-investigation-flow.svg` — 1774 × 887 viewBox.
-- `public/media/figures/dx-ball-sound-pan-investigation.svg` — 1774 × 887 viewBox.
-- `public/media/figures/th04-bullet-ring.svg` — 1000 × 520 viewBox.
-- `public/media/figures/analyst-thinking.svg` — 160 × 120 viewBox.
+- `public/assets/figures/rea-investigation-flow.svg` — 1774 × 887 viewBox.
+- `public/assets/figures/dx-ball-sound-pan-investigation.svg` — 1774 × 887 viewBox.
+- `public/assets/figures/th04-bullet-ring.svg` — 1000 × 520 viewBox.
+- `public/assets/figures/analyst-thinking.svg` — 160 × 120 viewBox.
 
 Two original layout references were generated with the built-in image generation
 tool and reviewed visually. Their prompts are retained below. The final SVGs
@@ -45,14 +45,14 @@ rendering at desktop and mobile widths.
 
 ## Sharing preview
 
-`public/media/social-card.svg` is the 1200 × 630 preview source. It uses the
+`public/assets/social-card.svg` is the 1200 × 630 preview source. It uses the
 homepage's direct headline, the site's white/charcoal/slate/blue palette, and a
 short agent → REA → evidence flow. CairoSVG renders the ignored PNG during asset
 preparation. Check the rendered image for readable text and spacing before
 publishing. The build uses DejaVu Sans for consistent typography; only the SVG
 source is committed. Metadata and build instructions are in the website README.
 
-The card and `public/media/favicon.svg` each carry a dark
+The card and `public/assets/favicon.svg` each carry a dark
 `prefers-color-scheme` block for people who open the SVG directly or use a dark
 browser tab strip. CairoSVG ignores it, so the PNG that link previews fetch
 stays light.
@@ -98,7 +98,7 @@ reconstruction explicitly. Preserve this context when moving a demo.
 The dinosaur sequence uses an HTML flow: inspect the loaded script, rebuild the
 speed rule, then change and play. Its canvas mini-game and static SVG fallback
 are authored code, without generated images or copied game sprites. The game
-imports the recovered rule from `public/media/dino-speed.js`; other mechanics
+imports the recovered rule from `public/assets/dino-speed.js`; other mechanics
 are new teaching code. Check that the fallback is visible with JavaScript
 disabled and hidden when the playable canvas loads. Keep the speed settings,
 source excerpt, reconstruction and original-result table consistent.
@@ -214,7 +214,7 @@ Text constraints: render every supplied English label and number verbatim with c
 
 ## CTF masked-squares figure
 
-`public/media/figures/ctf-mask-equation.svg` explains the seventh check in
+`public/assets/figures/ctf-mask-equation.svg` explains the seventh check in
 DownUnderCTF 2023's masked-squares flag checker. The original encoded mask is
 `-21, +1, -14, 0`: expand it to 36 cells, highlight zero-based cell 21 and
 compare its code with the recorded target 55 (`7`). Labels and selected cells
