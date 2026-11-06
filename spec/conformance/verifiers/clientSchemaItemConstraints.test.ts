@@ -8,12 +8,12 @@ it("checks client array requirements when a reference selects literal-held schem
   const literal = { examples: [{ type: "array" }] };
   expect(arrayItemSchemaError(literal, "tool")).toBeUndefined();
   expect(
-    arrayItemSchemaError({ ...literal, $ref: "#/samples/0" }, "tool"),
+    arrayItemSchemaError({ ...literal, $ref: "#/examples/0" }, "tool"),
   ).toBe("tool.examples[0]: tool parameters array type must have items");
   expect(
     arrayItemSchemaError(
       {
-        $ref: "#/samples/0",
+        $ref: "#/examples/0",
         examples: [{ type: "array", items: { type: "string" } }],
       },
       "tool",
@@ -40,14 +40,14 @@ it.each([
     expect(strictGatewayItemSchemaErrors(literal, "tool")).toEqual([]);
     expect(
       strictGatewayItemSchemaErrors(
-        { ...literal, $ref: "#/samples/0" },
+        { ...literal, $ref: "#/examples/0" },
         "tool",
       ),
     ).toEqual([error]);
     expect(
       strictGatewayItemSchemaErrors(
         {
-          $ref: "#/samples/0",
+          $ref: "#/examples/0",
           examples: [{ type: "array", items: { type: "string" } }],
         },
         "tool",

@@ -106,7 +106,7 @@ export async function readReleaseHistory(run, base, target) {
 // Keep those source identities in the inventory while excluding automation credit.
 const AGENT_ACCOUNTS = new Set(["claude", "cursoragent", "codex", "copilot"]);
 // REA's maintainer requested external-contributor thanks without self-credit.
-const MAINTAINER_ACCOUNTS = new Set(["morluto"]);
+const MAINTAINER_ACCOUNTS = new Set(["sudodc2"]);
 const human = (value) =>
   value?.__typename === "User" &&
   !value.login.endsWith("[bot]") &&

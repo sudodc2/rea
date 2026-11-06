@@ -4,10 +4,10 @@ import { JavaScriptJsonDocuments } from "./JavaScriptJsonDocuments.js";
 import type { JavaScriptArtifactFile } from "../../domain/javascript/javascriptArtifactFiles.js";
 const paths = [
   "renderer/index.html",
-  "media/app.js",
+  "assets/app.js",
   "renderer/app.js",
   "renderer/a/app.js",
-  "renderer/media/app.js",
+  "renderer/assets/app.js",
   "app.js",
 ];
 const files = new Map<string, JavaScriptArtifactFile>(
@@ -60,25 +60,25 @@ describe("HTML base href URL components", () => {
   );
 
   it.each([
-    "/media/?cache=/wrong/",
-    "/media/#/wrong/",
-    "/media/index.html?cache=/wrong/",
+    "/assets/?cache=/wrong/",
+    "/assets/#/wrong/",
+    "/assets/index.html?cache=/wrong/",
   ])("ignores query and fragment path-looking characters in %s", (base) => {
     expect(
       new URL(
         "app.js",
         new URL(base, "https://artifact.test/renderer/index.html"),
       ).pathname,
-    ).toBe("/media/app.js");
+    ).toBe("/assets/app.js");
     expect(resolve("app.js", base)).toMatchObject({
       resolution_status: "resolved",
-      resolved_path: "media/app.js",
+      resolved_path: "assets/app.js",
     });
   });
   it.each(["https://external.test/", "//external.test/"])(
     "keeps root-relative references external when their base is %s",
     (base) => {
-      expect(resolve("/media/app.js", base)).toMatchObject({
+      expect(resolve("/assets/app.js", base)).toMatchObject({
         resolution_status: "external",
         resolved_path: null,
       });
@@ -109,9 +109,9 @@ describe("HTML base href dot segments", () => {
     },
   );
   it.each([
-    ["app.js/", "/media/", "media/app.js"],
-    ["app.js/.", "/media/", "media/app.js"],
-    ["?cache=1", "/media/app.js/", "media/app.js"],
+    ["app.js/", "/assets/", "assets/app.js"],
+    ["app.js/.", "/assets/", "assets/app.js"],
+    ["?cache=1", "/assets/app.js/", "assets/app.js"],
   ])(
     "keeps directory-form HTML reference %s with base %s distinct from %s",
     (declared, base, directory) => {
@@ -130,11 +130,11 @@ describe("HTML base href empty segments", () => {
   it("lets the script reference remove an empty segment from the base", () => {
     // URL resolution keeps the base's empty segment until `..` removes it.
     expect(
-      new URL("../app.js", new URL("./media//", documentUrl)).pathname,
-    ).toBe("/renderer/media/app.js");
-    expect(resolve("../app.js", "./media//")).toMatchObject({
+      new URL("../app.js", new URL("./assets//", documentUrl)).pathname,
+    ).toBe("/renderer/assets/app.js");
+    expect(resolve("../app.js", "./assets//")).toMatchObject({
       resolution_status: "resolved",
-      resolved_path: "renderer/media/app.js",
+      resolved_path: "renderer/assets/app.js",
     });
   });
   it("keeps an above-root base escape when the reference also climbs", () => {
@@ -178,13 +178,13 @@ describe("HTML reference URL text", () => {
       new URL(declared.trim(), new URL(base.trim(), documentUrl)).pathname,
     ).replace(/^\/+/, "");
   it.each([
-    ["%61pp.js", "/media/", "media/app.js"],
-    [" app.js ", "/media/", "media/app.js"],
-    ["\napp.js\t", "/media/", "media/app.js"],
-    ["a\npp.js", "/media/", "media/app.js"],
+    ["%61pp.js", "/assets/", "assets/app.js"],
+    [" app.js ", "/assets/", "assets/app.js"],
+    ["\napp.js\t", "/assets/", "assets/app.js"],
+    ["a\npp.js", "/assets/", "assets/app.js"],
     ["app.js", "%61/", "renderer/a/app.js"],
-    ["app.js", " /%61ssets/ ", "media/app.js"],
-    ["/%61ssets/app.js", "", "media/app.js"],
+    ["app.js", " /%61ssets/ ", "assets/app.js"],
+    ["/%61ssets/app.js", "", "assets/app.js"],
   ])(
     "resolves %j against base %j like the URL parser",
     (declared, base, expected) => {

@@ -288,7 +288,7 @@ it("rejects successful shard reports with missing or duplicate portable files", 
   await mkdir(join(root, "spec"));
   for (const name of ["first", "second"])
     await writeFile(join(root, `spec/${name}.test.ts`), "// fixture\n");
-  await workflowGit(root, ["add", "tests"]);
+  await workflowGit(root, ["add", "spec"]);
   const run = async (names: readonly string[]) => {
     await writeFile(
       join(root, "test-timings.json"),
@@ -347,7 +347,7 @@ it("reports skipped modules without treating an entirely skipped suite as succes
   await mkdir(join(root, "spec"));
   for (const name of ["required", "platform"])
     await writeFile(join(root, `spec/${name}.test.ts`), "// fixture\n");
-  await workflowGit(root, ["add", "tests"]);
+  await workflowGit(root, ["add", "spec"]);
   const run = async (requiredState: string) => {
     await writeFile(
       join(root, "test-timings.json"),
@@ -672,7 +672,7 @@ it("records failed omissions from full reports without treating partial or unhan
     await mkdir(join(root, path, ".."), { recursive: true });
     await writeFile(join(root, path), "// fixture\n");
   }
-  await workflowGit(root, ["add", "src", "tests"]);
+  await workflowGit(root, ["add", "core", "spec"]);
   const timing = {
     version: 1,
     success: false,

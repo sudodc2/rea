@@ -422,7 +422,7 @@ describe("Link header value delimiters", () => {
         {
           headers: {
             Link: [
-              '</media/red,blue.js>; rel="preload"; type="text/javascript; charset=utf-8"; title="a,b"',
+              '</assets/red,blue.js>; rel="preload"; type="text/javascript; charset=utf-8"; title="a,b"',
               '</agent?selected=keep>; rel="mcp service-desc"',
             ].join(separator),
           },
@@ -431,7 +431,7 @@ describe("Link header value delimiters", () => {
       );
       expect(captured.response.links).toMatchObject([
         {
-          href: `${origin}/media/red,blue.js`,
+          href: `${origin}/assets/red,blue.js`,
           rel: ["preload"],
           type: "text/javascript; charset=utf-8",
         },
@@ -508,7 +508,7 @@ describe("Link header value delimiters", () => {
 
   it("preserves commas in URI references and separates later links", () => {
     const links = captureLinks(
-      '</media/red,blue.js>; rel="preload"; as=script, </ordinary.js>; rel="modulepreload"',
+      '</assets/red,blue.js>; rel="preload"; as=script, </ordinary.js>; rel="modulepreload"',
     );
     expect(links.map(({ href }) => href)).toEqual([
       "https://owned.test/assets/red,blue.js",

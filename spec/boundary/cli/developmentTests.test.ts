@@ -444,7 +444,7 @@ describe("development test runner public CLI", () => {
       join(root, "core/value.test.ts"),
       'import { expect, it } from "vitest"; import { value } from "./value.js"; it("checks current source", () => expect(value).toBe(2));\n',
     );
-    await git(root, "add", "src");
+    await git(root, "add", "core");
     await commit(root, "regression fix");
     expect((await git(root, "status", "--porcelain")).stdout).toBe("");
 

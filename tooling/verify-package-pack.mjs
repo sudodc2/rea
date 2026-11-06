@@ -130,7 +130,7 @@ export async function verifyPackagePack({ root, workspace, commands }) {
     (await commands.exec("tar", ["-xOf", tarball, "package/package.json"]))
       .stdout,
   );
-  if (packedManifest.mcpName !== "io.github.morluto/rea")
+  if (packedManifest.mcpName !== "io.github.sudodc2/rea")
     throw new Error("package did not retain its MCP Registry ownership marker");
   const packedLock = JSON.parse(
     (

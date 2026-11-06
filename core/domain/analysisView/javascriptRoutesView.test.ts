@@ -99,7 +99,7 @@ it("joins route occurrences and sources without reopening source paths", () => {
   const source = parent(),
     routes = query(source, {
       collection: "routes",
-      where: { paths: ["/verification/settings"] },
+      where: { paths: ["/reports/settings"] },
     });
   const occurrences = query(source, {
     collection: "occurrences",

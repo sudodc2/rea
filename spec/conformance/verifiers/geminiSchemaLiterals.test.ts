@@ -7,7 +7,7 @@ import { unsupportedInputLiteralSchemaError } from "../../fixtures/mcpClientSche
 it("checks an explicitly referenced example as a schema while leaving unreferenced examples opaque", () => {
   const literal = { examples: [{ const: false }] };
   expect(geminiUnsupportedLiteral(literal)).toBeUndefined();
-  const schema = { ...literal, $ref: "#/samples/0" };
+  const schema = { ...literal, $ref: "#/examples/0" };
   const ajv = new Ajv2020({ strict: false, validateFormats: false });
   expect(ajv.validateSchema(schema)).toBe(true);
   const validate = ajv.compile(schema);
@@ -41,7 +41,7 @@ it("resolves nested local references against their own resource while retaining 
     $defs: {
       child: {
         $id: "child.json",
-        $ref: "#/samples/0",
+        $ref: "#/examples/0",
         examples: [{ $ref: "#/default" }],
         default: { enum: ["named", ""] },
       },
@@ -59,10 +59,10 @@ it("resolves nested local references against their own resource while retaining 
 
 it("terminates reference cycles and reports the first newly reached constraint at its source path", () => {
   const schema = {
-    $ref: "#/samples/0",
+    $ref: "#/examples/0",
     examples: [
-      { $ref: "#/samples/1" },
-      { $ref: "#/samples/0", properties: { chosen: { const: "" } } },
+      { $ref: "#/examples/1" },
+      { $ref: "#/examples/0", properties: { chosen: { const: "" } } },
     ],
   };
   expect(geminiUnsupportedLiteral(schema)).toEqual({
@@ -80,7 +80,7 @@ it("terminates reference cycles and reports the first newly reached constraint a
 it("uses decoded reference tokens and preserves the existing spelling of property names in diagnostic paths", () => {
   const schema = {
     examples: [{ properties: { "a/b~name": { const: false } } }],
-    $ref: "#/samples/0/properties/a~1b~0name",
+    $ref: "#/examples/0/properties/a~1b~0name",
   };
   expect(geminiUnsupportedLiteral(schema)?.path).toBe(
     "$.examples[0].properties.a/b~name.const",
@@ -91,7 +91,7 @@ it("leaves external, dynamic, anchor and ambiguous resource references unknown",
   for (const reference of [
     { $ref: "https://schemas.example/external.json" },
     { $ref: "#anchor" },
-    { $dynamicRef: "#/samples/0" },
+    { $dynamicRef: "#/examples/0" },
   ])
     expect(
       geminiUnsupportedLiteral({ ...reference, examples: [{ const: false }] }),
@@ -102,7 +102,7 @@ it("leaves external, dynamic, anchor and ambiguous resource references unknown",
       $defs: {
         first: {
           $id: "child.json",
-          $ref: "#/samples/0",
+          $ref: "#/examples/0",
           examples: [{ const: false }],
         },
         second: { $id: "child.json", examples: [{ const: false }] },

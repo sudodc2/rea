@@ -342,7 +342,7 @@ class WebsiteMaintenanceChecks(unittest.TestCase):
                 snapshot = root / "web/public/contributors/people.json"
                 snapshot.parent.mkdir(parents=True)
                 snapshot.write_bytes(json.dumps({
-                    "repository": "morluto/rea", "updated": "2026-10-14", "contributors": people[:1],
+                    "repository": "sudodc2/rea", "updated": "2026-10-14", "contributors": people[:1],
                 }).encode("utf-8"))
                 before = snapshot.read_bytes()
                 with patch.object(WEBSITE.subprocess, "run", return_value=response), failure as save:

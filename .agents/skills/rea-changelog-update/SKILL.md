@@ -20,7 +20,7 @@ Use the proposed version, including its prerelease suffix; do not change the
 
 ```bash
 node tooling/release-notes.mjs inventory \
-  --repository morluto/rea --base rea-agents-PREVIOUS \
+  --repository sudodc2/rea --base rea-agents-PREVIOUS \
   --target FULL_BASE_BRANCH_SHA --version VERSION \
   --manifest /tmp/rea-VERSION.contributions.json
 node tooling/release-notes.mjs record \
@@ -72,7 +72,7 @@ Exclude GitHub bots and known agent accounts. REA's observed Anthropic, Cursor,
 Codex, and Copilot co-author trailers resolve to `@claude`, `@cursoragent`,
 `@codex`, and `@Copilot` with GitHub type `User`; the credit policy excludes
 them while retaining their metadata.
-At the REA maintainer's request, omit `@morluto` self-thanks while preserving
+At the REA maintainer's request, omit `@sudodc2` self-thanks while preserving
 authorship in the inventory. Other human contributors remain eligible.
 Use explicit GitHub links for cross-repository references to avoid ambiguous
 `#NNN` numbers. Unknown handles stay unknown; they are not fabricated credit.

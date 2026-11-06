@@ -120,7 +120,7 @@ describe("Ghidra COM loader", () => {
     ]);
     const prepare = arguments_.indexOf("-preScript");
     expect(arguments_[prepare + 1]).toBe(
-      join("/package/bridge", "ReaGhidraPrepareCom.java"),
+      join("/package/provider-bridges", "ReaGhidraPrepareCom.java"),
     );
     expect(prepare).toBeLessThan(arguments_.indexOf("-postScript"));
     expect(arguments_).toContain("-readOnly");
@@ -151,7 +151,7 @@ describe("Ghidra raw-binary loader", () => {
     ]);
     const prepare = arguments_.indexOf("-preScript");
     expect(arguments_[prepare + 1]).toBe(
-      join("/package/bridge", "ReaGhidraPrepareRaw.java"),
+      join("/package/provider-bridges", "ReaGhidraPrepareRaw.java"),
     );
     expect(arguments_[prepare + 2]).toBe("ARM:LE:32:v7");
     expect(arguments_[prepare + 3]).toBe("0x8000000");
@@ -307,7 +307,7 @@ describe("Ghidra headless launcher", () => {
       ["-import", "/tmp/target"],
       ["-log", "/tmp/ghidra.log"],
       ["-scriptlog", "/tmp/script.log"],
-      ["-scriptPath", "/package/bridge"],
+      ["-scriptPath", "/package/provider-bridges"],
       ["-postScript", "/package/provider-bridges/ReaGhidraNoReturnFix.java"],
     ]);
     // The no-return repair must finish before the bridge starts serving.
@@ -533,7 +533,7 @@ describe("Ghidra configured import language and seeds", () => {
 
   it("adds no seed script without a seed snapshot", () => {
     expect(ghidraHeadlessArguments(base)).not.toContain(
-      posix.join("/package/bridge", "ReaGhidraApplySeeds.java"),
+      posix.join("/package/provider-bridges", "ReaGhidraApplySeeds.java"),
     );
   });
 });
@@ -560,17 +560,17 @@ describe("Ghidra disabled analyzers", () => {
       ],
     });
     const options = arguments_.indexOf(
-      posix.join("/package/bridge", "ReaGhidraAnalysisOptions.java"),
+      posix.join("/package/provider-bridges", "ReaGhidraAnalysisOptions.java"),
     );
     expect(arguments_[options - 1]).toBe("-preScript");
     expect(arguments_[options + 1]).toBe(
       "Objective-C Message Analyzer,Decompiler Switch Analysis",
     );
     const prepare = arguments_.indexOf(
-      posix.join("/package/bridge", "ReaGhidraPrepareCom.java"),
+      posix.join("/package/provider-bridges", "ReaGhidraPrepareCom.java"),
     );
     const seeds = arguments_.indexOf(
-      posix.join("/package/bridge", "ReaGhidraApplySeeds.java"),
+      posix.join("/package/provider-bridges", "ReaGhidraApplySeeds.java"),
     );
     expect(prepare).toBeLessThan(seeds);
     expect(seeds).toBeLessThan(options);
@@ -586,7 +586,7 @@ describe("Ghidra disabled analyzers", () => {
         platform,
         bridgeScriptPath: path.join(
           "/package",
-          "bridge",
+          "provider-bridges",
           "ReaGhidraBridge.java",
         ),
         disabledAnalyzers: ["Objective-C Message Analyzer"],
@@ -617,7 +617,7 @@ describe("Ghidra disabled analyzers", () => {
       "-scriptlog",
       "/tmp/script.log",
       "-scriptPath",
-      "/package/bridge",
+      "/package/provider-bridges",
       "-postScript",
       "/package/provider-bridges/ReaGhidraNoReturnFix.java",
       "-postScript",
@@ -630,7 +630,7 @@ describe("Ghidra disabled analyzers", () => {
     expect(
       ghidraHeadlessArguments({ ...base, disabledAnalyzers: [] }),
     ).not.toContain(
-      posix.join("/package/bridge", "ReaGhidraAnalysisOptions.java"),
+      posix.join("/package/provider-bridges", "ReaGhidraAnalysisOptions.java"),
     );
   });
 });
@@ -667,7 +667,7 @@ describe("Ghidra existing project", () => {
       "-scriptlog",
       "/tmp/script.log",
       "-scriptPath",
-      "/package/bridge",
+      "/package/provider-bridges",
       "-postScript",
       "/package/provider-bridges/ReaGhidraBridge.java",
       "/tmp/session.json",
@@ -724,7 +724,7 @@ describe("Ghidra existing project", () => {
         platform: "win32",
         bridgeScriptPath: win32.join(
           "/package",
-          "bridge",
+          "provider-bridges",
           "ReaGhidraBridge.java",
         ),
         existingProject: { programName: "game.exe" },

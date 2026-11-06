@@ -4,6 +4,7 @@ const result = (state, description) => ({ state, description });
 
 // GitHub account IDs remain stable when a login changes.
 const EXEMPT_AUTHOR_IDS = new Set([
+  299965650, // sudodc2
   76467478, // morluto
   208281322, // kaoru0822-kitauji
   161784452, // N0zoM1z0

@@ -144,7 +144,7 @@ it("coalesces exact patterns while retaining independent occurrences and stable 
     repeated = build([...inputs].reverse());
   expect(result.routes.map(({ path }) => path)).toEqual([
     "/reports",
-    "/verification/settings",
+    "/reports/settings",
   ]);
   expect(result.routes[0]).toMatchObject({
     occurrence_count: 2,
@@ -195,12 +195,12 @@ it("binds ordinary constants to application segments across sources and excludes
     source("navigation.js", `router.push('/reports');`),
     source(
       "runtime.js",
-      `globalThis.TURBOPACK=[];const routes=['/verification/:id','/ROOT/node_modules/next/process/','/_not-found'];`,
+      `globalThis.TURBOPACK=[];const routes=['/reports/:id','/ROOT/node_modules/next/process/','/_not-found'];`,
     ),
   ]);
   expect(result.routes.map(({ path }) => path)).toEqual([
     "/reports",
-    "/verification/:id",
+    "/reports/:id",
   ]);
   expect(result.statistics.unanchored_literals_excluded).toBe(2);
 });
@@ -255,7 +255,7 @@ it("retains inferred Next script bases and the unprefixed path", () => {
 it("reports missing source facts as partial and preserves filename-only discoveries without fake AST ranges", () => {
   const result = build([
     {
-      ...source("app/verification/[id]/page.js", ""),
+      ...source("app/reports/[id]/page.js", ""),
       status: "unavailable",
       reason: "source was not selected",
       facts: null,
@@ -266,7 +266,7 @@ it("reports missing source facts as partial and preserves filename-only discover
     candidate_enumeration: "partial",
     application_routes: "unknown",
   });
-  expect(result.routes[0]!.path).toBe("/verification/:id");
+  expect(result.routes[0]!.path).toBe("/reports/:id");
   expect(result.occurrences[0]).toMatchObject({
     origin: "source-path",
     source_range: null,
@@ -306,7 +306,7 @@ it("retains a bounded prefix with explicit capacity and counts only retained fac
       "many.js",
       Array.from(
         { length: 100 },
-        (_, index) => `router.push('/verification/${index}');`,
+        (_, index) => `router.push('/reports/${index}');`,
       ).join("\n"),
     ),
   ];
@@ -323,13 +323,13 @@ it("anchors generic constants before applying an inferred asset base", () => {
   const result = build([
     source(
       "prefixed.js",
-      `globalThis.TURBOPACK=[];createBrowserRouter([{path:'/reports'}]);const paths=['/verification/:id','/noise'];`,
+      `globalThis.TURBOPACK=[];createBrowserRouter([{path:'/reports'}]);const paths=['/reports/:id','/noise'];`,
       "https://example.test/app/_next/static/chunks/one.js",
     ),
   ]);
   expect(result.routes.map((row) => row.path)).toEqual([
     "/app/reports",
-    "/app/verification/:id",
+    "/app/reports/:id",
   ]);
   expect(result.statistics.unanchored_literals_excluded).toBe(1);
 });
@@ -344,7 +344,7 @@ it("classifies typed page configuration while generic server route calls remain 
     result.routes
       .filter((row) => row.classification === "page")
       .map((row) => row.path),
-  ).toEqual(["/reports", "/verification/settings"]);
+  ).toEqual(["/reports", "/reports/settings"]);
   expect(result.routes.find((row) => row.path === "/api/users")).toMatchObject({
     classification: "unknown",
     classification_basis: "unknown",
@@ -354,13 +354,13 @@ it("classifies typed page configuration while generic server route calls remain 
 it("keeps TypeScript page filename provenance separate from syntax ranges", () => {
   const result = build([
     source(
-      "app/(account)/verification/[id]/page.tsx",
+      "app/(account)/reports/[id]/page.tsx",
       "export default function Page() { return null; }",
     ),
   ]);
   expect(result.routes).toHaveLength(1);
   expect(result.routes[0]).toMatchObject({
-    path: "/verification/:id",
+    path: "/reports/:id",
     classification: "page",
     classification_basis: "next-app-page",
   });
@@ -417,23 +417,23 @@ it.each(["/app/reports", "/reports"])(
     const result = build([
       source(
         "mixed.js",
-        `globalThis.TURBOPACK=[];router.push('${anchor}');const paths=['/verification/settings','/app/verification/history','/noise','/app/noise','/ROOT/node_modules/framework'];`,
+        `globalThis.TURBOPACK=[];router.push('${anchor}');const paths=['/reports/settings','/app/reports/history','/noise','/app/noise','/ROOT/node_modules/framework'];`,
         "https://example.test/app/_next/static/chunks/one.js",
       ),
     ]);
     expect(result.routes.map(({ path }) => path)).toEqual([
       "/app/reports",
-      "/app/verification/history",
-      "/app/verification/settings",
+      "/app/reports/history",
+      "/app/reports/settings",
     ]);
     expect(result.occurrences).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          unprefixed_path: "/verification/settings",
+          unprefixed_path: "/reports/settings",
           inferred_base_path: "/app",
         }),
         expect.objectContaining({
-          unprefixed_path: "/app/verification/history",
+          unprefixed_path: "/app/reports/history",
           inferred_base_path: null,
         }),
       ]),

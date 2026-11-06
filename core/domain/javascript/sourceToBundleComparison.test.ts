@@ -31,7 +31,7 @@ const EVIDENCE_ID = `ev_${"a".repeat(64)}`;
 
 describe("historical source to bundle comparison", () => {
   it("matches an unchanged JSON source artifact by its exact content digest", () => {
-    const path = "core/data.json";
+    const path = "src/data.json";
     const artifact = createJavaScriptApplicationNode({
       kind: "artifact",
       identity: {
@@ -107,7 +107,7 @@ describe("historical source to bundle comparison", () => {
       duplicated: 1,
       unknown: 1,
     });
-    expect(item(first, "core/unchanged.ts")).toMatchObject({
+    expect(item(first, "src/unchanged.ts")).toMatchObject({
       status: "unchanged",
       confidence: "exact",
       candidates: [
@@ -121,7 +121,7 @@ describe("historical source to bundle comparison", () => {
         }),
       ],
     });
-    expect(item(first, "core/modified.ts")).toMatchObject({
+    expect(item(first, "src/modified.ts")).toMatchObject({
       status: "unknown",
       confidence: "unknown",
       candidates: [
@@ -132,18 +132,18 @@ describe("historical source to bundle comparison", () => {
         }),
       ],
     });
-    expect(item(first, "core/removed.ts")).toMatchObject({
+    expect(item(first, "src/removed.ts")).toMatchObject({
       status: "removed",
       current_node_ids: [],
     });
-    expect(item(first, "core/split.ts")).toMatchObject({
+    expect(item(first, "src/split.ts")).toMatchObject({
       status: "split",
       confidence: "medium",
       current_node_ids: [expect.any(String), expect.any(String)],
     });
-    expect(item(first, "core/merged-a.ts").status).toBe("merged");
-    expect(item(first, "core/merged-b.ts").status).toBe("merged");
-    expect(item(first, "core/duplicated.ts")).toMatchObject({
+    expect(item(first, "src/merged-a.ts").status).toBe("merged");
+    expect(item(first, "src/merged-b.ts").status).toBe("merged");
+    expect(item(first, "src/duplicated.ts")).toMatchObject({
       status: "duplicated",
       candidates: [{}, {}],
       confidence: "exact",
@@ -153,7 +153,7 @@ describe("historical source to bundle comparison", () => {
   });
 
   it("keeps absence unknown when either inventory is incomplete", () => {
-    const reference = historicalGraph("partial", ["core/removed.ts"]);
+    const reference = historicalGraph("partial", ["src/removed.ts"]);
     const graph = applicationGraph("partial");
     const result = compareSourceToBundle({
       reference,
@@ -166,7 +166,7 @@ describe("historical source to bundle comparison", () => {
 
     expect(result.summary).toMatchObject({ removed: 0, unknown: 1 });
     expect(result.items[0]).toMatchObject({
-      source_path: "core/removed.ts",
+      source_path: "src/removed.ts",
       status: "unknown",
       confidence: "unknown",
     });
@@ -177,7 +177,7 @@ describe("historical source to bundle comparison", () => {
 describe("source to bundle candidate evaluation", () => {
   it("evaluates all indexed candidates for each source file", () => {
     const result = compareSourceToBundle({
-      reference: historicalGraph("complete", ["core/split.ts"]),
+      reference: historicalGraph("complete", ["src/split.ts"]),
       application: {
         evidenceId: EVIDENCE_ID,
         rootArtifactSha256: HASH.artifact,
@@ -202,21 +202,21 @@ describe("source to bundle digest changes", () => {
         source_root: null,
         stability: "source-map-exact",
         source_map_sha256: HASH.artifact,
-        original_source: "webpack://fixture/./core/modified.ts",
+        original_source: "webpack://fixture/./src/modified.ts",
         source_sha256: HASH.unchanged,
       },
       observations: [
         {
           label: "display label",
           source_map_reference: sourceMapReference(
-            "webpack://fixture/./core/modified.ts",
+            "webpack://fixture/./src/modified.ts",
             null,
             "dist/main.js.map",
           ),
           properties: {
             content_available: true,
             content_sha256: HASH.unchanged,
-            source: "core/removed.ts",
+            source: "src/removed.ts",
           },
           evidence: artifactEvidence(HASH.artifact, "dist/main.js.map"),
         },
@@ -237,8 +237,8 @@ describe("source to bundle digest changes", () => {
     });
     const result = compareSourceToBundle({
       reference: historicalGraph("complete", [
-        "core/modified.ts",
-        "core/removed.ts",
+        "src/modified.ts",
+        "src/removed.ts",
       ]),
       application: {
         evidenceId: EVIDENCE_ID,
@@ -248,8 +248,8 @@ describe("source to bundle digest changes", () => {
     });
 
     expect(result.summary).toMatchObject({ modified: 1, unknown: 0 });
-    expect(item(result, "core/removed.ts").candidates).toEqual([]);
-    expect(item(result, "core/modified.ts")).toMatchObject({
+    expect(item(result, "src/removed.ts").candidates).toEqual([]);
+    expect(item(result, "src/modified.ts")).toMatchObject({
       status: "modified",
       confidence: "high",
       current_node_ids: [node.node_id],
@@ -259,8 +259,8 @@ describe("source to bundle digest changes", () => {
 
 describe("source to bundle Unicode path collisions", () => {
   it("keeps colliding canonical-equivalent current paths ambiguous", () => {
-    const historicalPath = "core/a\u0301\u0323.ts";
-    const currentPaths = ["core/a\u0323\u0301.ts", "core/\u1ea1\u0301.ts"];
+    const historicalPath = "src/a\u0301\u0323.ts";
+    const currentPaths = ["src/a\u0323\u0301.ts", "src/\u1ea1\u0301.ts"];
     const nodes = currentPaths.map((path, index) =>
       moduleNode(`unicode-${index}`, { path }),
     );
@@ -292,17 +292,17 @@ describe("source to bundle Unicode path collisions", () => {
   });
 
   it("prefers a raw source-map path over canonically equivalent alternatives", () => {
-    const historicalPath = "core/cafe\u0301.ts";
+    const historicalPath = "src/cafe\u0301.ts";
     const exact = sourceMapNode(
       "exact",
       "cafe\u0301.ts",
-      "../core/",
+      "../src/",
       HASH.modified,
     );
     const equivalent = sourceMapNode(
       "equivalent",
       "caf\u00e9.ts",
-      "../core/",
+      "../src/",
       HASH.removed,
     );
     const result = comparePathToNodes(historicalPath, [exact, equivalent]);
@@ -314,7 +314,7 @@ describe("source to bundle Unicode path collisions", () => {
   });
 
   it("finds Unicode-equivalent suffixes of absolute source-map URLs", () => {
-    const historicalPath = "core/caf\u00e9.ts";
+    const historicalPath = "src/caf\u00e9.ts";
     const node = sourceMapNode(
       "remote",
       "cafe\u0301.ts",
@@ -332,7 +332,7 @@ describe("source to bundle Unicode path collisions", () => {
           signals: expect.arrayContaining([
             expect.objectContaining({
               kind: "unicode-equivalent-path",
-              current_values: ["cdn.example/core/cafe\u0301.ts"],
+              current_values: ["cdn.example/src/cafe\u0301.ts"],
             }),
           ]),
         }),
@@ -343,11 +343,11 @@ describe("source to bundle Unicode path collisions", () => {
 
 describe("source to bundle path syntax", () => {
   it.each([
-    "core/modified#part.ts",
-    "core/modified?part.ts",
-    "pkg:app/core/modified#part.ts",
-    "pkg:app/core/modified?part.ts",
-    "data:/core/modified.ts",
+    "src/modified#part.ts",
+    "src/modified?part.ts",
+    "pkg:app/src/modified#part.ts",
+    "pkg:app/src/modified?part.ts",
+    "data:/src/modified.ts",
   ])("preserves literal filesystem punctuation in %s", (path) => {
     const node = moduleNode("punctuated", { path });
     const graph = createJavaScriptApplicationGraph({
@@ -387,7 +387,7 @@ describe("source to bundle path syntax", () => {
   it.each(
     [
       "https://example.test/src/modified.ts?revision=2#section",
-      "webpack://fixture/./core/modified.ts?revision=2#section",
+      "webpack://fixture/./src/modified.ts?revision=2#section",
     ].flatMap((path) => ["path", "module_path"].map((key) => ({ key, path }))),
   )("still strips URL query and fragment from $key $path", ({ key, path }) => {
     const node = moduleNode("url", { [key]: path });
@@ -405,14 +405,14 @@ describe("source to bundle path syntax", () => {
       limitations: [],
     });
     const result = compareSourceToBundle({
-      reference: historicalGraph("complete", ["core/modified.ts"]),
+      reference: historicalGraph("complete", ["src/modified.ts"]),
       application: {
         evidenceId: EVIDENCE_ID,
         rootArtifactSha256: HASH.artifact,
         graph,
       },
     });
-    expect(item(result, "core/modified.ts")).toMatchObject({
+    expect(item(result, "src/modified.ts")).toMatchObject({
       status: "unknown",
       current_node_ids: [node.node_id],
       candidates: [
@@ -424,7 +424,7 @@ describe("source to bundle path syntax", () => {
       ],
     });
     expect(
-      item(result, "core/modified.ts").candidates.flatMap(
+      item(result, "src/modified.ts").candidates.flatMap(
         ({ signals }) => signals,
       ),
     ).not.toContainEqual(
@@ -438,12 +438,12 @@ describe("source-map declaration resolution", () => {
     {
       sourceRoot: "https://cdn.example/src/",
       expectedSource: "https://cdn.example/src/a.js",
-      expectedResolution: { kind: "suffix", path: "cdn.example/core/a.js" },
+      expectedResolution: { kind: "suffix", path: "cdn.example/src/a.js" },
     },
     {
       sourceRoot: "https://cdn.example/src//",
       expectedSource: "https://cdn.example/src//a.js",
-      expectedResolution: { kind: "suffix", path: "cdn.example/core//a.js" },
+      expectedResolution: { kind: "suffix", path: "cdn.example/src//a.js" },
     },
     {
       sourceRoot: "webpack://",
@@ -460,9 +460,9 @@ describe("source-map declaration resolution", () => {
       expectedResolution: { kind: "suffix", path: "a.js" },
     },
     {
-      sourceRoot: "../core/",
-      expectedSource: "file:///artifact/core/a.js",
-      expectedResolution: { kind: "artifact-relative", path: "core/a.js" },
+      sourceRoot: "../src/",
+      expectedSource: "file:///artifact/src/a.js",
+      expectedResolution: { kind: "artifact-relative", path: "src/a.js" },
     },
     {
       sourceRoot: "",
@@ -597,13 +597,13 @@ const comparePathToNodes = (
 const historicalGraph = (
   inventoryState: "complete" | "partial",
   paths = [
-    "core/duplicated.ts",
-    "core/merged-a.ts",
-    "core/merged-b.ts",
-    "core/modified.ts",
-    "core/removed.ts",
-    "core/split.ts",
-    "core/unchanged.ts",
+    "src/duplicated.ts",
+    "src/merged-a.ts",
+    "src/merged-b.ts",
+    "src/modified.ts",
+    "src/removed.ts",
+    "src/split.ts",
+    "src/unchanged.ts",
   ],
 ) =>
   createHistoricalSourceGraph({
@@ -668,18 +668,18 @@ const applicationGraph = (coverage: "complete" | "partial") => {
         strategy: "canonical-path",
         stability: "artifact-version",
         artifact_sha256: HASH.artifact,
-        path: "core/modified.ts",
+        path: "src/modified.ts",
       },
       observations: [
         {
-          label: "core/modified.ts",
-          properties: { path: "core/modified.ts" },
-          evidence: artifactEvidence(HASH.artifact, "core/modified.ts"),
+          label: "src/modified.ts",
+          properties: { path: "src/modified.ts" },
+          evidence: artifactEvidence(HASH.artifact, "src/modified.ts"),
         },
       ],
     }),
-    moduleNode("split-a", { path: "bundle-a/core/split.ts" }),
-    moduleNode("split-b", { path: "bundle-b/core/split.ts" }),
+    moduleNode("split-a", { path: "bundle-a/src/split.ts" }),
+    moduleNode("split-b", { path: "bundle-b/src/split.ts" }),
     moduleNode("merged", {
       path: "bundle.js",
       source_sha256: HASH.merged,

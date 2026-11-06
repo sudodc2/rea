@@ -136,7 +136,7 @@ it("keeps module references out of Next page declarations and retains unknown ru
     { mechanism: "next-app-chunk", reason: expect.stringContaining("context") },
   ]);
   const after = analyze(
-    `const page='app/verification/page.js';globalThis.TURBOPACK=[];`,
+    `const page='app/reports/page.js';globalThis.TURBOPACK=[];`,
   );
   expect(after.candidates.map(({ path }) => path)).toEqual(["/reports"]);
 });
@@ -147,8 +147,8 @@ it("joins router children and preserves each segment's source", () => {
   );
   expect(facts.candidates.map(({ path }) => path)).toEqual([
     "/reports",
-    "/verification/:id?",
-    "/verification/:id?/settings",
+    "/reports/:id?",
+    "/reports/:id?/settings",
   ]);
   expect(facts.candidates[2]!.segments.map(({ value }) => value)).toEqual([
     "/reports",
@@ -164,8 +164,8 @@ it("uses typed literal segments and marks property-name fallbacks inferred", () 
   );
   expect(facts.candidates.map(({ path }) => path)).toEqual([
     "/reports",
-    "/verification/settings",
-    "/verification/history",
+    "/reports/settings",
+    "/reports/history",
   ]);
   expect(facts.candidates[2]).toMatchObject({
     confidence: "low",
@@ -177,11 +177,11 @@ it.each([
   ["defineRoutes({reports:({_$:'reports'} as const)});", ["/reports"]],
   [
     "defineRoutes({reports:{_$:'reports',detail:({_$:'detail'} as const)}});",
-    ["/reports", "/verification/detail"],
+    ["/reports", "/reports/detail"],
   ],
   [
     "const detail={_$:'detail'};defineRoutes({reports:{_$:'reports',detail:(detail as typeof detail)}});",
-    ["/reports", "/verification/detail"],
+    ["/reports", "/reports/detail"],
   ],
 ] as const)(
   "resolves typed children through erased wrappers: %s",
@@ -195,7 +195,7 @@ it("joins missing typed ancestor segments within a selected route-builder root",
   const facts = analyze(`defineRoutes({reports:{settings:{_$:'settings'}}});`);
   expect(facts.candidates.map(({ path }) => path)).toEqual([
     "/reports",
-    "/verification/settings",
+    "/reports/settings",
   ]);
   expect(facts.candidates[0]!.derivation).toBe("inferred");
   expect(facts.unresolved).toHaveLength(0);
@@ -247,7 +247,7 @@ it("infers minified router configurations from view and children syntax", () => 
     facts.candidates
       .filter(({ mechanism }) => mechanism === "nested-route-object")
       .map(({ path }) => path),
-  ).toEqual(["/reports", "/verification/settings"]);
+  ).toEqual(["/reports", "/reports/settings"]);
   expect(
     facts.candidates.every(({ derivation }) => derivation === "inferred"),
   ).toBe(true);
@@ -255,11 +255,11 @@ it("infers minified router configurations from view and children syntax", () => 
 });
 it("retains trailing slashes and optional route-pattern markers", () => {
   const facts = analyze(
-    `createBrowserRouter([{path:'/verification/',children:[{path:':id?/'}]}]);`,
+    `createBrowserRouter([{path:'/reports/',children:[{path:':id?/'}]}]);`,
   );
   expect(facts.candidates.map(({ path }) => path)).toEqual([
-    "/verification/",
-    "/verification/:id?/",
+    "/reports/",
+    "/reports/:id?/",
   ]);
 });
 it("bounds aliased route expansion before allocating unbounded full paths", () => {
@@ -348,8 +348,8 @@ it.each([
     undefined,
   ],
   ["app/app/page.tsx", "/app"],
-  ["app/verification/page-helpers.js", undefined],
-  ["app/verification/page-deadbeef.js", undefined],
+  ["app/reports/page-helpers.js", undefined],
+  ["app/reports/page-deadbeef.js", undefined],
   ["https://example.test/app/reports/page-helpers.js", undefined],
   ["app/_components/page.tsx", undefined],
   ["app/blog/_draft/page.js", undefined],
@@ -362,12 +362,12 @@ it.each([
   ["app/100%/page.tsx", "/100%"],
   ["app/team%2Fadmin/page.tsx", "/team%2Fadmin"],
   [
-    "static/chunks/app/(account)/verification/[id]/page-deadbeef.js",
-    "/verification/:id",
+    "static/chunks/app/(account)/reports/[id]/page-deadbeef.js",
+    "/reports/:id",
   ],
   ["app/handbook/[...slug]/page.js", "/handbook/:slug+"],
-  ["app/(account)/verification/[id]/page.tsx", "/verification/:id"],
-  ["app/verification/page.ts", "/reports"],
+  ["app/(account)/reports/[id]/page.tsx", "/reports/:id"],
+  ["app/reports/page.ts", "/reports"],
   ["app/handbook/[[...slug]]/page", "/handbook/:slug*"],
   ["app/@modal/(.)photo/[id]/page.js", undefined],
   ["/media/app.js", undefined],
@@ -382,7 +382,7 @@ it.each([
   },
 );
 it("distinguishes route-pattern markers, navigation query strings and Next asset bases", () => {
-  expect(routePath("/verification/:id?")).toBe("/verification/:id?");
+  expect(routePath("/reports/:id?")).toBe("/reports/:id?");
   expect(routePath("/reports?tab=recent#summary", { navigation: true })).toBe(
     "/reports",
   );
@@ -415,7 +415,7 @@ it("does not turn ordinary wrapper objects into route ancestry", () => {
   );
   expect(typed.candidates.map((row) => row.path)).toEqual([
     "/reports",
-    "/verification/settings",
+    "/reports/settings",
   ]);
   expect(typed.unresolved).toHaveLength(1);
 });
@@ -604,11 +604,11 @@ it("withholds rejected mixed configuration data from every automatic interpretat
 
 it("does not recycle route-field initializers or writes as independent Next constants", () => {
   const facts = analyze(
-    `globalThis.TURBOPACK=[];createBrowserRouter([{path:'/reports'}]);const mixed={children:[{path:'/verification/stale-ordinary',element:View},{_$:'/verification/stale-typed'}]};mixed.children[1]._$='/verification/changed';createBrowserRouter(mixed);const independent='/verification/help';`,
+    `globalThis.TURBOPACK=[];createBrowserRouter([{path:'/reports'}]);const mixed={children:[{path:'/reports/stale-ordinary',element:View},{_$:'/reports/stale-typed'}]};mixed.children[1]._$='/reports/changed';createBrowserRouter(mixed);const independent='/reports/help';`,
   );
   expect([...new Set(facts.candidates.map(({ path }) => path))]).toEqual([
     "/reports",
-    "/verification/help",
+    "/reports/help",
   ]);
 });
 
@@ -656,7 +656,7 @@ it("does not promote concatenation or template fragments into independent path o
 });
 it("retains computed-expression ownership through erased TypeScript wrappers", () => {
   const facts = analyze(
-    "globalThis.TURBOPACK=[];route('/users');const file=(('app/admin/page.js' as string)!) + suffix;const partial=(('/users/' as const) satisfies string) + id;const template=`prefix${('/users/' as string)}`;const exact=('app/verification/page.js' as const);const independent='/users/settings';",
+    "globalThis.TURBOPACK=[];route('/users');const file=(('app/admin/page.js' as string)!) + suffix;const partial=(('/users/' as const) satisfies string) + id;const template=`prefix${('/users/' as string)}`;const exact=('app/reports/page.js' as const);const independent='/users/settings';",
   );
   expect([...new Set(facts.candidates.map(({ path }) => path))].sort()).toEqual(
     ["/reports", "/users", "/users/settings"],

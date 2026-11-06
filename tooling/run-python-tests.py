@@ -92,7 +92,7 @@ def run_analysis_efficiency():
         fail("no_executed_analysis_efficiency_tests")
 
 
-bridge_root = root / "bridge"
+bridge_root = root / "provider-bridges"
 bridge_tests = sorted(
     path for path in bridge_root.rglob("test_*.py") if path.is_file()
 )

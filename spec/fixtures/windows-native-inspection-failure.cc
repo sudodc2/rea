@@ -1,6 +1,6 @@
 // Only the separate conformance artifact uses this translation unit. The
 // shipped addon always compiles filesystem.cc directly, without interposition.
-#include "../../native/windows/src/authority.hpp"
+#include "../../platform/windows/src/authority.hpp"
 #include <atomic>
 
 static BOOL fixtureDisposition(HANDLE handle, FILE_INFO_BY_HANDLE_CLASS kind,
@@ -30,4 +30,4 @@ static DWORD inspectionSecurityInfo(HANDLE handle, SE_OBJECT_TYPE kind,
 
 #define SetFileInformationByHandle fixtureDisposition
 #define GetSecurityInfo inspectionSecurityInfo
-#include "../../native/windows/src/filesystem.cc"
+#include "../../platform/windows/src/filesystem.cc"

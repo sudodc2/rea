@@ -60,7 +60,7 @@ const passed =
 const verifyInventory = process.env.CI_VERIFY_TEST_INVENTORY === "true";
 const expected =
   verifyInventory || process.env.CI_TEST_SELECTION
-    ? execFileSync("git", ["ls-files", "-z", "--", "src", "tests"], {
+    ? execFileSync("git", ["ls-files", "-z", "--", "core", "spec"], {
         encoding: "utf8",
         maxBuffer: 8 * 1024 * 1024,
       })

@@ -34,7 +34,7 @@ const directoryEntry = (
 const fileEntry = (
   overrides: Partial<HashedFileEntry> = {},
 ): HashedFileEntry => ({
-  path: "core/main.ts",
+  path: "src/main.ts",
   kind: "file",
   sha256: HASH_B,
   size: 20,
@@ -48,7 +48,7 @@ const fileEntry = (
 const unavailableFileEntry = (
   overrides: Partial<UnavailableFileEntry> = {},
 ): UnavailableFileEntry => ({
-  path: "core/main.ts",
+  path: "src/main.ts",
   kind: "file",
   sha256: null,
   size: null,
@@ -64,7 +64,7 @@ type KnownTargetSymlinkEntry = Extract<SymlinkEntry, { target: string }>;
 const symlinkEntry = (
   overrides: Partial<KnownTargetSymlinkEntry> = {},
 ): KnownTargetSymlinkEntry => ({
-  path: "core/package.json",
+  path: "src/package.json",
   kind: "symlink",
   target: "main.ts",
   target_state: "internal",
@@ -81,14 +81,14 @@ const graphInput = (): HistoricalSourceGraphInput => ({
   entries: [directoryEntry(), fileEntry(), symlinkEntry()],
   relationships: [
     {
-      from_path: "core/main.ts",
+      from_path: "src/main.ts",
       to: "node:fs",
       kind: "imports",
       resolution: "external",
       parse_state: "parsed",
     },
     {
-      from_path: "core/main.ts",
+      from_path: "src/main.ts",
       to: "src",
       kind: "references",
       resolution: "internal",
@@ -280,7 +280,7 @@ describe("historical source graph", () => {
       createHistoricalSourceGraph({ ...input, languages: [] }),
     ).toThrow(/derived/u);
     expect(() =>
-      createHistoricalSourceGraph({ ...input, manifests: ["core/main.ts"] }),
+      createHistoricalSourceGraph({ ...input, manifests: ["src/main.ts"] }),
     ).toThrow(/derived/u);
     expect(() =>
       createHistoricalSourceGraph({
@@ -292,7 +292,7 @@ describe("historical source graph", () => {
       createHistoricalSourceGraph({
         ...input,
         entries: input.entries.map((entry) =>
-          entry.path === "core/main.ts"
+          entry.path === "src/main.ts"
             ? { ...entry, classifications: ["test", "source"] }
             : entry,
         ),
@@ -306,7 +306,7 @@ const registerLocalDiagnosticCommitmentTests = (): void => {
     const base = graphInput();
     base.inventory_state = "partial";
     base.entries[2] = {
-      path: "core/package.json",
+      path: "src/package.json",
       kind: "unknown",
       classifications: ["unknown"],
       limitations: ["Permission denied at /private/first"],
@@ -314,7 +314,7 @@ const registerLocalDiagnosticCommitmentTests = (): void => {
     const graph = createHistoricalSourceGraph(base);
     const changedMessage = structuredClone(base);
     changedMessage.entries[2] = {
-      path: "core/package.json",
+      path: "src/package.json",
       kind: "unknown",
       classifications: ["unknown"],
       limitations: ["Permission denied at /private/second"],
@@ -334,13 +334,13 @@ const registerLocalDiagnosticCommitmentTests = (): void => {
         "File could not be read safely: EACCES. Check permissions.",
       ],
       local_diagnostics: [
-        "EACCES: permission denied, open '/first/core/main.ts'",
+        "EACCES: permission denied, open '/first/src/main.ts'",
       ],
     });
     const graph = createHistoricalSourceGraph(base);
     const moved = structuredClone(base);
     moved.entries[1]!.local_diagnostics = [
-      "EACCES: permission denied, open '/second/core/main.ts'",
+      "EACCES: permission denied, open '/second/src/main.ts'",
     ];
     const relocated = createHistoricalSourceGraph(moved);
     expect(createHistoricalSourceManifest(relocated)).toEqual(
@@ -366,7 +366,7 @@ describe("partial historical source graphs", () => {
     const base = graphInput();
     base.inventory_state = "partial";
     base.entries[2] = {
-      path: "core/package.json",
+      path: "src/package.json",
       kind: "symlink",
       target: null,
       target_state: "unreadable",
@@ -382,7 +382,7 @@ describe("partial historical source graphs", () => {
 
     const changedMessage = structuredClone(base);
     changedMessage.entries[2] = {
-      path: "core/package.json",
+      path: "src/package.json",
       kind: "symlink",
       target: null,
       target_state: "unreadable",
@@ -411,7 +411,7 @@ describe("partial historical source graphs", () => {
     partial.inventory_state = "partial";
     partial.entries[1] = unavailableFileEntry();
     partial.parse_failures = [
-      { path: "core/main.ts", parser: "typescript", reason: "Malformed input" },
+      { path: "src/main.ts", parser: "typescript", reason: "Malformed input" },
     ];
     expect(createHistoricalSourceGraph(partial).inventory_state).toBe(
       "partial",
@@ -451,12 +451,12 @@ describe("partial historical source graphs", () => {
   it("keeps distinct parse failure reasons for the same path and parser", () => {
     const input = graphInput();
     const malformed = {
-      path: "core/main.ts",
+      path: "src/main.ts",
       parser: "typescript",
       reason: "Malformed input",
     };
     const unexpected = {
-      path: "core/main.ts",
+      path: "src/main.ts",
       parser: "typescript",
       reason: "Unexpected token",
     };
@@ -598,14 +598,14 @@ describe("historical source graph symlink path identity", () => {
   it("joins internal symlink targets with the inventory NFC normalizer", () => {
     // "café" spelled NFC, as the inventory produces it, and the same
     // name spelled NFD, as a macOS readlink can report it.
-    const nfcPath = "core/café.ts";
+    const nfcPath = "src/café.ts";
     const nfdTarget = "cafe\u0301.ts";
     expect(nfcPath).not.toBe(nfdTarget);
 
     const input = { ...graphInput(), inventory_state: "partial" as const };
     input.entries[1] = fileEntry({ path: nfcPath });
     input.entries[2] = symlinkEntry({
-      path: "core/link.js",
+      path: "src/link.js",
       target: nfdTarget,
       target_state: "internal",
     });
@@ -620,23 +620,23 @@ describe("historical source graph symlink path identity", () => {
 
   it("preserves an exact NFD inventory spelling when resolving its symlink", () => {
     const input = { ...graphInput(), inventory_state: "partial" as const };
-    input.entries[1] = fileEntry({ path: "core/cafe\u0301.ts" });
+    input.entries[1] = fileEntry({ path: "src/cafe\u0301.ts" });
     input.entries[2] = symlinkEntry({
-      path: "core/link.js",
+      path: "src/link.js",
       target: "cafe\u0301.ts",
       target_state: "internal",
     });
     input.relationships = [];
     expect(createHistoricalSourceGraph(input).entries[1]?.path).toBe(
-      "core/cafe\u0301.ts",
+      "src/cafe\u0301.ts",
     );
   });
 
   it("still rejects an internal symlink target that no inventory holds", () => {
     const input = { ...graphInput(), inventory_state: "partial" as const };
     input.entries[2] = symlinkEntry({
-      path: "core/link.js",
-      // The NFD spelling normalizes to "core/café.ts", which the
+      path: "src/link.js",
+      // The NFD spelling normalizes to "src/café.ts", which the
       // inventory does not contain, so the join must still miss.
       target: "cafe\u0301.ts",
       target_state: "internal",

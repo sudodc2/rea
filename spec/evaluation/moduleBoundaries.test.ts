@@ -39,7 +39,7 @@ describe("binary production construction ownership", () => {
     "ida/IdaProvider.js",
     "artifacts/ArtifactProvider.js",
     "dotnet/ManagedStaticProvider.js",
-    "platform/NativeMacOSProvider.js",
+    "native/NativeMacOSProvider.js",
   ])("keeps %s in production composition", (provider) => {
     const source = `import { Provider } from "../${provider}";`;
     for (const file of ["core/application/runtime.ts", "core/server/probe.ts"])
@@ -373,7 +373,7 @@ describe("module import syntax and source discovery", () => {
     await mkdir(join(temporary, "core", "domain"), { recursive: true });
     await writeFile(join(temporary, "core/domain/old.ts"), "export const x=1;");
     await execute("git", ["init", "--quiet"], { cwd: temporary });
-    await execute("git", ["add", "--", "src"], { cwd: temporary });
+    await execute("git", ["add", "--", "core"], { cwd: temporary });
     await rename(
       join(temporary, "core/domain/old.ts"),
       join(temporary, "core/domain/new.ts"),
