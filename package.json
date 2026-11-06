@@ -436,5 +436,9 @@
   },
   "allowScripts": {
     "frida@17.23.2": true
+  },
+  "author": {
+    "name": "Hashbrown",
+    "url": "https://github.com/sudodc2"
   }
 }

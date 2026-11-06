@@ -1,0 +1,46 @@
+{
+  "file": "garbage.bin",
+  "size_bytes": 4096,
+  "fingerprints": [],
+  "primary_format": "unknown",
+  "metrics": {
+    "entropy_bits_per_byte": 7.953,
+    "b85_alphabet_density": 0.329,
+    "long_string_blocks": 0,
+    "long_string_bytes": 0,
+    "function_definitions": 0,
+    "loadstring_calls": 0,
+    "pcall_family_calls": 0,
+    "env_probes_found": 0,
+    "suspicious_globals": 0,
+    "printable_strings_sampled": 12
+  },
+  "env_probes": [],
+  "suspicious_globals": [],
+  "network_surface": {},
+  "long_string_blocks": [],
+  "strings": [
+    "oos2Fy",
+    " ! Zd0M",
+    "5{ 0<o",
+    "#: Q&$",
+    "L'>H7e",
+    "F4cL.dr",
+    "NnV_yux",
+    "@nNdw!pl",
+    "$Q}6o{~",
+    "}EwPxI",
+    "9&0e~C",
+    ":_ojE`"
+  ],
+  "decoded_strings": [
+    "@nNdw!pl",
+    "}EwPxI"
+  ],
+  "limitations": [
+    "Static byte analysis only; the artifact is never executed.",
+    "String recovery is limited to escape-sequence decoding; runtime-constructed strings (string.char/concat chains) are not resolved.",
+    "Fingerprint scores are heuristic; a low score does not prove absence of obfuscation.",
+    "Network surface lists literal URLs and call sites; it does not verify reachability or intent."
+  ]
+}

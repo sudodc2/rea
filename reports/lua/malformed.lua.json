@@ -1,0 +1,44 @@
+{
+  "file": "malformed.lua",
+  "size_bytes": 516,
+  "fingerprints": [
+    {
+      "id": "luau-bytecode",
+      "label": "Luau bytecode",
+      "score": 3,
+      "signals": [
+        "ESC Lua signature"
+      ]
+    }
+  ],
+  "primary_format": "luau-bytecode",
+  "metrics": {
+    "entropy_bits_per_byte": 7.568,
+    "b85_alphabet_density": 0.339,
+    "long_string_blocks": 0,
+    "long_string_bytes": 0,
+    "function_definitions": 0,
+    "loadstring_calls": 0,
+    "pcall_family_calls": 0,
+    "env_probes_found": 0,
+    "suspicious_globals": 0,
+    "printable_strings_sampled": 2
+  },
+  "env_probes": [],
+  "suspicious_globals": [],
+  "network_surface": {},
+  "long_string_blocks": [],
+  "strings": [
+    "BQ&qTWB",
+    "2A&[6m"
+  ],
+  "decoded_strings": [
+    "BQ&qTWB"
+  ],
+  "limitations": [
+    "Static byte analysis only; the artifact is never executed.",
+    "String recovery is limited to escape-sequence decoding; runtime-constructed strings (string.char/concat chains) are not resolved.",
+    "Fingerprint scores are heuristic; a low score does not prove absence of obfuscation.",
+    "Network surface lists literal URLs and call sites; it does not verify reachability or intent."
+  ]
+}

@@ -12,11 +12,9 @@
 [![npm version](https://img.shields.io/npm/v/rea-agents?style=flat-square&color=cb3837)](https://www.npmjs.com/package/rea-agents)
 [![MCP tool catalog](https://img.shields.io/badge/MCP-tool_catalog-5c4ee5?style=flat-square)](docs/mcp-contracts.md#generated-catalog)
 [![Node.js requirements](https://img.shields.io/badge/Node.js-requirements-339933?style=flat-square&logo=nodedotjs&logoColor=white)](#what-you-can-analyze)
-[![skills.sh](https://skills.sh/b/morluto/rea?style=flat-square)](https://skills.sh/morluto/rea/reverse-engineer-anything)
+[![skills.sh](https://skills.sh/b/sudodc2/rea?style=flat-square)](https://skills.sh/sudodc2/rea/reverse-engineer-anything)
 [![MIT license](https://img.shields.io/badge/license-MIT-f4c430?style=flat-square)](LICENSE)
 [![Discord](https://img.shields.io/discord/1556595354999332884?logo=discord&logoColor=white&label=Discord&color=5865F2)](https://discord.gg/JUEc8rBVvC)
-
-<a href="https://trendshift.io/repositories/82054?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-82054" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/82054" alt="morluto%2Frea | Trendshift" width="250" height="55"/></a>
 
 **[Website](https://rea.tools/) · [Guides](https://rea.tools/guides/) · [Showcases](https://rea.tools/showcase/)**
 
@@ -29,7 +27,7 @@
 </div>
 
 > [!IMPORTANT]
-> Get REA from [morluto/rea](https://github.com/sudodc2/rea),
+> Get REA from [sudodc2/rea](https://github.com/sudodc2/rea),
 > [rea.tools](https://rea.tools/), or the [rea-agents npm package](https://www.npmjs.com/package/rea-agents).
 > Follow the installation and release links from these official sources. A similar
 > repository name or copied README does not establish that a download is official.
@@ -431,19 +429,14 @@ For exact options, prerequisites and result contracts:
 
 Report vulnerabilities through [SECURITY.md](SECURITY.md).
 
-## Star history
+## Credits
 
-🎉 **400,000 GitHub stars — thank you!**
-
-Thanks to everyone using REA, reporting bugs, requesting features, testing builds, and contributing fixes.
-
-<a href="https://www.star-history.com/?repos=morluto%2Frea&amp;type=date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=morluto/rea&amp;type=date&amp;theme=dark&amp;legend=top-left" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=morluto/rea&amp;type=date" />
-    <img alt="REA GitHub star history" src="https://api.star-history.com/chart?repos=morluto/rea&amp;type=date" />
-  </picture>
-</a>
+REA was created by [morluto](https://github.com/morluto). This repository is a
+community-maintained build by **Hashbrown** ([sudodc2](https://github.com/sudodc2)):
+it adds Luau/Roblox artifact analysis (`lua/rea-lua.mjs`), republishes the
+upstream project with our Discord community link, and ships verified test
+evidence under [`reports/`](reports/TESTING.md). All upstream licensing terms
+apply — see [LICENSE](LICENSE) and [NOTICE](NOTICE) where present.
 
 ## Disclaimer
 

@@ -1,0 +1,59 @@
+{
+  "file": "plain.lua",
+  "size_bytes": 231,
+  "fingerprints": [
+    {
+      "id": "luau-plain",
+      "label": "Plain Luau source",
+      "score": 1,
+      "signals": [
+        "Luau statement head"
+      ]
+    }
+  ],
+  "primary_format": "luau-plain",
+  "metrics": {
+    "entropy_bits_per_byte": 4.545,
+    "b85_alphabet_density": 0.753,
+    "long_string_blocks": 0,
+    "long_string_bytes": 0,
+    "function_definitions": 2,
+    "loadstring_calls": 0,
+    "pcall_family_calls": 0,
+    "env_probes_found": 0,
+    "suspicious_globals": 0,
+    "printable_strings_sampled": 9
+  },
+  "env_probes": [],
+  "suspicious_globals": [],
+  "network_surface": {},
+  "long_string_blocks": [],
+  "strings": [
+    "-- plain.lua ",
+    " ordinary Luau module, no obfuscation",
+    "local M = {}",
+    "function M.fib(n)",
+    "  if n < 2 then return n end",
+    "  return M.fib(n - 1) + M.fib(n - 2)",
+    "function M.greet(name)",
+    "  return \"hello, \" .. tostring(name)",
+    "return M"
+  ],
+  "decoded_strings": [
+    "-- plain.lua ",
+    " ordinary Luau module, no obfuscation",
+    "local M = {}",
+    "function M.fib(n)",
+    "  if n < 2 then return n end",
+    "  return M.fib(n - 1) + M.fib(n - 2)",
+    "function M.greet(name)",
+    "  return \"hello, \" .. tostring(name)",
+    "return M"
+  ],
+  "limitations": [
+    "Static byte analysis only; the artifact is never executed.",
+    "String recovery is limited to escape-sequence decoding; runtime-constructed strings (string.char/concat chains) are not resolved.",
+    "Fingerprint scores are heuristic; a low score does not prove absence of obfuscation.",
+    "Network surface lists literal URLs and call sites; it does not verify reachability or intent."
+  ]
+}
