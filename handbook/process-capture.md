@@ -117,7 +117,7 @@ save this scenario and run `rea capture-process ./scenario.json --json > capture
   "executable": "node",
   "arguments": [
     "-e",
-    "const fs=require('node:fs');fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('verification/final.json',JSON.stringify({status:'complete',data:'X'.repeat(131072)}));console.log('x'.repeat(8192));"
+    "const fs=require('node:fs');fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/final.json',JSON.stringify({status:'complete',data:'X'.repeat(131072)}));console.log('x'.repeat(8192));"
   ],
   "working_directory": ".",
   "filesystem_observation_paths": ["./reports"],

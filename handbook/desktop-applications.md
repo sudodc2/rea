@@ -79,7 +79,7 @@ explicitly retain it in a bundle:
 
 ```bash
 rea inspect-desktop-application /artifacts/MyApplication \
-  --detail summary --evidence_output /verification/application.evidence.json --json
+  --detail summary --evidence_output /reports/application.evidence.json --json
 ```
 
 This returns `summary` Evidence and an `evidence_bundle` publication receipt.

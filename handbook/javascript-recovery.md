@@ -99,7 +99,7 @@ Published contents:
 - `inputs/bundle.js`: exact original snapshot for a single input. Multiple inputs
   retain paths relative to their common parent under `inputs/`.
 - `modules/`: derived modules and any upstream-emitted source maps.
-- `verification/stdout.json` and `verification/provenance.json`: exact producer reports.
+- `reports/stdout.json` and `reports/provenance.json`: exact producer reports.
 - `manifest.json`: identities, modules, transform choices, warnings and limitations.
 
 The inline result includes complete file paths/digests/sizes, extraction ranges,

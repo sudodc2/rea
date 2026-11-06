@@ -85,11 +85,11 @@ export const publishWakaruArtifacts = async (
     modules.push(await publishModule(context, module, write));
   }
   const report = await write(
-    "verification/stdout.json",
+    "reports/stdout.json",
     Buffer.from(context.execution.stdout),
   );
   const provenance = await write(
-    "verification/provenance.json",
+    "reports/provenance.json",
     await readRecoveryFile(
       join(staging, "provenance.json"),
       RECOVERY_LIMITS.reportBytes,

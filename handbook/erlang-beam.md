@@ -109,8 +109,8 @@ CLI summary delivery requires a destination for the complete Evidence bundle:
 ```sh
 rea inspect-erlang-beam /artifacts/app.beam --detail summary \
   --view '{"kind":"beam","collection":"exports","names":["module_info"],"fields":["function","arity"]}' \
-  --evidence_output /verification/app-beam.evidence.json --json
-rea inspect-analysis-view '{"source":{"kind":"evidence-file","path":"/verification/app-beam.evidence.json"},"view":{"kind":"beam","collection":"imports","modules":["erlang"]}}' --json
+  --evidence_output /reports/app-beam.evidence.json --json
+rea inspect-analysis-view '{"source":{"kind":"evidence-file","path":"/reports/app-beam.evidence.json"},"view":{"kind":"beam","collection":"imports","modules":["erlang"]}}' --json
 ```
 
 The bundle retains the complete report. Subsequent MCP queries may use

@@ -54,7 +54,7 @@ The analysis step captures stdout and stderr separately, records `$?`, and exits
 with that same status. There is no `continue-on-error`, `|| true`, output filter,
 or pipeline that could turn a failed analysis green. Before checkout or other
 fallible steps, the workflow creates a fresh report directory under `RUNNER_TEMP`.
-Analysis and upload both use that directory, never a checked-in `verification/rea` or
+Analysis and upload both use that directory, never a checked-in `reports/rea` or
 other workspace files. The upload step uses `always()` when that directory was
 prepared, so available diagnostics survive an analysis failure. If installation
 or the build failed before analysis began, it is empty and upload warns rather
