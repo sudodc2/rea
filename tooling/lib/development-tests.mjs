@@ -18,7 +18,7 @@ export const parseDevelopmentTestRequest = (mode, arguments_) => {
     } else {
       const path = argument.replaceAll("\\", "/").replace(/^\.\//u, "");
       if (
-        !/^(?:src|tests)\/.+\.test\.ts$/u.test(path) ||
+        !/^(?:core|spec)\/.+\.test\.ts$/u.test(path) ||
         path.split("/").some((part) => part === ".." || part === ".")
       )
         throw new Error(`Expected an exact repository test path: ${argument}`);

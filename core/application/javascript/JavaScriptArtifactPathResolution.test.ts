@@ -3169,7 +3169,8 @@ describe("TypeScript declaration fallback ownership", () => {
       }
       expect(
         resolve({
-          declaredPath: "./" + target.slice(4),
+          declaredPath:
+            "./" + target.slice(target.indexOf("/") + 1),
           sourcePath: "core/main.ts",
           context: "module-specifier",
           moduleKind: "import",

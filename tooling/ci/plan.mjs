@@ -240,7 +240,7 @@ if (tier === "reused") {
         selected.website ||= matchesAny(file, CI_LANES.website.paths);
         continue;
       }
-      if (/^(src|tests)\/.*\.(?:test|spec)\.[cm]?[jt]sx?$/.test(file)) {
+      if (/^(core|spec)\/.*\.(?:test|spec)\.[cm]?[jt]sx?$/.test(file)) {
         selected.code = true;
         for (const [owner, { paths, testInputs }] of Object.entries(CI_LANES))
           if (testInputs && matchesAny(file, paths)) selected[owner] = true;

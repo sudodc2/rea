@@ -24,7 +24,7 @@ const ownersOf = (path) =>
     .map(([owner]) => owner);
 const validPath = (path) =>
   typeof path === "string" &&
-  /^(src|tests)\//.test(path) &&
+  /^(core|spec)\//.test(path) &&
   !/[\\\0\r\n]/.test(path) &&
   !path.split("/").some((part) => ["", ".", ".."].includes(part));
 const full = (reason, changedPaths = []) => ({
